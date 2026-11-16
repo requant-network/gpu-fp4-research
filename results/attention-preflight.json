@@ -1,0 +1,4486 @@
+{
+  "schema_version": 1,
+  "study": 5,
+  "scope": "Native-backend availability and numerical preflight only; not a complete mixed-precision attention or model-quality study.",
+  "utc": "2026-11-16T14:07:32.381220+00:00",
+  "seed": 20261123,
+  "torch": "2.13.0+cu130",
+  "torch_cuda": "13.0",
+  "torch_git": "cf30153c4c131c8164ee7798e5022d810682e2cb",
+  "numpy": "2.2.6",
+  "gpu_name": "NVIDIA GeForce RTX 5060 Ti",
+  "compute_capability": [
+    12,
+    0
+  ],
+  "gpu_exclusive": false,
+  "warmups": 2,
+  "samples": 5,
+  "source_sha256": {
+    "attention_preflight.py": "7c49a7e1bcba721e38046647efe9dc7018c392c71068a44cacabe9f464ec606b",
+    "reference.py": "b17f2880f57875909d8268091f026317dbf531b118b83322488c96ab7f62c9ef"
+  },
+  "cases": [
+    {
+      "shape": [
+        1,
+        1,
+        128,
+        64
+      ],
+      "mask": "none",
+      "dtype": "fp32",
+      "requested_backend": "math",
+      "input_sha256": [
+        "da510f08dc260edc0baa5f3c5e38f2f3f04e70b39b2ece5d09f868d74c63abb3",
+        "a8fa59a46ed91e74e03040763ea04240b6e752fda137f3ae6a6e5b7fc548640c",
+        "fac89eb6cb03534bc7f625e16dad7106c4ce14d7a91ce5cfb36a775714ac0413"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 1.4607971191582765e-07,
+      "relative_error_vs_rounded_input_fp64": 1.4607971191582765e-07,
+      "output_sha256": "0bdd44e5619e20ce7044a7c3e676339699d093870bede65cbe197b1879af3718",
+      "timings_ms": [
+        0.19183999300003052,
+        0.15724800527095795,
+        0.1542080044746399,
+        0.15190400183200836,
+        0.1499519944190979
+      ],
+      "extra_peak_torch_allocated_bytes": 181248,
+      "dispatch_operations": [
+        "aten::_scaled_dot_product_attention_math",
+        "aten::scaled_dot_product_attention"
+      ],
+      "witness": {
+        "file": "attention-preflight-fp32-math-none.npz",
+        "sha256": "8116e02e6a105106191a2a9932186b08514c2c4036fd101b9022dac312f9afe0"
+      }
+    },
+    {
+      "shape": [
+        1,
+        1,
+        128,
+        64
+      ],
+      "mask": "none",
+      "dtype": "fp32",
+      "requested_backend": "flash",
+      "input_sha256": [
+        "da510f08dc260edc0baa5f3c5e38f2f3f04e70b39b2ece5d09f868d74c63abb3",
+        "a8fa59a46ed91e74e03040763ea04240b6e752fda137f3ae6a6e5b7fc548640c",
+        "fac89eb6cb03534bc7f625e16dad7106c4ce14d7a91ce5cfb36a775714ac0413"
+      ],
+      "status": "unavailable",
+      "diagnostic": "No available kernel. Aborting execution."
+    },
+    {
+      "shape": [
+        1,
+        1,
+        128,
+        64
+      ],
+      "mask": "none",
+      "dtype": "fp32",
+      "requested_backend": "efficient",
+      "input_sha256": [
+        "da510f08dc260edc0baa5f3c5e38f2f3f04e70b39b2ece5d09f868d74c63abb3",
+        "a8fa59a46ed91e74e03040763ea04240b6e752fda137f3ae6a6e5b7fc548640c",
+        "fac89eb6cb03534bc7f625e16dad7106c4ce14d7a91ce5cfb36a775714ac0413"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 1.5962106734009212e-07,
+      "relative_error_vs_rounded_input_fp64": 1.5962106734009212e-07,
+      "output_sha256": "e6fdad2da412c9112abaac169604708086a768b744aa3bb3d82c4839d0204d5e",
+      "timings_ms": [
+        0.0398080013692379,
+        0.03433600068092346,
+        0.030848000198602676,
+        0.025919999927282333,
+        0.026208000257611275
+      ],
+      "extra_peak_torch_allocated_bytes": 32768,
+      "dispatch_operations": [
+        "aten::_efficient_attention_forward",
+        "aten::_scaled_dot_product_efficient_attention",
+        "aten::scaled_dot_product_attention"
+      ],
+      "witness": {
+        "file": "attention-preflight-fp32-efficient-none.npz",
+        "sha256": "740c7c9a0bebf8c917298cba5e853e1e9a46357c733a4cb26212f90bbc31386a"
+      }
+    },
+    {
+      "shape": [
+        1,
+        1,
+        128,
+        64
+      ],
+      "mask": "none",
+      "dtype": "fp32",
+      "requested_backend": "cudnn",
+      "input_sha256": [
+        "da510f08dc260edc0baa5f3c5e38f2f3f04e70b39b2ece5d09f868d74c63abb3",
+        "a8fa59a46ed91e74e03040763ea04240b6e752fda137f3ae6a6e5b7fc548640c",
+        "fac89eb6cb03534bc7f625e16dad7106c4ce14d7a91ce5cfb36a775714ac0413"
+      ],
+      "status": "unavailable",
+      "diagnostic": "No available kernel. Aborting execution."
+    },
+    {
+      "shape": [
+        1,
+        1,
+        128,
+        64
+      ],
+      "mask": "none",
+      "dtype": "fp16",
+      "requested_backend": "math",
+      "input_sha256": [
+        "da510f08dc260edc0baa5f3c5e38f2f3f04e70b39b2ece5d09f868d74c63abb3",
+        "a8fa59a46ed91e74e03040763ea04240b6e752fda137f3ae6a6e5b7fc548640c",
+        "fac89eb6cb03534bc7f625e16dad7106c4ce14d7a91ce5cfb36a775714ac0413"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.00020837525702590328,
+      "relative_error_vs_rounded_input_fp64": 0.00020837525702590328,
+      "output_sha256": "64e9b8c26131b1bfe388dc9d79ee2e9d25d8a243dcd2d363cfe306cdc771d9ee",
+      "timings_ms": [
+        0.19753600656986237,
+        0.1900160014629364,
+        0.18595199286937714,
+        0.18531200289726257,
+        0.18454399704933167
+      ],
+      "extra_peak_torch_allocated_bytes": 279552,
+      "dispatch_operations": [
+        "aten::_scaled_dot_product_attention_math",
+        "aten::scaled_dot_product_attention"
+      ],
+      "witness": {
+        "file": "attention-preflight-fp16-math-none.npz",
+        "sha256": "4ce7fa5328a0b29c81d554ca3f06e0abeba9bb46dc5f017dadc9904a3b54daf0"
+      }
+    },
+    {
+      "shape": [
+        1,
+        1,
+        128,
+        64
+      ],
+      "mask": "none",
+      "dtype": "fp16",
+      "requested_backend": "flash",
+      "input_sha256": [
+        "da510f08dc260edc0baa5f3c5e38f2f3f04e70b39b2ece5d09f868d74c63abb3",
+        "a8fa59a46ed91e74e03040763ea04240b6e752fda137f3ae6a6e5b7fc548640c",
+        "fac89eb6cb03534bc7f625e16dad7106c4ce14d7a91ce5cfb36a775714ac0413"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.00027381024002099276,
+      "relative_error_vs_rounded_input_fp64": 0.00027381024002099276,
+      "output_sha256": "e319be4da9ed1ff0ded76a4c1a1a44f82b6c8933d3b88721268a7eb48fd30008",
+      "timings_ms": [
+        0.03977600112557411,
+        0.032127998769283295,
+        0.03110400028526783,
+        0.029503999277949333,
+        0.029120000079274178
+      ],
+      "extra_peak_torch_allocated_bytes": 17920,
+      "dispatch_operations": [
+        "aten::_flash_attention_forward",
+        "aten::_scaled_dot_product_flash_attention",
+        "aten::scaled_dot_product_attention"
+      ],
+      "witness": {
+        "file": "attention-preflight-fp16-flash-none.npz",
+        "sha256": "d4e93d5318d42834f89e0e8a0a97a9f1644b1b93d0e8768c88062c9e9605116f"
+      }
+    },
+    {
+      "shape": [
+        1,
+        1,
+        128,
+        64
+      ],
+      "mask": "none",
+      "dtype": "fp16",
+      "requested_backend": "efficient",
+      "input_sha256": [
+        "da510f08dc260edc0baa5f3c5e38f2f3f04e70b39b2ece5d09f868d74c63abb3",
+        "a8fa59a46ed91e74e03040763ea04240b6e752fda137f3ae6a6e5b7fc548640c",
+        "fac89eb6cb03534bc7f625e16dad7106c4ce14d7a91ce5cfb36a775714ac0413"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.00026944030778704376,
+      "relative_error_vs_rounded_input_fp64": 0.00026944030778704376,
+      "output_sha256": "8a7e755390c308b9c377d903cd2137c5751479902d61ed999bb5cd9bad3de838",
+      "timings_ms": [
+        0.03283200040459633,
+        0.02412799932062626,
+        0.022463999688625336,
+        0.02160000056028366,
+        0.02195199951529503
+      ],
+      "extra_peak_torch_allocated_bytes": 16384,
+      "dispatch_operations": [
+        "aten::_efficient_attention_forward",
+        "aten::_scaled_dot_product_efficient_attention",
+        "aten::scaled_dot_product_attention"
+      ],
+      "witness": {
+        "file": "attention-preflight-fp16-efficient-none.npz",
+        "sha256": "461bf44ee6b0233e00cf601e88f01de9ae8c73d8ab71a21f1c1bab32b84b6dfa"
+      }
+    },
+    {
+      "shape": [
+        1,
+        1,
+        128,
+        64
+      ],
+      "mask": "none",
+      "dtype": "fp16",
+      "requested_backend": "cudnn",
+      "input_sha256": [
+        "da510f08dc260edc0baa5f3c5e38f2f3f04e70b39b2ece5d09f868d74c63abb3",
+        "a8fa59a46ed91e74e03040763ea04240b6e752fda137f3ae6a6e5b7fc548640c",
+        "fac89eb6cb03534bc7f625e16dad7106c4ce14d7a91ce5cfb36a775714ac0413"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.00026944030778704376,
+      "relative_error_vs_rounded_input_fp64": 0.00026944030778704376,
+      "output_sha256": "8a7e755390c308b9c377d903cd2137c5751479902d61ed999bb5cd9bad3de838",
+      "timings_ms": [
+        0.045184001326560974,
+        0.03830400109291077,
+        0.03680000081658363,
+        0.033695999532938004,
+        0.02924799919128418
+      ],
+      "extra_peak_torch_allocated_bytes": 17408,
+      "dispatch_operations": [
+        "aten::_cudnn_attention_forward",
+        "aten::_scaled_dot_product_cudnn_attention",
+        "aten::scaled_dot_product_attention"
+      ],
+      "witness": {
+        "file": "attention-preflight-fp16-cudnn-none.npz",
+        "sha256": "461bf44ee6b0233e00cf601e88f01de9ae8c73d8ab71a21f1c1bab32b84b6dfa"
+      }
+    },
+    {
+      "shape": [
+        1,
+        1,
+        128,
+        64
+      ],
+      "mask": "none",
+      "dtype": "bf16",
+      "requested_backend": "math",
+      "input_sha256": [
+        "da510f08dc260edc0baa5f3c5e38f2f3f04e70b39b2ece5d09f868d74c63abb3",
+        "a8fa59a46ed91e74e03040763ea04240b6e752fda137f3ae6a6e5b7fc548640c",
+        "fac89eb6cb03534bc7f625e16dad7106c4ce14d7a91ce5cfb36a775714ac0413"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.0035993504245498227,
+      "relative_error_vs_rounded_input_fp64": 0.0016628862198552914,
+      "output_sha256": "d45f3f7d1a989592446f937bfe897b7cccf12742dd39d7d75d50ccffa07f4805",
+      "timings_ms": [
+        0.1961279958486557,
+        0.20838400721549988,
+        0.18614399433135986,
+        0.18566399812698364,
+        0.18272000551223755
+      ],
+      "extra_peak_torch_allocated_bytes": 279552,
+      "dispatch_operations": [
+        "aten::_scaled_dot_product_attention_math",
+        "aten::scaled_dot_product_attention"
+      ],
+      "witness": {
+        "file": "attention-preflight-bf16-math-none.npz",
+        "sha256": "90e423c694a4a25c1e5a177a7e2f837a81cfa713a5fd3b0b7d24800d0c5bb9a0"
+      }
+    },
+    {
+      "shape": [
+        1,
+        1,
+        128,
+        64
+      ],
+      "mask": "none",
+      "dtype": "bf16",
+      "requested_backend": "flash",
+      "input_sha256": [
+        "da510f08dc260edc0baa5f3c5e38f2f3f04e70b39b2ece5d09f868d74c63abb3",
+        "a8fa59a46ed91e74e03040763ea04240b6e752fda137f3ae6a6e5b7fc548640c",
+        "fac89eb6cb03534bc7f625e16dad7106c4ce14d7a91ce5cfb36a775714ac0413"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.0038859964453189138,
+      "relative_error_vs_rounded_input_fp64": 0.002180330011704842,
+      "output_sha256": "17f378f4c82f60583283a18d6f82106b9f1c2c30fe93f460bbaeb3481c4fa352",
+      "timings_ms": [
+        0.03929600119590759,
+        0.04492799937725067,
+        0.033344000577926636,
+        0.029664000496268272,
+        0.029503999277949333
+      ],
+      "extra_peak_torch_allocated_bytes": 17920,
+      "dispatch_operations": [
+        "aten::_flash_attention_forward",
+        "aten::_scaled_dot_product_flash_attention",
+        "aten::scaled_dot_product_attention"
+      ],
+      "witness": {
+        "file": "attention-preflight-bf16-flash-none.npz",
+        "sha256": "5cc889b02c4cbd464834c3fc37a88706e4de4ce93a372c35867ce0c3b67a281f"
+      }
+    },
+    {
+      "shape": [
+        1,
+        1,
+        128,
+        64
+      ],
+      "mask": "none",
+      "dtype": "bf16",
+      "requested_backend": "efficient",
+      "input_sha256": [
+        "da510f08dc260edc0baa5f3c5e38f2f3f04e70b39b2ece5d09f868d74c63abb3",
+        "a8fa59a46ed91e74e03040763ea04240b6e752fda137f3ae6a6e5b7fc548640c",
+        "fac89eb6cb03534bc7f625e16dad7106c4ce14d7a91ce5cfb36a775714ac0413"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.003868985777826417,
+      "relative_error_vs_rounded_input_fp64": 0.002164879504781439,
+      "output_sha256": "5e87f44175e583831050a8030fd8694605cb67dd57c3d5ab51929ced83ebe376",
+      "timings_ms": [
+        0.03209599852561951,
+        0.024447999894618988,
+        0.02332800067961216,
+        0.02179200015962124,
+        0.021376000717282295
+      ],
+      "extra_peak_torch_allocated_bytes": 16384,
+      "dispatch_operations": [
+        "aten::_efficient_attention_forward",
+        "aten::_scaled_dot_product_efficient_attention",
+        "aten::scaled_dot_product_attention"
+      ],
+      "witness": {
+        "file": "attention-preflight-bf16-efficient-none.npz",
+        "sha256": "5cd6d0112fdb9952e18c28ea7ef9408d4a62d1ef52d8692c63decdeb35ae7bb8"
+      }
+    },
+    {
+      "shape": [
+        1,
+        1,
+        128,
+        64
+      ],
+      "mask": "none",
+      "dtype": "bf16",
+      "requested_backend": "cudnn",
+      "input_sha256": [
+        "da510f08dc260edc0baa5f3c5e38f2f3f04e70b39b2ece5d09f868d74c63abb3",
+        "a8fa59a46ed91e74e03040763ea04240b6e752fda137f3ae6a6e5b7fc548640c",
+        "fac89eb6cb03534bc7f625e16dad7106c4ce14d7a91ce5cfb36a775714ac0413"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.003868985777826417,
+      "relative_error_vs_rounded_input_fp64": 0.002164879504781439,
+      "output_sha256": "5e87f44175e583831050a8030fd8694605cb67dd57c3d5ab51929ced83ebe376",
+      "timings_ms": [
+        0.040863998234272,
+        0.03446400165557861,
+        0.033440001308918,
+        0.03311999887228012,
+        0.03363199904561043
+      ],
+      "extra_peak_torch_allocated_bytes": 17408,
+      "dispatch_operations": [
+        "aten::_cudnn_attention_forward",
+        "aten::_scaled_dot_product_cudnn_attention",
+        "aten::scaled_dot_product_attention"
+      ],
+      "witness": {
+        "file": "attention-preflight-bf16-cudnn-none.npz",
+        "sha256": "5cd6d0112fdb9952e18c28ea7ef9408d4a62d1ef52d8692c63decdeb35ae7bb8"
+      }
+    },
+    {
+      "shape": [
+        1,
+        1,
+        128,
+        64
+      ],
+      "mask": "causal",
+      "dtype": "fp32",
+      "requested_backend": "math",
+      "input_sha256": [
+        "da510f08dc260edc0baa5f3c5e38f2f3f04e70b39b2ece5d09f868d74c63abb3",
+        "a8fa59a46ed91e74e03040763ea04240b6e752fda137f3ae6a6e5b7fc548640c",
+        "fac89eb6cb03534bc7f625e16dad7106c4ce14d7a91ce5cfb36a775714ac0413"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 1.2152409786686223e-07,
+      "relative_error_vs_rounded_input_fp64": 1.2152409786686223e-07,
+      "output_sha256": "f22ba844f19e8d47369a86747998a2b06ff0ca6f70d8df3f6f7f88ddd6f39c4f",
+      "timings_ms": [
+        0.20451200008392334,
+        0.19590400159358978,
+        0.19468800723552704,
+        0.1921599954366684,
+        0.1929280012845993
+      ],
+      "extra_peak_torch_allocated_bytes": 246784,
+      "dispatch_operations": [
+        "aten::_scaled_dot_product_attention_math",
+        "aten::scaled_dot_product_attention"
+      ],
+      "witness": {
+        "file": "attention-preflight-fp32-math-causal.npz",
+        "sha256": "6e4b72cf11713046861636f72bfaf2491c4a32906701f1e00c2485845e59a7e1"
+      }
+    },
+    {
+      "shape": [
+        1,
+        1,
+        128,
+        64
+      ],
+      "mask": "causal",
+      "dtype": "fp32",
+      "requested_backend": "flash",
+      "input_sha256": [
+        "da510f08dc260edc0baa5f3c5e38f2f3f04e70b39b2ece5d09f868d74c63abb3",
+        "a8fa59a46ed91e74e03040763ea04240b6e752fda137f3ae6a6e5b7fc548640c",
+        "fac89eb6cb03534bc7f625e16dad7106c4ce14d7a91ce5cfb36a775714ac0413"
+      ],
+      "status": "unavailable",
+      "diagnostic": "No available kernel. Aborting execution."
+    },
+    {
+      "shape": [
+        1,
+        1,
+        128,
+        64
+      ],
+      "mask": "causal",
+      "dtype": "fp32",
+      "requested_backend": "efficient",
+      "input_sha256": [
+        "da510f08dc260edc0baa5f3c5e38f2f3f04e70b39b2ece5d09f868d74c63abb3",
+        "a8fa59a46ed91e74e03040763ea04240b6e752fda137f3ae6a6e5b7fc548640c",
+        "fac89eb6cb03534bc7f625e16dad7106c4ce14d7a91ce5cfb36a775714ac0413"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 1.2757666581410624e-07,
+      "relative_error_vs_rounded_input_fp64": 1.2757666581410624e-07,
+      "output_sha256": "b42d947812334fe24bc8da89ed328c515aae2592ea960847038c41e7dcdef729",
+      "timings_ms": [
+        0.03903999924659729,
+        0.03577600046992302,
+        0.02534399926662445,
+        0.027775999158620834,
+        0.026367999613285065
+      ],
+      "extra_peak_torch_allocated_bytes": 32768,
+      "dispatch_operations": [
+        "aten::_efficient_attention_forward",
+        "aten::_scaled_dot_product_efficient_attention",
+        "aten::scaled_dot_product_attention"
+      ],
+      "witness": {
+        "file": "attention-preflight-fp32-efficient-causal.npz",
+        "sha256": "17531ad5a57fb2137c9174275d5157ae6b7d54aca192e7cc24ff22fd223ea86f"
+      }
+    },
+    {
+      "shape": [
+        1,
+        1,
+        128,
+        64
+      ],
+      "mask": "causal",
+      "dtype": "fp32",
+      "requested_backend": "cudnn",
+      "input_sha256": [
+        "da510f08dc260edc0baa5f3c5e38f2f3f04e70b39b2ece5d09f868d74c63abb3",
+        "a8fa59a46ed91e74e03040763ea04240b6e752fda137f3ae6a6e5b7fc548640c",
+        "fac89eb6cb03534bc7f625e16dad7106c4ce14d7a91ce5cfb36a775714ac0413"
+      ],
+      "status": "unavailable",
+      "diagnostic": "No available kernel. Aborting execution."
+    },
+    {
+      "shape": [
+        1,
+        1,
+        128,
+        64
+      ],
+      "mask": "causal",
+      "dtype": "fp16",
+      "requested_backend": "math",
+      "input_sha256": [
+        "da510f08dc260edc0baa5f3c5e38f2f3f04e70b39b2ece5d09f868d74c63abb3",
+        "a8fa59a46ed91e74e03040763ea04240b6e752fda137f3ae6a6e5b7fc548640c",
+        "fac89eb6cb03534bc7f625e16dad7106c4ce14d7a91ce5cfb36a775714ac0413"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.00020231355535351464,
+      "relative_error_vs_rounded_input_fp64": 0.00020231355535351464,
+      "output_sha256": "7172989b342ad3fe82dfe55d4bee0deee8577bd4153e7d7ce05a3439a0d98113",
+      "timings_ms": [
+        0.25731199979782104,
+        0.23190400004386902,
+        0.22806400060653687,
+        0.2391040027141571,
+        0.22812800109386444
+      ],
+      "extra_peak_torch_allocated_bytes": 345088,
+      "dispatch_operations": [
+        "aten::_scaled_dot_product_attention_math",
+        "aten::scaled_dot_product_attention"
+      ],
+      "witness": {
+        "file": "attention-preflight-fp16-math-causal.npz",
+        "sha256": "087eac926e843db957de88ef71985a07862e8853f8763946542c224b7840a231"
+      }
+    },
+    {
+      "shape": [
+        1,
+        1,
+        128,
+        64
+      ],
+      "mask": "causal",
+      "dtype": "fp16",
+      "requested_backend": "flash",
+      "input_sha256": [
+        "da510f08dc260edc0baa5f3c5e38f2f3f04e70b39b2ece5d09f868d74c63abb3",
+        "a8fa59a46ed91e74e03040763ea04240b6e752fda137f3ae6a6e5b7fc548640c",
+        "fac89eb6cb03534bc7f625e16dad7106c4ce14d7a91ce5cfb36a775714ac0413"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.0002513323891898696,
+      "relative_error_vs_rounded_input_fp64": 0.0002513323891898696,
+      "output_sha256": "49cb138fe5fb0aed463f265ef561f00dd6e33026c50d022f12b352169b19c8db",
+      "timings_ms": [
+        0.03843199834227562,
+        0.03177599981427193,
+        0.02940800040960312,
+        0.027744000777602196,
+        0.02796800062060356
+      ],
+      "extra_peak_torch_allocated_bytes": 17920,
+      "dispatch_operations": [
+        "aten::_flash_attention_forward",
+        "aten::_scaled_dot_product_flash_attention",
+        "aten::scaled_dot_product_attention"
+      ],
+      "witness": {
+        "file": "attention-preflight-fp16-flash-causal.npz",
+        "sha256": "28b38c3909d62f1923d1aa735a452809994a2ec9306cad916ed2aa0a99ba6b07"
+      }
+    },
+    {
+      "shape": [
+        1,
+        1,
+        128,
+        64
+      ],
+      "mask": "causal",
+      "dtype": "fp16",
+      "requested_backend": "efficient",
+      "input_sha256": [
+        "da510f08dc260edc0baa5f3c5e38f2f3f04e70b39b2ece5d09f868d74c63abb3",
+        "a8fa59a46ed91e74e03040763ea04240b6e752fda137f3ae6a6e5b7fc548640c",
+        "fac89eb6cb03534bc7f625e16dad7106c4ce14d7a91ce5cfb36a775714ac0413"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.0002505078800423107,
+      "relative_error_vs_rounded_input_fp64": 0.0002505078800423107,
+      "output_sha256": "bfc50c6fa995c0c5df3082d118da154bafde1f0846f3dd50f8463a4bf3a57f5d",
+      "timings_ms": [
+        0.03222399950027466,
+        0.02393599972128868,
+        0.024032000452280045,
+        0.022143999114632607,
+        0.022016000002622604
+      ],
+      "extra_peak_torch_allocated_bytes": 16384,
+      "dispatch_operations": [
+        "aten::_efficient_attention_forward",
+        "aten::_scaled_dot_product_efficient_attention",
+        "aten::scaled_dot_product_attention"
+      ],
+      "witness": {
+        "file": "attention-preflight-fp16-efficient-causal.npz",
+        "sha256": "2c19773dae51e336cb5d82806fd8e8b7bf5942782eadf19ba7c2045472f06d10"
+      }
+    },
+    {
+      "shape": [
+        1,
+        1,
+        128,
+        64
+      ],
+      "mask": "causal",
+      "dtype": "fp16",
+      "requested_backend": "cudnn",
+      "input_sha256": [
+        "da510f08dc260edc0baa5f3c5e38f2f3f04e70b39b2ece5d09f868d74c63abb3",
+        "a8fa59a46ed91e74e03040763ea04240b6e752fda137f3ae6a6e5b7fc548640c",
+        "fac89eb6cb03534bc7f625e16dad7106c4ce14d7a91ce5cfb36a775714ac0413"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.00025050766611228677,
+      "relative_error_vs_rounded_input_fp64": 0.00025050766611228677,
+      "output_sha256": "dc64b2ef2a2d2f245cdb08b25f3f25759819402b2d8499811127324fd6fb6a7c",
+      "timings_ms": [
+        0.04553600028157234,
+        0.036928001791238785,
+        0.034015998244285583,
+        0.03311999887228012,
+        0.03276799991726875
+      ],
+      "extra_peak_torch_allocated_bytes": 17408,
+      "dispatch_operations": [
+        "aten::_cudnn_attention_forward",
+        "aten::_scaled_dot_product_cudnn_attention",
+        "aten::scaled_dot_product_attention"
+      ],
+      "witness": {
+        "file": "attention-preflight-fp16-cudnn-causal.npz",
+        "sha256": "87b6de8039ec65cdc4b0d2be9884934bc68743c1ef6fd9838d0051fc18d6ea90"
+      }
+    },
+    {
+      "shape": [
+        1,
+        1,
+        128,
+        64
+      ],
+      "mask": "causal",
+      "dtype": "bf16",
+      "requested_backend": "math",
+      "input_sha256": [
+        "da510f08dc260edc0baa5f3c5e38f2f3f04e70b39b2ece5d09f868d74c63abb3",
+        "a8fa59a46ed91e74e03040763ea04240b6e752fda137f3ae6a6e5b7fc548640c",
+        "fac89eb6cb03534bc7f625e16dad7106c4ce14d7a91ce5cfb36a775714ac0413"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.003316031381970059,
+      "relative_error_vs_rounded_input_fp64": 0.0016877640411438305,
+      "output_sha256": "039d9f7bc43f1d1070aaf0c52c9ebdf129bf7a550283d61d39f0a581c5f0ca88",
+      "timings_ms": [
+        0.24060800671577454,
+        0.23340800404548645,
+        0.25148800015449524,
+        0.22668799757957458,
+        0.22860799729824066
+      ],
+      "extra_peak_torch_allocated_bytes": 345088,
+      "dispatch_operations": [
+        "aten::_scaled_dot_product_attention_math",
+        "aten::scaled_dot_product_attention"
+      ],
+      "witness": {
+        "file": "attention-preflight-bf16-math-causal.npz",
+        "sha256": "4d39419e45226b2f591df893f2b46931ca0438080c6416b4977550cc7847b953"
+      }
+    },
+    {
+      "shape": [
+        1,
+        1,
+        128,
+        64
+      ],
+      "mask": "causal",
+      "dtype": "bf16",
+      "requested_backend": "flash",
+      "input_sha256": [
+        "da510f08dc260edc0baa5f3c5e38f2f3f04e70b39b2ece5d09f868d74c63abb3",
+        "a8fa59a46ed91e74e03040763ea04240b6e752fda137f3ae6a6e5b7fc548640c",
+        "fac89eb6cb03534bc7f625e16dad7106c4ce14d7a91ce5cfb36a775714ac0413"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.0035428827975164078,
+      "relative_error_vs_rounded_input_fp64": 0.00208120423337025,
+      "output_sha256": "f5903d7314b7166bcfc30a5021707ec0af55b365311ffe29a8f91e6e53ae7332",
+      "timings_ms": [
+        0.038495998829603195,
+        0.03155200183391571,
+        0.02937600016593933,
+        0.02924799919128418,
+        0.02848000079393387
+      ],
+      "extra_peak_torch_allocated_bytes": 17920,
+      "dispatch_operations": [
+        "aten::_flash_attention_forward",
+        "aten::_scaled_dot_product_flash_attention",
+        "aten::scaled_dot_product_attention"
+      ],
+      "witness": {
+        "file": "attention-preflight-bf16-flash-causal.npz",
+        "sha256": "790165bda8c5378c7bfa62801d608114148535eaffa553f8166ee04ab96edb6a"
+      }
+    },
+    {
+      "shape": [
+        1,
+        1,
+        128,
+        64
+      ],
+      "mask": "causal",
+      "dtype": "bf16",
+      "requested_backend": "efficient",
+      "input_sha256": [
+        "da510f08dc260edc0baa5f3c5e38f2f3f04e70b39b2ece5d09f868d74c63abb3",
+        "a8fa59a46ed91e74e03040763ea04240b6e752fda137f3ae6a6e5b7fc548640c",
+        "fac89eb6cb03534bc7f625e16dad7106c4ce14d7a91ce5cfb36a775714ac0413"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.0035430173940601867,
+      "relative_error_vs_rounded_input_fp64": 0.002076305173495996,
+      "output_sha256": "176bc40a5963f7d54702859b1eb9c1840fbadc14eb1a4a77c73f5e93d860b2ac",
+      "timings_ms": [
+        0.03497600182890892,
+        0.029823999851942062,
+        0.028416000306606293,
+        0.04800000041723251,
+        0.02864000014960766
+      ],
+      "extra_peak_torch_allocated_bytes": 16384,
+      "dispatch_operations": [
+        "aten::_efficient_attention_forward",
+        "aten::_scaled_dot_product_efficient_attention",
+        "aten::scaled_dot_product_attention"
+      ],
+      "witness": {
+        "file": "attention-preflight-bf16-efficient-causal.npz",
+        "sha256": "372c45c1a3ea0660d57fe77206e4ab6f6500e30cdfb4ba203068f846a0455b1d"
+      }
+    },
+    {
+      "shape": [
+        1,
+        1,
+        128,
+        64
+      ],
+      "mask": "causal",
+      "dtype": "bf16",
+      "requested_backend": "cudnn",
+      "input_sha256": [
+        "da510f08dc260edc0baa5f3c5e38f2f3f04e70b39b2ece5d09f868d74c63abb3",
+        "a8fa59a46ed91e74e03040763ea04240b6e752fda137f3ae6a6e5b7fc548640c",
+        "fac89eb6cb03534bc7f625e16dad7106c4ce14d7a91ce5cfb36a775714ac0413"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.0035430173940601867,
+      "relative_error_vs_rounded_input_fp64": 0.002076305173495996,
+      "output_sha256": "176bc40a5963f7d54702859b1eb9c1840fbadc14eb1a4a77c73f5e93d860b2ac",
+      "timings_ms": [
+        0.041471999138593674,
+        0.03455999866127968,
+        0.042208001017570496,
+        0.0360959991812706,
+        0.03376000002026558
+      ],
+      "extra_peak_torch_allocated_bytes": 17408,
+      "dispatch_operations": [
+        "aten::_cudnn_attention_forward",
+        "aten::_scaled_dot_product_cudnn_attention",
+        "aten::scaled_dot_product_attention"
+      ],
+      "witness": {
+        "file": "attention-preflight-bf16-cudnn-causal.npz",
+        "sha256": "372c45c1a3ea0660d57fe77206e4ab6f6500e30cdfb4ba203068f846a0455b1d"
+      }
+    },
+    {
+      "shape": [
+        1,
+        1,
+        128,
+        64
+      ],
+      "mask": "padding",
+      "dtype": "fp32",
+      "requested_backend": "math",
+      "input_sha256": [
+        "da510f08dc260edc0baa5f3c5e38f2f3f04e70b39b2ece5d09f868d74c63abb3",
+        "a8fa59a46ed91e74e03040763ea04240b6e752fda137f3ae6a6e5b7fc548640c",
+        "fac89eb6cb03534bc7f625e16dad7106c4ce14d7a91ce5cfb36a775714ac0413"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 1.4686212620938262e-07,
+      "relative_error_vs_rounded_input_fp64": 1.4686212620938262e-07,
+      "output_sha256": "7f69f564c5ccc984b408dbb2a52f4fa4e2767c33a8cc0edd9487f00fc6186c49",
+      "timings_ms": [
+        0.19219200313091278,
+        0.18201600015163422,
+        0.1809920072555542,
+        0.1807360053062439,
+        0.18675200641155243
+      ],
+      "extra_peak_torch_allocated_bytes": 246784,
+      "dispatch_operations": [
+        "aten::_scaled_dot_product_attention_math",
+        "aten::scaled_dot_product_attention"
+      ],
+      "witness": {
+        "file": "attention-preflight-fp32-math-padding.npz",
+        "sha256": "0941c875fcecddc5d4a4b776916a07ea5e2d444cde818a8b60cd373cf1e10866"
+      }
+    },
+    {
+      "shape": [
+        1,
+        1,
+        128,
+        64
+      ],
+      "mask": "padding",
+      "dtype": "fp32",
+      "requested_backend": "flash",
+      "input_sha256": [
+        "da510f08dc260edc0baa5f3c5e38f2f3f04e70b39b2ece5d09f868d74c63abb3",
+        "a8fa59a46ed91e74e03040763ea04240b6e752fda137f3ae6a6e5b7fc548640c",
+        "fac89eb6cb03534bc7f625e16dad7106c4ce14d7a91ce5cfb36a775714ac0413"
+      ],
+      "status": "unavailable",
+      "diagnostic": "No available kernel. Aborting execution."
+    },
+    {
+      "shape": [
+        1,
+        1,
+        128,
+        64
+      ],
+      "mask": "padding",
+      "dtype": "fp32",
+      "requested_backend": "efficient",
+      "input_sha256": [
+        "da510f08dc260edc0baa5f3c5e38f2f3f04e70b39b2ece5d09f868d74c63abb3",
+        "a8fa59a46ed91e74e03040763ea04240b6e752fda137f3ae6a6e5b7fc548640c",
+        "fac89eb6cb03534bc7f625e16dad7106c4ce14d7a91ce5cfb36a775714ac0413"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 1.5733314372280682e-07,
+      "relative_error_vs_rounded_input_fp64": 1.5733314372280682e-07,
+      "output_sha256": "b58ef2cffd48146f207f41d66c0696ffc567ce3c9aa202816d33ba99af1097ba",
+      "timings_ms": [
+        0.06438399851322174,
+        0.0615679994225502,
+        0.06137600168585777,
+        0.058720000088214874,
+        0.05830400064587593
+      ],
+      "extra_peak_torch_allocated_bytes": 98304,
+      "dispatch_operations": [
+        "aten::_efficient_attention_forward",
+        "aten::_scaled_dot_product_efficient_attention",
+        "aten::scaled_dot_product_attention"
+      ],
+      "witness": {
+        "file": "attention-preflight-fp32-efficient-padding.npz",
+        "sha256": "64e71151f0ca5d5b4bdb7a681060111e911d1cb0a069e5a810afdd6b44197649"
+      }
+    },
+    {
+      "shape": [
+        1,
+        1,
+        128,
+        64
+      ],
+      "mask": "padding",
+      "dtype": "fp32",
+      "requested_backend": "cudnn",
+      "input_sha256": [
+        "da510f08dc260edc0baa5f3c5e38f2f3f04e70b39b2ece5d09f868d74c63abb3",
+        "a8fa59a46ed91e74e03040763ea04240b6e752fda137f3ae6a6e5b7fc548640c",
+        "fac89eb6cb03534bc7f625e16dad7106c4ce14d7a91ce5cfb36a775714ac0413"
+      ],
+      "status": "unavailable",
+      "diagnostic": "No available kernel. Aborting execution."
+    },
+    {
+      "shape": [
+        1,
+        1,
+        128,
+        64
+      ],
+      "mask": "padding",
+      "dtype": "fp16",
+      "requested_backend": "math",
+      "input_sha256": [
+        "da510f08dc260edc0baa5f3c5e38f2f3f04e70b39b2ece5d09f868d74c63abb3",
+        "a8fa59a46ed91e74e03040763ea04240b6e752fda137f3ae6a6e5b7fc548640c",
+        "fac89eb6cb03534bc7f625e16dad7106c4ce14d7a91ce5cfb36a775714ac0413"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.00020733005478396492,
+      "relative_error_vs_rounded_input_fp64": 0.00020733005478396492,
+      "output_sha256": "bc8a274ee6dace5fca6b680192a07e2df9eb27cfeb35553571efaebc81be102b",
+      "timings_ms": [
+        0.22841599583625793,
+        0.21961599588394165,
+        0.21807999908924103,
+        0.22553600370883942,
+        0.21267199516296387
+      ],
+      "extra_peak_torch_allocated_bytes": 312320,
+      "dispatch_operations": [
+        "aten::_scaled_dot_product_attention_math",
+        "aten::scaled_dot_product_attention"
+      ],
+      "witness": {
+        "file": "attention-preflight-fp16-math-padding.npz",
+        "sha256": "0af0609c7dfc7a5ddad55f171547ac9f79b26c283e10ac12646b9ca442175cd1"
+      }
+    },
+    {
+      "shape": [
+        1,
+        1,
+        128,
+        64
+      ],
+      "mask": "padding",
+      "dtype": "fp16",
+      "requested_backend": "flash",
+      "input_sha256": [
+        "da510f08dc260edc0baa5f3c5e38f2f3f04e70b39b2ece5d09f868d74c63abb3",
+        "a8fa59a46ed91e74e03040763ea04240b6e752fda137f3ae6a6e5b7fc548640c",
+        "fac89eb6cb03534bc7f625e16dad7106c4ce14d7a91ce5cfb36a775714ac0413"
+      ],
+      "status": "unavailable",
+      "diagnostic": "No available kernel. Aborting execution."
+    },
+    {
+      "shape": [
+        1,
+        1,
+        128,
+        64
+      ],
+      "mask": "padding",
+      "dtype": "fp16",
+      "requested_backend": "efficient",
+      "input_sha256": [
+        "da510f08dc260edc0baa5f3c5e38f2f3f04e70b39b2ece5d09f868d74c63abb3",
+        "a8fa59a46ed91e74e03040763ea04240b6e752fda137f3ae6a6e5b7fc548640c",
+        "fac89eb6cb03534bc7f625e16dad7106c4ce14d7a91ce5cfb36a775714ac0413"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.00027042839624831657,
+      "relative_error_vs_rounded_input_fp64": 0.00027042839624831657,
+      "output_sha256": "6bb08d3f848e9fa6060728ab2b60efbaa13af48221a0012f6cc2a1e6881e5179",
+      "timings_ms": [
+        0.059647999703884125,
+        0.053247999399900436,
+        0.05087999999523163,
+        0.050624001771211624,
+        0.04684799909591675
+      ],
+      "extra_peak_torch_allocated_bytes": 49152,
+      "dispatch_operations": [
+        "aten::_efficient_attention_forward",
+        "aten::_scaled_dot_product_efficient_attention",
+        "aten::scaled_dot_product_attention"
+      ],
+      "witness": {
+        "file": "attention-preflight-fp16-efficient-padding.npz",
+        "sha256": "332865602801120014c8088d7db91adf78397e4f1f0c8d2f2a4157b2c2784875"
+      }
+    },
+    {
+      "shape": [
+        1,
+        1,
+        128,
+        64
+      ],
+      "mask": "padding",
+      "dtype": "fp16",
+      "requested_backend": "cudnn",
+      "input_sha256": [
+        "da510f08dc260edc0baa5f3c5e38f2f3f04e70b39b2ece5d09f868d74c63abb3",
+        "a8fa59a46ed91e74e03040763ea04240b6e752fda137f3ae6a6e5b7fc548640c",
+        "fac89eb6cb03534bc7f625e16dad7106c4ce14d7a91ce5cfb36a775714ac0413"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.000270428455473117,
+      "relative_error_vs_rounded_input_fp64": 0.000270428455473117,
+      "output_sha256": "9cfa8acff15d55be24d9a8a15e09ed93d0f5697df66ed5fdd2c36330100212f3",
+      "timings_ms": [
+        0.08124800026416779,
+        0.07561600208282471,
+        0.06272000074386597,
+        0.06191999837756157,
+        0.06204799935221672
+      ],
+      "extra_peak_torch_allocated_bytes": 50176,
+      "dispatch_operations": [
+        "aten::_cudnn_attention_forward",
+        "aten::_scaled_dot_product_cudnn_attention",
+        "aten::scaled_dot_product_attention"
+      ],
+      "witness": {
+        "file": "attention-preflight-fp16-cudnn-padding.npz",
+        "sha256": "49a112c4d2ea9f5fa6503894cb374bc7e1bff268f1b65a74a350166ff9a88252"
+      }
+    },
+    {
+      "shape": [
+        1,
+        1,
+        128,
+        64
+      ],
+      "mask": "padding",
+      "dtype": "bf16",
+      "requested_backend": "math",
+      "input_sha256": [
+        "da510f08dc260edc0baa5f3c5e38f2f3f04e70b39b2ece5d09f868d74c63abb3",
+        "a8fa59a46ed91e74e03040763ea04240b6e752fda137f3ae6a6e5b7fc548640c",
+        "fac89eb6cb03534bc7f625e16dad7106c4ce14d7a91ce5cfb36a775714ac0413"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.003698557599797404,
+      "relative_error_vs_rounded_input_fp64": 0.001692813100039485,
+      "output_sha256": "c5f2e31a9041302fe5af7f9612b59357af6ac209c396b2d5af38a37d42a3d45c",
+      "timings_ms": [
+        0.23267200589179993,
+        0.21913599967956543,
+        0.21779200434684753,
+        0.2537280023097992,
+        0.21411199867725372
+      ],
+      "extra_peak_torch_allocated_bytes": 312320,
+      "dispatch_operations": [
+        "aten::_scaled_dot_product_attention_math",
+        "aten::scaled_dot_product_attention"
+      ],
+      "witness": {
+        "file": "attention-preflight-bf16-math-padding.npz",
+        "sha256": "4eb4316f9f4212a432fca6287958e5f1f14bb845b696ee1f82e4f9eaf57caf9f"
+      }
+    },
+    {
+      "shape": [
+        1,
+        1,
+        128,
+        64
+      ],
+      "mask": "padding",
+      "dtype": "bf16",
+      "requested_backend": "flash",
+      "input_sha256": [
+        "da510f08dc260edc0baa5f3c5e38f2f3f04e70b39b2ece5d09f868d74c63abb3",
+        "a8fa59a46ed91e74e03040763ea04240b6e752fda137f3ae6a6e5b7fc548640c",
+        "fac89eb6cb03534bc7f625e16dad7106c4ce14d7a91ce5cfb36a775714ac0413"
+      ],
+      "status": "unavailable",
+      "diagnostic": "No available kernel. Aborting execution."
+    },
+    {
+      "shape": [
+        1,
+        1,
+        128,
+        64
+      ],
+      "mask": "padding",
+      "dtype": "bf16",
+      "requested_backend": "efficient",
+      "input_sha256": [
+        "da510f08dc260edc0baa5f3c5e38f2f3f04e70b39b2ece5d09f868d74c63abb3",
+        "a8fa59a46ed91e74e03040763ea04240b6e752fda137f3ae6a6e5b7fc548640c",
+        "fac89eb6cb03534bc7f625e16dad7106c4ce14d7a91ce5cfb36a775714ac0413"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.003983467094070915,
+      "relative_error_vs_rounded_input_fp64": 0.002164515355583734,
+      "output_sha256": "17d47a99de719e6600852311e0ff099a3bb290896550948e215e1f97060d40d8",
+      "timings_ms": [
+        0.05974400043487549,
+        0.05347200110554695,
+        0.05142400041222572,
+        0.04956800118088722,
+        0.049247998744249344
+      ],
+      "extra_peak_torch_allocated_bytes": 49152,
+      "dispatch_operations": [
+        "aten::_efficient_attention_forward",
+        "aten::_scaled_dot_product_efficient_attention",
+        "aten::scaled_dot_product_attention"
+      ],
+      "witness": {
+        "file": "attention-preflight-bf16-efficient-padding.npz",
+        "sha256": "b960c87b8740359dde2b86a31b90dcd343f8fc275186c1bb46ce0176e5f2f335"
+      }
+    },
+    {
+      "shape": [
+        1,
+        1,
+        128,
+        64
+      ],
+      "mask": "padding",
+      "dtype": "bf16",
+      "requested_backend": "cudnn",
+      "input_sha256": [
+        "da510f08dc260edc0baa5f3c5e38f2f3f04e70b39b2ece5d09f868d74c63abb3",
+        "a8fa59a46ed91e74e03040763ea04240b6e752fda137f3ae6a6e5b7fc548640c",
+        "fac89eb6cb03534bc7f625e16dad7106c4ce14d7a91ce5cfb36a775714ac0413"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.003983467094070915,
+      "relative_error_vs_rounded_input_fp64": 0.002164515355583734,
+      "output_sha256": "17d47a99de719e6600852311e0ff099a3bb290896550948e215e1f97060d40d8",
+      "timings_ms": [
+        0.07129599899053574,
+        0.06380800157785416,
+        0.06431999802589417,
+        0.06220800057053566,
+        0.062144000083208084
+      ],
+      "extra_peak_torch_allocated_bytes": 50176,
+      "dispatch_operations": [
+        "aten::_cudnn_attention_forward",
+        "aten::_scaled_dot_product_cudnn_attention",
+        "aten::scaled_dot_product_attention"
+      ],
+      "witness": {
+        "file": "attention-preflight-bf16-cudnn-padding.npz",
+        "sha256": "b960c87b8740359dde2b86a31b90dcd343f8fc275186c1bb46ce0176e5f2f335"
+      }
+    },
+    {
+      "shape": [
+        2,
+        4,
+        512,
+        64
+      ],
+      "mask": "none",
+      "dtype": "fp32",
+      "requested_backend": "math",
+      "input_sha256": [
+        "0c85357eb07dae5811811cedbce08b81d7dbb1f03fc89d7006b12dd7f5b2ffba",
+        "4e6a4583505322c3cc7ed06047b1056b2531d13bb598c4919a5df819b1bb593a",
+        "85a7cefbd7e53c787d253bb00e5ee31f74e7f344d7ac85ef900a2d53a7f6c36d"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 4.1873395299858226e-07,
+      "relative_error_vs_rounded_input_fp64": 4.1873395299858226e-07,
+      "output_sha256": "b884af34966224e2f017f013c87f357204af893704d51eea7e444f7cf9025782",
+      "timings_ms": [
+        0.15705600380897522,
+        0.15091200172901154,
+        0.14777599275112152,
+        0.15875199437141418,
+        0.1502400040626526
+      ],
+      "extra_peak_torch_allocated_bytes": 19927552,
+      "dispatch_operations": [
+        "aten::_scaled_dot_product_attention_math",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        2,
+        4,
+        512,
+        64
+      ],
+      "mask": "none",
+      "dtype": "fp32",
+      "requested_backend": "flash",
+      "input_sha256": [
+        "0c85357eb07dae5811811cedbce08b81d7dbb1f03fc89d7006b12dd7f5b2ffba",
+        "4e6a4583505322c3cc7ed06047b1056b2531d13bb598c4919a5df819b1bb593a",
+        "85a7cefbd7e53c787d253bb00e5ee31f74e7f344d7ac85ef900a2d53a7f6c36d"
+      ],
+      "status": "unavailable",
+      "diagnostic": "No available kernel. Aborting execution."
+    },
+    {
+      "shape": [
+        2,
+        4,
+        512,
+        64
+      ],
+      "mask": "none",
+      "dtype": "fp32",
+      "requested_backend": "efficient",
+      "input_sha256": [
+        "0c85357eb07dae5811811cedbce08b81d7dbb1f03fc89d7006b12dd7f5b2ffba",
+        "4e6a4583505322c3cc7ed06047b1056b2531d13bb598c4919a5df819b1bb593a",
+        "85a7cefbd7e53c787d253bb00e5ee31f74e7f344d7ac85ef900a2d53a7f6c36d"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 1.920197732393413e-07,
+      "relative_error_vs_rounded_input_fp64": 1.920197732393413e-07,
+      "output_sha256": "ad74adacafb2e66dfa0ca9fd7a6e58bd9296b956f578039ab056cc38fecde276",
+      "timings_ms": [
+        0.11407999694347382,
+        0.10291200131177902,
+        0.10169599950313568,
+        0.10268799960613251,
+        0.10127999633550644
+      ],
+      "extra_peak_torch_allocated_bytes": 1048576,
+      "dispatch_operations": [
+        "aten::_efficient_attention_forward",
+        "aten::_scaled_dot_product_efficient_attention",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        2,
+        4,
+        512,
+        64
+      ],
+      "mask": "none",
+      "dtype": "fp32",
+      "requested_backend": "cudnn",
+      "input_sha256": [
+        "0c85357eb07dae5811811cedbce08b81d7dbb1f03fc89d7006b12dd7f5b2ffba",
+        "4e6a4583505322c3cc7ed06047b1056b2531d13bb598c4919a5df819b1bb593a",
+        "85a7cefbd7e53c787d253bb00e5ee31f74e7f344d7ac85ef900a2d53a7f6c36d"
+      ],
+      "status": "unavailable",
+      "diagnostic": "No available kernel. Aborting execution."
+    },
+    {
+      "shape": [
+        2,
+        4,
+        512,
+        64
+      ],
+      "mask": "none",
+      "dtype": "fp16",
+      "requested_backend": "math",
+      "input_sha256": [
+        "0c85357eb07dae5811811cedbce08b81d7dbb1f03fc89d7006b12dd7f5b2ffba",
+        "4e6a4583505322c3cc7ed06047b1056b2531d13bb598c4919a5df819b1bb593a",
+        "85a7cefbd7e53c787d253bb00e5ee31f74e7f344d7ac85ef900a2d53a7f6c36d"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.0002076216859805385,
+      "relative_error_vs_rounded_input_fp64": 0.0002076216859805385,
+      "output_sha256": "cccd010efddc378f7ebfc3d71c6bd7ecff539a0ed0da80839583021f07892be0",
+      "timings_ms": [
+        0.18745599687099457,
+        0.18345600366592407,
+        0.19568000733852386,
+        0.18009600043296814,
+        0.17689600586891174
+      ],
+      "extra_peak_torch_allocated_bytes": 23073280,
+      "dispatch_operations": [
+        "aten::_scaled_dot_product_attention_math",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        2,
+        4,
+        512,
+        64
+      ],
+      "mask": "none",
+      "dtype": "fp16",
+      "requested_backend": "flash",
+      "input_sha256": [
+        "0c85357eb07dae5811811cedbce08b81d7dbb1f03fc89d7006b12dd7f5b2ffba",
+        "4e6a4583505322c3cc7ed06047b1056b2531d13bb598c4919a5df819b1bb593a",
+        "85a7cefbd7e53c787d253bb00e5ee31f74e7f344d7ac85ef900a2d53a7f6c36d"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.00027509067866009706,
+      "relative_error_vs_rounded_input_fp64": 0.00027509067866009706,
+      "output_sha256": "929a6c6bf100e7f267d24a1479e64fbf86138918c61ac75631c67d48245b54c0",
+      "timings_ms": [
+        0.04879999905824661,
+        0.041471999138593674,
+        0.0390079990029335,
+        0.03836800158023834,
+        0.037151999771595
+      ],
+      "extra_peak_torch_allocated_bytes": 541696,
+      "dispatch_operations": [
+        "aten::_flash_attention_forward",
+        "aten::_scaled_dot_product_flash_attention",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        2,
+        4,
+        512,
+        64
+      ],
+      "mask": "none",
+      "dtype": "fp16",
+      "requested_backend": "efficient",
+      "input_sha256": [
+        "0c85357eb07dae5811811cedbce08b81d7dbb1f03fc89d7006b12dd7f5b2ffba",
+        "4e6a4583505322c3cc7ed06047b1056b2531d13bb598c4919a5df819b1bb593a",
+        "85a7cefbd7e53c787d253bb00e5ee31f74e7f344d7ac85ef900a2d53a7f6c36d"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.00027407584642278053,
+      "relative_error_vs_rounded_input_fp64": 0.00027407584642278053,
+      "output_sha256": "57e7d7904836abd714e2822c1d302de98e2388c23e55b5640c690cd00fdf5329",
+      "timings_ms": [
+        0.05984000116586685,
+        0.04681599885225296,
+        0.047040000557899475,
+        0.047648001462221146,
+        0.045471999794244766
+      ],
+      "extra_peak_torch_allocated_bytes": 524288,
+      "dispatch_operations": [
+        "aten::_efficient_attention_forward",
+        "aten::_scaled_dot_product_efficient_attention",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        2,
+        4,
+        512,
+        64
+      ],
+      "mask": "none",
+      "dtype": "fp16",
+      "requested_backend": "cudnn",
+      "input_sha256": [
+        "0c85357eb07dae5811811cedbce08b81d7dbb1f03fc89d7006b12dd7f5b2ffba",
+        "4e6a4583505322c3cc7ed06047b1056b2531d13bb598c4919a5df819b1bb593a",
+        "85a7cefbd7e53c787d253bb00e5ee31f74e7f344d7ac85ef900a2d53a7f6c36d"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.00027405852188093456,
+      "relative_error_vs_rounded_input_fp64": 0.00027405852188093456,
+      "output_sha256": "aaf5c75105fb0041d33d3ae5cf6edf19ea338f31cc0c714ea592cf1bf2c3bcf8",
+      "timings_ms": [
+        0.05827200040221214,
+        0.05305600166320801,
+        0.05321599915623665,
+        0.05276799947023392,
+        0.053408000618219376
+      ],
+      "extra_peak_torch_allocated_bytes": 525312,
+      "dispatch_operations": [
+        "aten::_cudnn_attention_forward",
+        "aten::_scaled_dot_product_cudnn_attention",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        2,
+        4,
+        512,
+        64
+      ],
+      "mask": "none",
+      "dtype": "bf16",
+      "requested_backend": "math",
+      "input_sha256": [
+        "0c85357eb07dae5811811cedbce08b81d7dbb1f03fc89d7006b12dd7f5b2ffba",
+        "4e6a4583505322c3cc7ed06047b1056b2531d13bb598c4919a5df819b1bb593a",
+        "85a7cefbd7e53c787d253bb00e5ee31f74e7f344d7ac85ef900a2d53a7f6c36d"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.003561955527061376,
+      "relative_error_vs_rounded_input_fp64": 0.0016604233959671396,
+      "output_sha256": "c3b643dff7d1189f09bba3d021fb8bbf2dfeabc7cec3bf23a678b3b21b09b3ec",
+      "timings_ms": [
+        0.21615999937057495,
+        0.18281599879264832,
+        0.18003199994564056,
+        0.1802240014076233,
+        0.1834239959716797
+      ],
+      "extra_peak_torch_allocated_bytes": 23073280,
+      "dispatch_operations": [
+        "aten::_scaled_dot_product_attention_math",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        2,
+        4,
+        512,
+        64
+      ],
+      "mask": "none",
+      "dtype": "bf16",
+      "requested_backend": "flash",
+      "input_sha256": [
+        "0c85357eb07dae5811811cedbce08b81d7dbb1f03fc89d7006b12dd7f5b2ffba",
+        "4e6a4583505322c3cc7ed06047b1056b2531d13bb598c4919a5df819b1bb593a",
+        "85a7cefbd7e53c787d253bb00e5ee31f74e7f344d7ac85ef900a2d53a7f6c36d"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.003841214043971589,
+      "relative_error_vs_rounded_input_fp64": 0.002200740787787348,
+      "output_sha256": "adcacb10b44579851742881b18430e5f5e9f9dd54d78e2f30024412a1b6fdf64",
+      "timings_ms": [
+        0.04972799867391586,
+        0.041439998894929886,
+        0.038495998829603195,
+        0.03811199963092804,
+        0.037856001406908035
+      ],
+      "extra_peak_torch_allocated_bytes": 541696,
+      "dispatch_operations": [
+        "aten::_flash_attention_forward",
+        "aten::_scaled_dot_product_flash_attention",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        2,
+        4,
+        512,
+        64
+      ],
+      "mask": "none",
+      "dtype": "bf16",
+      "requested_backend": "efficient",
+      "input_sha256": [
+        "0c85357eb07dae5811811cedbce08b81d7dbb1f03fc89d7006b12dd7f5b2ffba",
+        "4e6a4583505322c3cc7ed06047b1056b2531d13bb598c4919a5df819b1bb593a",
+        "85a7cefbd7e53c787d253bb00e5ee31f74e7f344d7ac85ef900a2d53a7f6c36d"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.00384459309141376,
+      "relative_error_vs_rounded_input_fp64": 0.002187727654806888,
+      "output_sha256": "a49d34fc76197939104969c88857edc7af8fb4197881c8c58702cbb77696337f",
+      "timings_ms": [
+        0.05967999994754791,
+        0.04684799909591675,
+        0.04585599899291992,
+        0.04569600149989128,
+        0.04476799815893173
+      ],
+      "extra_peak_torch_allocated_bytes": 524288,
+      "dispatch_operations": [
+        "aten::_efficient_attention_forward",
+        "aten::_scaled_dot_product_efficient_attention",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        2,
+        4,
+        512,
+        64
+      ],
+      "mask": "none",
+      "dtype": "bf16",
+      "requested_backend": "cudnn",
+      "input_sha256": [
+        "0c85357eb07dae5811811cedbce08b81d7dbb1f03fc89d7006b12dd7f5b2ffba",
+        "4e6a4583505322c3cc7ed06047b1056b2531d13bb598c4919a5df819b1bb593a",
+        "85a7cefbd7e53c787d253bb00e5ee31f74e7f344d7ac85ef900a2d53a7f6c36d"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.0038446472736764323,
+      "relative_error_vs_rounded_input_fp64": 0.0021877457749381077,
+      "output_sha256": "6e320bd7fa6079b67befc3af83f764a26e4863f339510d965dbfc288dbfb364c",
+      "timings_ms": [
+        0.05737600103020668,
+        0.053727999329566956,
+        0.05347200110554695,
+        0.05238400027155876,
+        0.05321599915623665
+      ],
+      "extra_peak_torch_allocated_bytes": 525312,
+      "dispatch_operations": [
+        "aten::_cudnn_attention_forward",
+        "aten::_scaled_dot_product_cudnn_attention",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        2,
+        4,
+        512,
+        64
+      ],
+      "mask": "causal",
+      "dtype": "fp32",
+      "requested_backend": "math",
+      "input_sha256": [
+        "0c85357eb07dae5811811cedbce08b81d7dbb1f03fc89d7006b12dd7f5b2ffba",
+        "4e6a4583505322c3cc7ed06047b1056b2531d13bb598c4919a5df819b1bb593a",
+        "85a7cefbd7e53c787d253bb00e5ee31f74e7f344d7ac85ef900a2d53a7f6c36d"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 2.0163580214750424e-07,
+      "relative_error_vs_rounded_input_fp64": 2.0163580214750424e-07,
+      "output_sha256": "89b64ca7a0251f92218a2a68e1222efadece0dace9f102f2f6139cf75f7a4a57",
+      "timings_ms": [
+        0.2078080028295517,
+        0.2008640021085739,
+        0.20000000298023224,
+        0.21129600703716278,
+        0.20015999674797058
+      ],
+      "extra_peak_torch_allocated_bytes": 20976128,
+      "dispatch_operations": [
+        "aten::_scaled_dot_product_attention_math",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        2,
+        4,
+        512,
+        64
+      ],
+      "mask": "causal",
+      "dtype": "fp32",
+      "requested_backend": "flash",
+      "input_sha256": [
+        "0c85357eb07dae5811811cedbce08b81d7dbb1f03fc89d7006b12dd7f5b2ffba",
+        "4e6a4583505322c3cc7ed06047b1056b2531d13bb598c4919a5df819b1bb593a",
+        "85a7cefbd7e53c787d253bb00e5ee31f74e7f344d7ac85ef900a2d53a7f6c36d"
+      ],
+      "status": "unavailable",
+      "diagnostic": "No available kernel. Aborting execution."
+    },
+    {
+      "shape": [
+        2,
+        4,
+        512,
+        64
+      ],
+      "mask": "causal",
+      "dtype": "fp32",
+      "requested_backend": "efficient",
+      "input_sha256": [
+        "0c85357eb07dae5811811cedbce08b81d7dbb1f03fc89d7006b12dd7f5b2ffba",
+        "4e6a4583505322c3cc7ed06047b1056b2531d13bb598c4919a5df819b1bb593a",
+        "85a7cefbd7e53c787d253bb00e5ee31f74e7f344d7ac85ef900a2d53a7f6c36d"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 1.3464556337534672e-07,
+      "relative_error_vs_rounded_input_fp64": 1.3464556337534672e-07,
+      "output_sha256": "9cb290efee2e86deaf81c555befbd7f9f1b6347e50f3b71e195479539626428a",
+      "timings_ms": [
+        0.11340799927711487,
+        0.10000000149011612,
+        0.1000640019774437,
+        0.10380800068378448,
+        0.10025600343942642
+      ],
+      "extra_peak_torch_allocated_bytes": 1048576,
+      "dispatch_operations": [
+        "aten::_efficient_attention_forward",
+        "aten::_scaled_dot_product_efficient_attention",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        2,
+        4,
+        512,
+        64
+      ],
+      "mask": "causal",
+      "dtype": "fp32",
+      "requested_backend": "cudnn",
+      "input_sha256": [
+        "0c85357eb07dae5811811cedbce08b81d7dbb1f03fc89d7006b12dd7f5b2ffba",
+        "4e6a4583505322c3cc7ed06047b1056b2531d13bb598c4919a5df819b1bb593a",
+        "85a7cefbd7e53c787d253bb00e5ee31f74e7f344d7ac85ef900a2d53a7f6c36d"
+      ],
+      "status": "unavailable",
+      "diagnostic": "No available kernel. Aborting execution."
+    },
+    {
+      "shape": [
+        2,
+        4,
+        512,
+        64
+      ],
+      "mask": "causal",
+      "dtype": "fp16",
+      "requested_backend": "math",
+      "input_sha256": [
+        "0c85357eb07dae5811811cedbce08b81d7dbb1f03fc89d7006b12dd7f5b2ffba",
+        "4e6a4583505322c3cc7ed06047b1056b2531d13bb598c4919a5df819b1bb593a",
+        "85a7cefbd7e53c787d253bb00e5ee31f74e7f344d7ac85ef900a2d53a7f6c36d"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.00019898619440399852,
+      "relative_error_vs_rounded_input_fp64": 0.00019898619440399852,
+      "output_sha256": "11f64940b3b9ba60c536a1acd6898cbc41d696e3866d75377ef5659868fab8e9",
+      "timings_ms": [
+        0.23881599307060242,
+        0.22176000475883484,
+        0.21961599588394165,
+        0.2250880002975464,
+        0.22281600534915924
+      ],
+      "extra_peak_torch_allocated_bytes": 24121856,
+      "dispatch_operations": [
+        "aten::_scaled_dot_product_attention_math",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        2,
+        4,
+        512,
+        64
+      ],
+      "mask": "causal",
+      "dtype": "fp16",
+      "requested_backend": "flash",
+      "input_sha256": [
+        "0c85357eb07dae5811811cedbce08b81d7dbb1f03fc89d7006b12dd7f5b2ffba",
+        "4e6a4583505322c3cc7ed06047b1056b2531d13bb598c4919a5df819b1bb593a",
+        "85a7cefbd7e53c787d253bb00e5ee31f74e7f344d7ac85ef900a2d53a7f6c36d"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.00024848667443387525,
+      "relative_error_vs_rounded_input_fp64": 0.00024848667443387525,
+      "output_sha256": "65474c17a11b0454b4421d68d7c9e2fe6c9d6fe6e958355e85e07c3ce132e1f0",
+      "timings_ms": [
+        0.047520000487565994,
+        0.04150399938225746,
+        0.038176000118255615,
+        0.03759999945759773,
+        0.03718400001525879
+      ],
+      "extra_peak_torch_allocated_bytes": 541696,
+      "dispatch_operations": [
+        "aten::_flash_attention_forward",
+        "aten::_scaled_dot_product_flash_attention",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        2,
+        4,
+        512,
+        64
+      ],
+      "mask": "causal",
+      "dtype": "fp16",
+      "requested_backend": "efficient",
+      "input_sha256": [
+        "0c85357eb07dae5811811cedbce08b81d7dbb1f03fc89d7006b12dd7f5b2ffba",
+        "4e6a4583505322c3cc7ed06047b1056b2531d13bb598c4919a5df819b1bb593a",
+        "85a7cefbd7e53c787d253bb00e5ee31f74e7f344d7ac85ef900a2d53a7f6c36d"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.00024780958161953133,
+      "relative_error_vs_rounded_input_fp64": 0.00024780958161953133,
+      "output_sha256": "bcefe607053312ed724d6c48c4a6758ba9766940aa6fa0c1c09c5d376f2d9428",
+      "timings_ms": [
+        0.05894400179386139,
+        0.04652800038456917,
+        0.0461760014295578,
+        0.047648001462221146,
+        0.045184001326560974
+      ],
+      "extra_peak_torch_allocated_bytes": 524288,
+      "dispatch_operations": [
+        "aten::_efficient_attention_forward",
+        "aten::_scaled_dot_product_efficient_attention",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        2,
+        4,
+        512,
+        64
+      ],
+      "mask": "causal",
+      "dtype": "fp16",
+      "requested_backend": "cudnn",
+      "input_sha256": [
+        "0c85357eb07dae5811811cedbce08b81d7dbb1f03fc89d7006b12dd7f5b2ffba",
+        "4e6a4583505322c3cc7ed06047b1056b2531d13bb598c4919a5df819b1bb593a",
+        "85a7cefbd7e53c787d253bb00e5ee31f74e7f344d7ac85ef900a2d53a7f6c36d"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.0002478120266497004,
+      "relative_error_vs_rounded_input_fp64": 0.0002478120266497004,
+      "output_sha256": "d18f1874207ac680cd3e402d44f902c902a9b206f1a7575e126c646b1e9b7ce9",
+      "timings_ms": [
+        0.05926400050520897,
+        0.05571199953556061,
+        0.05353600159287453,
+        0.05427199974656105,
+        0.05407999828457832
+      ],
+      "extra_peak_torch_allocated_bytes": 525312,
+      "dispatch_operations": [
+        "aten::_cudnn_attention_forward",
+        "aten::_scaled_dot_product_cudnn_attention",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        2,
+        4,
+        512,
+        64
+      ],
+      "mask": "causal",
+      "dtype": "bf16",
+      "requested_backend": "math",
+      "input_sha256": [
+        "0c85357eb07dae5811811cedbce08b81d7dbb1f03fc89d7006b12dd7f5b2ffba",
+        "4e6a4583505322c3cc7ed06047b1056b2531d13bb598c4919a5df819b1bb593a",
+        "85a7cefbd7e53c787d253bb00e5ee31f74e7f344d7ac85ef900a2d53a7f6c36d"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.0033007133014313884,
+      "relative_error_vs_rounded_input_fp64": 0.0015983876242714006,
+      "output_sha256": "ad8630c239306e52409f169db67cb51c2a3b49202d4106dd9770b8f9042858b5",
+      "timings_ms": [
+        0.23923200368881226,
+        0.22515200078487396,
+        0.24323199689388275,
+        0.22307200729846954,
+        0.23206399381160736
+      ],
+      "extra_peak_torch_allocated_bytes": 24121856,
+      "dispatch_operations": [
+        "aten::_scaled_dot_product_attention_math",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        2,
+        4,
+        512,
+        64
+      ],
+      "mask": "causal",
+      "dtype": "bf16",
+      "requested_backend": "flash",
+      "input_sha256": [
+        "0c85357eb07dae5811811cedbce08b81d7dbb1f03fc89d7006b12dd7f5b2ffba",
+        "4e6a4583505322c3cc7ed06047b1056b2531d13bb598c4919a5df819b1bb593a",
+        "85a7cefbd7e53c787d253bb00e5ee31f74e7f344d7ac85ef900a2d53a7f6c36d"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.0035138755365236034,
+      "relative_error_vs_rounded_input_fp64": 0.0019966597766152483,
+      "output_sha256": "5311e9357ba6896d5566ab2720e47306a2301739c6a819cdb23d338c5e9ae40f",
+      "timings_ms": [
+        0.047839999198913574,
+        0.0387520007789135,
+        0.038176000118255615,
+        0.037567999213933945,
+        0.037408001720905304
+      ],
+      "extra_peak_torch_allocated_bytes": 541696,
+      "dispatch_operations": [
+        "aten::_flash_attention_forward",
+        "aten::_scaled_dot_product_flash_attention",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        2,
+        4,
+        512,
+        64
+      ],
+      "mask": "causal",
+      "dtype": "bf16",
+      "requested_backend": "efficient",
+      "input_sha256": [
+        "0c85357eb07dae5811811cedbce08b81d7dbb1f03fc89d7006b12dd7f5b2ffba",
+        "4e6a4583505322c3cc7ed06047b1056b2531d13bb598c4919a5df819b1bb593a",
+        "85a7cefbd7e53c787d253bb00e5ee31f74e7f344d7ac85ef900a2d53a7f6c36d"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.003510893381783633,
+      "relative_error_vs_rounded_input_fp64": 0.001988150661388796,
+      "output_sha256": "6182f1e631b6e9e24353ab7078d41757f84ef23ba7c68acf1e8bb7dd3bca4f99",
+      "timings_ms": [
+        0.05788800120353699,
+        0.04713600128889084,
+        0.04684799909591675,
+        0.04492799937725067,
+        0.04601600021123886
+      ],
+      "extra_peak_torch_allocated_bytes": 524288,
+      "dispatch_operations": [
+        "aten::_efficient_attention_forward",
+        "aten::_scaled_dot_product_efficient_attention",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        2,
+        4,
+        512,
+        64
+      ],
+      "mask": "causal",
+      "dtype": "bf16",
+      "requested_backend": "cudnn",
+      "input_sha256": [
+        "0c85357eb07dae5811811cedbce08b81d7dbb1f03fc89d7006b12dd7f5b2ffba",
+        "4e6a4583505322c3cc7ed06047b1056b2531d13bb598c4919a5df819b1bb593a",
+        "85a7cefbd7e53c787d253bb00e5ee31f74e7f344d7ac85ef900a2d53a7f6c36d"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.0035108892678521885,
+      "relative_error_vs_rounded_input_fp64": 0.001988168095331614,
+      "output_sha256": "7f5afab04384cac2f87f9ccc00ac2d5795e1f8dd199b199aa8a9c1ac4d1af844",
+      "timings_ms": [
+        0.062272001057863235,
+        0.05379199981689453,
+        0.05536000058054924,
+        0.05500800162553787,
+        0.05475199967622757
+      ],
+      "extra_peak_torch_allocated_bytes": 525312,
+      "dispatch_operations": [
+        "aten::_cudnn_attention_forward",
+        "aten::_scaled_dot_product_cudnn_attention",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        2,
+        4,
+        512,
+        64
+      ],
+      "mask": "padding",
+      "dtype": "fp32",
+      "requested_backend": "math",
+      "input_sha256": [
+        "0c85357eb07dae5811811cedbce08b81d7dbb1f03fc89d7006b12dd7f5b2ffba",
+        "4e6a4583505322c3cc7ed06047b1056b2531d13bb598c4919a5df819b1bb593a",
+        "85a7cefbd7e53c787d253bb00e5ee31f74e7f344d7ac85ef900a2d53a7f6c36d"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 3.6409245602626717e-07,
+      "relative_error_vs_rounded_input_fp64": 3.6409245602626717e-07,
+      "output_sha256": "bc85b54426300bfaff629e31297dea64fa643324a1ee86f1df9b76860b320c4f",
+      "timings_ms": [
+        0.21052800118923187,
+        0.18854400515556335,
+        0.18547199666500092,
+        0.18483200669288635,
+        0.1839040070772171
+      ],
+      "extra_peak_torch_allocated_bytes": 20976128,
+      "dispatch_operations": [
+        "aten::_scaled_dot_product_attention_math",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        2,
+        4,
+        512,
+        64
+      ],
+      "mask": "padding",
+      "dtype": "fp32",
+      "requested_backend": "flash",
+      "input_sha256": [
+        "0c85357eb07dae5811811cedbce08b81d7dbb1f03fc89d7006b12dd7f5b2ffba",
+        "4e6a4583505322c3cc7ed06047b1056b2531d13bb598c4919a5df819b1bb593a",
+        "85a7cefbd7e53c787d253bb00e5ee31f74e7f344d7ac85ef900a2d53a7f6c36d"
+      ],
+      "status": "unavailable",
+      "diagnostic": "No available kernel. Aborting execution."
+    },
+    {
+      "shape": [
+        2,
+        4,
+        512,
+        64
+      ],
+      "mask": "padding",
+      "dtype": "fp32",
+      "requested_backend": "efficient",
+      "input_sha256": [
+        "0c85357eb07dae5811811cedbce08b81d7dbb1f03fc89d7006b12dd7f5b2ffba",
+        "4e6a4583505322c3cc7ed06047b1056b2531d13bb598c4919a5df819b1bb593a",
+        "85a7cefbd7e53c787d253bb00e5ee31f74e7f344d7ac85ef900a2d53a7f6c36d"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 1.8198021505986697e-07,
+      "relative_error_vs_rounded_input_fp64": 1.8198021505986697e-07,
+      "output_sha256": "283bd96801edd3dc5e419a78ebd6cb4058d6293e678642fccbb19e3deaced851",
+      "timings_ms": [
+        0.14998400211334229,
+        0.13769599795341492,
+        0.13865600526332855,
+        0.13254399597644806,
+        0.13475200533866882
+      ],
+      "extra_peak_torch_allocated_bytes": 2097152,
+      "dispatch_operations": [
+        "aten::_efficient_attention_forward",
+        "aten::_scaled_dot_product_efficient_attention",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        2,
+        4,
+        512,
+        64
+      ],
+      "mask": "padding",
+      "dtype": "fp32",
+      "requested_backend": "cudnn",
+      "input_sha256": [
+        "0c85357eb07dae5811811cedbce08b81d7dbb1f03fc89d7006b12dd7f5b2ffba",
+        "4e6a4583505322c3cc7ed06047b1056b2531d13bb598c4919a5df819b1bb593a",
+        "85a7cefbd7e53c787d253bb00e5ee31f74e7f344d7ac85ef900a2d53a7f6c36d"
+      ],
+      "status": "unavailable",
+      "diagnostic": "No available kernel. Aborting execution."
+    },
+    {
+      "shape": [
+        2,
+        4,
+        512,
+        64
+      ],
+      "mask": "padding",
+      "dtype": "fp16",
+      "requested_backend": "math",
+      "input_sha256": [
+        "0c85357eb07dae5811811cedbce08b81d7dbb1f03fc89d7006b12dd7f5b2ffba",
+        "4e6a4583505322c3cc7ed06047b1056b2531d13bb598c4919a5df819b1bb593a",
+        "85a7cefbd7e53c787d253bb00e5ee31f74e7f344d7ac85ef900a2d53a7f6c36d"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.00020712014185397262,
+      "relative_error_vs_rounded_input_fp64": 0.00020712014185397262,
+      "output_sha256": "ccd65e6763d8f824b5c91a70b73bd07ea13adada10f8b4820a6f051724470083",
+      "timings_ms": [
+        0.22547200322151184,
+        0.21836799383163452,
+        0.23315200209617615,
+        0.21750399470329285,
+        0.2178560048341751
+      ],
+      "extra_peak_torch_allocated_bytes": 23597568,
+      "dispatch_operations": [
+        "aten::_scaled_dot_product_attention_math",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        2,
+        4,
+        512,
+        64
+      ],
+      "mask": "padding",
+      "dtype": "fp16",
+      "requested_backend": "flash",
+      "input_sha256": [
+        "0c85357eb07dae5811811cedbce08b81d7dbb1f03fc89d7006b12dd7f5b2ffba",
+        "4e6a4583505322c3cc7ed06047b1056b2531d13bb598c4919a5df819b1bb593a",
+        "85a7cefbd7e53c787d253bb00e5ee31f74e7f344d7ac85ef900a2d53a7f6c36d"
+      ],
+      "status": "unavailable",
+      "diagnostic": "No available kernel. Aborting execution."
+    },
+    {
+      "shape": [
+        2,
+        4,
+        512,
+        64
+      ],
+      "mask": "padding",
+      "dtype": "fp16",
+      "requested_backend": "efficient",
+      "input_sha256": [
+        "0c85357eb07dae5811811cedbce08b81d7dbb1f03fc89d7006b12dd7f5b2ffba",
+        "4e6a4583505322c3cc7ed06047b1056b2531d13bb598c4919a5df819b1bb593a",
+        "85a7cefbd7e53c787d253bb00e5ee31f74e7f344d7ac85ef900a2d53a7f6c36d"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.00027200898160380254,
+      "relative_error_vs_rounded_input_fp64": 0.00027200898160380254,
+      "output_sha256": "32bca1ffdfb482852e20ec639d2aead3418ba14193fff38ff86d9c70cac1c5d3",
+      "timings_ms": [
+        0.08355200290679932,
+        0.07849600166082382,
+        0.07628799974918365,
+        0.07491199672222137,
+        0.0745600014925003
+      ],
+      "extra_peak_torch_allocated_bytes": 1048576,
+      "dispatch_operations": [
+        "aten::_efficient_attention_forward",
+        "aten::_scaled_dot_product_efficient_attention",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        2,
+        4,
+        512,
+        64
+      ],
+      "mask": "padding",
+      "dtype": "fp16",
+      "requested_backend": "cudnn",
+      "input_sha256": [
+        "0c85357eb07dae5811811cedbce08b81d7dbb1f03fc89d7006b12dd7f5b2ffba",
+        "4e6a4583505322c3cc7ed06047b1056b2531d13bb598c4919a5df819b1bb593a",
+        "85a7cefbd7e53c787d253bb00e5ee31f74e7f344d7ac85ef900a2d53a7f6c36d"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.00027200332952994147,
+      "relative_error_vs_rounded_input_fp64": 0.00027200332952994147,
+      "output_sha256": "57bcaf3c8cd8eda65920ce58e0878613888088ea056a9299fa7a26be5a68ea6f",
+      "timings_ms": [
+        0.10019200295209885,
+        0.09401600062847137,
+        0.0926399976015091,
+        0.09241600334644318,
+        0.09167999774217606
+      ],
+      "extra_peak_torch_allocated_bytes": 1049600,
+      "dispatch_operations": [
+        "aten::_cudnn_attention_forward",
+        "aten::_scaled_dot_product_cudnn_attention",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        2,
+        4,
+        512,
+        64
+      ],
+      "mask": "padding",
+      "dtype": "bf16",
+      "requested_backend": "math",
+      "input_sha256": [
+        "0c85357eb07dae5811811cedbce08b81d7dbb1f03fc89d7006b12dd7f5b2ffba",
+        "4e6a4583505322c3cc7ed06047b1056b2531d13bb598c4919a5df819b1bb593a",
+        "85a7cefbd7e53c787d253bb00e5ee31f74e7f344d7ac85ef900a2d53a7f6c36d"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.003540245969619565,
+      "relative_error_vs_rounded_input_fp64": 0.0016556846112197412,
+      "output_sha256": "65f40a14b598e67536944a4fcb6818139df1507f09b54d5af43720925269ce16",
+      "timings_ms": [
+        0.2316800057888031,
+        0.23158399760723114,
+        0.22060799598693848,
+        0.21887999773025513,
+        0.21798400580883026
+      ],
+      "extra_peak_torch_allocated_bytes": 23597568,
+      "dispatch_operations": [
+        "aten::_scaled_dot_product_attention_math",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        2,
+        4,
+        512,
+        64
+      ],
+      "mask": "padding",
+      "dtype": "bf16",
+      "requested_backend": "flash",
+      "input_sha256": [
+        "0c85357eb07dae5811811cedbce08b81d7dbb1f03fc89d7006b12dd7f5b2ffba",
+        "4e6a4583505322c3cc7ed06047b1056b2531d13bb598c4919a5df819b1bb593a",
+        "85a7cefbd7e53c787d253bb00e5ee31f74e7f344d7ac85ef900a2d53a7f6c36d"
+      ],
+      "status": "unavailable",
+      "diagnostic": "No available kernel. Aborting execution."
+    },
+    {
+      "shape": [
+        2,
+        4,
+        512,
+        64
+      ],
+      "mask": "padding",
+      "dtype": "bf16",
+      "requested_backend": "efficient",
+      "input_sha256": [
+        "0c85357eb07dae5811811cedbce08b81d7dbb1f03fc89d7006b12dd7f5b2ffba",
+        "4e6a4583505322c3cc7ed06047b1056b2531d13bb598c4919a5df819b1bb593a",
+        "85a7cefbd7e53c787d253bb00e5ee31f74e7f344d7ac85ef900a2d53a7f6c36d"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.0038145831968801605,
+      "relative_error_vs_rounded_input_fp64": 0.0021748236602352777,
+      "output_sha256": "5d8bc6f5a64b0e7cc9844d128e372976697b02e52b99ab275e7b32e416bdb690",
+      "timings_ms": [
+        0.08457600325345993,
+        0.07737600058317184,
+        0.07571200281381607,
+        0.07532799988985062,
+        0.07702399790287018
+      ],
+      "extra_peak_torch_allocated_bytes": 1048576,
+      "dispatch_operations": [
+        "aten::_efficient_attention_forward",
+        "aten::_scaled_dot_product_efficient_attention",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        2,
+        4,
+        512,
+        64
+      ],
+      "mask": "padding",
+      "dtype": "bf16",
+      "requested_backend": "cudnn",
+      "input_sha256": [
+        "0c85357eb07dae5811811cedbce08b81d7dbb1f03fc89d7006b12dd7f5b2ffba",
+        "4e6a4583505322c3cc7ed06047b1056b2531d13bb598c4919a5df819b1bb593a",
+        "85a7cefbd7e53c787d253bb00e5ee31f74e7f344d7ac85ef900a2d53a7f6c36d"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.0038145852155044148,
+      "relative_error_vs_rounded_input_fp64": 0.0021748244862756882,
+      "output_sha256": "3d468eff293c4f47bcebecceeae9b264df429039b2f7972b638c2c91b3a30ce8",
+      "timings_ms": [
+        0.09699200093746185,
+        0.09219200164079666,
+        0.09065599739551544,
+        0.09148799628019333,
+        0.08953599631786346
+      ],
+      "extra_peak_torch_allocated_bytes": 1049600,
+      "dispatch_operations": [
+        "aten::_cudnn_attention_forward",
+        "aten::_scaled_dot_product_cudnn_attention",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        1,
+        4,
+        1024,
+        128
+      ],
+      "mask": "none",
+      "dtype": "fp32",
+      "requested_backend": "math",
+      "input_sha256": [
+        "4a9a9b07ebc0204d054a511a847a119c81068c3d7b5871a1235caf4e3b4d9e5f",
+        "ecb0dc53c2764a2c7b7d16dfef92133b377f762335a40b19c75d7cd47addb2d8",
+        "15401aa0f1efb725f069eba6e6f7bf49f0d630b8eca2ada3c65d32da998250cf"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 6.987806577517796e-07,
+      "relative_error_vs_rounded_input_fp64": 6.987806577517796e-07,
+      "output_sha256": "08248563c4ef791f4bb5bd400452d9216ceb16f13c676e03fe2c786f3d43840b",
+      "timings_ms": [
+        0.46937599778175354,
+        0.4671359956264496,
+        0.46300798654556274,
+        0.46185600757598877,
+        0.46089598536491394
+      ],
+      "extra_peak_torch_allocated_bytes": 39850496,
+      "dispatch_operations": [
+        "aten::_scaled_dot_product_attention_math",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        1,
+        4,
+        1024,
+        128
+      ],
+      "mask": "none",
+      "dtype": "fp32",
+      "requested_backend": "flash",
+      "input_sha256": [
+        "4a9a9b07ebc0204d054a511a847a119c81068c3d7b5871a1235caf4e3b4d9e5f",
+        "ecb0dc53c2764a2c7b7d16dfef92133b377f762335a40b19c75d7cd47addb2d8",
+        "15401aa0f1efb725f069eba6e6f7bf49f0d630b8eca2ada3c65d32da998250cf"
+      ],
+      "status": "unavailable",
+      "diagnostic": "No available kernel. Aborting execution."
+    },
+    {
+      "shape": [
+        1,
+        4,
+        1024,
+        128
+      ],
+      "mask": "none",
+      "dtype": "fp32",
+      "requested_backend": "efficient",
+      "input_sha256": [
+        "4a9a9b07ebc0204d054a511a847a119c81068c3d7b5871a1235caf4e3b4d9e5f",
+        "ecb0dc53c2764a2c7b7d16dfef92133b377f762335a40b19c75d7cd47addb2d8",
+        "15401aa0f1efb725f069eba6e6f7bf49f0d630b8eca2ada3c65d32da998250cf"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 2.3513226026564767e-07,
+      "relative_error_vs_rounded_input_fp64": 2.3513226026564767e-07,
+      "output_sha256": "6e2c383f1d01fa51f8434774eb7f96d07126196ee2dc8cc20750e177b18489e0",
+      "timings_ms": [
+        0.35862401127815247,
+        0.34803199768066406,
+        0.34860798716545105,
+        0.3465920090675354,
+        0.3476159870624542
+      ],
+      "extra_peak_torch_allocated_bytes": 2097152,
+      "dispatch_operations": [
+        "aten::_efficient_attention_forward",
+        "aten::_scaled_dot_product_efficient_attention",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        1,
+        4,
+        1024,
+        128
+      ],
+      "mask": "none",
+      "dtype": "fp32",
+      "requested_backend": "cudnn",
+      "input_sha256": [
+        "4a9a9b07ebc0204d054a511a847a119c81068c3d7b5871a1235caf4e3b4d9e5f",
+        "ecb0dc53c2764a2c7b7d16dfef92133b377f762335a40b19c75d7cd47addb2d8",
+        "15401aa0f1efb725f069eba6e6f7bf49f0d630b8eca2ada3c65d32da998250cf"
+      ],
+      "status": "unavailable",
+      "diagnostic": "No available kernel. Aborting execution."
+    },
+    {
+      "shape": [
+        1,
+        4,
+        1024,
+        128
+      ],
+      "mask": "none",
+      "dtype": "fp16",
+      "requested_backend": "math",
+      "input_sha256": [
+        "4a9a9b07ebc0204d054a511a847a119c81068c3d7b5871a1235caf4e3b4d9e5f",
+        "ecb0dc53c2764a2c7b7d16dfef92133b377f762335a40b19c75d7cd47addb2d8",
+        "15401aa0f1efb725f069eba6e6f7bf49f0d630b8eca2ada3c65d32da998250cf"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.0002070748779735186,
+      "relative_error_vs_rounded_input_fp64": 0.0002070748779735186,
+      "output_sha256": "4620df7bb9e0a296cce6515fa89b3ea4c400ec1433580342266c8fab0832ffaf",
+      "timings_ms": [
+        0.5194240212440491,
+        0.5020480155944824,
+        0.5112000107765198,
+        0.4971520006656647,
+        0.5041279792785645
+      ],
+      "extra_peak_torch_allocated_bytes": 46141952,
+      "dispatch_operations": [
+        "aten::_scaled_dot_product_attention_math",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        1,
+        4,
+        1024,
+        128
+      ],
+      "mask": "none",
+      "dtype": "fp16",
+      "requested_backend": "flash",
+      "input_sha256": [
+        "4a9a9b07ebc0204d054a511a847a119c81068c3d7b5871a1235caf4e3b4d9e5f",
+        "ecb0dc53c2764a2c7b7d16dfef92133b377f762335a40b19c75d7cd47addb2d8",
+        "15401aa0f1efb725f069eba6e6f7bf49f0d630b8eca2ada3c65d32da998250cf"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.0002787501033828114,
+      "relative_error_vs_rounded_input_fp64": 0.0002787501033828114,
+      "output_sha256": "b97291922cf4aaeff26c964a2b0a6ca18f34702dc75c892bd9b07483a29f02f1",
+      "timings_ms": [
+        0.08156800270080566,
+        0.07119999825954437,
+        0.07155200093984604,
+        0.07116799801588058,
+        0.07056000083684921
+      ],
+      "extra_peak_torch_allocated_bytes": 1065984,
+      "dispatch_operations": [
+        "aten::_flash_attention_forward",
+        "aten::_scaled_dot_product_flash_attention",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        1,
+        4,
+        1024,
+        128
+      ],
+      "mask": "none",
+      "dtype": "fp16",
+      "requested_backend": "efficient",
+      "input_sha256": [
+        "4a9a9b07ebc0204d054a511a847a119c81068c3d7b5871a1235caf4e3b4d9e5f",
+        "ecb0dc53c2764a2c7b7d16dfef92133b377f762335a40b19c75d7cd47addb2d8",
+        "15401aa0f1efb725f069eba6e6f7bf49f0d630b8eca2ada3c65d32da998250cf"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.00027940627361944573,
+      "relative_error_vs_rounded_input_fp64": 0.00027940627361944573,
+      "output_sha256": "2e04e3ed6f99bb72185314660f290633e53de0bda2c78dcdaea58a471dcccd15",
+      "timings_ms": [
+        0.15440000593662262,
+        0.14428800344467163,
+        0.14140799641609192,
+        0.14112000167369843,
+        0.14310400187969208
+      ],
+      "extra_peak_torch_allocated_bytes": 1048576,
+      "dispatch_operations": [
+        "aten::_efficient_attention_forward",
+        "aten::_scaled_dot_product_efficient_attention",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        1,
+        4,
+        1024,
+        128
+      ],
+      "mask": "none",
+      "dtype": "fp16",
+      "requested_backend": "cudnn",
+      "input_sha256": [
+        "4a9a9b07ebc0204d054a511a847a119c81068c3d7b5871a1235caf4e3b4d9e5f",
+        "ecb0dc53c2764a2c7b7d16dfef92133b377f762335a40b19c75d7cd47addb2d8",
+        "15401aa0f1efb725f069eba6e6f7bf49f0d630b8eca2ada3c65d32da998250cf"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.00027866550362191017,
+      "relative_error_vs_rounded_input_fp64": 0.00027866550362191017,
+      "output_sha256": "9d32f85c434897135100dcffb7d91f5aad87721bf8f3264d535f72af6e4f8b31",
+      "timings_ms": [
+        0.08310399949550629,
+        0.07817599922418594,
+        0.07948800176382065,
+        0.07820799946784973,
+        0.0783040001988411
+      ],
+      "extra_peak_torch_allocated_bytes": 1049600,
+      "dispatch_operations": [
+        "aten::_cudnn_attention_forward",
+        "aten::_scaled_dot_product_cudnn_attention",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        1,
+        4,
+        1024,
+        128
+      ],
+      "mask": "none",
+      "dtype": "bf16",
+      "requested_backend": "math",
+      "input_sha256": [
+        "4a9a9b07ebc0204d054a511a847a119c81068c3d7b5871a1235caf4e3b4d9e5f",
+        "ecb0dc53c2764a2c7b7d16dfef92133b377f762335a40b19c75d7cd47addb2d8",
+        "15401aa0f1efb725f069eba6e6f7bf49f0d630b8eca2ada3c65d32da998250cf"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.003518118042566223,
+      "relative_error_vs_rounded_input_fp64": 0.0016591642048985962,
+      "output_sha256": "346b9fd83eecdab75213fd24e29016d3ca6190547163222e3abc3a8232cb83d1",
+      "timings_ms": [
+        0.5114560127258301,
+        0.5005760192871094,
+        0.5058240294456482,
+        0.49875199794769287,
+        0.5047680139541626
+      ],
+      "extra_peak_torch_allocated_bytes": 46141952,
+      "dispatch_operations": [
+        "aten::_scaled_dot_product_attention_math",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        1,
+        4,
+        1024,
+        128
+      ],
+      "mask": "none",
+      "dtype": "bf16",
+      "requested_backend": "flash",
+      "input_sha256": [
+        "4a9a9b07ebc0204d054a511a847a119c81068c3d7b5871a1235caf4e3b4d9e5f",
+        "ecb0dc53c2764a2c7b7d16dfef92133b377f762335a40b19c75d7cd47addb2d8",
+        "15401aa0f1efb725f069eba6e6f7bf49f0d630b8eca2ada3c65d32da998250cf"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.003822040459249826,
+      "relative_error_vs_rounded_input_fp64": 0.0022288602976146136,
+      "output_sha256": "e846a34219e68f494213196dbd208f668003efaf680277a8514f8c27cb1707a5",
+      "timings_ms": [
+        0.08256000280380249,
+        0.07280000299215317,
+        0.07238399982452393,
+        0.08220800012350082,
+        0.07382400333881378
+      ],
+      "extra_peak_torch_allocated_bytes": 1065984,
+      "dispatch_operations": [
+        "aten::_flash_attention_forward",
+        "aten::_scaled_dot_product_flash_attention",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        1,
+        4,
+        1024,
+        128
+      ],
+      "mask": "none",
+      "dtype": "bf16",
+      "requested_backend": "efficient",
+      "input_sha256": [
+        "4a9a9b07ebc0204d054a511a847a119c81068c3d7b5871a1235caf4e3b4d9e5f",
+        "ecb0dc53c2764a2c7b7d16dfef92133b377f762335a40b19c75d7cd47addb2d8",
+        "15401aa0f1efb725f069eba6e6f7bf49f0d630b8eca2ada3c65d32da998250cf"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.0038262863441584716,
+      "relative_error_vs_rounded_input_fp64": 0.0022343664488290627,
+      "output_sha256": "91c8fcbf70cc954fb6f6d4507578998a98c353935a4cb2884bbaaf36af576b22",
+      "timings_ms": [
+        0.15692800283432007,
+        0.14163200557231903,
+        0.14153599739074707,
+        0.14131200313568115,
+        0.14297600090503693
+      ],
+      "extra_peak_torch_allocated_bytes": 1048576,
+      "dispatch_operations": [
+        "aten::_efficient_attention_forward",
+        "aten::_scaled_dot_product_efficient_attention",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        1,
+        4,
+        1024,
+        128
+      ],
+      "mask": "none",
+      "dtype": "bf16",
+      "requested_backend": "cudnn",
+      "input_sha256": [
+        "4a9a9b07ebc0204d054a511a847a119c81068c3d7b5871a1235caf4e3b4d9e5f",
+        "ecb0dc53c2764a2c7b7d16dfef92133b377f762335a40b19c75d7cd47addb2d8",
+        "15401aa0f1efb725f069eba6e6f7bf49f0d630b8eca2ada3c65d32da998250cf"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.0038231720132180604,
+      "relative_error_vs_rounded_input_fp64": 0.0022275825966793215,
+      "output_sha256": "d322453e3215cf97d4a947df6f3de65bb298da5011ac7b3fd47c0c0ae64a2996",
+      "timings_ms": [
+        0.08495999872684479,
+        0.07897599786520004,
+        0.07945600152015686,
+        0.07875200361013412,
+        0.0801599994301796
+      ],
+      "extra_peak_torch_allocated_bytes": 1049600,
+      "dispatch_operations": [
+        "aten::_cudnn_attention_forward",
+        "aten::_scaled_dot_product_cudnn_attention",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        1,
+        4,
+        1024,
+        128
+      ],
+      "mask": "causal",
+      "dtype": "fp32",
+      "requested_backend": "math",
+      "input_sha256": [
+        "4a9a9b07ebc0204d054a511a847a119c81068c3d7b5871a1235caf4e3b4d9e5f",
+        "ecb0dc53c2764a2c7b7d16dfef92133b377f762335a40b19c75d7cd47addb2d8",
+        "15401aa0f1efb725f069eba6e6f7bf49f0d630b8eca2ada3c65d32da998250cf"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 3.864748925398253e-07,
+      "relative_error_vs_rounded_input_fp64": 3.864748925398253e-07,
+      "output_sha256": "876d1fcb352757451b4bd300d0b49da525b5ff2c87b3ca5175b1fb9b478e40f5",
+      "timings_ms": [
+        0.5085440278053284,
+        0.503711998462677,
+        0.5075200200080872,
+        0.4978240132331848,
+        0.5127360224723816
+      ],
+      "extra_peak_torch_allocated_bytes": 44044800,
+      "dispatch_operations": [
+        "aten::_scaled_dot_product_attention_math",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        1,
+        4,
+        1024,
+        128
+      ],
+      "mask": "causal",
+      "dtype": "fp32",
+      "requested_backend": "flash",
+      "input_sha256": [
+        "4a9a9b07ebc0204d054a511a847a119c81068c3d7b5871a1235caf4e3b4d9e5f",
+        "ecb0dc53c2764a2c7b7d16dfef92133b377f762335a40b19c75d7cd47addb2d8",
+        "15401aa0f1efb725f069eba6e6f7bf49f0d630b8eca2ada3c65d32da998250cf"
+      ],
+      "status": "unavailable",
+      "diagnostic": "No available kernel. Aborting execution."
+    },
+    {
+      "shape": [
+        1,
+        4,
+        1024,
+        128
+      ],
+      "mask": "causal",
+      "dtype": "fp32",
+      "requested_backend": "efficient",
+      "input_sha256": [
+        "4a9a9b07ebc0204d054a511a847a119c81068c3d7b5871a1235caf4e3b4d9e5f",
+        "ecb0dc53c2764a2c7b7d16dfef92133b377f762335a40b19c75d7cd47addb2d8",
+        "15401aa0f1efb725f069eba6e6f7bf49f0d630b8eca2ada3c65d32da998250cf"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 1.6387444829360286e-07,
+      "relative_error_vs_rounded_input_fp64": 1.6387444829360286e-07,
+      "output_sha256": "aa70dd965886bfeed05b71e8483797a2cb0078ac0c973b08af322569b8f5249d",
+      "timings_ms": [
+        0.29580798745155334,
+        0.28172799944877625,
+        0.2845120131969452,
+        0.2797119915485382,
+        0.27983999252319336
+      ],
+      "extra_peak_torch_allocated_bytes": 2097152,
+      "dispatch_operations": [
+        "aten::_efficient_attention_forward",
+        "aten::_scaled_dot_product_efficient_attention",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        1,
+        4,
+        1024,
+        128
+      ],
+      "mask": "causal",
+      "dtype": "fp32",
+      "requested_backend": "cudnn",
+      "input_sha256": [
+        "4a9a9b07ebc0204d054a511a847a119c81068c3d7b5871a1235caf4e3b4d9e5f",
+        "ecb0dc53c2764a2c7b7d16dfef92133b377f762335a40b19c75d7cd47addb2d8",
+        "15401aa0f1efb725f069eba6e6f7bf49f0d630b8eca2ada3c65d32da998250cf"
+      ],
+      "status": "unavailable",
+      "diagnostic": "No available kernel. Aborting execution."
+    },
+    {
+      "shape": [
+        1,
+        4,
+        1024,
+        128
+      ],
+      "mask": "causal",
+      "dtype": "fp16",
+      "requested_backend": "math",
+      "input_sha256": [
+        "4a9a9b07ebc0204d054a511a847a119c81068c3d7b5871a1235caf4e3b4d9e5f",
+        "ecb0dc53c2764a2c7b7d16dfef92133b377f762335a40b19c75d7cd47addb2d8",
+        "15401aa0f1efb725f069eba6e6f7bf49f0d630b8eca2ada3c65d32da998250cf"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.00020142030200181096,
+      "relative_error_vs_rounded_input_fp64": 0.00020142030200181096,
+      "output_sha256": "b76053abb1a3eda527ce47ef933dce606c029d4aae1a90f1603232b01bb0bd87",
+      "timings_ms": [
+        0.5395200252532959,
+        0.5318719744682312,
+        0.523967981338501,
+        0.5329279899597168,
+        0.5270079970359802
+      ],
+      "extra_peak_torch_allocated_bytes": 50336256,
+      "dispatch_operations": [
+        "aten::_scaled_dot_product_attention_math",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        1,
+        4,
+        1024,
+        128
+      ],
+      "mask": "causal",
+      "dtype": "fp16",
+      "requested_backend": "flash",
+      "input_sha256": [
+        "4a9a9b07ebc0204d054a511a847a119c81068c3d7b5871a1235caf4e3b4d9e5f",
+        "ecb0dc53c2764a2c7b7d16dfef92133b377f762335a40b19c75d7cd47addb2d8",
+        "15401aa0f1efb725f069eba6e6f7bf49f0d630b8eca2ada3c65d32da998250cf"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.00025154172612892824,
+      "relative_error_vs_rounded_input_fp64": 0.00025154172612892824,
+      "output_sha256": "59b234b0faaf1dcf6c5d694de3c6104f7cc7accfe85a6e28ac2ca17c9e41a439",
+      "timings_ms": [
+        0.09718400239944458,
+        0.07257600128650665,
+        0.07001599669456482,
+        0.0684799998998642,
+        0.0703359991312027
+      ],
+      "extra_peak_torch_allocated_bytes": 1065984,
+      "dispatch_operations": [
+        "aten::_flash_attention_forward",
+        "aten::_scaled_dot_product_flash_attention",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        1,
+        4,
+        1024,
+        128
+      ],
+      "mask": "causal",
+      "dtype": "fp16",
+      "requested_backend": "efficient",
+      "input_sha256": [
+        "4a9a9b07ebc0204d054a511a847a119c81068c3d7b5871a1235caf4e3b4d9e5f",
+        "ecb0dc53c2764a2c7b7d16dfef92133b377f762335a40b19c75d7cd47addb2d8",
+        "15401aa0f1efb725f069eba6e6f7bf49f0d630b8eca2ada3c65d32da998250cf"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.0002525511940773726,
+      "relative_error_vs_rounded_input_fp64": 0.0002525511940773726,
+      "output_sha256": "d05f616d0a42828c6935163fc2a093c8d1cc5c9ff6d95c957a4fcad35f395628",
+      "timings_ms": [
+        0.13126400113105774,
+        0.1194240003824234,
+        0.12169600278139114,
+        0.11580800265073776,
+        0.1165120005607605
+      ],
+      "extra_peak_torch_allocated_bytes": 1048576,
+      "dispatch_operations": [
+        "aten::_efficient_attention_forward",
+        "aten::_scaled_dot_product_efficient_attention",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        1,
+        4,
+        1024,
+        128
+      ],
+      "mask": "causal",
+      "dtype": "fp16",
+      "requested_backend": "cudnn",
+      "input_sha256": [
+        "4a9a9b07ebc0204d054a511a847a119c81068c3d7b5871a1235caf4e3b4d9e5f",
+        "ecb0dc53c2764a2c7b7d16dfef92133b377f762335a40b19c75d7cd47addb2d8",
+        "15401aa0f1efb725f069eba6e6f7bf49f0d630b8eca2ada3c65d32da998250cf"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.0002513178095129572,
+      "relative_error_vs_rounded_input_fp64": 0.0002513178095129572,
+      "output_sha256": "46c93a2844b699e17bb1c6439678c6611baa36f01f12ee29212f72cc84e67329",
+      "timings_ms": [
+        0.08339200168848038,
+        0.07945600152015686,
+        0.07817599922418594,
+        0.07968000322580338,
+        0.08073599636554718
+      ],
+      "extra_peak_torch_allocated_bytes": 1049600,
+      "dispatch_operations": [
+        "aten::_cudnn_attention_forward",
+        "aten::_scaled_dot_product_cudnn_attention",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        1,
+        4,
+        1024,
+        128
+      ],
+      "mask": "causal",
+      "dtype": "bf16",
+      "requested_backend": "math",
+      "input_sha256": [
+        "4a9a9b07ebc0204d054a511a847a119c81068c3d7b5871a1235caf4e3b4d9e5f",
+        "ecb0dc53c2764a2c7b7d16dfef92133b377f762335a40b19c75d7cd47addb2d8",
+        "15401aa0f1efb725f069eba6e6f7bf49f0d630b8eca2ada3c65d32da998250cf"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.0032392457253125856,
+      "relative_error_vs_rounded_input_fp64": 0.0016111707641007186,
+      "output_sha256": "e21f344c524b224f8e524cb963f61ad0c3956ea7eab6c52d967756d2f4aaa4d6",
+      "timings_ms": [
+        0.5405439734458923,
+        0.5315840244293213,
+        0.5344319939613342,
+        0.5553280115127563,
+        0.5312640070915222
+      ],
+      "extra_peak_torch_allocated_bytes": 50336256,
+      "dispatch_operations": [
+        "aten::_scaled_dot_product_attention_math",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        1,
+        4,
+        1024,
+        128
+      ],
+      "mask": "causal",
+      "dtype": "bf16",
+      "requested_backend": "flash",
+      "input_sha256": [
+        "4a9a9b07ebc0204d054a511a847a119c81068c3d7b5871a1235caf4e3b4d9e5f",
+        "ecb0dc53c2764a2c7b7d16dfef92133b377f762335a40b19c75d7cd47addb2d8",
+        "15401aa0f1efb725f069eba6e6f7bf49f0d630b8eca2ada3c65d32da998250cf"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.003483308365558085,
+      "relative_error_vs_rounded_input_fp64": 0.002015146235699688,
+      "output_sha256": "6fce01a5c2994e3c18da26222116d9aedc977e3e0c356b601220a083bfb07aae",
+      "timings_ms": [
+        0.08156800270080566,
+        0.0809599980711937,
+        0.07155200093984604,
+        0.08003199845552444,
+        0.06860800087451935
+      ],
+      "extra_peak_torch_allocated_bytes": 1065984,
+      "dispatch_operations": [
+        "aten::_flash_attention_forward",
+        "aten::_scaled_dot_product_flash_attention",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        1,
+        4,
+        1024,
+        128
+      ],
+      "mask": "causal",
+      "dtype": "bf16",
+      "requested_backend": "efficient",
+      "input_sha256": [
+        "4a9a9b07ebc0204d054a511a847a119c81068c3d7b5871a1235caf4e3b4d9e5f",
+        "ecb0dc53c2764a2c7b7d16dfef92133b377f762335a40b19c75d7cd47addb2d8",
+        "15401aa0f1efb725f069eba6e6f7bf49f0d630b8eca2ada3c65d32da998250cf"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.0034902372967551072,
+      "relative_error_vs_rounded_input_fp64": 0.0020270291626159464,
+      "output_sha256": "88d5fe9a22b55eec0a33501cd7bf2ff56f24ab06b8187259d63eb1b0f80c0d80",
+      "timings_ms": [
+        0.12956799566745758,
+        0.11939200013875961,
+        0.1165120005607605,
+        0.11542399972677231,
+        0.11622399836778641
+      ],
+      "extra_peak_torch_allocated_bytes": 1048576,
+      "dispatch_operations": [
+        "aten::_efficient_attention_forward",
+        "aten::_scaled_dot_product_efficient_attention",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        1,
+        4,
+        1024,
+        128
+      ],
+      "mask": "causal",
+      "dtype": "bf16",
+      "requested_backend": "cudnn",
+      "input_sha256": [
+        "4a9a9b07ebc0204d054a511a847a119c81068c3d7b5871a1235caf4e3b4d9e5f",
+        "ecb0dc53c2764a2c7b7d16dfef92133b377f762335a40b19c75d7cd47addb2d8",
+        "15401aa0f1efb725f069eba6e6f7bf49f0d630b8eca2ada3c65d32da998250cf"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.003486496870122259,
+      "relative_error_vs_rounded_input_fp64": 0.0020178214154539724,
+      "output_sha256": "5dee146c10fd223af73f7dd921cacc34cb5349d0aba4103b18d60ebc40d66f7f",
+      "timings_ms": [
+        0.08432000130414963,
+        0.07916799932718277,
+        0.07900799810886383,
+        0.0791039988398552,
+        0.07932800054550171
+      ],
+      "extra_peak_torch_allocated_bytes": 1049600,
+      "dispatch_operations": [
+        "aten::_cudnn_attention_forward",
+        "aten::_scaled_dot_product_cudnn_attention",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        1,
+        4,
+        1024,
+        128
+      ],
+      "mask": "padding",
+      "dtype": "fp32",
+      "requested_backend": "math",
+      "input_sha256": [
+        "4a9a9b07ebc0204d054a511a847a119c81068c3d7b5871a1235caf4e3b4d9e5f",
+        "ecb0dc53c2764a2c7b7d16dfef92133b377f762335a40b19c75d7cd47addb2d8",
+        "15401aa0f1efb725f069eba6e6f7bf49f0d630b8eca2ada3c65d32da998250cf"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 6.345833226523398e-07,
+      "relative_error_vs_rounded_input_fp64": 6.345833226523398e-07,
+      "output_sha256": "47d3cb5d81cb858229b3b0a81fe440c51b68295c523b50fb4b82c33d77de6e40",
+      "timings_ms": [
+        0.4995200037956238,
+        0.4914880096912384,
+        0.48684799671173096,
+        0.48739200830459595,
+        0.4883840084075928
+      ],
+      "extra_peak_torch_allocated_bytes": 44044800,
+      "dispatch_operations": [
+        "aten::_scaled_dot_product_attention_math",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        1,
+        4,
+        1024,
+        128
+      ],
+      "mask": "padding",
+      "dtype": "fp32",
+      "requested_backend": "flash",
+      "input_sha256": [
+        "4a9a9b07ebc0204d054a511a847a119c81068c3d7b5871a1235caf4e3b4d9e5f",
+        "ecb0dc53c2764a2c7b7d16dfef92133b377f762335a40b19c75d7cd47addb2d8",
+        "15401aa0f1efb725f069eba6e6f7bf49f0d630b8eca2ada3c65d32da998250cf"
+      ],
+      "status": "unavailable",
+      "diagnostic": "No available kernel. Aborting execution."
+    },
+    {
+      "shape": [
+        1,
+        4,
+        1024,
+        128
+      ],
+      "mask": "padding",
+      "dtype": "fp32",
+      "requested_backend": "efficient",
+      "input_sha256": [
+        "4a9a9b07ebc0204d054a511a847a119c81068c3d7b5871a1235caf4e3b4d9e5f",
+        "ecb0dc53c2764a2c7b7d16dfef92133b377f762335a40b19c75d7cd47addb2d8",
+        "15401aa0f1efb725f069eba6e6f7bf49f0d630b8eca2ada3c65d32da998250cf"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 2.2424822452907486e-07,
+      "relative_error_vs_rounded_input_fp64": 2.2424822452907486e-07,
+      "output_sha256": "a1e59cbf6504211fcfb28ed7c68a3ea0217a00bf159dd1f0e39a53600d1922bc",
+      "timings_ms": [
+        0.4014720022678375,
+        0.3915199935436249,
+        0.39158400893211365,
+        0.3938559889793396,
+        0.3896639943122864
+      ],
+      "extra_peak_torch_allocated_bytes": 6291456,
+      "dispatch_operations": [
+        "aten::_efficient_attention_forward",
+        "aten::_scaled_dot_product_efficient_attention",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        1,
+        4,
+        1024,
+        128
+      ],
+      "mask": "padding",
+      "dtype": "fp32",
+      "requested_backend": "cudnn",
+      "input_sha256": [
+        "4a9a9b07ebc0204d054a511a847a119c81068c3d7b5871a1235caf4e3b4d9e5f",
+        "ecb0dc53c2764a2c7b7d16dfef92133b377f762335a40b19c75d7cd47addb2d8",
+        "15401aa0f1efb725f069eba6e6f7bf49f0d630b8eca2ada3c65d32da998250cf"
+      ],
+      "status": "unavailable",
+      "diagnostic": "No available kernel. Aborting execution."
+    },
+    {
+      "shape": [
+        1,
+        4,
+        1024,
+        128
+      ],
+      "mask": "padding",
+      "dtype": "fp16",
+      "requested_backend": "math",
+      "input_sha256": [
+        "4a9a9b07ebc0204d054a511a847a119c81068c3d7b5871a1235caf4e3b4d9e5f",
+        "ecb0dc53c2764a2c7b7d16dfef92133b377f762335a40b19c75d7cd47addb2d8",
+        "15401aa0f1efb725f069eba6e6f7bf49f0d630b8eca2ada3c65d32da998250cf"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.00020716360557518587,
+      "relative_error_vs_rounded_input_fp64": 0.00020716360557518587,
+      "output_sha256": "2780631bee17ca6ff20a03153f1b866d772245c41d54080838b0501eb2cb17d8",
+      "timings_ms": [
+        0.5647680163383484,
+        0.5472000241279602,
+        0.5479040145874023,
+        0.5558720231056213,
+        0.5709120035171509
+      ],
+      "extra_peak_torch_allocated_bytes": 48239104,
+      "dispatch_operations": [
+        "aten::_scaled_dot_product_attention_math",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        1,
+        4,
+        1024,
+        128
+      ],
+      "mask": "padding",
+      "dtype": "fp16",
+      "requested_backend": "flash",
+      "input_sha256": [
+        "4a9a9b07ebc0204d054a511a847a119c81068c3d7b5871a1235caf4e3b4d9e5f",
+        "ecb0dc53c2764a2c7b7d16dfef92133b377f762335a40b19c75d7cd47addb2d8",
+        "15401aa0f1efb725f069eba6e6f7bf49f0d630b8eca2ada3c65d32da998250cf"
+      ],
+      "status": "unavailable",
+      "diagnostic": "No available kernel. Aborting execution."
+    },
+    {
+      "shape": [
+        1,
+        4,
+        1024,
+        128
+      ],
+      "mask": "padding",
+      "dtype": "fp16",
+      "requested_backend": "efficient",
+      "input_sha256": [
+        "4a9a9b07ebc0204d054a511a847a119c81068c3d7b5871a1235caf4e3b4d9e5f",
+        "ecb0dc53c2764a2c7b7d16dfef92133b377f762335a40b19c75d7cd47addb2d8",
+        "15401aa0f1efb725f069eba6e6f7bf49f0d630b8eca2ada3c65d32da998250cf"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.000277809722671187,
+      "relative_error_vs_rounded_input_fp64": 0.000277809722671187,
+      "output_sha256": "b9d5654b442e30204ef40b9d18bb8eec7578226d5d9c1d63fe9c811c13b2c635",
+      "timings_ms": [
+        0.1932159960269928,
+        0.18540799617767334,
+        0.1881600022315979,
+        0.18367999792099,
+        0.18454399704933167
+      ],
+      "extra_peak_torch_allocated_bytes": 3145728,
+      "dispatch_operations": [
+        "aten::_efficient_attention_forward",
+        "aten::_scaled_dot_product_efficient_attention",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        1,
+        4,
+        1024,
+        128
+      ],
+      "mask": "padding",
+      "dtype": "fp16",
+      "requested_backend": "cudnn",
+      "input_sha256": [
+        "4a9a9b07ebc0204d054a511a847a119c81068c3d7b5871a1235caf4e3b4d9e5f",
+        "ecb0dc53c2764a2c7b7d16dfef92133b377f762335a40b19c75d7cd47addb2d8",
+        "15401aa0f1efb725f069eba6e6f7bf49f0d630b8eca2ada3c65d32da998250cf"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.00027653300301008256,
+      "relative_error_vs_rounded_input_fp64": 0.00027653300301008256,
+      "output_sha256": "039084a4a679b1d7d064a1c256a6c8d45357e986d9ec0114354b3be8f14997ac",
+      "timings_ms": [
+        0.12300799787044525,
+        0.1056319996714592,
+        0.1042879968881607,
+        0.1027199998497963,
+        0.10342399775981903
+      ],
+      "extra_peak_torch_allocated_bytes": 3146752,
+      "dispatch_operations": [
+        "aten::_cudnn_attention_forward",
+        "aten::_scaled_dot_product_cudnn_attention",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        1,
+        4,
+        1024,
+        128
+      ],
+      "mask": "padding",
+      "dtype": "bf16",
+      "requested_backend": "math",
+      "input_sha256": [
+        "4a9a9b07ebc0204d054a511a847a119c81068c3d7b5871a1235caf4e3b4d9e5f",
+        "ecb0dc53c2764a2c7b7d16dfef92133b377f762335a40b19c75d7cd47addb2d8",
+        "15401aa0f1efb725f069eba6e6f7bf49f0d630b8eca2ada3c65d32da998250cf"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.003525248874534719,
+      "relative_error_vs_rounded_input_fp64": 0.001660797235266499,
+      "output_sha256": "8243c4e31768ef07ebf83860bef0c8794c24256c168259d18ccc59a2db20a74c",
+      "timings_ms": [
+        0.5624319911003113,
+        0.5581759810447693,
+        0.5679680109024048,
+        0.5559999942779541,
+        0.5543360114097595
+      ],
+      "extra_peak_torch_allocated_bytes": 48239104,
+      "dispatch_operations": [
+        "aten::_scaled_dot_product_attention_math",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        1,
+        4,
+        1024,
+        128
+      ],
+      "mask": "padding",
+      "dtype": "bf16",
+      "requested_backend": "flash",
+      "input_sha256": [
+        "4a9a9b07ebc0204d054a511a847a119c81068c3d7b5871a1235caf4e3b4d9e5f",
+        "ecb0dc53c2764a2c7b7d16dfef92133b377f762335a40b19c75d7cd47addb2d8",
+        "15401aa0f1efb725f069eba6e6f7bf49f0d630b8eca2ada3c65d32da998250cf"
+      ],
+      "status": "unavailable",
+      "diagnostic": "No available kernel. Aborting execution."
+    },
+    {
+      "shape": [
+        1,
+        4,
+        1024,
+        128
+      ],
+      "mask": "padding",
+      "dtype": "bf16",
+      "requested_backend": "efficient",
+      "input_sha256": [
+        "4a9a9b07ebc0204d054a511a847a119c81068c3d7b5871a1235caf4e3b4d9e5f",
+        "ecb0dc53c2764a2c7b7d16dfef92133b377f762335a40b19c75d7cd47addb2d8",
+        "15401aa0f1efb725f069eba6e6f7bf49f0d630b8eca2ada3c65d32da998250cf"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.0038285804610050725,
+      "relative_error_vs_rounded_input_fp64": 0.0022241405198454326,
+      "output_sha256": "7e49a7f4079a206cb7e243bfa518452ebc296d408faf1965093c461ee0f4413b",
+      "timings_ms": [
+        0.19699199497699738,
+        0.18559999763965607,
+        0.18412800133228302,
+        0.19494399428367615,
+        0.18451200425624847
+      ],
+      "extra_peak_torch_allocated_bytes": 3145728,
+      "dispatch_operations": [
+        "aten::_efficient_attention_forward",
+        "aten::_scaled_dot_product_efficient_attention",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        1,
+        4,
+        1024,
+        128
+      ],
+      "mask": "padding",
+      "dtype": "bf16",
+      "requested_backend": "cudnn",
+      "input_sha256": [
+        "4a9a9b07ebc0204d054a511a847a119c81068c3d7b5871a1235caf4e3b4d9e5f",
+        "ecb0dc53c2764a2c7b7d16dfef92133b377f762335a40b19c75d7cd47addb2d8",
+        "15401aa0f1efb725f069eba6e6f7bf49f0d630b8eca2ada3c65d32da998250cf"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.0038290387417578985,
+      "relative_error_vs_rounded_input_fp64": 0.0022162924959300057,
+      "output_sha256": "5764f5480c6197998b6ff3bd8d2e58af9f75769d1e1967e35703c86bbb96e07c",
+      "timings_ms": [
+        0.11798399686813354,
+        0.10524799674749374,
+        0.10463999956846237,
+        0.10937599837779999,
+        0.10198400169610977
+      ],
+      "extra_peak_torch_allocated_bytes": 3146752,
+      "dispatch_operations": [
+        "aten::_cudnn_attention_forward",
+        "aten::_scaled_dot_product_cudnn_attention",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        1,
+        2,
+        256,
+        32
+      ],
+      "mask": "none",
+      "dtype": "fp32",
+      "requested_backend": "math",
+      "input_sha256": [
+        "31644fef62c2c44c3473553bb72ecc82119866c660182052a1c2ed800d0b3384",
+        "00db96cf8c52cb4b91e470876adf13acb2466439a007464c943dc2fbf5c7c67a",
+        "1a9d980b8535e371aa9673a02e14a33439678fe9e9e97c805794081d7765d711"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 3.588006877961447e-07,
+      "relative_error_vs_rounded_input_fp64": 3.588006877961447e-07,
+      "output_sha256": "0e06e4289837a15d60bc8e75c3bfd1b1bc100ea29213c0a30762c86e1da6aae2",
+      "timings_ms": [
+        0.15030400454998016,
+        0.14732800424098969,
+        0.14195199310779572,
+        0.1403840035200119,
+        0.14176000654697418
+      ],
+      "extra_peak_torch_allocated_bytes": 1246208,
+      "dispatch_operations": [
+        "aten::_scaled_dot_product_attention_math",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        1,
+        2,
+        256,
+        32
+      ],
+      "mask": "none",
+      "dtype": "fp32",
+      "requested_backend": "flash",
+      "input_sha256": [
+        "31644fef62c2c44c3473553bb72ecc82119866c660182052a1c2ed800d0b3384",
+        "00db96cf8c52cb4b91e470876adf13acb2466439a007464c943dc2fbf5c7c67a",
+        "1a9d980b8535e371aa9673a02e14a33439678fe9e9e97c805794081d7765d711"
+      ],
+      "status": "unavailable",
+      "diagnostic": "No available kernel. Aborting execution."
+    },
+    {
+      "shape": [
+        1,
+        2,
+        256,
+        32
+      ],
+      "mask": "none",
+      "dtype": "fp32",
+      "requested_backend": "efficient",
+      "input_sha256": [
+        "31644fef62c2c44c3473553bb72ecc82119866c660182052a1c2ed800d0b3384",
+        "00db96cf8c52cb4b91e470876adf13acb2466439a007464c943dc2fbf5c7c67a",
+        "1a9d980b8535e371aa9673a02e14a33439678fe9e9e97c805794081d7765d711"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 1.887598970912522e-07,
+      "relative_error_vs_rounded_input_fp64": 1.887598970912522e-07,
+      "output_sha256": "b2ac345a2a81831ff1d526b7a57fa23756264832c8786ec4b9651a23c944dccb",
+      "timings_ms": [
+        0.047648001462221146,
+        0.03776000067591667,
+        0.034623999148607254,
+        0.034432001411914825,
+        0.03311999887228012
+      ],
+      "extra_peak_torch_allocated_bytes": 65536,
+      "dispatch_operations": [
+        "aten::_efficient_attention_forward",
+        "aten::_scaled_dot_product_efficient_attention",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        1,
+        2,
+        256,
+        32
+      ],
+      "mask": "none",
+      "dtype": "fp32",
+      "requested_backend": "cudnn",
+      "input_sha256": [
+        "31644fef62c2c44c3473553bb72ecc82119866c660182052a1c2ed800d0b3384",
+        "00db96cf8c52cb4b91e470876adf13acb2466439a007464c943dc2fbf5c7c67a",
+        "1a9d980b8535e371aa9673a02e14a33439678fe9e9e97c805794081d7765d711"
+      ],
+      "status": "unavailable",
+      "diagnostic": "No available kernel. Aborting execution."
+    },
+    {
+      "shape": [
+        1,
+        2,
+        256,
+        32
+      ],
+      "mask": "none",
+      "dtype": "fp16",
+      "requested_backend": "math",
+      "input_sha256": [
+        "31644fef62c2c44c3473553bb72ecc82119866c660182052a1c2ed800d0b3384",
+        "00db96cf8c52cb4b91e470876adf13acb2466439a007464c943dc2fbf5c7c67a",
+        "1a9d980b8535e371aa9673a02e14a33439678fe9e9e97c805794081d7765d711"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.00020849461759059502,
+      "relative_error_vs_rounded_input_fp64": 0.00020849461759059502,
+      "output_sha256": "61c6ffbe1255f99c262894463ca5f748eaf694c577e51752f791702da4129aef",
+      "timings_ms": [
+        0.1937599927186966,
+        0.18291200697422028,
+        0.18095999956130981,
+        0.1791680008172989,
+        0.18771199882030487
+      ],
+      "extra_peak_torch_allocated_bytes": 1442816,
+      "dispatch_operations": [
+        "aten::_scaled_dot_product_attention_math",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        1,
+        2,
+        256,
+        32
+      ],
+      "mask": "none",
+      "dtype": "fp16",
+      "requested_backend": "flash",
+      "input_sha256": [
+        "31644fef62c2c44c3473553bb72ecc82119866c660182052a1c2ed800d0b3384",
+        "00db96cf8c52cb4b91e470876adf13acb2466439a007464c943dc2fbf5c7c67a",
+        "1a9d980b8535e371aa9673a02e14a33439678fe9e9e97c805794081d7765d711"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.0002780271721178499,
+      "relative_error_vs_rounded_input_fp64": 0.0002780271721178499,
+      "output_sha256": "b9a844e0912dd579c6ee22cd31099efa68845f52ece9a0a3ec2955ca2e7133d2",
+      "timings_ms": [
+        0.05315199866890907,
+        0.032255999743938446,
+        0.029888000339269638,
+        0.02908799983561039,
+        0.028991999104619026
+      ],
+      "extra_peak_torch_allocated_bytes": 35840,
+      "dispatch_operations": [
+        "aten::_flash_attention_forward",
+        "aten::_scaled_dot_product_flash_attention",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        1,
+        2,
+        256,
+        32
+      ],
+      "mask": "none",
+      "dtype": "fp16",
+      "requested_backend": "efficient",
+      "input_sha256": [
+        "31644fef62c2c44c3473553bb72ecc82119866c660182052a1c2ed800d0b3384",
+        "00db96cf8c52cb4b91e470876adf13acb2466439a007464c943dc2fbf5c7c67a",
+        "1a9d980b8535e371aa9673a02e14a33439678fe9e9e97c805794081d7765d711"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.00027722784567698613,
+      "relative_error_vs_rounded_input_fp64": 0.00027722784567698613,
+      "output_sha256": "df5fc936cde7bcc59c36d00ce6f9baa54c511179bc6baf78343ae7802e918e43",
+      "timings_ms": [
+        0.030432000756263733,
+        0.026944000273942947,
+        0.025087999179959297,
+        0.023840000852942467,
+        0.02271999977529049
+      ],
+      "extra_peak_torch_allocated_bytes": 32768,
+      "dispatch_operations": [
+        "aten::_efficient_attention_forward",
+        "aten::_scaled_dot_product_efficient_attention",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        1,
+        2,
+        256,
+        32
+      ],
+      "mask": "none",
+      "dtype": "fp16",
+      "requested_backend": "cudnn",
+      "input_sha256": [
+        "31644fef62c2c44c3473553bb72ecc82119866c660182052a1c2ed800d0b3384",
+        "00db96cf8c52cb4b91e470876adf13acb2466439a007464c943dc2fbf5c7c67a",
+        "1a9d980b8535e371aa9673a02e14a33439678fe9e9e97c805794081d7765d711"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.00027724405246257975,
+      "relative_error_vs_rounded_input_fp64": 0.00027724405246257975,
+      "output_sha256": "07403e827c039fe448075086279082d3b7b5ba7a89476ee39c9ab20a4cb43865",
+      "timings_ms": [
+        0.05728000029921532,
+        0.03596799820661545,
+        0.03392000123858452,
+        0.03215999901294708,
+        0.032127998769283295
+      ],
+      "extra_peak_torch_allocated_bytes": 33792,
+      "dispatch_operations": [
+        "aten::_cudnn_attention_forward",
+        "aten::_scaled_dot_product_cudnn_attention",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        1,
+        2,
+        256,
+        32
+      ],
+      "mask": "none",
+      "dtype": "bf16",
+      "requested_backend": "math",
+      "input_sha256": [
+        "31644fef62c2c44c3473553bb72ecc82119866c660182052a1c2ed800d0b3384",
+        "00db96cf8c52cb4b91e470876adf13acb2466439a007464c943dc2fbf5c7c67a",
+        "1a9d980b8535e371aa9673a02e14a33439678fe9e9e97c805794081d7765d711"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.0036706656096792667,
+      "relative_error_vs_rounded_input_fp64": 0.0016525073321638987,
+      "output_sha256": "3ab2a14414b352da2b1c8f1d57f424db873ca35071f903e6b8dd7da43e74e5f0",
+      "timings_ms": [
+        0.19171200692653656,
+        0.18611200153827667,
+        0.18217599391937256,
+        0.18115200102329254,
+        0.19708800315856934
+      ],
+      "extra_peak_torch_allocated_bytes": 1442816,
+      "dispatch_operations": [
+        "aten::_scaled_dot_product_attention_math",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        1,
+        2,
+        256,
+        32
+      ],
+      "mask": "none",
+      "dtype": "bf16",
+      "requested_backend": "flash",
+      "input_sha256": [
+        "31644fef62c2c44c3473553bb72ecc82119866c660182052a1c2ed800d0b3384",
+        "00db96cf8c52cb4b91e470876adf13acb2466439a007464c943dc2fbf5c7c67a",
+        "1a9d980b8535e371aa9673a02e14a33439678fe9e9e97c805794081d7765d711"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.003956929207866509,
+      "relative_error_vs_rounded_input_fp64": 0.0021858396180908395,
+      "output_sha256": "ac53f44873789c5023bdb03e3399db2643d7996ed787ca8843cb8cff0a4c9820",
+      "timings_ms": [
+        0.03779200091958046,
+        0.03033600002527237,
+        0.029184000566601753,
+        0.028511999174952507,
+        0.027936000376939774
+      ],
+      "extra_peak_torch_allocated_bytes": 35840,
+      "dispatch_operations": [
+        "aten::_flash_attention_forward",
+        "aten::_scaled_dot_product_flash_attention",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        1,
+        2,
+        256,
+        32
+      ],
+      "mask": "none",
+      "dtype": "bf16",
+      "requested_backend": "efficient",
+      "input_sha256": [
+        "31644fef62c2c44c3473553bb72ecc82119866c660182052a1c2ed800d0b3384",
+        "00db96cf8c52cb4b91e470876adf13acb2466439a007464c943dc2fbf5c7c67a",
+        "1a9d980b8535e371aa9673a02e14a33439678fe9e9e97c805794081d7765d711"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.003945775442299281,
+      "relative_error_vs_rounded_input_fp64": 0.002185517772440745,
+      "output_sha256": "213573535579cc4c3a8b314b812f3c0dafa9a3b05d4900da623b5e051b83a8a2",
+      "timings_ms": [
+        0.043136000633239746,
+        0.025760000571608543,
+        0.024607999250292778,
+        0.02473600022494793,
+        0.024960000067949295
+      ],
+      "extra_peak_torch_allocated_bytes": 32768,
+      "dispatch_operations": [
+        "aten::_efficient_attention_forward",
+        "aten::_scaled_dot_product_efficient_attention",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        1,
+        2,
+        256,
+        32
+      ],
+      "mask": "none",
+      "dtype": "bf16",
+      "requested_backend": "cudnn",
+      "input_sha256": [
+        "31644fef62c2c44c3473553bb72ecc82119866c660182052a1c2ed800d0b3384",
+        "00db96cf8c52cb4b91e470876adf13acb2466439a007464c943dc2fbf5c7c67a",
+        "1a9d980b8535e371aa9673a02e14a33439678fe9e9e97c805794081d7765d711"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.003945653914919053,
+      "relative_error_vs_rounded_input_fp64": 0.002185334885832875,
+      "output_sha256": "65b24d06c78c1754aad7f1f33b25ee4f101fea7f0e087c4a42bc732b0e6ab04c",
+      "timings_ms": [
+        0.053279999643564224,
+        0.03683200106024742,
+        0.034143999218940735,
+        0.03315199911594391,
+        0.03311999887228012
+      ],
+      "extra_peak_torch_allocated_bytes": 33792,
+      "dispatch_operations": [
+        "aten::_cudnn_attention_forward",
+        "aten::_scaled_dot_product_cudnn_attention",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        1,
+        2,
+        256,
+        32
+      ],
+      "mask": "causal",
+      "dtype": "fp32",
+      "requested_backend": "math",
+      "input_sha256": [
+        "31644fef62c2c44c3473553bb72ecc82119866c660182052a1c2ed800d0b3384",
+        "00db96cf8c52cb4b91e470876adf13acb2466439a007464c943dc2fbf5c7c67a",
+        "1a9d980b8535e371aa9673a02e14a33439678fe9e9e97c805794081d7765d711"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 2.0174252103958414e-07,
+      "relative_error_vs_rounded_input_fp64": 2.0174252103958414e-07,
+      "output_sha256": "b75924a12b3931ce2e03d25aa95fa2d3c8b6c4ee3e485b7fb66eca89833d675c",
+      "timings_ms": [
+        0.21478399634361267,
+        0.1863359957933426,
+        0.1855040043592453,
+        0.1804800033569336,
+        0.18025599420070648
+      ],
+      "extra_peak_torch_allocated_bytes": 1508352,
+      "dispatch_operations": [
+        "aten::_scaled_dot_product_attention_math",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        1,
+        2,
+        256,
+        32
+      ],
+      "mask": "causal",
+      "dtype": "fp32",
+      "requested_backend": "flash",
+      "input_sha256": [
+        "31644fef62c2c44c3473553bb72ecc82119866c660182052a1c2ed800d0b3384",
+        "00db96cf8c52cb4b91e470876adf13acb2466439a007464c943dc2fbf5c7c67a",
+        "1a9d980b8535e371aa9673a02e14a33439678fe9e9e97c805794081d7765d711"
+      ],
+      "status": "unavailable",
+      "diagnostic": "No available kernel. Aborting execution."
+    },
+    {
+      "shape": [
+        1,
+        2,
+        256,
+        32
+      ],
+      "mask": "causal",
+      "dtype": "fp32",
+      "requested_backend": "efficient",
+      "input_sha256": [
+        "31644fef62c2c44c3473553bb72ecc82119866c660182052a1c2ed800d0b3384",
+        "00db96cf8c52cb4b91e470876adf13acb2466439a007464c943dc2fbf5c7c67a",
+        "1a9d980b8535e371aa9673a02e14a33439678fe9e9e97c805794081d7765d711"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 1.3947846106526596e-07,
+      "relative_error_vs_rounded_input_fp64": 1.3947846106526596e-07,
+      "output_sha256": "2908fe4810b579a2c264037673d8f130444fbb9731ee010eda33a34940ccf50e",
+      "timings_ms": [
+        0.0480320006608963,
+        0.035071998834609985,
+        0.033984001725912094,
+        0.03577600046992302,
+        0.03340800106525421
+      ],
+      "extra_peak_torch_allocated_bytes": 65536,
+      "dispatch_operations": [
+        "aten::_efficient_attention_forward",
+        "aten::_scaled_dot_product_efficient_attention",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        1,
+        2,
+        256,
+        32
+      ],
+      "mask": "causal",
+      "dtype": "fp32",
+      "requested_backend": "cudnn",
+      "input_sha256": [
+        "31644fef62c2c44c3473553bb72ecc82119866c660182052a1c2ed800d0b3384",
+        "00db96cf8c52cb4b91e470876adf13acb2466439a007464c943dc2fbf5c7c67a",
+        "1a9d980b8535e371aa9673a02e14a33439678fe9e9e97c805794081d7765d711"
+      ],
+      "status": "unavailable",
+      "diagnostic": "No available kernel. Aborting execution."
+    },
+    {
+      "shape": [
+        1,
+        2,
+        256,
+        32
+      ],
+      "mask": "causal",
+      "dtype": "fp16",
+      "requested_backend": "math",
+      "input_sha256": [
+        "31644fef62c2c44c3473553bb72ecc82119866c660182052a1c2ed800d0b3384",
+        "00db96cf8c52cb4b91e470876adf13acb2466439a007464c943dc2fbf5c7c67a",
+        "1a9d980b8535e371aa9673a02e14a33439678fe9e9e97c805794081d7765d711"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.00020122514727975507,
+      "relative_error_vs_rounded_input_fp64": 0.00020122514727975507,
+      "output_sha256": "2d357a144c511ad4ed4e2063b8b1d97743bd644b2ff75d5875ebc3703bf73141",
+      "timings_ms": [
+        0.2349119931459427,
+        0.23014399409294128,
+        0.23049600422382355,
+        0.22601599991321564,
+        0.23497599363327026
+      ],
+      "extra_peak_torch_allocated_bytes": 1704960,
+      "dispatch_operations": [
+        "aten::_scaled_dot_product_attention_math",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        1,
+        2,
+        256,
+        32
+      ],
+      "mask": "causal",
+      "dtype": "fp16",
+      "requested_backend": "flash",
+      "input_sha256": [
+        "31644fef62c2c44c3473553bb72ecc82119866c660182052a1c2ed800d0b3384",
+        "00db96cf8c52cb4b91e470876adf13acb2466439a007464c943dc2fbf5c7c67a",
+        "1a9d980b8535e371aa9673a02e14a33439678fe9e9e97c805794081d7765d711"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.000246785715225785,
+      "relative_error_vs_rounded_input_fp64": 0.000246785715225785,
+      "output_sha256": "c03bcbbade8cb1ff62072a00d0337b383f010577c6e37266296a615161751501",
+      "timings_ms": [
+        0.037248000502586365,
+        0.02969600073993206,
+        0.04979199916124344,
+        0.031328000128269196,
+        0.02831999957561493
+      ],
+      "extra_peak_torch_allocated_bytes": 35840,
+      "dispatch_operations": [
+        "aten::_flash_attention_forward",
+        "aten::_scaled_dot_product_flash_attention",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        1,
+        2,
+        256,
+        32
+      ],
+      "mask": "causal",
+      "dtype": "fp16",
+      "requested_backend": "efficient",
+      "input_sha256": [
+        "31644fef62c2c44c3473553bb72ecc82119866c660182052a1c2ed800d0b3384",
+        "00db96cf8c52cb4b91e470876adf13acb2466439a007464c943dc2fbf5c7c67a",
+        "1a9d980b8535e371aa9673a02e14a33439678fe9e9e97c805794081d7765d711"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.0002458762299961113,
+      "relative_error_vs_rounded_input_fp64": 0.0002458762299961113,
+      "output_sha256": "de362108a8949d8bf8b55f5f09ff56f1641d616a3e272027cbafabcf807dce2f",
+      "timings_ms": [
+        0.03372799977660179,
+        0.02796800062060356,
+        0.027168000116944313,
+        0.02630399912595749,
+        0.02703999914228916
+      ],
+      "extra_peak_torch_allocated_bytes": 32768,
+      "dispatch_operations": [
+        "aten::_efficient_attention_forward",
+        "aten::_scaled_dot_product_efficient_attention",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        1,
+        2,
+        256,
+        32
+      ],
+      "mask": "causal",
+      "dtype": "fp16",
+      "requested_backend": "cudnn",
+      "input_sha256": [
+        "31644fef62c2c44c3473553bb72ecc82119866c660182052a1c2ed800d0b3384",
+        "00db96cf8c52cb4b91e470876adf13acb2466439a007464c943dc2fbf5c7c67a",
+        "1a9d980b8535e371aa9673a02e14a33439678fe9e9e97c805794081d7765d711"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.00024587330338721246,
+      "relative_error_vs_rounded_input_fp64": 0.00024587330338721246,
+      "output_sha256": "c1e5b35aa6313b865374783e1a7892269fd502057f1d4c7bc96836c2e98dc2b5",
+      "timings_ms": [
+        0.08156800270080566,
+        0.03718400001525879,
+        0.03452799841761589,
+        0.033440001308918,
+        0.03283200040459633
+      ],
+      "extra_peak_torch_allocated_bytes": 33792,
+      "dispatch_operations": [
+        "aten::_cudnn_attention_forward",
+        "aten::_scaled_dot_product_cudnn_attention",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        1,
+        2,
+        256,
+        32
+      ],
+      "mask": "causal",
+      "dtype": "bf16",
+      "requested_backend": "math",
+      "input_sha256": [
+        "31644fef62c2c44c3473553bb72ecc82119866c660182052a1c2ed800d0b3384",
+        "00db96cf8c52cb4b91e470876adf13acb2466439a007464c943dc2fbf5c7c67a",
+        "1a9d980b8535e371aa9673a02e14a33439678fe9e9e97c805794081d7765d711"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.003245399055085918,
+      "relative_error_vs_rounded_input_fp64": 0.0016006737708685803,
+      "output_sha256": "9297c2dd80feb6468f502eddc94d8eb3d3ebaddbb0904ec296fd694bfdb64d59",
+      "timings_ms": [
+        0.2502079904079437,
+        0.22329600155353546,
+        0.22537599503993988,
+        0.22524799406528473,
+        0.24028800427913666
+      ],
+      "extra_peak_torch_allocated_bytes": 1704960,
+      "dispatch_operations": [
+        "aten::_scaled_dot_product_attention_math",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        1,
+        2,
+        256,
+        32
+      ],
+      "mask": "causal",
+      "dtype": "bf16",
+      "requested_backend": "flash",
+      "input_sha256": [
+        "31644fef62c2c44c3473553bb72ecc82119866c660182052a1c2ed800d0b3384",
+        "00db96cf8c52cb4b91e470876adf13acb2466439a007464c943dc2fbf5c7c67a",
+        "1a9d980b8535e371aa9673a02e14a33439678fe9e9e97c805794081d7765d711"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.0034092357074229774,
+      "relative_error_vs_rounded_input_fp64": 0.0019400857816233587,
+      "output_sha256": "170cd8ff8f0cb356d863c4bfc2a242162e831580c6255044a429697b713fe2fa",
+      "timings_ms": [
+        0.03920000046491623,
+        0.03155200183391571,
+        0.028863999992609024,
+        0.027744000777602196,
+        0.028095999732613564
+      ],
+      "extra_peak_torch_allocated_bytes": 35840,
+      "dispatch_operations": [
+        "aten::_flash_attention_forward",
+        "aten::_scaled_dot_product_flash_attention",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        1,
+        2,
+        256,
+        32
+      ],
+      "mask": "causal",
+      "dtype": "bf16",
+      "requested_backend": "efficient",
+      "input_sha256": [
+        "31644fef62c2c44c3473553bb72ecc82119866c660182052a1c2ed800d0b3384",
+        "00db96cf8c52cb4b91e470876adf13acb2466439a007464c943dc2fbf5c7c67a",
+        "1a9d980b8535e371aa9673a02e14a33439678fe9e9e97c805794081d7765d711"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.00339961232107434,
+      "relative_error_vs_rounded_input_fp64": 0.0019302755779466905,
+      "output_sha256": "f55628b008fd9e9e3ce1e28722ab38ffa1c03e046a934c30feeba0422a6637b2",
+      "timings_ms": [
+        0.03753599897027016,
+        0.025760000571608543,
+        0.02239999920129776,
+        0.021663999184966087,
+        0.023264000192284584
+      ],
+      "extra_peak_torch_allocated_bytes": 32768,
+      "dispatch_operations": [
+        "aten::_efficient_attention_forward",
+        "aten::_scaled_dot_product_efficient_attention",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        1,
+        2,
+        256,
+        32
+      ],
+      "mask": "causal",
+      "dtype": "bf16",
+      "requested_backend": "cudnn",
+      "input_sha256": [
+        "31644fef62c2c44c3473553bb72ecc82119866c660182052a1c2ed800d0b3384",
+        "00db96cf8c52cb4b91e470876adf13acb2466439a007464c943dc2fbf5c7c67a",
+        "1a9d980b8535e371aa9673a02e14a33439678fe9e9e97c805794081d7765d711"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.00339961232107434,
+      "relative_error_vs_rounded_input_fp64": 0.0019302755779466905,
+      "output_sha256": "f55628b008fd9e9e3ce1e28722ab38ffa1c03e046a934c30feeba0422a6637b2",
+      "timings_ms": [
+        0.04732799902558327,
+        0.03577600046992302,
+        0.03478400036692619,
+        0.033215999603271484,
+        0.035232000052928925
+      ],
+      "extra_peak_torch_allocated_bytes": 33792,
+      "dispatch_operations": [
+        "aten::_cudnn_attention_forward",
+        "aten::_scaled_dot_product_cudnn_attention",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        1,
+        2,
+        256,
+        32
+      ],
+      "mask": "padding",
+      "dtype": "fp32",
+      "requested_backend": "math",
+      "input_sha256": [
+        "31644fef62c2c44c3473553bb72ecc82119866c660182052a1c2ed800d0b3384",
+        "00db96cf8c52cb4b91e470876adf13acb2466439a007464c943dc2fbf5c7c67a",
+        "1a9d980b8535e371aa9673a02e14a33439678fe9e9e97c805794081d7765d711"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 3.276316184251983e-07,
+      "relative_error_vs_rounded_input_fp64": 3.276316184251983e-07,
+      "output_sha256": "0868dafb19f89c6b2141806efdb1ed439e260f17d68ff5f31f772515086da4b2",
+      "timings_ms": [
+        0.18214400112628937,
+        0.174112007021904,
+        0.19100800156593323,
+        0.16969600319862366,
+        0.17110399901866913
+      ],
+      "extra_peak_torch_allocated_bytes": 1508352,
+      "dispatch_operations": [
+        "aten::_scaled_dot_product_attention_math",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        1,
+        2,
+        256,
+        32
+      ],
+      "mask": "padding",
+      "dtype": "fp32",
+      "requested_backend": "flash",
+      "input_sha256": [
+        "31644fef62c2c44c3473553bb72ecc82119866c660182052a1c2ed800d0b3384",
+        "00db96cf8c52cb4b91e470876adf13acb2466439a007464c943dc2fbf5c7c67a",
+        "1a9d980b8535e371aa9673a02e14a33439678fe9e9e97c805794081d7765d711"
+      ],
+      "status": "unavailable",
+      "diagnostic": "No available kernel. Aborting execution."
+    },
+    {
+      "shape": [
+        1,
+        2,
+        256,
+        32
+      ],
+      "mask": "padding",
+      "dtype": "fp32",
+      "requested_backend": "efficient",
+      "input_sha256": [
+        "31644fef62c2c44c3473553bb72ecc82119866c660182052a1c2ed800d0b3384",
+        "00db96cf8c52cb4b91e470876adf13acb2466439a007464c943dc2fbf5c7c67a",
+        "1a9d980b8535e371aa9673a02e14a33439678fe9e9e97c805794081d7765d711"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 1.8505033643503486e-07,
+      "relative_error_vs_rounded_input_fp64": 1.8505033643503486e-07,
+      "output_sha256": "1eea0d1d8a38280432c2ba48d48d42577e4372ade543252d1563c6930379a647",
+      "timings_ms": [
+        0.07052800059318542,
+        0.06390400230884552,
+        0.0623680017888546,
+        0.06828799843788147,
+        0.0623680017888546
+      ],
+      "extra_peak_torch_allocated_bytes": 327680,
+      "dispatch_operations": [
+        "aten::_efficient_attention_forward",
+        "aten::_scaled_dot_product_efficient_attention",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        1,
+        2,
+        256,
+        32
+      ],
+      "mask": "padding",
+      "dtype": "fp32",
+      "requested_backend": "cudnn",
+      "input_sha256": [
+        "31644fef62c2c44c3473553bb72ecc82119866c660182052a1c2ed800d0b3384",
+        "00db96cf8c52cb4b91e470876adf13acb2466439a007464c943dc2fbf5c7c67a",
+        "1a9d980b8535e371aa9673a02e14a33439678fe9e9e97c805794081d7765d711"
+      ],
+      "status": "unavailable",
+      "diagnostic": "No available kernel. Aborting execution."
+    },
+    {
+      "shape": [
+        1,
+        2,
+        256,
+        32
+      ],
+      "mask": "padding",
+      "dtype": "fp16",
+      "requested_backend": "math",
+      "input_sha256": [
+        "31644fef62c2c44c3473553bb72ecc82119866c660182052a1c2ed800d0b3384",
+        "00db96cf8c52cb4b91e470876adf13acb2466439a007464c943dc2fbf5c7c67a",
+        "1a9d980b8535e371aa9673a02e14a33439678fe9e9e97c805794081d7765d711"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.00020960869908423016,
+      "relative_error_vs_rounded_input_fp64": 0.00020960869908423016,
+      "output_sha256": "8472bfc68ea46cc386b7ef29c0017412207041db6919dce0f78c4a7dbe8af35c",
+      "timings_ms": [
+        0.22179199755191803,
+        0.21190400421619415,
+        0.2157759964466095,
+        0.2300799936056137,
+        0.21059200167655945
+      ],
+      "extra_peak_torch_allocated_bytes": 1573888,
+      "dispatch_operations": [
+        "aten::_scaled_dot_product_attention_math",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        1,
+        2,
+        256,
+        32
+      ],
+      "mask": "padding",
+      "dtype": "fp16",
+      "requested_backend": "flash",
+      "input_sha256": [
+        "31644fef62c2c44c3473553bb72ecc82119866c660182052a1c2ed800d0b3384",
+        "00db96cf8c52cb4b91e470876adf13acb2466439a007464c943dc2fbf5c7c67a",
+        "1a9d980b8535e371aa9673a02e14a33439678fe9e9e97c805794081d7765d711"
+      ],
+      "status": "unavailable",
+      "diagnostic": "No available kernel. Aborting execution."
+    },
+    {
+      "shape": [
+        1,
+        2,
+        256,
+        32
+      ],
+      "mask": "padding",
+      "dtype": "fp16",
+      "requested_backend": "efficient",
+      "input_sha256": [
+        "31644fef62c2c44c3473553bb72ecc82119866c660182052a1c2ed800d0b3384",
+        "00db96cf8c52cb4b91e470876adf13acb2466439a007464c943dc2fbf5c7c67a",
+        "1a9d980b8535e371aa9673a02e14a33439678fe9e9e97c805794081d7765d711"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.0002743998181986508,
+      "relative_error_vs_rounded_input_fp64": 0.0002743998181986508,
+      "output_sha256": "c3c16e185127962e1f69b366376bc26573a8c4f722dc9492104c5893a2ae06f8",
+      "timings_ms": [
+        0.06595200300216675,
+        0.05862399935722351,
+        0.05766399949789047,
+        0.05878400057554245,
+        0.057631999254226685
+      ],
+      "extra_peak_torch_allocated_bytes": 163840,
+      "dispatch_operations": [
+        "aten::_efficient_attention_forward",
+        "aten::_scaled_dot_product_efficient_attention",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        1,
+        2,
+        256,
+        32
+      ],
+      "mask": "padding",
+      "dtype": "fp16",
+      "requested_backend": "cudnn",
+      "input_sha256": [
+        "31644fef62c2c44c3473553bb72ecc82119866c660182052a1c2ed800d0b3384",
+        "00db96cf8c52cb4b91e470876adf13acb2466439a007464c943dc2fbf5c7c67a",
+        "1a9d980b8535e371aa9673a02e14a33439678fe9e9e97c805794081d7765d711"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.0002743884637193511,
+      "relative_error_vs_rounded_input_fp64": 0.0002743884637193511,
+      "output_sha256": "f09be02e63f17499ecd990369831bf2cae2c4d9825ec65bf9b31e8ceb4c55ba2",
+      "timings_ms": [
+        0.07769600301980972,
+        0.06604799628257751,
+        0.06275200098752975,
+        0.061824001371860504,
+        0.0708480030298233
+      ],
+      "extra_peak_torch_allocated_bytes": 164864,
+      "dispatch_operations": [
+        "aten::_cudnn_attention_forward",
+        "aten::_scaled_dot_product_cudnn_attention",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        1,
+        2,
+        256,
+        32
+      ],
+      "mask": "padding",
+      "dtype": "bf16",
+      "requested_backend": "math",
+      "input_sha256": [
+        "31644fef62c2c44c3473553bb72ecc82119866c660182052a1c2ed800d0b3384",
+        "00db96cf8c52cb4b91e470876adf13acb2466439a007464c943dc2fbf5c7c67a",
+        "1a9d980b8535e371aa9673a02e14a33439678fe9e9e97c805794081d7765d711"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.0037022204778832993,
+      "relative_error_vs_rounded_input_fp64": 0.0016565320977842525,
+      "output_sha256": "745713d01a63c8fabc8482c2a2ee819d71bb2a7d12b1b5d964e8ebf855cf7523",
+      "timings_ms": [
+        0.23212799429893494,
+        0.21660800278186798,
+        0.21033599972724915,
+        0.21027199923992157,
+        0.2165759950876236
+      ],
+      "extra_peak_torch_allocated_bytes": 1573888,
+      "dispatch_operations": [
+        "aten::_scaled_dot_product_attention_math",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        1,
+        2,
+        256,
+        32
+      ],
+      "mask": "padding",
+      "dtype": "bf16",
+      "requested_backend": "flash",
+      "input_sha256": [
+        "31644fef62c2c44c3473553bb72ecc82119866c660182052a1c2ed800d0b3384",
+        "00db96cf8c52cb4b91e470876adf13acb2466439a007464c943dc2fbf5c7c67a",
+        "1a9d980b8535e371aa9673a02e14a33439678fe9e9e97c805794081d7765d711"
+      ],
+      "status": "unavailable",
+      "diagnostic": "No available kernel. Aborting execution."
+    },
+    {
+      "shape": [
+        1,
+        2,
+        256,
+        32
+      ],
+      "mask": "padding",
+      "dtype": "bf16",
+      "requested_backend": "efficient",
+      "input_sha256": [
+        "31644fef62c2c44c3473553bb72ecc82119866c660182052a1c2ed800d0b3384",
+        "00db96cf8c52cb4b91e470876adf13acb2466439a007464c943dc2fbf5c7c67a",
+        "1a9d980b8535e371aa9673a02e14a33439678fe9e9e97c805794081d7765d711"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.003954418117693912,
+      "relative_error_vs_rounded_input_fp64": 0.0021745282142852655,
+      "output_sha256": "96274b5c7030b5995140731b578743012c54cb41de3e8898f62948b1ac364564",
+      "timings_ms": [
+        0.06499200314283371,
+        0.06035200133919716,
+        0.059007998555898666,
+        0.05766399949789047,
+        0.058079998940229416
+      ],
+      "extra_peak_torch_allocated_bytes": 163840,
+      "dispatch_operations": [
+        "aten::_efficient_attention_forward",
+        "aten::_scaled_dot_product_efficient_attention",
+        "aten::scaled_dot_product_attention"
+      ]
+    },
+    {
+      "shape": [
+        1,
+        2,
+        256,
+        32
+      ],
+      "mask": "padding",
+      "dtype": "bf16",
+      "requested_backend": "cudnn",
+      "input_sha256": [
+        "31644fef62c2c44c3473553bb72ecc82119866c660182052a1c2ed800d0b3384",
+        "00db96cf8c52cb4b91e470876adf13acb2466439a007464c943dc2fbf5c7c67a",
+        "1a9d980b8535e371aa9673a02e14a33439678fe9e9e97c805794081d7765d711"
+      ],
+      "status": "available",
+      "warnings": [],
+      "relative_error_vs_original_fp64": 0.003954418117693912,
+      "relative_error_vs_rounded_input_fp64": 0.0021745282142852655,
+      "output_sha256": "96274b5c7030b5995140731b578743012c54cb41de3e8898f62948b1ac364564",
+      "timings_ms": [
+        0.07692799717187881,
+        0.06646399945020676,
+        0.06515199691057205,
+        0.06207999959588051,
+        0.06188800185918808
+      ],
+      "extra_peak_torch_allocated_bytes": 164864,
+      "dispatch_operations": [
+        "aten::_cudnn_attention_forward",
+        "aten::_scaled_dot_product_cudnn_attention",
+        "aten::scaled_dot_product_attention"
+      ]
+    }
+  ],
+  "complete": true
+}

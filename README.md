@@ -2,7 +2,7 @@
 
 A research project by [Requant Network](https://requant.network).
 
-**Status: studies 1 (format efficiency/prediction), 2 (outlier correction), 3 (fusion), 4 (native configuration) and 6 (high-precision reconstruction) complete within their declared protocols; the full fifteen-study program is active.**
+**Status: studies 1-6 complete within their declared protocols; the full fifteen-study program is active. Studies 7-15 remain pending.**
 
 Reproducible experiments on **NVIDIA RTX 5060 Ti 16 GB / SM120** asking when
 FP4 is useful after quantization cost, operand reuse and numerical error are
@@ -49,6 +49,7 @@ scope; its host-request results are distinct from the original repeated-graph pi
 - [FP4 column/block/residual correction at fixed error and fixed time](OUTLIER_REPORT.md)
 - [INT8 component reconstruction versus native and emulated FP64](PRECISION_REPORT.md)
 - [Held-out error prediction, its budget violation and complete selection costs](SELECTOR_REPORT.md)
+- [Mixed-precision attention, fused FP4/SDPA references and complete model quality](ATTENTION_REPORT.md)
 - [Research questions and follow-up gates](RESEARCH.md)
 - [Arithmetic, independent validation and timing methods](METHODS.md)
 - [Derived results](RESULTS.md) and [complete CSV](results/summary.csv)
@@ -80,6 +81,11 @@ python verify_precision.py
 python summarize_precision.py --check
 python verify_selector.py
 python summarize_selector.py --check
+python verify_attention_models.py
+python verify_attention.py
+python verify_sage_attention.py
+python verify_attention_application.py
+python summarize_attention.py --check
 ```
 
 CPU CI performs these checks. It cannot rerun GPU performance or recover the
@@ -181,6 +187,14 @@ witnesses check finite FP32-input products. Preparation and complete host costs
 are retained; custom reconstruction does not uniformly beat library emulation.
 Build with `bash build_precision.sh` and run `precision_study.py` with independent
 seed/model pairs and separate output paths, as documented in the report.
+
+The [attention study](ATTENTION_REPORT.md) compares 1,512 native/fused attention
+configurations and 138 complete transformer configurations across two cohorts.
+It includes independent QK/PV formats, masks, irregular sizes, preparation/transfer
+costs, explicit memory boundaries, FlashAttention/efficient/cuDNN and pinned fused
+SageAttention3 FP4 controls. Both real-model cohorts retain complete quality arrays.
+Native FP8 probability errors depend on the specified unit scaling; the report
+does not present them as a format-wide accuracy limit or an optimal kernel result.
 
 ## License
 

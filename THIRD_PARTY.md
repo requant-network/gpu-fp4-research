@@ -21,3 +21,11 @@ repository code is MIT licensed unless an individual file carries another notice
 The real-data digits fixture is separately attributed and licensed under CC BY 4.0;
 see [dataset provenance](fixtures/DATA.md). Its dataset license is distinct from
 the original code license.
+
+The attention study calls the external Apache-2.0-licensed
+[SageAttention3 implementation at its experiment pin](https://github.com/thu-ml/SageAttention/tree/d1a57a546c3d395b1ffcbeecc66d81db76f3b4b5/sageattention3_blackwell).
+The build uses the unchanged upstream source and a pinned external CUTLASS checkout;
+neither source tree nor compiled wheel is vendored here. Its applicable notices
+remain in the external checkout and package. The project-local wrapper, records
+and CPU replay code are original repository code. PyTorch, Triton and cuDNN retain
+their respective licenses.
