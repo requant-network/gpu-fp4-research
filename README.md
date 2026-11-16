@@ -2,7 +2,7 @@
 
 A research project by [Requant Network](https://requant.network).
 
-**Status: initial pilot, encoder/fusion/tile study and real-classifier/framework comparison complete; the full fifteen-study program is active.**
+**Status: pilot, encoder/fusion/tile, real-classifier/framework and native-conversion experiments complete; the full fifteen-study program is active.**
 
 Reproducible experiments on **NVIDIA RTX 5060 Ti 16 GB / SM120** asking when
 FP4 is useful after quantization cost, operand reuse and numerical error are
@@ -43,6 +43,7 @@ scope; its host-request results are distinct from the original repeated-graph pi
 - [All fifteen investigations and completion requirements](PROGRAM.md)
 - [Cooperative encoder, fusion, tile and held-out rule results](ENCODER_REPORT.md)
 - [Real classifier, cuBLASLt FP4 and PyTorch/CUDA-Graph references](APPLICATION_REPORT.md)
+- [Native FP4 conversion, vector loads, emitted instructions and resources](HARDWARE_REPORT.md)
 - [Research questions and follow-up gates](RESEARCH.md)
 - [Arithmetic, independent validation and timing methods](METHODS.md)
 - [Derived results](RESULTS.md) and [complete CSV](results/summary.csv)
@@ -64,6 +65,8 @@ python verify_followups.py
 python summarize_followups.py --check
 python verify_application.py
 python summarize_application.py --check
+python verify_hardware.py
+python summarize_hardware.py --check
 ```
 
 CPU CI performs these checks. It cannot rerun GPU performance or recover the
@@ -142,6 +145,13 @@ complete request costs. Remaining work includes outlier correction, per-operatio
 error constraints and direct loading/pipeline/resource characterization. Native
 Tensor Core paths are measured implementations, not an established architectural
 ceiling. The [program ledger](PROGRAM.md) preserves all other investigations.
+
+The additive native-conversion experiment contains 680 configurations and 102,000
+observations with byte-identical FP4 encoding. Emitted SASS confirms Tensor Core,
+TMA and packed FP4 conversion instructions. Runtime resource queries retain
+theoretical occupancy. Nsight Compute counter collection was attempted and denied
+by the driver's current permissions; achieved utilization remains unmeasured.
+See [the hardware report](HARDWARE_REPORT.md) for comparisons and reproduction.
 
 ## License
 

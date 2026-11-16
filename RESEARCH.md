@@ -62,6 +62,11 @@ rule. The [application report](APPLICATION_REPORT.md) adds stronger native cuBLA
 FP4, complete real-model quality, host/allocation/reuse costs, eager/compiled/graph
 framework references and validation-gated held-out format decisions.
 
+The [native hardware report](HARDWARE_REPORT.md) adds byte-identical hardware FP4
+packing, vector-load and warp-reduction comparisons, emitted-code evidence and
+theoretical resource queries. Actual Nsight Compute counter collection was denied
+by the current driver permissions; achieved utilization is not established.
+
 The required outlier/error-constraint experiment and loading/pipeline/resource
 investigation remain open. The program has not established the best possible SM120
 implementation or scientific novelty; the fifteen-study goal remains active.
