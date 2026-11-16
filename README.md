@@ -2,7 +2,7 @@
 
 A research project by [Requant Network](https://requant.network).
 
-**Status: studies 2 (outlier correction), 3 (fusion) and 4 (native configuration) complete within their declared protocols; the full fifteen-study program is active.**
+**Status: studies 2 (outlier correction), 3 (fusion), 4 (native configuration) and 6 (high-precision reconstruction) complete within their declared protocols; the full fifteen-study program is active.**
 
 Reproducible experiments on **NVIDIA RTX 5060 Ti 16 GB / SM120** asking when
 FP4 is useful after quantization cost, operand reuse and numerical error are
@@ -47,6 +47,7 @@ scope; its host-request results are distinct from the original repeated-graph pi
 - [Native pipeline, traversal, buffering, resource and cache comparisons](PIPELINE_REPORT.md)
 - [Fusion resource characterization and complete evidence](FUSION_REPORT.md)
 - [FP4 column/block/residual correction at fixed error and fixed time](OUTLIER_REPORT.md)
+- [INT8 component reconstruction versus native and emulated FP64](PRECISION_REPORT.md)
 - [Research questions and follow-up gates](RESEARCH.md)
 - [Arithmetic, independent validation and timing methods](METHODS.md)
 - [Derived results](RESULTS.md) and [complete CSV](results/summary.csv)
@@ -74,6 +75,8 @@ python verify_outliers.py
 python summarize_outliers.py --check
 python verify_pipeline.py
 python summarize_pipeline.py --check
+python verify_precision.py
+python summarize_precision.py --check
 ```
 
 CPU CI performs these checks. It cannot rerun GPU performance or recover the
@@ -165,6 +168,15 @@ column, block and full-residual correction against FP4/FP8/FP16/strict-FP32,
 including real-model activations. Detection and correction preparation are timed.
 At error budget 0.001, correction wins none of the 68 online-A groups; both useful
 accuracy improvements and unfavorable complete costs remain in the record.
+
+The [high-precision product study](PRECISION_REPORT.md) adds 1,008 configurations
+comparing signed INT8 component products with native FP32/FP64 and cuBLASLt
+emulation. It includes cancellation, wide exponent ranges, subnormal inputs,
+long dots, real activations and changing-input adaptive decisions. Exact integer
+witnesses check finite FP32-input products. Preparation and complete host costs
+are retained; custom reconstruction does not uniformly beat library emulation.
+Build with `bash build_precision.sh` and run `precision_study.py` with independent
+seed/model pairs and separate output paths, as documented in the report.
 
 ## License
 
