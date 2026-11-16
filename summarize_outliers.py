@@ -101,7 +101,16 @@ def outputs():
               "These are offline empirical frontiers using measured error and median latency from the same case; they are not a learned selector or an unseen-input error guarantee.","",
               f"At relative-error budget 0.001, correction is the fastest eligible online-A candidate in {corrected} of {len(online)} cohort/shape/profile groups. "
               "The complete record retains whichever uncorrected format wins as well. Preparation-only improvements are not substituted for complete operation costs.","",
-              "## Cost boundaries, reproducibility and limits","",
+              "All online-A error budgets are shown below, counting the fastest eligible measured implementation per group. "
+              "Correction wins at some stricter budgets even though it does not win at 0.001.","",
+              "| Maximum relative error | FP4 wins | FP8 wins | FP16 wins | FP32 wins | Correction wins | Infeasible |",
+              "|---|---:|---:|---:|---:|---:|---:|"]
+    for budget in ERROR_BUDGETS:
+        rows=[r for r in constrained["fixed_error"] if r["boundary"]=="online-a" and r["maximum_relative_error"]==budget]
+        counts=[sum(r["chosen"]==label for r in rows) for label in ("fp4","fp8","fp16","fp32")]
+        counts += [sum(r["chosen"] not in (None,"fp4","fp8","fp16","fp32") for r in rows),sum(r["chosen"] is None for r in rows)]
+        lines.append(f"| {budget:g} | "+" | ".join(map(str,counts))+" |")
+    lines += ["","## Cost boundaries, reproducibility and limits","",
               "Five CUDA-event boundaries measure prepare A, prepare both, prepacked GEMM including corrections, online A and online both. "
               "Online-A column selection reuses cached B column maxima but must reselect columns and gather both operands; block/residual modes reuse B factors. "
               "Detection, sorting, masks, gathering, correction GEMMs and final addition are included where required. Five warmups and thirty observations use 32 repetitions per graph; "

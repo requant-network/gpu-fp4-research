@@ -49,6 +49,19 @@ Two independently trained UCI digits classifiers supply validation inputs and hi
 
 At relative-error budget 0.001, correction is the fastest eligible online-A candidate in 0 of 68 cohort/shape/profile groups. The complete record retains whichever uncorrected format wins as well. Preparation-only improvements are not substituted for complete operation costs.
 
+All online-A error budgets are shown below, counting the fastest eligible measured implementation per group. Correction wins at some stricter budgets even though it does not win at 0.001.
+
+| Maximum relative error | FP4 wins | FP8 wins | FP16 wins | FP32 wins | Correction wins | Infeasible |
+|---|---:|---:|---:|---:|---:|---:|
+| 1e-06 | 0 | 0 | 38 | 24 | 6 | 0 |
+| 1e-05 | 0 | 0 | 56 | 12 | 0 | 0 |
+| 0.0001 | 0 | 0 | 59 | 9 | 0 | 0 |
+| 0.001 | 0 | 0 | 68 | 0 | 0 | 0 |
+| 0.01 | 0 | 0 | 68 | 0 | 0 | 0 |
+| 0.05 | 4 | 64 | 0 | 0 | 0 | 0 |
+| 0.1 | 4 | 64 | 0 | 0 | 0 | 0 |
+| 0.2 | 16 | 52 | 0 | 0 | 0 | 0 |
+
 ## Cost boundaries, reproducibility and limits
 
 Five CUDA-event boundaries measure prepare A, prepare both, prepacked GEMM including corrections, online A and online both. Online-A column selection reuses cached B column maxima but must reselect columns and gather both operands; block/residual modes reuse B factors. Detection, sorting, masks, gathering, correction GEMMs and final addition are included where required. Five warmups and thirty observations use 32 repetitions per graph; observation order rotates and the second cohort reverses group/configuration order. Nearest-rank p10/p90 and every candidate are in [the complete CSV](results/outlier-summary.csv).
