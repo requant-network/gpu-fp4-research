@@ -1,0 +1,1697 @@
+{
+  "study": 9,
+  "complete": true,
+  "gpu_index": 0,
+  "gpu_exclusive": false,
+  "scope": "cuFFT capability/numerical probe only; no complete window/filter/inverse pipeline, Tensor Core FFT implementation, full latency/energy or completed study claim.",
+  "timing_scope": "Five raw cuFFT forward and inverse event intervals after one warmup each. Immutable-input D2D restores, host encoding/transfers and CPU verification normalization are excluded; these are not complete pipeline times.",
+  "source_sha256": {
+    "fft_preflight.py": "d6217287eb6a3984b7ad4a6773fcead49b87a55084978364d4d71a7d96655a28",
+    "native/fft_preflight.cu": "6d6e9b626fcda94bca117043dfdd91d08d996ae16659dbccffe3c8ca692d2b8c",
+    "build_fft_preflight.sh": "46f338abb8a67b84d15c5bc26b014330eff582195801ecf6e3e456d8d06c904d",
+    "reference.py": "b17f2880f57875909d8268091f026317dbf531b118b83322488c96ab7f62c9ef",
+    "spmm_preflight.py": "fc897f80ec7bdd11593bb28e87d65b82be999ba3aa05c6b0e38da9c495066c42",
+    "spmm_reference.py": "b59688f27fcbef3760480e58fe61f18beda36f5aad90e91f83f701e5d2663e26",
+    "solver_reference.py": "15eeb1537170ee4cbf1a87396a7057bbd012ce1c29d7ff5fd12325f98e562f81"
+  },
+  "binary_sha256": "2c072463d5c27a7baace7999c7d79b9c956ed9fb70cdae50ff7fed0c3e45d3cc",
+  "nvcc": "nvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2026 NVIDIA Corporation\nBuilt on Tue_Jun_09_02:43:40_PM_PDT_2026\nCuda compilation tools, release 13.3, V13.3.73\nBuild cuda_13.3.r13.3/compiler.38244171_0\n",
+  "groups": [
+    {
+      "n": 128,
+      "batch": 1,
+      "original_sha256": "8a783de9f5235b4fe51ea6e8b7711b28ae1e839e928d64c1cbdd6ec3f01120b3",
+      "cases": [
+        {
+          "precision": 0,
+          "available": true,
+          "encoded_sha256": "8a783de9f5235b4fe51ea6e8b7711b28ae1e839e928d64c1cbdd6ec3f01120b3",
+          "plan_setup_wall_ms": 188.778251,
+          "forward_ms": [
+            0.004127999767661095,
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004095999989658594
+          ],
+          "inverse_ms": [
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004095999989658594
+          ],
+          "errors": {
+            "forward_vs_original": 3.769615071379806e-08,
+            "forward_vs_rounded_input": 3.769615071379806e-08,
+            "inverse_vs_actual_forward_spectrum": 3.7696149817208765e-08,
+            "roundtrip_vs_original": 5.330080750658132e-08
+          },
+          "screening_threshold": 2e-05,
+          "metadata": {
+            "cuda_ms": 0.004095999989658594,
+            "workspace_bytes": 0,
+            "owned_device_bytes": 4096,
+            "cufft_version": 12300
+          },
+          "fft_sha256": "84d3ab9dac3dd25c80983e2279a32bb1b6a56e4574bc302958f20f312455e570",
+          "inverse_sha256": "b75686a7afc6e85cccbe341bcd860f185f450e16f79069a2c0b36ed805875930"
+        },
+        {
+          "precision": 1,
+          "available": true,
+          "encoded_sha256": "1af1d3e3e0ec052b07dd5748d054d5683500de999057da2c24367337d2f2f27b",
+          "plan_setup_wall_ms": 16.972535,
+          "forward_ms": [
+            0.01228800043463707,
+            0.01228800043463707,
+            0.01228800043463707,
+            0.01228800043463707,
+            0.012319999746978283
+          ],
+          "inverse_ms": [
+            0.011455999687314034,
+            0.01228800043463707,
+            0.01228800043463707,
+            0.01228800043463707,
+            0.01228800043463707
+          ],
+          "errors": {
+            "forward_vs_original": 1.346090789807077e-18,
+            "forward_vs_rounded_input": 1.346090789807077e-18,
+            "inverse_vs_actual_forward_spectrum": 0.0,
+            "roundtrip_vs_original": 0.0
+          },
+          "screening_threshold": 1e-12,
+          "metadata": {
+            "cuda_ms": 0.01228800043463707,
+            "workspace_bytes": 0,
+            "owned_device_bytes": 8192,
+            "cufft_version": 12300
+          },
+          "fft_sha256": "33e946019d9cedc4bd96029fdffbab56244d3c7d690906e3aaefde6db1adc17d",
+          "inverse_sha256": "48d6e89ad38096bff9e1e700347dedf95cdeb2cde25f277c4e5bf4adf84970c3"
+        },
+        {
+          "precision": 2,
+          "available": true,
+          "encoded_sha256": "47f370103887b6798de88e1b2e843d42a57f20b4545e2fc6d1e8dadd6c99139b",
+          "plan_setup_wall_ms": 38.382547,
+          "forward_ms": [
+            0.002047999994829297,
+            0.002047999994829297,
+            0.004064000211656094,
+            0.002015999983996153,
+            0.002015999983996153
+          ],
+          "inverse_ms": [
+            0.004127999767661095,
+            0.002047999994829297,
+            0.002047999994829297,
+            0.002047999994829297,
+            0.002047999994829297
+          ],
+          "errors": {
+            "forward_vs_original": 0.0007405631938293723,
+            "forward_vs_rounded_input": 0.0006888450664761504,
+            "inverse_vs_actual_forward_spectrum": 0.000685672405647407,
+            "roundtrip_vs_original": 0.001090896531852179
+          },
+          "screening_threshold": 0.01,
+          "metadata": {
+            "cuda_ms": 0.002047999994829297,
+            "workspace_bytes": 0,
+            "owned_device_bytes": 2048,
+            "cufft_version": 12300
+          },
+          "fft_sha256": "9e1e84d35650beb1def08ec2bf6755bd867987daa0663d58e17408df33ed6493",
+          "inverse_sha256": "cfc73e092ca1aa097cf9fe65f18460ce27289ca37a4ee31a2e830e481a64c7ab"
+        },
+        {
+          "precision": 3,
+          "available": true,
+          "encoded_sha256": "1a359df5398bf732099148fec5f749e2e6c81db1c7a886fa9d6c49614aab1b88",
+          "plan_setup_wall_ms": 23.165317,
+          "forward_ms": [
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004095999989658594
+          ],
+          "inverse_ms": [
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004095999989658594
+          ],
+          "errors": {
+            "forward_vs_original": 0.001938529238936288,
+            "forward_vs_rounded_input": 0.0008423977015874936,
+            "inverse_vs_actual_forward_spectrum": 0.0008320877224182862,
+            "roundtrip_vs_original": 0.0018831652956599351
+          },
+          "screening_threshold": 0.05,
+          "metadata": {
+            "cuda_ms": 0.004095999989658594,
+            "workspace_bytes": 0,
+            "owned_device_bytes": 2048,
+            "cufft_version": 12300
+          },
+          "fft_sha256": "ae3bb5cb22d6c8db07f5c7e95915e8a2bb57c98263e8282ccd8947cbde495b8f",
+          "inverse_sha256": "a8435de2294c5e5cd0f95c3dc0c059f44bc0c2c31c8b0971a4066f279d2ef6cf"
+        }
+      ],
+      "witness_file": "fft-preflight-n128-b1.npz",
+      "witness_sha256": "ec3a2c835a7ae979412434ab2035dc572ff4f21fd88098f325a1de05a4ec2b9e"
+    },
+    {
+      "n": 128,
+      "batch": 16,
+      "original_sha256": "756dc65438dd8910fa7a7f248bdaa9eed2e0201ecadcf4acf64514b097a79172",
+      "cases": [
+        {
+          "precision": 0,
+          "available": true,
+          "encoded_sha256": "756dc65438dd8910fa7a7f248bdaa9eed2e0201ecadcf4acf64514b097a79172",
+          "plan_setup_wall_ms": 0.426173,
+          "forward_ms": [
+            0.004127999767661095,
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004095999989658594
+          ],
+          "inverse_ms": [
+            0.004127999767661095,
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004095999989658594,
+            0.012959999963641167
+          ],
+          "errors": {
+            "forward_vs_original": 4.3192444784840774e-08,
+            "forward_vs_rounded_input": 4.3192444784840774e-08,
+            "inverse_vs_actual_forward_spectrum": 4.0744397450310424e-08,
+            "roundtrip_vs_original": 4.9001465578212876e-08
+          },
+          "screening_threshold": 2e-05,
+          "metadata": {
+            "cuda_ms": 0.012959999963641167,
+            "workspace_bytes": 0,
+            "owned_device_bytes": 65536,
+            "cufft_version": 12300
+          },
+          "fft_sha256": "d85f509828cbf00362f6b52c4689a731bda14248c36e367f90e3c3ea8208bf65",
+          "inverse_sha256": "3f023019bd96ca7e458550826d3583b1ca3da47a92f7d6b31294e3843669ce66"
+        },
+        {
+          "precision": 1,
+          "available": true,
+          "encoded_sha256": "007480e2379d1e880b9a35eef4425ca9783be1f1b861b27a662e53d08f09e9ea",
+          "plan_setup_wall_ms": 0.413117,
+          "forward_ms": [
+            0.014336000196635723,
+            0.01228800043463707,
+            0.01228800043463707,
+            0.01228800043463707,
+            0.01228800043463707
+          ],
+          "inverse_ms": [
+            0.01235199999064207,
+            0.01228800043463707,
+            0.012319999746978283,
+            0.01228800043463707,
+            0.01228800043463707
+          ],
+          "errors": {
+            "forward_vs_original": 1.44826064138183e-18,
+            "forward_vs_rounded_input": 1.44826064138183e-18,
+            "inverse_vs_actual_forward_spectrum": 0.0,
+            "roundtrip_vs_original": 0.0
+          },
+          "screening_threshold": 1e-12,
+          "metadata": {
+            "cuda_ms": 0.01228800043463707,
+            "workspace_bytes": 0,
+            "owned_device_bytes": 131072,
+            "cufft_version": 12300
+          },
+          "fft_sha256": "8c8e251934ca745fedcbe61ae36ec6235247df1a9f135411812936f46a7bb6f1",
+          "inverse_sha256": "70d224a623eb503710705f6900ffa3ada1dc50fa9402babcda8e3568fd14bd90"
+        },
+        {
+          "precision": 2,
+          "available": true,
+          "encoded_sha256": "e3c988d5b3a094f2bdc31ee147f2e79e7d12be11ff9fd071edb0ad83a9dec8a7",
+          "plan_setup_wall_ms": 0.395694,
+          "forward_ms": [
+            0.004127999767661095,
+            0.002047999994829297,
+            0.004095999989658594,
+            0.002047999994829297,
+            0.0020800000056624413
+          ],
+          "inverse_ms": [
+            0.004095999989658594,
+            0.002047999994829297,
+            0.002047999994829297,
+            0.002047999994829297,
+            0.002047999994829297
+          ],
+          "errors": {
+            "forward_vs_original": 0.0006972184818079837,
+            "forward_vs_rounded_input": 0.0006555473198003568,
+            "inverse_vs_actual_forward_spectrum": 0.0006026633504467192,
+            "roundtrip_vs_original": 0.0009467535248168362
+          },
+          "screening_threshold": 0.01,
+          "metadata": {
+            "cuda_ms": 0.002047999994829297,
+            "workspace_bytes": 0,
+            "owned_device_bytes": 32768,
+            "cufft_version": 12300
+          },
+          "fft_sha256": "d9a487d7695f4a82fa31f617ae9de1fa3ce69698332773467610159ff39e6618",
+          "inverse_sha256": "c7cf05c997a33270c3a7a244e151116d66cd1888d540f9b605a4ae9c292fa866"
+        },
+        {
+          "precision": 3,
+          "available": true,
+          "encoded_sha256": "06b17c1982534f33734b464157fa1da1bff705c3cb20fe60cb223dd62ad25147",
+          "plan_setup_wall_ms": 0.407226,
+          "forward_ms": [
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004095999989658594
+          ],
+          "inverse_ms": [
+            0.004064000211656094,
+            0.004064000211656094,
+            0.004064000211656094,
+            0.004127999767661095,
+            0.004095999989658594
+          ],
+          "errors": {
+            "forward_vs_original": 0.0019289876633165636,
+            "forward_vs_rounded_input": 0.0008419061516936295,
+            "inverse_vs_actual_forward_spectrum": 0.000751456462621777,
+            "roundtrip_vs_original": 0.001933644941735365
+          },
+          "screening_threshold": 0.05,
+          "metadata": {
+            "cuda_ms": 0.004095999989658594,
+            "workspace_bytes": 0,
+            "owned_device_bytes": 32768,
+            "cufft_version": 12300
+          },
+          "fft_sha256": "0e068d2e0f5e14837435dad5035112102b8258270b67ca7f745fb2b2dc775e27",
+          "inverse_sha256": "af2dea9e56691147eb9f459256b64d62aa288f5d306d2a12b555f71bee5a8c89"
+        }
+      ],
+      "witness_file": "fft-preflight-n128-b16.npz",
+      "witness_sha256": "75d4238d926da460932fd5734c7b1d50e78b5647d63f36c73ee9991884178603"
+    },
+    {
+      "n": 256,
+      "batch": 1,
+      "original_sha256": "4ec4492d23cff3933ef54d1ecef177ada1ef7cee5e2872b7bb10be6435f80f8a",
+      "cases": [
+        {
+          "precision": 0,
+          "available": true,
+          "encoded_sha256": "4ec4492d23cff3933ef54d1ecef177ada1ef7cee5e2872b7bb10be6435f80f8a",
+          "plan_setup_wall_ms": 0.387919,
+          "forward_ms": [
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004127999767661095,
+            0.004095999989658594,
+            0.004095999989658594
+          ],
+          "inverse_ms": [
+            0.0032319999299943447,
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004095999989658594
+          ],
+          "errors": {
+            "forward_vs_original": 3.7703269206853314e-08,
+            "forward_vs_rounded_input": 3.7703269206853314e-08,
+            "inverse_vs_actual_forward_spectrum": 2.666353923916256e-08,
+            "roundtrip_vs_original": 4.6166723094850604e-08
+          },
+          "screening_threshold": 2e-05,
+          "metadata": {
+            "cuda_ms": 0.004095999989658594,
+            "workspace_bytes": 0,
+            "owned_device_bytes": 8192,
+            "cufft_version": 12300
+          },
+          "fft_sha256": "98552e64bcd957691370e9ba9a68be30e6c1cf118c307e0c44de29e85e3c0948",
+          "inverse_sha256": "60a4a4204541960d0cff285ee09940be25ec511f4af318813a5302941b1e944e"
+        },
+        {
+          "precision": 1,
+          "available": true,
+          "encoded_sha256": "62e093b81010fed8448c416970f4ff9aeb8c332a423f0722dd9d1673b42e1d7a",
+          "plan_setup_wall_ms": 0.397628,
+          "forward_ms": [
+            0.014336000196635723,
+            0.014336000196635723,
+            0.014336000196635723,
+            0.01228800043463707,
+            0.01228800043463707
+          ],
+          "inverse_ms": [
+            0.014303999952971935,
+            0.012256000190973282,
+            0.01228800043463707,
+            0.01228800043463707,
+            0.01228800043463707
+          ],
+          "errors": {
+            "forward_vs_original": 1.5077805684944022e-18,
+            "forward_vs_rounded_input": 1.5077805684944022e-18,
+            "inverse_vs_actual_forward_spectrum": 0.0,
+            "roundtrip_vs_original": 0.0
+          },
+          "screening_threshold": 1e-12,
+          "metadata": {
+            "cuda_ms": 0.01228800043463707,
+            "workspace_bytes": 0,
+            "owned_device_bytes": 16384,
+            "cufft_version": 12300
+          },
+          "fft_sha256": "cc126a7e921641936424051309ec4c7635058a4879b9365fff064d54bc95434c",
+          "inverse_sha256": "21928248a2009b937dfa6e6d48ce63163a0cc0d620d1d221115f305f4096ff70"
+        },
+        {
+          "precision": 2,
+          "available": true,
+          "encoded_sha256": "8bca75e44a48c31fcf990d4637bc77ce143ddd2870fa8355e820cdfa3eb0da4f",
+          "plan_setup_wall_ms": 19.734689,
+          "forward_ms": [
+            0.004095999989658594,
+            0.002047999994829297,
+            0.003135999897494912,
+            0.002047999994829297,
+            0.002047999994829297
+          ],
+          "inverse_ms": [
+            0.004095999989658594,
+            0.002047999994829297,
+            0.002047999994829297,
+            0.002047999994829297,
+            0.002047999994829297
+          ],
+          "errors": {
+            "forward_vs_original": 0.0008796326334737768,
+            "forward_vs_rounded_input": 0.0008395951367481886,
+            "inverse_vs_actual_forward_spectrum": 0.000626033262964722,
+            "roundtrip_vs_original": 0.0011950414284065652
+          },
+          "screening_threshold": 0.01,
+          "metadata": {
+            "cuda_ms": 0.002047999994829297,
+            "workspace_bytes": 0,
+            "owned_device_bytes": 4096,
+            "cufft_version": 12300
+          },
+          "fft_sha256": "f919b3512d607911ebc16549fb238206b43c2a556546df6bc0cbe071d1bca48f",
+          "inverse_sha256": "3e719b6436018cf13b390ffed99e720c59c353072d0254f412b73994847f5852"
+        },
+        {
+          "precision": 3,
+          "available": true,
+          "encoded_sha256": "2d6ccec18bd142c28a9b7a06cc437675013d23509f109af253097b620c083a76",
+          "plan_setup_wall_ms": 31.202724,
+          "forward_ms": [
+            0.004095999989658594,
+            0.002047999994829297,
+            0.004416000097990036,
+            0.002047999994829297,
+            0.002047999994829297
+          ],
+          "inverse_ms": [
+            0.004095999989658594,
+            0.002047999994829297,
+            0.002047999994829297,
+            0.002047999994829297,
+            0.002047999994829297
+          ],
+          "errors": {
+            "forward_vs_original": 0.002058898500659446,
+            "forward_vs_rounded_input": 0.0009641232142469715,
+            "inverse_vs_actual_forward_spectrum": 0.0009643178291528952,
+            "roundtrip_vs_original": 0.0018548348869565135
+          },
+          "screening_threshold": 0.05,
+          "metadata": {
+            "cuda_ms": 0.002047999994829297,
+            "workspace_bytes": 0,
+            "owned_device_bytes": 4096,
+            "cufft_version": 12300
+          },
+          "fft_sha256": "8384669a16faea165353410d2bd32ec12548c32251420ea7424dbe8d98496f1f",
+          "inverse_sha256": "c514f1c68cfb5680eeec0cf9a0fe80122f05490379763bd9b5ecf8e931950d37"
+        }
+      ],
+      "witness_file": "fft-preflight-n256-b1.npz",
+      "witness_sha256": "347c2f8ba7a97a1e3185fe3c1e8696011a0b7ca1122ba3f74b26c798285fadb6"
+    },
+    {
+      "n": 256,
+      "batch": 16,
+      "original_sha256": "7ed7dd8647be8aa3f8124feff9e649798f1275210cf78d2df60bc63cdd436181",
+      "cases": [
+        {
+          "precision": 0,
+          "available": true,
+          "encoded_sha256": "7ed7dd8647be8aa3f8124feff9e649798f1275210cf78d2df60bc63cdd436181",
+          "plan_setup_wall_ms": 0.434558,
+          "forward_ms": [
+            0.004127999767661095,
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004095999989658594
+          ],
+          "inverse_ms": [
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004095999989658594
+          ],
+          "errors": {
+            "forward_vs_original": 4.8978961557089303e-08,
+            "forward_vs_rounded_input": 4.8978961557089303e-08,
+            "inverse_vs_actual_forward_spectrum": 4.721531132038243e-08,
+            "roundtrip_vs_original": 6.452566617826915e-08
+          },
+          "screening_threshold": 2e-05,
+          "metadata": {
+            "cuda_ms": 0.004095999989658594,
+            "workspace_bytes": 0,
+            "owned_device_bytes": 131072,
+            "cufft_version": 12300
+          },
+          "fft_sha256": "236e40457a4d61a63cac58da4e0f29023b832055e2fe310eaeeb23b5a6019a31",
+          "inverse_sha256": "06e3a19df6ef5f208da10045a6e2a576d77f6c450376794df457f2e828dd68e5"
+        },
+        {
+          "precision": 1,
+          "available": true,
+          "encoded_sha256": "6723642c2e16c74adc1fac3d4a6dfa84d121ce4689e20a12205b9f47571e3f85",
+          "plan_setup_wall_ms": 0.426903,
+          "forward_ms": [
+            0.014336000196635723,
+            0.01228800043463707,
+            0.014336000196635723,
+            0.01228800043463707,
+            0.012319999746978283
+          ],
+          "inverse_ms": [
+            0.014303999952971935,
+            0.01228800043463707,
+            0.012319999746978283,
+            0.01228800043463707,
+            0.01228800043463707
+          ],
+          "errors": {
+            "forward_vs_original": 1.5084049802663179e-18,
+            "forward_vs_rounded_input": 1.5084049802663179e-18,
+            "inverse_vs_actual_forward_spectrum": 0.0,
+            "roundtrip_vs_original": 0.0
+          },
+          "screening_threshold": 1e-12,
+          "metadata": {
+            "cuda_ms": 0.01228800043463707,
+            "workspace_bytes": 0,
+            "owned_device_bytes": 262144,
+            "cufft_version": 12300
+          },
+          "fft_sha256": "5f9495172d17a3ae1c27b63cbce6fe9966742be97bc757cbbf4c7e39d55454f6",
+          "inverse_sha256": "fe5ffe14b09cd6a2450c42c4f2f129d750e903baf1ad9cbae39328c1c024cc8f"
+        },
+        {
+          "precision": 2,
+          "available": true,
+          "encoded_sha256": "664dbbb4ae80aa14daa8fa52f1de57aa8529dac608b73c989409a390191dd01a",
+          "plan_setup_wall_ms": 0.410924,
+          "forward_ms": [
+            0.004095999989658594,
+            0.002047999994829297,
+            0.004095999989658594,
+            0.002047999994829297,
+            0.002047999994829297
+          ],
+          "inverse_ms": [
+            0.004095999989658594,
+            0.002047999994829297,
+            0.002047999994829297,
+            0.002047999994829297,
+            0.002047999994829297
+          ],
+          "errors": {
+            "forward_vs_original": 0.0007303858846114203,
+            "forward_vs_rounded_input": 0.000699460260566899,
+            "inverse_vs_actual_forward_spectrum": 0.0006100108424620307,
+            "roundtrip_vs_original": 0.0009469689890033494
+          },
+          "screening_threshold": 0.01,
+          "metadata": {
+            "cuda_ms": 0.002047999994829297,
+            "workspace_bytes": 0,
+            "owned_device_bytes": 65536,
+            "cufft_version": 12300
+          },
+          "fft_sha256": "5723f60c2df06e2fbb080ac7510c1c7afe5ae29968641f57cda911da977474e3",
+          "inverse_sha256": "00ffde2df59c49ed9da8ec932efaf75903dc15b1cd9f6203101ffbbc417a7dbb"
+        },
+        {
+          "precision": 3,
+          "available": true,
+          "encoded_sha256": "5d2428c85fef67e85e9f76962b34cc9adbcafda9c796d7e40d698426471ca843",
+          "plan_setup_wall_ms": 0.426653,
+          "forward_ms": [
+            0.004064000211656094,
+            0.002047999994829297,
+            0.004127999767661095,
+            0.002047999994829297,
+            0.00342399999499321
+          ],
+          "inverse_ms": [
+            0.004064000211656094,
+            0.0020800000056624413,
+            0.0020800000056624413,
+            0.0020800000056624413,
+            0.002047999994829297
+          ],
+          "errors": {
+            "forward_vs_original": 0.0018675207484684883,
+            "forward_vs_rounded_input": 0.0006679430067621631,
+            "inverse_vs_actual_forward_spectrum": 0.0006436458936360996,
+            "roundtrip_vs_original": 0.0018025863509556863
+          },
+          "screening_threshold": 0.05,
+          "metadata": {
+            "cuda_ms": 0.002047999994829297,
+            "workspace_bytes": 0,
+            "owned_device_bytes": 65536,
+            "cufft_version": 12300
+          },
+          "fft_sha256": "719a4993aba49f0ab665f75e1df6a5c5cde4a6a27116ed034daaa569423b85e0",
+          "inverse_sha256": "c8df1070b5aeffb13f1547c0a5d218e4626b1dc4186ab542dc30e747dedabfed"
+        }
+      ],
+      "witness_file": "fft-preflight-n256-b16.npz",
+      "witness_sha256": "a216f7528c5d041a957fa1e11b55f4c60504115df127da1e679ec7cd45ad7686"
+    },
+    {
+      "n": 512,
+      "batch": 1,
+      "original_sha256": "6e2c943fa36a334377e392c9c251b145faa89761e94d15ad9769b3f8dc73ad48",
+      "cases": [
+        {
+          "precision": 0,
+          "available": true,
+          "encoded_sha256": "6e2c943fa36a334377e392c9c251b145faa89761e94d15ad9769b3f8dc73ad48",
+          "plan_setup_wall_ms": 0.406024,
+          "forward_ms": [
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004064000211656094,
+            0.004127999767661095
+          ],
+          "inverse_ms": [
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004095999989658594
+          ],
+          "errors": {
+            "forward_vs_original": 5.961856336698503e-08,
+            "forward_vs_rounded_input": 5.961856336698503e-08,
+            "inverse_vs_actual_forward_spectrum": 4.7981724078646596e-08,
+            "roundtrip_vs_original": 6.849497667751685e-08
+          },
+          "screening_threshold": 2e-05,
+          "metadata": {
+            "cuda_ms": 0.004095999989658594,
+            "workspace_bytes": 0,
+            "owned_device_bytes": 16384,
+            "cufft_version": 12300
+          },
+          "fft_sha256": "eb243b2a071f2f51b1d186fc7d31c80be057f58da0ea7ea5624ffcb64e43e8f4",
+          "inverse_sha256": "aedf32e477258f0668f47cc886b81fa1c54f8edbe2ee5f4ecea6ca816a0906a4"
+        },
+        {
+          "precision": 1,
+          "available": true,
+          "encoded_sha256": "c73bf8a196599aaadb1cfa4895ac30050d5b48f746523bada7678035aa761fdd",
+          "plan_setup_wall_ms": 0.417125,
+          "forward_ms": [
+            0.016383999958634377,
+            0.016383999958634377,
+            0.016383999958634377,
+            0.016383999958634377,
+            0.016383999958634377
+          ],
+          "inverse_ms": [
+            0.015552000142633915,
+            0.016383999958634377,
+            0.016383999958634377,
+            0.016383999958634377,
+            0.016383999958634377
+          ],
+          "errors": {
+            "forward_vs_original": 4.9684530814307135e-17,
+            "forward_vs_rounded_input": 4.9684530814307135e-17,
+            "inverse_vs_actual_forward_spectrum": 0.0,
+            "roundtrip_vs_original": 0.0
+          },
+          "screening_threshold": 1e-12,
+          "metadata": {
+            "cuda_ms": 0.016383999958634377,
+            "workspace_bytes": 0,
+            "owned_device_bytes": 32768,
+            "cufft_version": 12300
+          },
+          "fft_sha256": "632300b55389a4172201396c60088283184242523b952fe1e8e639742c3180a4",
+          "inverse_sha256": "9e26688edbc6ddba26fd26082c5837ad13fcb685e3adfa912e29f5b05666c0f9"
+        },
+        {
+          "precision": 2,
+          "available": true,
+          "encoded_sha256": "f5e5b44b4c87473a510b2c353085e71a2d09b00faf3a05ff0cc69885e498d8aa",
+          "plan_setup_wall_ms": 23.111574,
+          "forward_ms": [
+            0.004095999989658594,
+            0.002047999994829297,
+            0.004095999989658594,
+            0.002047999994829297,
+            0.002047999994829297
+          ],
+          "inverse_ms": [
+            0.004064000211656094,
+            0.0020800000056624413,
+            0.0020800000056624413,
+            0.0020800000056624413,
+            0.0020800000056624413
+          ],
+          "errors": {
+            "forward_vs_original": 0.0006775771986094854,
+            "forward_vs_rounded_input": 0.0006416120574339421,
+            "inverse_vs_actual_forward_spectrum": 0.0007210266094644884,
+            "roundtrip_vs_original": 0.0008416456436083546
+          },
+          "screening_threshold": 0.01,
+          "metadata": {
+            "cuda_ms": 0.0020800000056624413,
+            "workspace_bytes": 0,
+            "owned_device_bytes": 8192,
+            "cufft_version": 12300
+          },
+          "fft_sha256": "16dca3acbaf7899e767ba6a436386d14fb45d114530fe52a1567280944c84117",
+          "inverse_sha256": "1b1f4a15b0fa336363b7270efc1fecd4c2d6e75bc20c2cf37bb4499f43f7225e"
+        },
+        {
+          "precision": 3,
+          "available": true,
+          "encoded_sha256": "b1ca20a2e9ee3ad65aa1d2079443c8bf7bc806fa2103a44c7b025a98eec97e89",
+          "plan_setup_wall_ms": 38.416992,
+          "forward_ms": [
+            0.004095999989658594,
+            0.004064000211656094,
+            0.004127999767661095,
+            0.004095999989658594,
+            0.004095999989658594
+          ],
+          "inverse_ms": [
+            0.003263999940827489,
+            0.004095999989658594,
+            0.004127999767661095,
+            0.0071680000983178616,
+            0.004064000211656094
+          ],
+          "errors": {
+            "forward_vs_original": 0.0018314695602606,
+            "forward_vs_rounded_input": 0.0003950343053209813,
+            "inverse_vs_actual_forward_spectrum": 0.0003950307190027752,
+            "roundtrip_vs_original": 0.0017916447627077713
+          },
+          "screening_threshold": 0.05,
+          "metadata": {
+            "cuda_ms": 0.004064000211656094,
+            "workspace_bytes": 0,
+            "owned_device_bytes": 8192,
+            "cufft_version": 12300
+          },
+          "fft_sha256": "3c82f4e9ebfb966c8a9b0be02e272897c99c738c08c88a5e918e4f56e60013be",
+          "inverse_sha256": "5820bb1750393cf8a5b849162a9550ad46fd6f8a70f811263dbc7df089b407a8"
+        }
+      ],
+      "witness_file": "fft-preflight-n512-b1.npz",
+      "witness_sha256": "68c756e78b47bf9b3c80cf019e847bed5ca76ad5089fd640f6a8f6f16f3b4786"
+    },
+    {
+      "n": 512,
+      "batch": 16,
+      "original_sha256": "2eddc49a7b8d24a0f84feecdb5f23d0cdf9006a557ee940d595d324df4c227df",
+      "cases": [
+        {
+          "precision": 0,
+          "available": true,
+          "encoded_sha256": "2eddc49a7b8d24a0f84feecdb5f23d0cdf9006a557ee940d595d324df4c227df",
+          "plan_setup_wall_ms": 0.484073,
+          "forward_ms": [
+            0.003103999886661768,
+            0.004064000211656094,
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004095999989658594
+          ],
+          "inverse_ms": [
+            0.006111999973654747,
+            0.0041600000113248825,
+            0.004095999989658594,
+            0.004127999767661095,
+            0.004095999989658594
+          ],
+          "errors": {
+            "forward_vs_original": 6.007448574549781e-08,
+            "forward_vs_rounded_input": 6.007448574549781e-08,
+            "inverse_vs_actual_forward_spectrum": 6.410909848593738e-08,
+            "roundtrip_vs_original": 8.472538227059941e-08
+          },
+          "screening_threshold": 2e-05,
+          "metadata": {
+            "cuda_ms": 0.004095999989658594,
+            "workspace_bytes": 0,
+            "owned_device_bytes": 262144,
+            "cufft_version": 12300
+          },
+          "fft_sha256": "96be4eb6ca8f4d9ccbe170312c9da384f4d58a0997185103c96d9fb99be8a42e",
+          "inverse_sha256": "124879d2539d19654243dbf31836946370d41871e0546ae48975d96b6d7d1414"
+        },
+        {
+          "precision": 1,
+          "available": true,
+          "encoded_sha256": "f89619317056cc1076cd49d9ce832059b570d6ae8ac53d448ce7a2468f526a6b",
+          "plan_setup_wall_ms": 0.465517,
+          "forward_ms": [
+            0.018432000651955605,
+            0.016416000202298164,
+            0.016383999958634377,
+            0.01635199971497059,
+            0.01635199971497059
+          ],
+          "inverse_ms": [
+            0.018464000895619392,
+            0.016383999958634377,
+            0.01635199971497059,
+            0.016383999958634377,
+            0.016383999958634377
+          ],
+          "errors": {
+            "forward_vs_original": 1.1578532940363373e-16,
+            "forward_vs_rounded_input": 1.1578532940363373e-16,
+            "inverse_vs_actual_forward_spectrum": 1.0805022397437936e-17,
+            "roundtrip_vs_original": 1.1379303124780876e-16
+          },
+          "screening_threshold": 1e-12,
+          "metadata": {
+            "cuda_ms": 0.016383999958634377,
+            "workspace_bytes": 0,
+            "owned_device_bytes": 524288,
+            "cufft_version": 12300
+          },
+          "fft_sha256": "551d5462003a2e3696b83cdd2c84fc952a8895d09ad537c2996881af89e5aeaa",
+          "inverse_sha256": "f87ab131bd6c26cc3318fbc08301ec3725ad600bdcebb9069b7c9cb1548a6978"
+        },
+        {
+          "precision": 2,
+          "available": true,
+          "encoded_sha256": "dd31c04ad26117dde1887af8dc270be53e1419d043f17a4f6872740c22687873",
+          "plan_setup_wall_ms": 0.437644,
+          "forward_ms": [
+            0.006175999995321035,
+            0.002015999983996153,
+            0.004095999989658594,
+            0.002047999994829297,
+            0.002047999994829297
+          ],
+          "inverse_ms": [
+            0.004095999989658594,
+            0.0020800000056624413,
+            0.0020800000056624413,
+            0.0020800000056624413,
+            0.0020800000056624413
+          ],
+          "errors": {
+            "forward_vs_original": 0.0007240524187733715,
+            "forward_vs_rounded_input": 0.0006909755762496443,
+            "inverse_vs_actual_forward_spectrum": 0.0006281939628948522,
+            "roundtrip_vs_original": 0.0009574454108161375
+          },
+          "screening_threshold": 0.01,
+          "metadata": {
+            "cuda_ms": 0.0020800000056624413,
+            "workspace_bytes": 0,
+            "owned_device_bytes": 131072,
+            "cufft_version": 12300
+          },
+          "fft_sha256": "177a98a57bd444c6a3b2d31a9fa2365f278b124ad47fcb830d4f4af82b158331",
+          "inverse_sha256": "d7eb66978cadbc126e33fd473e1841f565b3bcea3d932e7f1932fb365715f511"
+        },
+        {
+          "precision": 3,
+          "available": true,
+          "encoded_sha256": "112697d57c5156dcebea732941a7441b8d3f92f75bcf712d48624cc46f311101",
+          "plan_setup_wall_ms": 0.459896,
+          "forward_ms": [
+            0.0030720001086592674,
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004064000211656094,
+            0.004095999989658594
+          ],
+          "inverse_ms": [
+            0.0031999999191612005,
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004095999989658594
+          ],
+          "errors": {
+            "forward_vs_original": 0.0017997649075555454,
+            "forward_vs_rounded_input": 0.0004123058383333441,
+            "inverse_vs_actual_forward_spectrum": 0.00041231570220560135,
+            "roundtrip_vs_original": 0.001759865332765954
+          },
+          "screening_threshold": 0.05,
+          "metadata": {
+            "cuda_ms": 0.004095999989658594,
+            "workspace_bytes": 0,
+            "owned_device_bytes": 131072,
+            "cufft_version": 12300
+          },
+          "fft_sha256": "01864db3a69cc58e1df7a4e2a5884f034169c758b05b757942e824ef3153207b",
+          "inverse_sha256": "ee069c953b14e2a94d395ac9eafb4b2cdbacab78f931064c8ed2c7938a6e9aab"
+        }
+      ],
+      "witness_file": "fft-preflight-n512-b16.npz",
+      "witness_sha256": "d61a4d18e4f1c7b28618865fd025634b1a3c8a379c64bee787ff0526b189449b"
+    },
+    {
+      "n": 1000,
+      "batch": 1,
+      "original_sha256": "2b0eaac9db328b7d1b779aba8a9b81a69f5e5409ad6509c97cf41e04b9a5d2c7",
+      "cases": [
+        {
+          "precision": 0,
+          "available": true,
+          "encoded_sha256": "2b0eaac9db328b7d1b779aba8a9b81a69f5e5409ad6509c97cf41e04b9a5d2c7",
+          "plan_setup_wall_ms": 27.927863,
+          "forward_ms": [
+            0.004127999767661095,
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004127999767661095,
+            0.004095999989658594
+          ],
+          "inverse_ms": [
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004064000211656094,
+            0.004095999989658594
+          ],
+          "errors": {
+            "forward_vs_original": 9.641899097763013e-08,
+            "forward_vs_rounded_input": 9.641899097763013e-08,
+            "inverse_vs_actual_forward_spectrum": 1.2635612828449003e-07,
+            "roundtrip_vs_original": 1.6728837817239098e-07
+          },
+          "screening_threshold": 2e-05,
+          "metadata": {
+            "cuda_ms": 0.004095999989658594,
+            "workspace_bytes": 0,
+            "owned_device_bytes": 32000,
+            "cufft_version": 12300
+          },
+          "fft_sha256": "da0b5f8f4b8ddc748526f13a05710649cde44b83422bcf6edbbc316583d3f541",
+          "inverse_sha256": "6b76cb42f81800b339f88b3957046be53a12e2c6a1562aa734d01b08fbc492c4"
+        },
+        {
+          "precision": 1,
+          "available": true,
+          "encoded_sha256": "a31acc6496d7e0c11eb874bed8d042af1fe2e636a66ca139390c7566eccd35dd",
+          "plan_setup_wall_ms": 45.077405,
+          "forward_ms": [
+            0.014336000196635723,
+            0.014336000196635723,
+            0.016416000202298164,
+            0.014336000196635723,
+            0.014336000196635723
+          ],
+          "inverse_ms": [
+            0.016383999958634377,
+            0.014336000196635723,
+            0.014336000196635723,
+            0.014336000196635723,
+            0.014368000440299511
+          ],
+          "errors": {
+            "forward_vs_original": 2.4879211541312065e-16,
+            "forward_vs_rounded_input": 2.4879211541312065e-16,
+            "inverse_vs_actual_forward_spectrum": 2.3009028567814714e-16,
+            "roundtrip_vs_original": 2.278130407671011e-16
+          },
+          "screening_threshold": 1e-12,
+          "metadata": {
+            "cuda_ms": 0.014368000440299511,
+            "workspace_bytes": 0,
+            "owned_device_bytes": 64000,
+            "cufft_version": 12300
+          },
+          "fft_sha256": "4b087505ead7a988bbab777e12bd05953f04de956a4dad159028c6ac65878056",
+          "inverse_sha256": "369dabbf0c1fc53ae384843025f056e405bdd494e37d437a923feb2231f44925"
+        },
+        {
+          "precision": 2,
+          "available": false,
+          "encoded_sha256": "f0073d7d2681b49290ce218ef6d51f9c8ede3832276001b6d400072ea3a65c52",
+          "plan_setup_wall_ms": 0.09943,
+          "error": "makePlan: cuFFT status 16"
+        },
+        {
+          "precision": 3,
+          "available": false,
+          "encoded_sha256": "4ae6857321678d474e74ae5ff66d2b5e37d3cc8d25cf69f2fd0ff3522c871bf4",
+          "plan_setup_wall_ms": 0.053091,
+          "error": "makePlan: cuFFT status 16"
+        }
+      ],
+      "witness_file": "fft-preflight-n1000-b1.npz",
+      "witness_sha256": "67226856a37254f769b294829fac57e50c3de034b985b6c7b277b16b4a7165dd"
+    },
+    {
+      "n": 1000,
+      "batch": 16,
+      "original_sha256": "81a36360c3172c64e6203494ff0f73ff39a54df6d721adebbb788d1a25db1aa2",
+      "cases": [
+        {
+          "precision": 0,
+          "available": true,
+          "encoded_sha256": "81a36360c3172c64e6203494ff0f73ff39a54df6d721adebbb788d1a25db1aa2",
+          "plan_setup_wall_ms": 0.517105,
+          "forward_ms": [
+            0.003103999886661768,
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004095999989658594
+          ],
+          "inverse_ms": [
+            0.004064000211656094,
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004095999989658594
+          ],
+          "errors": {
+            "forward_vs_original": 1.1095654934208417e-07,
+            "forward_vs_rounded_input": 1.1095654934208417e-07,
+            "inverse_vs_actual_forward_spectrum": 1.290473420446246e-07,
+            "roundtrip_vs_original": 1.929356667848846e-07
+          },
+          "screening_threshold": 2e-05,
+          "metadata": {
+            "cuda_ms": 0.004095999989658594,
+            "workspace_bytes": 0,
+            "owned_device_bytes": 512000,
+            "cufft_version": 12300
+          },
+          "fft_sha256": "42d7acf5d10e09ca3662cb644d8c3d7a7740c61e12d291f48a191be373be4c05",
+          "inverse_sha256": "58969557ccd0471433496176ec50bbcc211aab49da61b0e0e215ca28b65e3a23"
+        },
+        {
+          "precision": 1,
+          "available": true,
+          "encoded_sha256": "4baa7d96fe167362c92e162711b3b63ff7cd95fc88c8e6d408269e7018d019c4",
+          "plan_setup_wall_ms": 0.595595,
+          "forward_ms": [
+            0.01635199971497059,
+            0.014336000196635723,
+            0.01635199971497059,
+            0.014336000196635723,
+            0.014336000196635723
+          ],
+          "inverse_ms": [
+            0.015456000342965126,
+            0.014303999952971935,
+            0.014336000196635723,
+            0.014303999952971935,
+            0.014368000440299511
+          ],
+          "errors": {
+            "forward_vs_original": 3.0545881532675926e-16,
+            "forward_vs_rounded_input": 3.0545881532675926e-16,
+            "inverse_vs_actual_forward_spectrum": 2.1187166471232836e-16,
+            "roundtrip_vs_original": 2.452181330503589e-16
+          },
+          "screening_threshold": 1e-12,
+          "metadata": {
+            "cuda_ms": 0.014368000440299511,
+            "workspace_bytes": 0,
+            "owned_device_bytes": 1024000,
+            "cufft_version": 12300
+          },
+          "fft_sha256": "5667664920811f8c9941544e728140233117cb318604a6113ba1fabf6008c93b",
+          "inverse_sha256": "5c3da5be7b1462b87ca321473a01249e6d978b0c5fa914c840a1b3e36f83f644"
+        },
+        {
+          "precision": 2,
+          "available": false,
+          "encoded_sha256": "125190d866d955eb2cf9b219ca7abfceafc979c9dcf8a5386e8bed76db9671e5",
+          "plan_setup_wall_ms": 0.049725,
+          "error": "makePlan: cuFFT status 16"
+        },
+        {
+          "precision": 3,
+          "available": false,
+          "encoded_sha256": "9d6df7b479a560ec988eaa4522929d56f296bb23122f4903c59563976e96429d",
+          "plan_setup_wall_ms": 0.043513,
+          "error": "makePlan: cuFFT status 16"
+        }
+      ],
+      "witness_file": "fft-preflight-n1000-b16.npz",
+      "witness_sha256": "c99906f0ac53c22b8a2193be9f3277f773ab776ca60206721d3d158d43ce20d9"
+    },
+    {
+      "n": 1024,
+      "batch": 1,
+      "original_sha256": "d9baccf90159dc2aded9a233a006339efcbe387a4e1041494c48dae62555d170",
+      "cases": [
+        {
+          "precision": 0,
+          "available": true,
+          "encoded_sha256": "d9baccf90159dc2aded9a233a006339efcbe387a4e1041494c48dae62555d170",
+          "plan_setup_wall_ms": 0.432074,
+          "forward_ms": [
+            0.004127999767661095,
+            0.004127999767661095,
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004127999767661095
+          ],
+          "inverse_ms": [
+            0.004095999989658594,
+            0.004127999767661095,
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004095999989658594
+          ],
+          "errors": {
+            "forward_vs_original": 8.635911984282774e-08,
+            "forward_vs_rounded_input": 8.635911984282774e-08,
+            "inverse_vs_actual_forward_spectrum": 7.263821838610543e-08,
+            "roundtrip_vs_original": 9.509590786032872e-08
+          },
+          "screening_threshold": 2e-05,
+          "metadata": {
+            "cuda_ms": 0.004095999989658594,
+            "workspace_bytes": 0,
+            "owned_device_bytes": 32768,
+            "cufft_version": 12300
+          },
+          "fft_sha256": "f235fa5ddc3ab1c2ffa001d0d2b2e533e4d70e7eed967225e3b0e3b4eab9178a",
+          "inverse_sha256": "ba57639ee93349ab177a22e8a219674d6b35ef262f2ccbb1db90c87ccbbf8457"
+        },
+        {
+          "precision": 1,
+          "available": true,
+          "encoded_sha256": "9f68aded9e41247e519ecf9bd04a12054df12bf86ba7439fdfa819f91f8db327",
+          "plan_setup_wall_ms": 0.438205,
+          "forward_ms": [
+            0.018400000408291817,
+            0.016383999958634377,
+            0.018464000895619392,
+            0.016383999958634377,
+            0.01635199971497059
+          ],
+          "inverse_ms": [
+            0.018432000651955605,
+            0.016383999958634377,
+            0.016383999958634377,
+            0.016383999958634377,
+            0.016383999958634377
+          ],
+          "errors": {
+            "forward_vs_original": 1.8386477676855425e-18,
+            "forward_vs_rounded_input": 1.8386477676855425e-18,
+            "inverse_vs_actual_forward_spectrum": 0.0,
+            "roundtrip_vs_original": 0.0
+          },
+          "screening_threshold": 1e-12,
+          "metadata": {
+            "cuda_ms": 0.016383999958634377,
+            "workspace_bytes": 0,
+            "owned_device_bytes": 65536,
+            "cufft_version": 12300
+          },
+          "fft_sha256": "763783a0e8c09cb7f877d6ba5fed9baf5f634bf2c9464205b3b5a977997a421f",
+          "inverse_sha256": "cb52fc191a779ef177c0897377272cb197eb5ef43429a1dd644b1e3f860bb012"
+        },
+        {
+          "precision": 2,
+          "available": true,
+          "encoded_sha256": "a645fac261b66b2f1fa6ead9f1bf99c5443b0eaabbc78d6bc0c368eef253c45b",
+          "plan_setup_wall_ms": 23.31353,
+          "forward_ms": [
+            0.004095999989658594,
+            0.004127999767661095,
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004064000211656094
+          ],
+          "inverse_ms": [
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004127999767661095,
+            0.004095999989658594,
+            0.004095999989658594
+          ],
+          "errors": {
+            "forward_vs_original": 0.000759397324380427,
+            "forward_vs_rounded_input": 0.0007287858647068157,
+            "inverse_vs_actual_forward_spectrum": 0.0006686573773167851,
+            "roundtrip_vs_original": 0.0009972953725442815
+          },
+          "screening_threshold": 0.01,
+          "metadata": {
+            "cuda_ms": 0.004095999989658594,
+            "workspace_bytes": 0,
+            "owned_device_bytes": 16384,
+            "cufft_version": 12300
+          },
+          "fft_sha256": "16750d9d6cd47692018d3220e044f6a66622322fc3c741da5c3a25713f7a3ab4",
+          "inverse_sha256": "6f855cab621f62c2a2ffd0068856d019c08e0d6d574928e1908b143aba464283"
+        },
+        {
+          "precision": 3,
+          "available": true,
+          "encoded_sha256": "3bf4d47b8d5e3188480ed9c1af3fc560a4405ac2b301363ff569bee01e683943",
+          "plan_setup_wall_ms": 39.927581,
+          "forward_ms": [
+            0.013407999649643898,
+            0.004095999989658594,
+            0.004064000211656094,
+            0.004095999989658594,
+            0.004127999767661095
+          ],
+          "inverse_ms": [
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004064000211656094,
+            0.004095999989658594,
+            0.004095999989658594
+          ],
+          "errors": {
+            "forward_vs_original": 0.0018780846184903463,
+            "forward_vs_rounded_input": 0.000522475896319727,
+            "inverse_vs_actual_forward_spectrum": 0.0005226138657902955,
+            "roundtrip_vs_original": 0.0018136808228842091
+          },
+          "screening_threshold": 0.05,
+          "metadata": {
+            "cuda_ms": 0.004095999989658594,
+            "workspace_bytes": 0,
+            "owned_device_bytes": 16384,
+            "cufft_version": 12300
+          },
+          "fft_sha256": "b1f86aa1b33aa2924e547dcbe485506e4445268af752d2f562a6203516dcccb2",
+          "inverse_sha256": "06fd3f613cc6355e038c9365571a080d089c34f50ab3465852e44b69758e651a"
+        }
+      ],
+      "witness_file": "fft-preflight-n1024-b1.npz",
+      "witness_sha256": "8c07e059a647eaf34951655901a873aba8f0a50d74f752affb6c6ef7436994d7"
+    },
+    {
+      "n": 1024,
+      "batch": 16,
+      "original_sha256": "63a5f7f54638997664663bfa5b3a854fa42f885ce7455b2a7ca7a4160768f223",
+      "cases": [
+        {
+          "precision": 0,
+          "available": true,
+          "encoded_sha256": "63a5f7f54638997664663bfa5b3a854fa42f885ce7455b2a7ca7a4160768f223",
+          "plan_setup_wall_ms": 0.49346,
+          "forward_ms": [
+            0.005183999892324209,
+            0.004064000211656094,
+            0.004095999989658594,
+            0.004127999767661095,
+            0.004064000211656094
+          ],
+          "inverse_ms": [
+            0.006144000217318535,
+            0.006144000217318535,
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004095999989658594
+          ],
+          "errors": {
+            "forward_vs_original": 7.396888081562088e-08,
+            "forward_vs_rounded_input": 7.396888081562088e-08,
+            "inverse_vs_actual_forward_spectrum": 7.071149459951726e-08,
+            "roundtrip_vs_original": 9.538384532115333e-08
+          },
+          "screening_threshold": 2e-05,
+          "metadata": {
+            "cuda_ms": 0.004095999989658594,
+            "workspace_bytes": 0,
+            "owned_device_bytes": 524288,
+            "cufft_version": 12300
+          },
+          "fft_sha256": "0125300c98f31634060d3fa6e105d2aad15b6eef7c4e53f5795df07db3fd95ee",
+          "inverse_sha256": "dabfb31cb33b1c0bd8d3ac7052c0c97e53d6988191ba6da5ad8bdb893ff263f9"
+        },
+        {
+          "precision": 1,
+          "available": true,
+          "encoded_sha256": "4542cc7afbab38b4c06584fe25e48c4e2ce8ca8bf03fad8de372ce1071abc4fc",
+          "plan_setup_wall_ms": 0.506956,
+          "forward_ms": [
+            0.018400000408291817,
+            0.018432000651955605,
+            0.018400000408291817,
+            0.016383999958634377,
+            0.016383999958634377
+          ],
+          "inverse_ms": [
+            0.018432000651955605,
+            0.018400000408291817,
+            0.018432000651955605,
+            0.016448000445961952,
+            0.018432000651955605
+          ],
+          "errors": {
+            "forward_vs_original": 1.922307332609185e-18,
+            "forward_vs_rounded_input": 1.922307332609185e-18,
+            "inverse_vs_actual_forward_spectrum": 0.0,
+            "roundtrip_vs_original": 0.0
+          },
+          "screening_threshold": 1e-12,
+          "metadata": {
+            "cuda_ms": 0.018432000651955605,
+            "workspace_bytes": 0,
+            "owned_device_bytes": 1048576,
+            "cufft_version": 12300
+          },
+          "fft_sha256": "b94b24a626a5a52e2cf25f1551e01514440ed218e8d54aa1bc3c6a1ac48cbafd",
+          "inverse_sha256": "d93aaec9f14937c1635ca8b48ea84a892688fe14c60e713c6661b17f0ba6dcb3"
+        },
+        {
+          "precision": 2,
+          "available": true,
+          "encoded_sha256": "2c99679512d47d4335468a5c5547c90dec3d5eb07440261d51377f86967f7a7d",
+          "plan_setup_wall_ms": 0.433676,
+          "forward_ms": [
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004064000211656094,
+            0.004095999989658594,
+            0.004095999989658594
+          ],
+          "inverse_ms": [
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004127999767661095,
+            0.004095999989658594
+          ],
+          "errors": {
+            "forward_vs_original": 0.0007217701192929079,
+            "forward_vs_rounded_input": 0.0006859999513992991,
+            "inverse_vs_actual_forward_spectrum": 0.0006641826534995151,
+            "roundtrip_vs_original": 0.0009669582338404096
+          },
+          "screening_threshold": 0.01,
+          "metadata": {
+            "cuda_ms": 0.004095999989658594,
+            "workspace_bytes": 0,
+            "owned_device_bytes": 262144,
+            "cufft_version": 12300
+          },
+          "fft_sha256": "752d553c6b53f0bf066627be5d859739f6ffe7242bb119b5805b77b09e3cc42f",
+          "inverse_sha256": "ccb186dbf1305cc4a0139d5920220c0b30d2754b4453362cbc3442e9176c0417"
+        },
+        {
+          "precision": 3,
+          "available": true,
+          "encoded_sha256": "9d68db9f583b7f8fa216192db3e239ae23cecad734c230f158a454a3a93c9755",
+          "plan_setup_wall_ms": 0.473082,
+          "forward_ms": [
+            0.0030400000978261232,
+            0.004064000211656094,
+            0.004064000211656094,
+            0.004064000211656094,
+            0.004095999989658594
+          ],
+          "inverse_ms": [
+            0.0032319999299943447,
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004095999989658594
+          ],
+          "errors": {
+            "forward_vs_original": 0.0018026989900695011,
+            "forward_vs_rounded_input": 0.0002980276082067655,
+            "inverse_vs_actual_forward_spectrum": 0.0002980370856264294,
+            "roundtrip_vs_original": 0.0017832549211385135
+          },
+          "screening_threshold": 0.05,
+          "metadata": {
+            "cuda_ms": 0.004095999989658594,
+            "workspace_bytes": 0,
+            "owned_device_bytes": 262144,
+            "cufft_version": 12300
+          },
+          "fft_sha256": "e4054283b100e451ed2bc4d3f455e54f62bddaca647637836393e281339b3057",
+          "inverse_sha256": "05122bbd1ef8a7a7f5f92928a58072dd0544adcde322af4fba045e158c6d6ab8"
+        }
+      ],
+      "witness_file": "fft-preflight-n1024-b16.npz",
+      "witness_sha256": "cc58ab86077b798a592adc7f31f567e264aa1c3d1873d1ab62780a189e802d39"
+    },
+    {
+      "n": 4096,
+      "batch": 1,
+      "original_sha256": "b43effc7b51219d10e8ebd8b85422d6e94c9fdf922c3c6d3b52803983fcb686a",
+      "cases": [
+        {
+          "precision": 0,
+          "available": true,
+          "encoded_sha256": "b43effc7b51219d10e8ebd8b85422d6e94c9fdf922c3c6d3b52803983fcb686a",
+          "plan_setup_wall_ms": 1.121628,
+          "forward_ms": [
+            0.006144000217318535,
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004095999989658594
+          ],
+          "inverse_ms": [
+            0.005311999935656786,
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004127999767661095,
+            0.004095999989658594
+          ],
+          "errors": {
+            "forward_vs_original": 6.925902905639601e-08,
+            "forward_vs_rounded_input": 6.925902905639601e-08,
+            "inverse_vs_actual_forward_spectrum": 6.99979241757996e-08,
+            "roundtrip_vs_original": 1.000189712402953e-07
+          },
+          "screening_threshold": 2e-05,
+          "metadata": {
+            "cuda_ms": 0.004095999989658594,
+            "workspace_bytes": 0,
+            "owned_device_bytes": 131072,
+            "cufft_version": 12300
+          },
+          "fft_sha256": "7d9c4660fe21e1d4a344656f7ff3ea096a6d8bee7e931404385f349c5415cc88",
+          "inverse_sha256": "4620dae1f622938f1c20f19b55387b4bcf352516d5fddec75e8de6f6ef944509"
+        },
+        {
+          "precision": 1,
+          "available": true,
+          "encoded_sha256": "99affa71a6285960b19d35c0ad5b865e7b05854f00126c6c730ba07fc2776b59",
+          "plan_setup_wall_ms": 1.034181,
+          "forward_ms": [
+            0.04505600035190582,
+            0.043007999658584595,
+            0.043007999658584595,
+            0.043007999658584595,
+            0.043007999658584595
+          ],
+          "inverse_ms": [
+            0.044224001467227936,
+            0.043007999658584595,
+            0.043007999658584595,
+            0.043007999658584595,
+            0.043007999658584595
+          ],
+          "errors": {
+            "forward_vs_original": 2.963278813167316e-18,
+            "forward_vs_rounded_input": 2.963278813167316e-18,
+            "inverse_vs_actual_forward_spectrum": 0.0,
+            "roundtrip_vs_original": 0.0
+          },
+          "screening_threshold": 1e-12,
+          "metadata": {
+            "cuda_ms": 0.043007999658584595,
+            "workspace_bytes": 0,
+            "owned_device_bytes": 262144,
+            "cufft_version": 12300
+          },
+          "fft_sha256": "9abde242890183ebd9803c17f27b5cf155b0fb80d16b327d3e3546051343ae89",
+          "inverse_sha256": "a15005a2e710400e8d88ca548b8bd68b3a2e8eba4ddb5c59489dea0ce17e2e1a"
+        },
+        {
+          "precision": 2,
+          "available": true,
+          "encoded_sha256": "49d071a526656c05e57e10077e23d60cff4473bb2b2d45c710a3215f5ebdb121",
+          "plan_setup_wall_ms": 39.275378,
+          "forward_ms": [
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004095999989658594
+          ],
+          "inverse_ms": [
+            0.005311999935656786,
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004064000211656094,
+            0.005119999870657921
+          ],
+          "errors": {
+            "forward_vs_original": 0.000722616469875821,
+            "forward_vs_rounded_input": 0.000686648996166563,
+            "inverse_vs_actual_forward_spectrum": 0.0007107902139323072,
+            "roundtrip_vs_original": 0.0009812464233229419
+          },
+          "screening_threshold": 0.01,
+          "metadata": {
+            "cuda_ms": 0.005119999870657921,
+            "workspace_bytes": 0,
+            "owned_device_bytes": 65536,
+            "cufft_version": 12300
+          },
+          "fft_sha256": "264d992b7edb1fab2c265d5da0578369db8ce22869394cfc9970a73c301a2b17",
+          "inverse_sha256": "6111b22fa38d19feec142fc52d47dbee82eb3b3a489834ed0a0d4257f731ccb3"
+        },
+        {
+          "precision": 3,
+          "available": true,
+          "encoded_sha256": "47abc0b6fec80ae74a730eb75de7dae9248bda7386bce6599ce8203aa7a60316",
+          "plan_setup_wall_ms": 44.706108,
+          "forward_ms": [
+            0.004127999767661095,
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004095999989658594
+          ],
+          "inverse_ms": [
+            0.006144000217318535,
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004095999989658594
+          ],
+          "errors": {
+            "forward_vs_original": 0.0017969841891581316,
+            "forward_vs_rounded_input": 0.00016690883554327078,
+            "inverse_vs_actual_forward_spectrum": 0.0001668996375894708,
+            "roundtrip_vs_original": 0.001792276485425209
+          },
+          "screening_threshold": 0.05,
+          "metadata": {
+            "cuda_ms": 0.004095999989658594,
+            "workspace_bytes": 0,
+            "owned_device_bytes": 65536,
+            "cufft_version": 12300
+          },
+          "fft_sha256": "6005bde2a92c34a5c3ae090312863950d5229b85a9582bbbc8551966d02f86da",
+          "inverse_sha256": "7c205239d7fcb295c23cf29234e6edb5c0476a552f4046bc224cd45050f6c2f3"
+        }
+      ],
+      "witness_file": "fft-preflight-n4096-b1.npz",
+      "witness_sha256": "45ac0f0e71d19471fd34ede7125d663d2571f60a8cfc9136409c7bd1c5368739"
+    },
+    {
+      "n": 4096,
+      "batch": 16,
+      "original_sha256": "a228320ff699a9b144e51b4aa18a9526ea5f8fbf0f14a83be373af820f11ae85",
+      "cases": [
+        {
+          "precision": 0,
+          "available": true,
+          "encoded_sha256": "a228320ff699a9b144e51b4aa18a9526ea5f8fbf0f14a83be373af820f11ae85",
+          "plan_setup_wall_ms": 0.601225,
+          "forward_ms": [
+            0.006111999973654747,
+            0.006111999973654747,
+            0.006144000217318535,
+            0.004095999989658594,
+            0.004064000211656094
+          ],
+          "inverse_ms": [
+            0.006111999973654747,
+            0.004064000211656094,
+            0.004095999989658594,
+            0.004064000211656094,
+            0.004064000211656094
+          ],
+          "errors": {
+            "forward_vs_original": 8.207769649179519e-08,
+            "forward_vs_rounded_input": 8.207769649179519e-08,
+            "inverse_vs_actual_forward_spectrum": 8.054317557525508e-08,
+            "roundtrip_vs_original": 1.1130066025354603e-07
+          },
+          "screening_threshold": 2e-05,
+          "metadata": {
+            "cuda_ms": 0.004064000211656094,
+            "workspace_bytes": 0,
+            "owned_device_bytes": 2097152,
+            "cufft_version": 12300
+          },
+          "fft_sha256": "1a9ee0cf9b02685a14dde780f70d1dd521e3a51a0db49caba6e44a69656d4598",
+          "inverse_sha256": "ba5ab274bcf771f9ed2a7ec4cc789e380e8bdce0394ee1771f84794654486eef"
+        },
+        {
+          "precision": 1,
+          "available": true,
+          "encoded_sha256": "07c1183abdbe3f53a137dba87660a1ecc43191c2e2e3eef222f0e78ca4968f34",
+          "plan_setup_wall_ms": 0.76063,
+          "forward_ms": [
+            0.04403200000524521,
+            0.045024000108242035,
+            0.04505600035190582,
+            0.04505600035190582,
+            0.04505600035190582
+          ],
+          "inverse_ms": [
+            0.04505600035190582,
+            0.04505600035190582,
+            0.045024000108242035,
+            0.04505600035190582,
+            0.04505600035190582
+          ],
+          "errors": {
+            "forward_vs_original": 2.9493952977729525e-18,
+            "forward_vs_rounded_input": 2.9493952977729525e-18,
+            "inverse_vs_actual_forward_spectrum": 0.0,
+            "roundtrip_vs_original": 0.0
+          },
+          "screening_threshold": 1e-12,
+          "metadata": {
+            "cuda_ms": 0.04505600035190582,
+            "workspace_bytes": 0,
+            "owned_device_bytes": 4194304,
+            "cufft_version": 12300
+          },
+          "fft_sha256": "f32a3d71465d09228abf16978fb4e48c0aeb0cae56924d00bb55ceb4101900cf",
+          "inverse_sha256": "ace9e25bbb9a53a7f9b344b2b52fd1a7b18ed98197084a880f2e23da929dd02d"
+        },
+        {
+          "precision": 2,
+          "available": true,
+          "encoded_sha256": "8ea215dcad06ffc01a9de739a24d21dcef16ac2343920aae11fa37f832871b00",
+          "plan_setup_wall_ms": 0.604222,
+          "forward_ms": [
+            0.0060800001956522465,
+            0.006111999973654747,
+            0.006111999973654747,
+            0.006144000217318535,
+            0.006144000217318535
+          ],
+          "inverse_ms": [
+            0.005280000157654285,
+            0.006144000217318535,
+            0.006144000217318535,
+            0.004127999767661095,
+            0.006144000217318535
+          ],
+          "errors": {
+            "forward_vs_original": 0.000709330619480858,
+            "forward_vs_rounded_input": 0.0006731642626095451,
+            "inverse_vs_actual_forward_spectrum": 0.0007104621981290671,
+            "roundtrip_vs_original": 0.0009565828073871308
+          },
+          "screening_threshold": 0.01,
+          "metadata": {
+            "cuda_ms": 0.006144000217318535,
+            "workspace_bytes": 0,
+            "owned_device_bytes": 1048576,
+            "cufft_version": 12300
+          },
+          "fft_sha256": "eba383b3d46dbb24a7c76f0518a1c68ec4ffa086de72f325fd5d872bf52a0d27",
+          "inverse_sha256": "7d7220e5d6c24a6d8ff4249b7da2bdc9f5e30ef3956b71b32bf32950ebf30f76"
+        },
+        {
+          "precision": 3,
+          "available": true,
+          "encoded_sha256": "ae42368b72853285ae8005146e9c4c3ebd65d786cbe1ff5534d61c0e1f5d325f",
+          "plan_setup_wall_ms": 0.585566,
+          "forward_ms": [
+            0.006111999973654747,
+            0.004064000211656094,
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004031999967992306
+          ],
+          "inverse_ms": [
+            0.006111999973654747,
+            0.004095999989658594,
+            0.004095999989658594,
+            0.004064000211656094,
+            0.004064000211656094
+          ],
+          "errors": {
+            "forward_vs_original": 0.0017847007220821807,
+            "forward_vs_rounded_input": 0.0001353895223372592,
+            "inverse_vs_actual_forward_spectrum": 0.00013538931218490323,
+            "roundtrip_vs_original": 0.0017807885778032776
+          },
+          "screening_threshold": 0.05,
+          "metadata": {
+            "cuda_ms": 0.004064000211656094,
+            "workspace_bytes": 0,
+            "owned_device_bytes": 1048576,
+            "cufft_version": 12300
+          },
+          "fft_sha256": "a6b1533581b5f23a3e6e6d3fac60773e29d5cf7b2f18c5e6c9eb1b015b0f49a8",
+          "inverse_sha256": "d0a1ca22581d98335b05a0b9594b96b0accc96561d80cf6368f8d649e5214619"
+        }
+      ],
+      "witness_file": "fft-preflight-n4096-b16.npz",
+      "witness_sha256": "795b0894980e697b518f219e4b5d8e37142061139234ac0ee2246b2a0627b375"
+    }
+  ]
+}

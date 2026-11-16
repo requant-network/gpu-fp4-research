@@ -39,3 +39,12 @@ code license. Original download URLs and compressed/decompressed hashes are in
 [the solver matrix manifest](fixtures/solver-matrices.json).
 cuSOLVER, cuBLAS/cuBLASLt and cuSPARSE retain NVIDIA's applicable licenses and
 are not vendored.
+
+The FFT study calls CUDA cuFFT and the external NVIDIA MathDx 26.06.1 CUDA-13
+archive, whose cuFFTDx header reports version 1.7.3. Its original archive and
+1022 header checksums are retained in [the dependency manifest](results/fft-dx-dependency.json).
+The SDK is not vendored and retains NVIDIA's applicable license; its source and
+examples are not relicensed by this repository. The filtering wrapper, signal
+fixtures and FFT validation code are original repository code.
+See [NVIDIA cuFFTDx](https://developer.nvidia.com/cufftdx) and
+[the cuFFTDx license](https://docs.nvidia.com/cuda/cufftdx/license.html).
