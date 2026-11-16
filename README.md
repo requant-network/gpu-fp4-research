@@ -2,7 +2,7 @@
 
 A research project by [Requant Network](https://requant.network).
 
-**Status: pilot, encoder/fusion/tile, real-classifier/framework and native-conversion experiments complete; the full fifteen-study program is active.**
+**Status: pilot, encoder/fusion/tile, classifier/framework, native-conversion and outlier-correction experiments complete; the full fifteen-study program is active.**
 
 Reproducible experiments on **NVIDIA RTX 5060 Ti 16 GB / SM120** asking when
 FP4 is useful after quantization cost, operand reuse and numerical error are
@@ -44,6 +44,7 @@ scope; its host-request results are distinct from the original repeated-graph pi
 - [Cooperative encoder, fusion, tile and held-out rule results](ENCODER_REPORT.md)
 - [Real classifier, cuBLASLt FP4 and PyTorch/CUDA-Graph references](APPLICATION_REPORT.md)
 - [Native FP4 conversion, vector loads, emitted instructions and resources](HARDWARE_REPORT.md)
+- [FP4 column/block/residual correction at fixed error and fixed time](OUTLIER_REPORT.md)
 - [Research questions and follow-up gates](RESEARCH.md)
 - [Arithmetic, independent validation and timing methods](METHODS.md)
 - [Derived results](RESULTS.md) and [complete CSV](results/summary.csv)
@@ -67,6 +68,8 @@ python verify_application.py
 python summarize_application.py --check
 python verify_hardware.py
 python summarize_hardware.py --check
+python verify_outliers.py
+python summarize_outliers.py --check
 ```
 
 CPU CI performs these checks. It cannot rerun GPU performance or recover the
@@ -141,8 +144,9 @@ select among up to eight heuristic candidates. This is a specified baseline
 comparison, not the best achievable implementation of each format.
 
 Offline held-out format decisions now include validation-accuracy budgets and
-complete request costs. Remaining work includes outlier correction, per-operation
-error constraints and direct loading/pipeline/resource characterization. Native
+complete request costs. Outlier experiments add fixed-error/time comparisons.
+Remaining work includes held-out per-operation error prediction and direct
+loading/pipeline/resource characterization. Native
 Tensor Core paths are measured implementations, not an established architectural
 ceiling. The [program ledger](PROGRAM.md) preserves all other investigations.
 
@@ -152,6 +156,12 @@ TMA and packed FP4 conversion instructions. Runtime resource queries retain
 theoretical occupancy. Nsight Compute counter collection was attempted and denied
 by the driver's current permissions; achieved utilization remains unmeasured.
 See [the hardware report](HARDWARE_REPORT.md) for comparisons and reproduction.
+
+The [outlier study](OUTLIER_REPORT.md) adds 598 configurations comparing native
+column, block and full-residual correction against FP4/FP8/FP16/strict-FP32,
+including real-model activations. Detection and correction preparation are timed.
+At error budget 0.001, correction wins none of the 68 online-A groups; both useful
+accuracy improvements and unfavorable complete costs remain in the record.
 
 ## License
 

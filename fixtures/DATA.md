@@ -16,3 +16,10 @@ experiments make new stratified train/validation/test splits within that subset;
 they do not claim comparability with the original UCI train/test benchmark.
 The file is unmodified. Normalization, splits, trained models and activations
 are experimental derivatives whose commands and hashes are retained separately.
+
+`outlier-activations-20261116.npz` and `outlier-activations-20261216.npz` contain
+the first 192 validation inputs and corresponding hidden ReLU activations from
+each frozen model. `prepare_outlier_activations.py` forms the hidden layer in
+FP64 and rounds once to FP32. The preparation record retains exact model,
+dataset, source and derivative hashes. These are layer-study fixtures, not
+outputs from an end-to-end quantized classifier.

@@ -67,6 +67,10 @@ packing, vector-load and warp-reduction comparisons, emitted-code evidence and
 theoretical resource queries. Actual Nsight Compute counter collection was denied
 by the current driver permissions; achieved utilization is not established.
 
-The required outlier/error-constraint experiment and loading/pipeline/resource
+The [outlier report](OUTLIER_REPORT.md) adds native column/block/residual correction,
+real activations, complete preparation costs and fixed-error/fixed-time frontiers.
+These are empirical frontiers, not held-out error prediction for unseen inputs.
+
+Held-out per-operation error prediction and the loading/pipeline/resource
 investigation remain open. The program has not established the best possible SM120
 implementation or scientific novelty; the fifteen-study goal remains active.
