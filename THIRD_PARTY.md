@@ -1,0 +1,19 @@
+# Third-party attribution
+
+`native/bridge.cu` retains the NVIDIA BSD-3-Clause notice and an adapted
+CUTLASS SM120 kernel configuration from example 79a, also used in Requant
+Network's earlier exact modular arithmetic study. The surrounding quantizer,
+cuBLASLt comparison are Requant Network adaptations. The entire native bridge
+carries the retained BSD-3-Clause notice; the original Python harness and
+documentation are MIT licensed.
+
+The external CUTLASS checkout is pinned to
+`b2f249acd20392beeb16f5e5a31f4f1a4e38b3bd`; its applicable licenses and notices
+remain in that checkout. It is not vendored in this repository.
+
+- [NVIDIA CUTLASS](https://github.com/NVIDIA/cutlass)
+- [Upstream example 79a at the experiment pin](https://github.com/NVIDIA/cutlass/blob/b2f249acd20392beeb16f5e5a31f4f1a4e38b3bd/examples/79_blackwell_geforce_gemm/79a_blackwell_geforce_nvfp4_bf16_gemm.cu)
+- [Earlier Requant exact arithmetic study](https://github.com/requant-network/gpu-exact-tensorcore)
+
+NumPy, CuPy, CUDA and cuBLASLt retain their respective licenses. Original
+repository code is MIT licensed unless an individual file carries another notice.
