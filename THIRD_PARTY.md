@@ -29,3 +29,12 @@ neither source tree nor compiled wheel is vendored here. Its applicable notices
 remain in the external checkout and package. The project-local wrapper, records
 and CPU replay code are original repository code. PyTorch, Triton and cuDNN retain
 their respective licenses.
+
+The solver fixtures retain the original numerical Matrix Market files
+`bcsstk09.mtx.gz` and `bcsstk10.mtx.gz`. John Lewis, Boeing Computer Services,
+supplied these structural-engineering matrices to the Harwell-Boeing Collection
+in Summer 1982. They are distributed by NIST Matrix Market; their numerical
+data are separately attributed and are not relicensed by the repository's MIT
+code license. Original download URLs and compressed/decompressed hashes are in
+[the solver matrix manifest](fixtures/solver-matrices.json).
+cuSOLVER and cuBLAS retain NVIDIA's applicable licenses and are not vendored.

@@ -80,5 +80,13 @@ The [held-out per-operation prediction test](SELECTOR_REPORT.md) adds training-o
 calibration, two input/model cohorts, 192 held-out decisions and complete selection
 costs. It retains one budget violation and rejects safe generalization of the tested
 empirical rule. A certified runtime error guarantee remains unproven.
+The [dense SPD solver study](SOLVER_REPORT.md) adds exact conditioned systems,
+two real structural matrices, native FP64 Cholesky/LU and mixed-precision
+refinement references, adaptive residual gates and explicit factor reuse.
+Every measured solution is retained for CPU replay. Failed forward-error targets
+remain failures even when the GPU residual gate passes; neither residual-only
+adaptation nor native FP64 is a universal accuracy guarantee at high conditioning.
+The pending sparse/dense SpMM study has a tested lossless CPU decomposition
+in `spmm_reference.py`; GPU execution and comparative evidence remain required.
 The program has not established the best possible SM120
 implementation or scientific novelty; the fifteen-study goal remains active.
