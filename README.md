@@ -2,7 +2,7 @@
 
 A research project by [Requant Network](https://requant.network).
 
-**Status: studies 2 (outlier correction), 3 (fusion), 4 (native configuration) and 6 (high-precision reconstruction) complete within their declared protocols; the full fifteen-study program is active.**
+**Status: studies 1 (format efficiency/prediction), 2 (outlier correction), 3 (fusion), 4 (native configuration) and 6 (high-precision reconstruction) complete within their declared protocols; the full fifteen-study program is active.**
 
 Reproducible experiments on **NVIDIA RTX 5060 Ti 16 GB / SM120** asking when
 FP4 is useful after quantization cost, operand reuse and numerical error are
@@ -48,6 +48,7 @@ scope; its host-request results are distinct from the original repeated-graph pi
 - [Fusion resource characterization and complete evidence](FUSION_REPORT.md)
 - [FP4 column/block/residual correction at fixed error and fixed time](OUTLIER_REPORT.md)
 - [INT8 component reconstruction versus native and emulated FP64](PRECISION_REPORT.md)
+- [Held-out error prediction, its budget violation and complete selection costs](SELECTOR_REPORT.md)
 - [Research questions and follow-up gates](RESEARCH.md)
 - [Arithmetic, independent validation and timing methods](METHODS.md)
 - [Derived results](RESULTS.md) and [complete CSV](results/summary.csv)
@@ -77,6 +78,8 @@ python verify_pipeline.py
 python summarize_pipeline.py --check
 python verify_precision.py
 python summarize_precision.py --check
+python verify_selector.py
+python summarize_selector.py --check
 ```
 
 CPU CI performs these checks. It cannot rerun GPU performance or recover the
@@ -152,7 +155,8 @@ comparison, not the best achievable implementation of each format.
 
 Offline held-out format decisions now include validation-accuracy budgets and
 complete request costs. Outlier experiments add fixed-error/time comparisons.
-Study 1 still requires held-out per-operation error prediction. Native
+The [held-out per-operation predictor](SELECTOR_REPORT.md) retains one budget
+violation and substantial selection costs; it establishes no runtime accuracy guarantee. Native
 Tensor Core paths are measured implementations, not an established architectural
 ceiling. The [program ledger](PROGRAM.md) preserves all other investigations.
 

@@ -107,7 +107,7 @@ def outputs():
     lines += ["","Every real case, retained error, component decision, supplied workspace, one-time setup and initial preparation cost is in [the complete CSV](results/precision-summary.csv).","",
               "[Offline precision/cost frontiers](results/precision-frontiers.json) compare error budgets 0.001, 0.000001, 1e-10 and 1e-12 across prepacked, online-A, online-both and host-request boundaries. "
               "Eligibility requires both the full reference-relative error and exact-sample error to meet the budget; infeasible outcomes are retained. "
-              "These are empirical outcomes on measured inputs, not the held-out per-operation error predictor still required by study 1.","",
+              "These are empirical outcomes on measured inputs. The separate [held-out per-operation predictor](SELECTOR_REPORT.md) retains its own accuracy failures and selection costs.","",
               "## Independent validation and timing limits","",
               "For exact witnesses, each finite FP32 input is represented as an integer times 2^-149. Arbitrary-precision integer dot products are converted once to FP64 and scaled by 2^-298. "
               "Thus cancellation and FP64-reference rounding do not silently invalidate the small-case/error samples. Every prepared digit byte, exponent and component requirement is independently reconstructed. "

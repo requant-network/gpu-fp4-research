@@ -122,7 +122,7 @@ def outputs():
               "Other GPU contexts remain present. Measurements are exploratory shared-system observations, not exclusive performance guarantees. "
               "The implementation supports the tested aligned shapes, finite inputs and FP16-representable correction factors, K up to 2048; it does not establish the best possible correction algorithm or scientific novelty. "
               "Sparse block compaction, alternative outlier scores, optimized tensor scales and complete corrected-model deployment remain separate potential improvements. "
-              "The broad program's pipeline/resource/configuration gates remain open even though this bounded outlier comparison supplies the required evidence for study 2.","",
+              "This bounded comparison supplies study 2's evidence; subsequent pipeline/resource/configuration results are retained in [the pipeline report](PIPELINE_REPORT.md).","",
               "Reproduce after earlier extended/hardware builds with `bash build_outlier.sh ../cutlass-fp4`. Frozen real activations are prepared by `prepare_outlier_activations.py`; "
               "run `outlier_study.py` with seeds 20261119/model 20261116 and 20261219/model 20261216, separate output paths and `--reverse` for the latter. "
               "Run `python verify_outliers.py` and `python summarize_outliers.py --check` without GPU dependencies to replay the public artifacts.",""]

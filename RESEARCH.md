@@ -76,5 +76,9 @@ resource requests, nine traversal controls, primed/cache-pressure comparisons an
 held-out configuration rules. The [fusion checkpoint](FUSION_REPORT.md) links
 complete quality/latency evidence to thirty function-resource queries.
 
-Held-out per-operation error prediction remains open. The program has not established the best possible SM120
+The [held-out per-operation prediction test](SELECTOR_REPORT.md) adds training-only
+calibration, two input/model cohorts, 192 held-out decisions and complete selection
+costs. It retains one budget violation and rejects safe generalization of the tested
+empirical rule. A certified runtime error guarantee remains unproven.
+The program has not established the best possible SM120
 implementation or scientific novelty; the fifteen-study goal remains active.
