@@ -2,7 +2,7 @@
 
 A research project by [Requant Network](https://requant.network).
 
-**Status: initial pilot and additive encoder/fusion/tile experiment complete; the full research program is active.**
+**Status: initial pilot, encoder/fusion/tile study and real-classifier/framework comparison complete; the full fifteen-study program is active.**
 
 Reproducible experiments on **NVIDIA RTX 5060 Ti 16 GB / SM120** asking when
 FP4 is useful after quantization cost, operand reuse and numerical error are
@@ -32,10 +32,17 @@ The server retains other GPU contexts. These are exploratory shared-system
 observations, not exclusive-hardware performance guarantees. Graphs repeatedly
 reuse the same operands; they do not establish streaming or one-shot request latency.
 
+Subsequent experiments add 592 encoder/fusion/tile configurations and 240 complete
+classifier/reference cases. The latter separately measure captured computation,
+uncaptured dispatch, changing-input host requests, fresh plans and weight reuse.
+See [the complete-application report](APPLICATION_REPORT.md) for task quality and
+scope; its host-request results are distinct from the original repeated-graph pilot.
+
 ## Read the study
 
 - [All fifteen investigations and completion requirements](PROGRAM.md)
 - [Cooperative encoder, fusion, tile and held-out rule results](ENCODER_REPORT.md)
+- [Real classifier, cuBLASLt FP4 and PyTorch/CUDA-Graph references](APPLICATION_REPORT.md)
 - [Research questions and follow-up gates](RESEARCH.md)
 - [Arithmetic, independent validation and timing methods](METHODS.md)
 - [Derived results](RESULTS.md) and [complete CSV](results/summary.csv)
@@ -55,6 +62,8 @@ python verify_results.py
 python summarize.py --check
 python verify_followups.py
 python summarize_followups.py --check
+python verify_application.py
+python summarize_application.py --check
 ```
 
 CPU CI performs these checks. It cannot rerun GPU performance or recover the
@@ -100,8 +109,10 @@ The additive study adds four byte-identical cooperative encoders, fused bias/ReL
 preparation, two CUTLASS tile shapes, four numerical profiles and held-out sizes.
 Its two cohorts retain 592 configurations and 88,800 observations. Both improvements
 and regressions remain in [the report](ENCODER_REPORT.md). Two independently trained
-digits classifiers and their dataset provenance are also retained for the next
-complete-application experiments; GPU classifier results are not yet claimed.
+digits classifiers and their dataset provenance support completed GPU application
+experiments, including CUTLASS/cuBLASLt FP4 and eager/compiled/internal-graph PyTorch
+references. The native implementations are CUDA C++ with an explicit C interface;
+Python drives experiments and is included in the separately reported host timers.
 
 ```sh
 bash build_extended.sh ../cutlass-fp4 128
@@ -115,15 +126,22 @@ OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python encoder_study.py \
 The historical pilot sources and their records remain unchanged. New experiments
 have separate source/binary manifests and numerical witnesses.
 
+Build `libapplication.so` with `bash build_application.sh ../cutlass-fp4` after the
+extended builds. Run `application_study.py` with model seeds 20261116/20261216 and
+separate output paths for the two cohorts (add `--reverse` for the latter). The
+`pytorch_study.py` and `pytorch_graph_study.py` references use the recorded external
+PyTorch 2.13.0+cu130/Triton environment. CPU artifact replay needs neither package.
+
 The initial FP4 implementation uses one CUTLASS tile configuration, a simple
 per-block encoder and a fixed top-level tensor scale of one. cuBLASLt baselines
 select among up to eight heuristic candidates. This is a specified baseline
 comparison, not the best achievable implementation of each format.
 
-Remaining work adds full format selection at fixed error, outlier correction,
-compiled framework comparisons, loading/pipeline characterization, complete request
-costs and real application quality. The [program ledger](PROGRAM.md) also preserves
-the other planned investigations. No general superiority or novelty claim is made.
+Offline held-out format decisions now include validation-accuracy budgets and
+complete request costs. Remaining work includes outlier correction, per-operation
+error constraints and direct loading/pipeline/resource characterization. Native
+Tensor Core paths are measured implementations, not an established architectural
+ceiling. The [program ledger](PROGRAM.md) preserves all other investigations.
 
 ## License
 

@@ -138,3 +138,51 @@ replays the frozen models, checks disjoint exhaustive splits and rejects changed
 data or parameters. Re-running training can differ between BLAS builds; distributed
 parameters are reference artifacts rather than a promise of bit-identical training.
 This preparation does not yet establish GPU model quality or latency.
+
+## Complete classifier and framework references
+
+The subsequent application study executes both trained models on GPU. The first
+matrix product prepares the request; the second combines bias/ReLU preparation
+with its matrix product, followed by GPU bias/argmax over ten classes. FP32 output
+is used for every GEMM. FP4 compares CUTLASS with an independent cuBLASLt backend
+using the same encoded operands and `VEC16_UE4M3` block scales in the required TN
+layout. The implementation follows the [cuBLASLt block-scaling interface](https://docs.nvidia.com/cuda/cublas/index.html).
+
+The first-layer output is independently checked, then copied outside timing to
+reconstruct the exact second-layer encoded input. Every encoded operand and each
+layer's output are validated. Public small witnesses support both layer replays;
+all retained validation/test predictions additionally match independent complete
+CPU simulation. Accuracy and score error are distinct from arithmetic correctness.
+
+Host requests alternate among four actual input batches and check their returned
+labels. Uncaptured wall timers include dispatch and stream completion. Fresh-plan
+timers additionally include arrays/transfers, native plan creation, prepared weights,
+inference, returned labels and native teardown, using a cached algorithm index and
+a warm CuPy allocator/process. The allocation/setup observation and tuning search
+are separate fields. Weight-reuse graphs prepare both weights once, then execute
+1,8 or 64 complete inferences; their totals exclude allocation and weight H2D.
+
+PyTorch references use the same inputs, frozen parameters and task, with explicit
+FP32 GEMM outputs. FP32 is strict; FP16/BF16 reduced-precision accumulation is disabled.
+FP8 uses `_scaled_mm` with unit scalar scales. Eager and fully compiled no-internal-graph
+paths have isolated captured-device and uncaptured/host timers. A separate dynamic
+`reduce-overhead` reference enables internal CUDA Graphs and static weight addresses;
+live graph-tree roots are recorded for every shape/precision case. Its timers
+include graph management/step markers and do not claim an isolated kernel time.
+
+Maximum-autotune mode was requested in the static compiled reference; the installed
+framework declines GEMM max-autotuning on this 36-SM GPU. The 24-specialization grid
+requires a limit above the default eight; the actual run uses 64 and fullgraph=True.
+The failed partial first attempt is excluded. Native CUDA 13.3 and the available
+PyTorch 2.13.0+cu130 reference stack have different library versions, explicitly retained.
+
+The offline application selector uses cohort-A timings at batches16,64,256 with
+linear interpolation. It evaluates batches32,128,192 in both models. Eligibility
+uses each model's validation accuracy with a complete 0/0.5/1-percentage-point
+budget sweep. Test labels and held-out timings do not choose the format. Actual
+chosen-configuration test accuracy/latency and regret are retained; runtime routing
+overhead and generalization to other models are unmeasured.
+
+This application checkpoint extends rather than rewrites the historical pilot.
+All observations retain the shared-system limitations. Direct native instruction,
+loading, pipeline and resource investigations remain open.

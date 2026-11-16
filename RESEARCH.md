@@ -53,3 +53,15 @@ The first campaign starts the project; it does not complete the research program
 
 A publication claim requires a literature comparison and a defensible contribution
 beyond a product-specific benchmark. Negative outcomes remain part of the record.
+
+## Evidence checkpoint
+
+The [encoder report](ENCODER_REPORT.md) completes a bounded grid extension,
+cooperative/fused preparation comparison, two-tile comparison and held-out encoder
+rule. The [application report](APPLICATION_REPORT.md) adds stronger native cuBLASLt
+FP4, complete real-model quality, host/allocation/reuse costs, eager/compiled/graph
+framework references and validation-gated held-out format decisions.
+
+The required outlier/error-constraint experiment and loading/pipeline/resource
+investigation remain open. The program has not established the best possible SM120
+implementation or scientific novelty; the fifteen-study goal remains active.
