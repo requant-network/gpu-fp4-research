@@ -89,3 +89,52 @@ The shared server retains other GPU contexts. Boundary snapshots record utilizat
 temperature and clocks, but cannot exclude activity during an observation. Results
 are exploratory observations rather than exclusive-hardware performance guarantees.
 No clocks, power limits, services or unrelated workloads are modified.
+
+## Additive encoder, activation and tile experiment
+
+The original four executed pilot sources remain byte unchanged. `optimized_bridge.cu`
+adds one-value-per-lane (16-lane groups) and two-values-per-lane (8-lane groups)
+cooperation with fixed 128/256/512-thread launches. Shuffle reductions compute the
+same block maximum and the original conversion contract; unused layout padding
+retains its initialized scale. Two generated base headers differ only in the
+declared M tile (128 or 256). Source transformations and binary digests are retained.
+
+Fusion incorporates bias addition and ReLU into FP4 input preparation. Its separate
+control performs the same activation in one kernel followed by the same cooperative
+encoder. The activation and quantization contract is checked against independent
+CPU computations. Both routes include bias/ReLU inside online/preparation timers.
+
+Six historical shapes, four held-out shapes and one 2048-cubed shape are tested.
+Normal and outlier profiles are supplemented with small-magnitude values exercising
+minimum scales and explicit rounding midpoints. The largest shape uses normal and
+outlier profiles. Five boundaries distinguish preparation A, preparation A+B,
+prepacked GEMM, online A+GEMM and online A+B+GEMM. Shared-system qualifications and
+5/30/32 warmup/observation/repetition counts match the declared protocol.
+
+All encoded operands and scales must match the CPU encoder exactly. New arithmetic
+checks use `8*gamma_K*(abs(Aq)@abs(Bq).T)+float32.tiny`, which also resolves small
+signals without the historical pilot's absolute 1e-6 floor. Eight NPZ files retain
+all small-case outputs. The two new cohorts contain 336,068,608 entries checked
+before and after timing; CPU replay covers 917,504 retained output entries.
+
+The encoder selector uses only cohort-A training shapes and preparation-A times.
+Its input feature is M*K, with one threshold and one fixed encoder on each side.
+No held-out shape or cohort-B duration is used to fit it. Held-out outcomes include
+every numerical profile in both cohorts. This selects an equivalent encoder,
+not a format at equal application quality. The new CSV uses nearest-rank empirical
+p10/p90; the historical pilot CSV retains its original interpolated percentiles.
+
+## Real-data model preparation
+
+The attributed [digits subset](fixtures/DATA.md) supplies 1,797 small images and
+ten labels. Two independent stratified 60/20/20 splits train a 128-256-128 padded
+ReLU classifier, using only ten output classes. Each model uses a fixed 80-epoch
+Adam schedule. Test data is not used to choose a checkpoint. Padding preserves the
+real 64-feature task while meeting the bounded matrix interface.
+
+Frozen parameter arrays, split indices, training source and dataset hashes,
+validation history and train/validation/test accuracy are retained. CPU verification
+replays the frozen models, checks disjoint exhaustive splits and rejects changed
+data or parameters. Re-running training can differ between BLAS builds; distributed
+parameters are reference artifacts rather than a promise of bit-identical training.
+This preparation does not yet establish GPU model quality or latency.

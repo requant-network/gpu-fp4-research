@@ -31,6 +31,11 @@ Frequency, temperature and cache effects are not eliminated by this protocol.
 
 ## Next bounded experiment
 
+This encoder/fusion/tile follow-up has now been executed; its results and retained
+regressions are in [ENCODER_REPORT.md](ENCODER_REPORT.md). The text below preserves
+the question that motivated it. Complete application and format-selection gates
+remain open in [the program ledger](PROGRAM.md).
+
 Optimize the online FP4 encoder while preserving its exact quantization contract.
 Keep the same retained inputs, scale rule, packed-byte oracle and GEMM configuration.
 Compare the original encoder with a vectorized or warp-cooperative implementation.

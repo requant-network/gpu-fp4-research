@@ -17,3 +17,7 @@ remain in that checkout. It is not vendored in this repository.
 
 NumPy, CuPy, CUDA and cuBLASLt retain their respective licenses. Original
 repository code is MIT licensed unless an individual file carries another notice.
+
+The real-data digits fixture is separately attributed and licensed under CC BY 4.0;
+see [dataset provenance](fixtures/DATA.md). Its dataset license is distinct from
+the original code license.

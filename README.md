@@ -2,7 +2,7 @@
 
 A research project by [Requant Network](https://requant.network).
 
-**Status: first GPU pilot complete; research in progress.**
+**Status: initial pilot and additive encoder/fusion/tile experiment complete; the full research program is active.**
 
 Reproducible experiments on **NVIDIA RTX 5060 Ti 16 GB / SM120** asking when
 FP4 is useful after quantization cost, operand reuse and numerical error are
@@ -34,6 +34,8 @@ reuse the same operands; they do not establish streaming or one-shot request lat
 
 ## Read the study
 
+- [All fifteen investigations and completion requirements](PROGRAM.md)
+- [Cooperative encoder, fusion, tile and held-out rule results](ENCODER_REPORT.md)
 - [Research questions and follow-up gates](RESEARCH.md)
 - [Arithmetic, independent validation and timing methods](METHODS.md)
 - [Derived results](RESULTS.md) and [complete CSV](results/summary.csv)
@@ -51,6 +53,8 @@ python -m pip install -r requirements.txt
 python -m unittest discover -s tests -v
 python verify_results.py
 python summarize.py --check
+python verify_followups.py
+python summarize_followups.py --check
 ```
 
 CPU CI performs these checks. It cannot rerun GPU performance or recover the
@@ -92,16 +96,34 @@ the published experiment merely by using the same seed.
 
 ## Current limits and next step
 
+The additive study adds four byte-identical cooperative encoders, fused bias/ReLU
+preparation, two CUTLASS tile shapes, four numerical profiles and held-out sizes.
+Its two cohorts retain 592 configurations and 88,800 observations. Both improvements
+and regressions remain in [the report](ENCODER_REPORT.md). Two independently trained
+digits classifiers and their dataset provenance are also retained for the next
+complete-application experiments; GPU classifier results are not yet claimed.
+
+```sh
+bash build_extended.sh ../cutlass-fp4 128
+bash build_extended.sh ../cutlass-fp4 256
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python encoder_study.py \
+  --seed 20261117 --output build/reproduction/encoder-cohort-a.json
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python encoder_study.py \
+  --seed 20261217 --reverse --output build/reproduction/encoder-cohort-b.json
+```
+
+The historical pilot sources and their records remain unchanged. New experiments
+have separate source/binary manifests and numerical witnesses.
+
 The initial FP4 implementation uses one CUTLASS tile configuration, a simple
 per-block encoder and a fixed top-level tensor scale of one. cuBLASLt baselines
 select among up to eight heuristic candidates. This is a specified baseline
 comparison, not the best achievable implementation of each format.
 
-The next experiment should optimize online FP4 preparation, preserve the independent
-byte-level encoder checks and measure whether lower preparation cost changes the
-observed crossover. Subsequent work adds error constraints, held-out shapes and one
-real application. No model-quality, energy, general superiority or novelty claim
-is made by this pilot.
+Remaining work adds full format selection at fixed error, outlier correction,
+compiled framework comparisons, loading/pipeline characterization, complete request
+costs and real application quality. The [program ledger](PROGRAM.md) also preserves
+the other planned investigations. No general superiority or novelty claim is made.
 
 ## License
 
