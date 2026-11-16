@@ -2,7 +2,7 @@
 
 A research project by [Requant Network](https://requant.network).
 
-**Status: pilot, encoder/fusion/tile, classifier/framework, native-conversion and outlier-correction experiments complete; the full fifteen-study program is active.**
+**Status: studies 2 (outlier correction), 3 (fusion) and 4 (native configuration) complete within their declared protocols; the full fifteen-study program is active.**
 
 Reproducible experiments on **NVIDIA RTX 5060 Ti 16 GB / SM120** asking when
 FP4 is useful after quantization cost, operand reuse and numerical error are
@@ -44,6 +44,8 @@ scope; its host-request results are distinct from the original repeated-graph pi
 - [Cooperative encoder, fusion, tile and held-out rule results](ENCODER_REPORT.md)
 - [Real classifier, cuBLASLt FP4 and PyTorch/CUDA-Graph references](APPLICATION_REPORT.md)
 - [Native FP4 conversion, vector loads, emitted instructions and resources](HARDWARE_REPORT.md)
+- [Native pipeline, traversal, buffering, resource and cache comparisons](PIPELINE_REPORT.md)
+- [Fusion resource characterization and complete evidence](FUSION_REPORT.md)
 - [FP4 column/block/residual correction at fixed error and fixed time](OUTLIER_REPORT.md)
 - [Research questions and follow-up gates](RESEARCH.md)
 - [Arithmetic, independent validation and timing methods](METHODS.md)
@@ -70,6 +72,8 @@ python verify_hardware.py
 python summarize_hardware.py --check
 python verify_outliers.py
 python summarize_outliers.py --check
+python verify_pipeline.py
+python summarize_pipeline.py --check
 ```
 
 CPU CI performs these checks. It cannot rerun GPU performance or recover the
@@ -145,8 +149,7 @@ comparison, not the best achievable implementation of each format.
 
 Offline held-out format decisions now include validation-accuracy budgets and
 complete request costs. Outlier experiments add fixed-error/time comparisons.
-Remaining work includes held-out per-operation error prediction and direct
-loading/pipeline/resource characterization. Native
+Study 1 still requires held-out per-operation error prediction. Native
 Tensor Core paths are measured implementations, not an established architectural
 ceiling. The [program ledger](PROGRAM.md) preserves all other investigations.
 

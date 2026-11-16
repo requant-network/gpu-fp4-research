@@ -1,0 +1,197 @@
+{
+  "label": "m128-s2-ping",
+  "environment": {
+    "gpu": {
+      "name": "NVIDIA GeForce RTX 5060 Ti",
+      "driver_version": "610.43.03",
+      "memory.total": "16311",
+      "memory.used": "946",
+      "utilization.gpu": "0",
+      "temperature.gpu": "38",
+      "power.draw": "8.89",
+      "power.limit": "180.00",
+      "clocks.sm": "210",
+      "clocks.mem": "405"
+    },
+    "compute_capability": [
+      12,
+      0
+    ],
+    "sm_count": 36,
+    "vram_bytes": 16657285120,
+    "python": "3.12.3",
+    "os": "Linux",
+    "kernel": "6.8.0-142-generic",
+    "numpy": "2.2.6",
+    "cupy": "13.6.0",
+    "cuda_runtime": 12090,
+    "cuda_driver": 13030,
+    "cublaslt_version": 130600,
+    "gpu_exclusive": false,
+    "measurement_class": "exploratory shared-system observations; other GPU contexts remain present",
+    "nvidia-cuda-runtime-cu12": "12.8.90",
+    "nvidia-cuda-nvrtc-cu12": "12.8.93",
+    "nvcc": "nvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2026 NVIDIA Corporation\nBuilt on Tue_Jun_09_02:43:40_PM_PDT_2026\nCuda compilation tools, release 13.3, V13.3.73\nBuild cuda_13.3.r13.3/compiler.38244171_0\n"
+  },
+  "build": {
+    "tile_m": 128,
+    "stages": "2",
+    "schedule": "ping",
+    "cutlass_commit": "b2f249acd20392beeb16f5e5a31f4f1a4e38b3bd",
+    "architecture": "sm_120a",
+    "generated_source_sha256": "d3accd02e1b287df168a3f24c42f32cfcebac8bab4c7762f42f9a3f5f2f7179c",
+    "binary_sha256": "02e544838f484e05fd16d3b57afa100f59a9cdc6a2887d674d569de906a2bf8b",
+    "source_sha256": {
+      "build_pipeline.py": "3b516897d8b91b2852baceb6c7a89c6aee0c83f055828b430d8e707a8ed05333",
+      "native/pipeline_bridge.cu": "e0a8f6342f8893e452f96cf6948106c127f4e780e843bc8311620719561a1bfc",
+      "native/bridge.cu": "5bd319bed3f39f6a735e6036e643ad8091d198a40398760e7a57a75d275c19b8",
+      "native/optimized_bridge.cu": "9d718ad97e4c3c2d77afe6402f093ec0af48c46d5faeaf78ea44c2d5537e4a25",
+      "native/application_bridge.cu": "1d2f0b190d1f27ee3408fa126fae43c0ee5907feaec4bd94353a802c94fa1336",
+      "native/hardware_bridge.cu": "dbc8f619e69d91a25ef7d6bd7eb984112f737afb44934e3694fe1db6511d9faf"
+    },
+    "nvcc": "nvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2026 NVIDIA Corporation\nBuilt on Tue_Jun_09_02:43:40_PM_PDT_2026\nCuda compilation tools, release 13.3, V13.3.73\nBuild cuda_13.3.r13.3/compiler.38244171_0\n",
+    "complete": true
+  },
+  "source_sha256": {
+    "pipeline_preflight.py": "d3fd79757fee46174df7acef5d3b5b24e65a431ad2cc8d0ecc33e1a7822d5221"
+  },
+  "scope": "Correctness and theoretical-resource preflight only; no comparative timing or achieved occupancy claim",
+  "cases": [
+    {
+      "shape": [
+        128,
+        128,
+        128
+      ],
+      "profile": "normal",
+      "checks": {
+        "encoded_sha256": {
+          "operand_0_encoded": "abc222219c2e4c6f98a439c1bc03a78051e74fbaa03304077e57d2bd6b1d387a",
+          "operand_0_scales": "b2391bb19d888ebe5d4d4559c077121b812d714ee17c94ab4c945f8fb2ce1d03",
+          "operand_1_encoded": "a5fc9ec923aacf23b176f1bcc4b16482c7458a2535c8305a34d3ae6023636a2a",
+          "operand_1_scales": "5dec27cf498ae339c56f9347d99a9602123a94960c071abaaab2c7a82d68293d"
+        },
+        "arithmetic_max_bound_ratio": 0.0,
+        "relative_frobenius_error": 0.13610210884850876,
+        "maximum_absolute_error": 6.1174468994140625,
+        "output_sha256": "2d38da8016b98db2ba33ab580f7502c8b1bfb5e8d7696c1488614bbba6d03a7e",
+        "checked_output_entries": 16384
+      }
+    },
+    {
+      "shape": [
+        128,
+        128,
+        128
+      ],
+      "profile": "outliers",
+      "checks": {
+        "encoded_sha256": {
+          "operand_0_encoded": "af148862926e2c796f438ad9b54546db65b7d7663205b7bcb85de68cfac1a2c6",
+          "operand_0_scales": "eaf3f8c74fd8c443547e6cb2d5f1a5fe0a533c40bb10ba1738b3b97abcef05b9",
+          "operand_1_encoded": "218bd5724203a30b7efc68964dff6e9d2ed5f8abd6192dcacd8e33cda75bfc6e",
+          "operand_1_scales": "a9061779c8c3f14bb5d4b4546c159878622498d3ce43ec95c987f51533e57a59"
+        },
+        "arithmetic_max_bound_ratio": 0.0007484576533690925,
+        "relative_frobenius_error": 0.11691364270953894,
+        "maximum_absolute_error": 217.57276916503906,
+        "output_sha256": "9a0b73ebf154415202cad5134a38c5b5543caa93bfa059dc11d6a6286747881a",
+        "checked_output_entries": 16384
+      }
+    },
+    {
+      "shape": [
+        192,
+        768,
+        768
+      ],
+      "profile": "normal",
+      "checks": {
+        "encoded_sha256": {
+          "operand_0_encoded": "bb7fba2d73f850490fca83846c64e984a7488f09525bd69208d8ab64184bfd8f",
+          "operand_0_scales": "0daf1ecdf8b1890c4083d88e582dab203588244e96be69319a15a1d27da51fc8",
+          "operand_1_encoded": "c8f5212f0a53355e038b8692062ee51ee5b6f63e2f97d0e8ebf9f7b097200ea0",
+          "operand_1_scales": "002d5d3c7f58362e7de8c1940a97d50f231bacfbdf52a4b380f95723962068df"
+        },
+        "arithmetic_max_bound_ratio": 0.0,
+        "relative_frobenius_error": 0.1350200673563563,
+        "maximum_absolute_error": 17.165008544921875,
+        "output_sha256": "94926f24114b700b51d4a5d25f439940e04cb348aee945056cdba4880cf64b7b",
+        "checked_output_entries": 147456
+      }
+    },
+    {
+      "shape": [
+        192,
+        768,
+        768
+      ],
+      "profile": "outliers",
+      "checks": {
+        "encoded_sha256": {
+          "operand_0_encoded": "16e7fad381ff8d78d46dabab3867e069f96d9c37fa2354e0c9a8d8c407825328",
+          "operand_0_scales": "3c28520842b7c5d450c9af305d45217e5c5e3bdcb95a3d4731db1a5d1d2a906c",
+          "operand_1_encoded": "9d570cf6d60bd9e35b700729af0843e7c20e6e222f4584fb4799e8f835033365",
+          "operand_1_scales": "5a2f634c86b0a982a5692ba315eb715e33be02b9fa70af6ade84bd16523d3f8e"
+        },
+        "arithmetic_max_bound_ratio": 0.0009141117212260127,
+        "relative_frobenius_error": 0.11243999603619038,
+        "maximum_absolute_error": 433.1959533691406,
+        "output_sha256": "64273d5c14fdf7dc2ed5da7e6a36e6a27bf233be850722a2a595d46d1a0409e7",
+        "checked_output_entries": 147456
+      }
+    },
+    {
+      "shape": [
+        2048,
+        2048,
+        2048
+      ],
+      "profile": "normal",
+      "checks": {
+        "encoded_sha256": {
+          "operand_0_encoded": "502b681673c0e1ddd81d7773c4c695b6b1c690640a675bd6c2c6191fb4e12cc7",
+          "operand_0_scales": "1a462a8bed7303d5f8144c8c8d0bea8c87052d8eb100e93aef7f4f81e027a1c9",
+          "operand_1_encoded": "bb6fb3b326f2d727128138e23471cb2c26bbb4ec79535df1e3d855bed91a70aa",
+          "operand_1_scales": "6146be1c038127964a78fb481974c9e22a24f99c8f4c87e8b72eae371ae81221"
+        },
+        "arithmetic_max_bound_ratio": 0.0,
+        "relative_frobenius_error": 0.13469729789187265,
+        "maximum_absolute_error": 31.558700561523438,
+        "output_sha256": "ef483db90ddf8c2b6b4e24793715ac8fadaf71aafa855bcaa5abbea91bd0314f",
+        "checked_output_entries": 4194304
+      }
+    },
+    {
+      "shape": [
+        2048,
+        2048,
+        2048
+      ],
+      "profile": "outliers",
+      "checks": {
+        "encoded_sha256": {
+          "operand_0_encoded": "116e764929675e5076560d5f30fcd45ee4b83c35eaa86cba764923fe380dcee4",
+          "operand_0_scales": "7b1b311a01bc248f3a054fedd8450f30fed8913ca14a2e511ef730699abfa595",
+          "operand_1_encoded": "e90084a16453f71ea1b718f8a9533869bf8f2e38bf4a46d14d58038a508530bf",
+          "operand_1_scales": "b86a1fb69a853511b75edbceac1f1a5ac8dbcbf3e689b7e6f09ba83330fd2b90"
+        },
+        "arithmetic_max_bound_ratio": 0.0010353672014414806,
+        "relative_frobenius_error": 0.11285374025553613,
+        "maximum_absolute_error": 795.7835540771484,
+        "output_sha256": "3ea61d08ed76441affb63fe3d13c13d15060735cdffb27fdded80f3b1434a2d3",
+        "checked_output_entries": 4194304
+      }
+    }
+  ],
+  "resources": {
+    "stages": 2,
+    "block_threads": 384,
+    "dynamic_shared_bytes": 63488,
+    "registers_per_thread": 168,
+    "static_shared_bytes": 0,
+    "local_bytes": 24,
+    "theoretical_blocks_per_sm": 1
+  },
+  "complete": true
+}

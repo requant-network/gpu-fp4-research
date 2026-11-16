@@ -71,6 +71,10 @@ The [outlier report](OUTLIER_REPORT.md) adds native column/block/residual correc
 real activations, complete preparation costs and fixed-error/fixed-time frontiers.
 These are empirical frontiers, not held-out error prediction for unseen inputs.
 
-Held-out per-operation error prediction and the loading/pipeline/resource
-investigation remain open. The program has not established the best possible SM120
+The [pipeline report](PIPELINE_REPORT.md) adds twelve usable pipelines, four rejected
+resource requests, nine traversal controls, primed/cache-pressure comparisons and
+held-out configuration rules. The [fusion checkpoint](FUSION_REPORT.md) links
+complete quality/latency evidence to thirty function-resource queries.
+
+Held-out per-operation error prediction remains open. The program has not established the best possible SM120
 implementation or scientific novelty; the fifteen-study goal remains active.
