@@ -2,7 +2,7 @@
 
 A research project by [Requant Network](https://requant.network).
 
-**Status: studies 1-7 complete within their declared protocols; the full fifteen-study program is active. Studies 8-15 remain pending.**
+**Status: studies 1-8 complete within their declared protocols; the full fifteen-study program is active. Studies 9-15 remain pending.**
 
 Reproducible experiments on **NVIDIA RTX 5060 Ti 16 GB / SM120** asking when
 FP4 is useful after quantization cost, operand reuse and numerical error are
@@ -51,6 +51,7 @@ scope; its host-request results are distinct from the original repeated-graph pi
 - [Held-out error prediction, its budget violation and complete selection costs](SELECTOR_REPORT.md)
 - [Mixed-precision attention, fused FP4/SDPA references and complete model quality](ATTENTION_REPORT.md)
 - [Adaptive SPD solvers, native Cholesky/IR references and forward-error failures](SOLVER_REPORT.md)
+- [Hybrid sparse/dense SpMM versus native CSR/BSR/ELL/dense references](SPMM_REPORT.md)
 - [Research questions and follow-up gates](RESEARCH.md)
 - [Arithmetic, independent validation and timing methods](METHODS.md)
 - [Derived results](RESULTS.md) and [complete CSV](results/summary.csv)
@@ -89,6 +90,8 @@ python verify_attention_application.py
 python summarize_attention.py --check
 python verify_solver.py
 python summarize_solver.py --check
+python verify_spmm.py
+python summarize_spmm.py --check
 ```
 
 CPU CI performs these checks. It cannot rerun GPU performance or recover the
@@ -96,6 +99,9 @@ unretained large-case output arrays. Every large-case output was checked at runt
 the public small-case witnesses support independent numerical replay.
 The solver study additionally retains every actual solver output in full,
 including failed solutions, and links each measured observation to its witness.
+The SpMM study retains selected complete outputs and samples for every check;
+its large complete outputs are checked at runtime. Its gzip cohort archives
+preserve the original JSON bytes and support CPU-only replay.
 
 ## GPU reproduction
 

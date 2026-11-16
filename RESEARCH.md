@@ -86,7 +86,11 @@ refinement references, adaptive residual gates and explicit factor reuse.
 Every measured solution is retained for CPU replay. Failed forward-error targets
 remain failures even when the GPU residual gate passes; neither residual-only
 adaptation nor native FP64 is a universal accuracy guarantee at high conditioning.
-The pending sparse/dense SpMM study has a tested lossless CPU decomposition
-in `spmm_reference.py`; GPU execution and comparative evidence remain required.
+The [sparse/dense SpMM study](SPMM_REPORT.md) adds native Tensor Core blocks plus
+an FP32 sparse remainder, strong CSR/BSR/Blocked-ELL/dense references, two cohorts,
+real matrices and complete conversion/reuse costs. Its active hybrid wins none of
+the 52 online-B groups at error 0.001. Zero-block cases and approximate FP32-storage
+ELL outcomes remain explicit; native library comparisons materially change the
+conclusion. The full fifteen-study program remains active with studies 9-15 pending.
 The program has not established the best possible SM120
 implementation or scientific novelty; the fifteen-study goal remains active.

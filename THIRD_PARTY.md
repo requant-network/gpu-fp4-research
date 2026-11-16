@@ -37,4 +37,5 @@ in Summer 1982. They are distributed by NIST Matrix Market; their numerical
 data are separately attributed and are not relicensed by the repository's MIT
 code license. Original download URLs and compressed/decompressed hashes are in
 [the solver matrix manifest](fixtures/solver-matrices.json).
-cuSOLVER and cuBLAS retain NVIDIA's applicable licenses and are not vendored.
+cuSOLVER, cuBLAS/cuBLASLt and cuSPARSE retain NVIDIA's applicable licenses and
+are not vendored.
