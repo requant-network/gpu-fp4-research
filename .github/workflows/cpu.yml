@@ -1,10 +1,24 @@
 name: CPU references and research artifacts
-on: [push, pull_request]
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
 permissions:
   contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 jobs:
-  verify:
+  research:
+    name: CPU replay (${{ matrix.group }})
     runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        group: [core, search, pca, pde]
     env:
       OPENBLAS_NUM_THREADS: '1'
       OMP_NUM_THREADS: '1'
@@ -14,68 +28,18 @@ jobs:
         with:
           python-version: '3.12'
           cache: pip
+          cache-dependency-path: |
+            requirements.txt
+            requirements-pde.txt
       - run: python -m pip install -r requirements.txt -r requirements-pde.txt
-      - run: python -m compileall -q reference.py gpu_study.py verify_results.py summarize.py tests
-      - run: python -m unittest discover -s tests -v
-      - run: python verify_results.py
-      - run: python summarize.py --check
-      - run: python -m compileall -q followup.py encoder_study.py prepare_digits.py verify_followups.py summarize_followups.py
-      - run: python verify_followups.py
-      - run: python summarize_followups.py --check
-      - run: python -m compileall -q application_study.py pytorch_study.py pytorch_graph_study.py verify_application.py summarize_application.py
-      - run: python verify_application.py
-      - run: python summarize_application.py --check
-      - run: python -m compileall -q hardware_study.py inspect_native.py profile_native.py verify_hardware.py summarize_hardware.py
-      - run: python verify_hardware.py
-      - run: python summarize_hardware.py --check
-      - run: python -m compileall -q outlier_reference.py outlier_study.py prepare_outlier_activations.py verify_outliers.py summarize_outliers.py
-      - run: python verify_outliers.py
-      - run: python summarize_outliers.py --check
-      - run: python -m compileall -q build_pipeline.py build_raster.py pipeline_preflight.py pipeline_study.py inspect_fusion_resources.py calibrate_pipeline_timing.py verify_pipeline.py summarize_pipeline.py
-      - run: python verify_pipeline.py
-      - run: python summarize_pipeline.py --check
-      - run: python -m compileall -q precision_reference.py precision_study.py verify_precision.py summarize_precision.py
-      - run: python verify_precision.py
-      - run: python summarize_precision.py --check
-      - run: python -m compileall -q selector_reference.py selector_study.py verify_selector.py summarize_selector.py
-      - run: python verify_selector.py
-      - run: python summarize_selector.py --check
-      - run: python -m compileall -q attention_preflight.py attention_reference.py attention_model.py prepare_attention_models.py attention_native.py attention_validation.py attention_study.py attention_application.py build_sage_reference.py sage_reference.py sage_attention_study.py inspect_attention_environment.py verify_attention_models.py verify_attention.py verify_sage_attention.py verify_attention_application.py summarize_attention.py
-      - run: python verify_attention_models.py
-      - run: python verify_attention.py
-      - run: python verify_sage_attention.py
-      - run: python verify_attention_application.py
-      - run: python summarize_attention.py --check
-      - run: python -m compileall -q solver_preflight.py solver_reference.py solver_study.py verify_solver.py summarize_solver.py
-      - run: python verify_solver.py
-      - run: python summarize_solver.py --check
-      - run: python -m compileall -q spmm_preflight.py spmm_reference.py spmm_formats.py spmm_native.py spmm_validation.py spmm_records.py spmm_study.py verify_spmm.py summarize_spmm.py
-      - run: python verify_spmm.py
-      - run: python summarize_spmm.py --check
-      - run: python -m compileall -q fft_preflight.py fft_reference.py fft_coefficients.py fft_inputs.py fft_native.py fft_validation.py fft_study.py prepare_fft_dx.py calibrate_fft.py fft_records.py verify_fft_controls.py verify_fft.py summarize_fft.py
-      - run: python verify_fft_controls.py
-      - run: python verify_fft.py
-      - run: python summarize_fft.py --check
-      - run: python -m compileall -q search_reference.py search_cases.py search_memory.py search_native.py search_native_full.py search_baselines.py search_validation.py search_stage_full.py search_preflight.py search_kernel_preflight.py search_study.py search_replay.py search_frontiers.py prepare_search_sift.py inspect_search_environment.py check_search_lifetime.py check_search_capture_memory.py verify_search_environment.py verify_search_preflight.py verify_search_kernel_preflight.py verify_search_sift.py verify_search.py summarize_search.py
-      - run: python verify_search_environment.py
-      - run: python verify_search_sift.py
-      - run: python verify_search_preflight.py
-      - run: python verify_search_kernel_preflight.py
-      - run: python verify_search.py --summary results/search-replay.json
-      - run: git diff --exit-code -- results/search-replay.json
-      - run: python summarize_search.py --check
-      - run: python summarize_search.py --smoke --check
-      - run: python -m compileall -q pca_reference.py pca_cases.py pca_native.py pca_protocol.py pca_study.py pca_study_guarded.py pca_input_integrity.py pca_provenance.py pca_parallel_replay.py pca_replay.py pca_output_replay.py pca_final_replay.py pca_frontiers.py pca_cost_audit.py verify_pca.py verify_pca_input_failure.py summarize_pca.py check_pca_native.py check_pca_batch.py
-      - run: mkdir -p build
-      - run: python verify_pca.py --workers 4 --summary build/pca-replay-ci.json
-      - run: python -c "import json; from pathlib import Path; assert json.loads(Path('build/pca-replay-ci.json').read_text()) == json.loads(Path('results/pca-replay.json').read_text())"
-      - run: python pca_cost_audit.py --summary build/pca-cost-audit-ci.json
-      - run: python -c "import json; from pathlib import Path; assert json.loads(Path('build/pca-cost-audit-ci.json').read_text()) == json.loads(Path('results/pca-cost-audit.json').read_text())"
-      - run: python verify_pca_input_failure.py --summary build/pca-input-failure-audit-ci.json
-      - run: python -c "import json; from pathlib import Path; assert json.loads(Path('build/pca-input-failure-audit-ci.json').read_text()) == json.loads(Path('results/pca-input-failure-audit.json').read_text())"
-      - run: python summarize_pca.py --check
-      - run: python -m compileall -q pde_reference.py pde_coefficients.py prepare_pde_coefficients.py pde_cases.py pde_protocol.py pde_cuda.py pde_ceed.py pde_packing.py pde_tensor.py pde_small.py pde_cg.py pde_methods.py pde_evidence.py pde_study.py run_pde_campaign.py pde_models.py pde_replay.py pde_cost_audit.py verify_pde.py compare_pde_receipts.py pde_frontiers.py summarize_pde.py check_pde_cuda.py check_pde_ceed.py check_pde_ceed_ref_limit.py check_pde_tensor.py check_pde_small.py check_pde_solver.py
-      - run: python verify_pde.py --workers 4 --summary build/pde-replay-ci.json --cost-summary build/pde-cost-ci.json
-      - run: python compare_pde_receipts.py results/pde-replay.json build/pde-replay-ci.json
-      - run: python compare_pde_receipts.py results/pde-cost-audit.json build/pde-cost-ci.json
-      - run: python summarize_pde.py --check
+      - run: python .github/ci/run_group.py "${{ matrix.group }}"
+  verify:
+    name: verify
+    needs: research
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - run: test "$REPLAY_RESULT" = success
+        env:
+          REPLAY_RESULT: ${{ needs.research.result }}
