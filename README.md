@@ -2,7 +2,7 @@
 
 A research project by [Requant Network](https://requant.network).
 
-**Status: studies 1-10 complete within their declared protocols; the full fifteen-study program is active. Studies 11-15 remain pending. CPU/artifact CI checks each published head.**
+**Status: studies 1-12 have completed their bounded experiments and independent replay; the full fifteen-study program remains active. Studies 13-15 are pending. Publication is gated by CPU/artifact CI on each exact published head.**
 
 Reproducible experiments on **NVIDIA RTX 5060 Ti 16 GB / SM120** asking when
 FP4 is useful after quantization cost, operand reuse and numerical error are
@@ -54,6 +54,8 @@ scope; its host-request results are distinct from the original repeated-graph pi
 - [Hybrid sparse/dense SpMM versus native CSR/BSR/ELL/dense references](SPMM_REPORT.md)
 - [Complete spectral filtering: Tensor Core FFT, cuFFT and fused cuFFTDx](FFT_REPORT.md)
 - [Quantized vector search versus resident Faiss/cuVS and indexed references](SEARCH_REPORT.md)
+- [Streaming covariance/PCA, weak-spectrum failures and retained input-fault evidence](PCA_REPORT.md)
+- [Matrix-free Poisson/heat, strong short-q/CEED controls and complete physical solves](PDE_REPORT.md)
 - [Research questions and follow-up gates](RESEARCH.md)
 - [Arithmetic, independent validation and timing methods](METHODS.md)
 - [Derived results](RESULTS.md) and [complete CSV](results/summary.csv)
@@ -67,7 +69,7 @@ Python 3.12 and the pinned NumPy dependency are sufficient. GPU libraries are no
 needed to replay the public witnesses or check the artifacts.
 
 ```sh
-python -m pip install -r requirements.txt
+python -m pip install -r requirements.txt -r requirements-pde.txt
 python -m unittest discover -s tests -v
 python verify_results.py
 python summarize.py --check
@@ -107,6 +109,11 @@ python summarize_search.py --smoke --check
 python verify_pca.py
 python pca_cost_audit.py
 python summarize_pca.py --check
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python verify_pde.py --workers 4 \
+  --summary build/pde-replay-check.json --cost-summary build/pde-cost-check.json
+python compare_pde_receipts.py results/pde-replay.json build/pde-replay-check.json
+python compare_pde_receipts.py results/pde-cost-audit.json build/pde-cost-check.json
+python summarize_pde.py --check
 ```
 
 CPU CI performs these checks. It cannot rerun GPU performance or recover the
@@ -130,6 +137,14 @@ leading16 eigenvectors, independent original-data/stage witnesses and per-timing
 input/output bindings. It does not certify unretained full eigenbases or opaque
 library/cache/temporary peak-memory allocations. Named buffer requests and
 recorded heuristic selection have a separate geometry-based audit.
+
+The physical-operator study retains every timed final vector and every heat-step
+state/RHS, with lossless IEEE-bit XOR deltas for nonidentical outputs. Complete
+first-observation native GEMM witnesses supplement all-output arithmetic checks.
+Fresh CPU replay checks original-system residuals and physical/discretization
+quality; it does not certify every unretained CG intermediate. Exact launch,
+canonical-fixture, thirty-source and four-binary epochs are recorded. Named
+allocation/request categories and calibration selection are audited separately.
 
 ## GPU reproduction
 
@@ -331,6 +346,18 @@ checks are outside service timers and change inter-request spacing; no unchanged
 cache/thermal-state or hardware/vendor fault attribution is claimed. The sanitizer
 attempt did not finish. CPU replay uses independent dataset processes, one BLAS
 thread each, and rejects missing/overlapping or differently source-bound partitions.
+
+## Physical-operator reproduction
+
+See [the bounded Poisson/heat report](PDE_REPORT.md) and
+[complete CPU/GPU reproduction instructions](PDE_REPRODUCTION.md). The actual
+matrix includes all24 cohort/geometry collections,384 attempted configurations,
+strong direct CUDA/libCEED/short-q controls, full changing-input operation costs,
+Poisson convergence and explicit E1/2 heat trajectories. Failures and FP64 fallback
+costs are retained; low recursive convergence is not original-PDE convergence.
+FP4 online operator feasibility is0/24 at error0.001 and0.01, and2/24 at0.1;
+none wins against the strongest eligible reference at reuse10000. These are
+bounded shared-device results, not a universal format or architecture claim.
 
 ## License
 
