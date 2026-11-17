@@ -104,6 +104,9 @@ python verify_search_kernel_preflight.py
 python verify_search.py
 python summarize_search.py --check
 python summarize_search.py --smoke --check
+python verify_pca.py
+python pca_cost_audit.py
+python summarize_pca.py --check
 ```
 
 CPU CI performs these checks. It cannot rerun GPU performance or recover the
@@ -121,6 +124,12 @@ The search study retains every returned top-10 ID/distance array and independent
 candidate/refinement stage witnesses. CPU replay recomputes all exact FP64 truth
 queries; large unselected score rankings have explicitly sampled scope. Original
 SIFT fvecs hashes are reconstructed from losslessly stored numerical descriptors.
+
+The PCA collection retains all final means, covariances and eigenvalues, with
+leading16 eigenvectors, independent original-data/stage witnesses and per-timing
+input/output bindings. It does not certify unretained full eigenbases or opaque
+library/cache/temporary peak-memory allocations. Named buffer requests and
+recorded heuristic selection have a separate geometry-based audit.
 
 ## GPU reproduction
 
@@ -272,6 +281,56 @@ can refetch their pinned original files; `verify_search_sift.py` reconstructs bo
 whole-source hashes offline. CAGRA uses context-lifetime PTDS streams, and Faiss's
 shape-aware scratch reservation is explicitly charged. Unsupported/stale graph
 routes and incomplete/duplicate-ID outcomes are retained, not speed wins.
+
+## Streaming covariance/PCA reproduction
+
+PCA uses the separate pinned Python3.12/CuPy14.2 GPU environment in
+`requirements-search-gpu.txt`; it does not import Faiss or cuVS. The legacy pilot
+environment above is not the PCA snapshot. Each retained PCA dataset uses a fresh
+process with its own environment/bootstrap record; source/binary/witness bindings
+must match when resuming. Use a separate checkout or archive complete record sets
+before a fresh experiment. Resuming sealed results is not a new GPU run.
+
+```sh
+mkdir -p build
+cp native/bridge.cu build/base-128.cuh
+bash build_pca.sh ../cutlass-fp4
+# Activate the pinned GPU environment first.
+export CUDA_VISIBLE_DEVICES=0 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1
+for cohort in a b; do
+  datasets=$(python -c "from pca_cases import DATASETS; names=list(DATASETS); print(' '.join(names[::-1] if '$cohort'=='b' else names))")
+  for dataset in $datasets; do
+    producer=pca_study.py
+    if [ "$cohort" = b ] && [ "$dataset" = shifted-n32768-d256 ]; then producer=pca_study_guarded.py; fi
+    python "$producer" --cohort "$cohort" --dataset "$dataset"
+  done
+done
+# Supplementary smoke, not study completion:
+python pca_study.py --cohort a --smoke
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python verify_pca.py --workers 4 --summary results/pca-replay.json
+OPENBLAS_NUM_THREADS=1 python verify_pca_input_failure.py --summary results/pca-input-failure-audit.json
+python pca_cost_audit.py --summary results/pca-cost-audit.json
+python summarize_pca.py
+python summarize_pca.py --check
+```
+
+The 2,580 full configurations compare original-data centering/scaling, FP32/64
+moment accumulation, native FP4/FP8/FP16/BF16/pedantic-FP32 products, FP64 APIs and
+untiled whole-matrix library controls on shifted, nearly dependent, drifting and
+genuine SIFT inputs. Quality/latency tables are ex-post frontiers, not safe
+future-input dispatch rules. Preserve numerical failures and all cost boundaries.
+
+The [PCA report](PCA_REPORT.md) documents a rejected original collection: retained
+fingerprints reconstruct a one-bit input-word change, not harmless mean roundoff.
+Its original bytes remain in `fixtures/pca-input-failure`; they are excluded from
+performance wins and independently audited. Only that dataset was recollected
+with read-only host inputs and timed-observation host/device fingerprint checks.
+The original twelve producer dependencies remain unchanged; its guarded epoch
+adds two explicitly bound modules. CSVs and receipts identify each epoch. Guard
+checks are outside service timers and change inter-request spacing; no unchanged
+cache/thermal-state or hardware/vendor fault attribution is claimed. The sanitizer
+attempt did not finish. CPU replay uses independent dataset processes, one BLAS
+thread each, and rejects missing/overlapping or differently source-bound partitions.
 
 ## License
 

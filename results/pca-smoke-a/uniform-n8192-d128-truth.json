@@ -1,0 +1,48 @@
+{
+  "complete": true,
+  "study": 11,
+  "dataset": "uniform-n8192-d128",
+  "cohort": "a",
+  "shape": [
+    8192,
+    128
+  ],
+  "provenance": {
+    "profile": "uniform",
+    "seed": 20261117,
+    "generator": "PCG64 SeedSequence cohort/N/D/profile; integer-derived dyadic FP32 inputs"
+  },
+  "input_sha256": [
+    "c96dfcb77b4a0cc4c2d28832a6b24565160654a4100d64cb06dd16d4c656ce1e",
+    "bb95cace6367b42ea3da38e35e878f7cd0318eaf3ff2ed83ab2e16a107a301fd"
+  ],
+  "source_sha256": {
+    "pca_study.py": "9022353e677d2b723851a268cbc0f695c7429e9d8ad491576e25742376cec690",
+    "pca_native.py": "65f5ef250246c193e4dff0a0a00531f81983101343232ee005767bf15c55ec53",
+    "pca_cases.py": "e49ee63c33777da7a44d34d3dd797de8874fed4c186c11db3ed94821d983f79c",
+    "pca_protocol.py": "510a7042a6ce31d9a24711a98bd92d8852550a231b34eda5497f25df13ba436e",
+    "pca_reference.py": "d109b3378d6bb4e34e2d90973b9542386baa9b69a8a359c5f4feacd7896d8859",
+    "reference.py": "b17f2880f57875909d8268091f026317dbf531b118b83322488c96ab7f62c9ef",
+    "native/pca_bridge.cu": "a117611fa68521748b2dfa0434ffaaed1a3e4fdbe7410f430a620b3b4d9f9cfc",
+    "native/hardware_bridge.cu": "dbc8f619e69d91a25ef7d6bd7eb984112f737afb44934e3694fe1db6511d9faf",
+    "native/application_bridge.cu": "1d2f0b190d1f27ee3408fa126fae43c0ee5907feaec4bd94353a802c94fa1336",
+    "native/optimized_bridge.cu": "9d718ad97e4c3c2d77afe6402f093ec0af48c46d5faeaf78ea44c2d5537e4a25",
+    "native/bridge.cu": "5bd319bed3f39f6a735e6036e643ad8091d198a40398760e7a57a75d275c19b8",
+    "build_pca.sh": "4d0a3a916374351d50d2a71082fb28b9a637fd828f22830f404499eabd602069"
+  },
+  "truth_scope": "All observations, direct two-pass FP64 centered products/eigh, independently checked count/mean/moment merge with different chunk boundaries",
+  "checks": [
+    {
+      "variant": 0,
+      "independent_merge_relative_covariance_error": 4.8311706079048705e-15
+    },
+    {
+      "variant": 1,
+      "independent_merge_relative_covariance_error": 4.8311706079048705e-15
+    }
+  ],
+  "cpu_truth_wall_ms": 57.980988,
+  "common_original_host_bytes": 8388608,
+  "witness_file": "uniform-n8192-d128-truth.npz",
+  "witness_sha256": "ddf816944cf2274b4984c25ff653ae7be9678d7865282a289b8dc59249eb6f82"
+}

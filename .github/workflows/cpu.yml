@@ -65,3 +65,12 @@ jobs:
       - run: git diff --exit-code -- results/search-replay.json
       - run: python summarize_search.py --check
       - run: python summarize_search.py --smoke --check
+      - run: python -m compileall -q pca_reference.py pca_cases.py pca_native.py pca_protocol.py pca_study.py pca_study_guarded.py pca_input_integrity.py pca_provenance.py pca_parallel_replay.py pca_replay.py pca_output_replay.py pca_final_replay.py pca_frontiers.py pca_cost_audit.py verify_pca.py verify_pca_input_failure.py summarize_pca.py check_pca_native.py check_pca_batch.py
+      - run: mkdir -p build
+      - run: python verify_pca.py --workers 4 --summary build/pca-replay-ci.json
+      - run: python -c "import json; from pathlib import Path; assert json.loads(Path('build/pca-replay-ci.json').read_text()) == json.loads(Path('results/pca-replay.json').read_text())"
+      - run: python pca_cost_audit.py --summary build/pca-cost-audit-ci.json
+      - run: python -c "import json; from pathlib import Path; assert json.loads(Path('build/pca-cost-audit-ci.json').read_text()) == json.loads(Path('results/pca-cost-audit.json').read_text())"
+      - run: python verify_pca_input_failure.py --summary build/pca-input-failure-audit-ci.json
+      - run: python -c "import json; from pathlib import Path; assert json.loads(Path('build/pca-input-failure-audit-ci.json').read_text()) == json.loads(Path('results/pca-input-failure-audit.json').read_text())"
+      - run: python summarize_pca.py --check

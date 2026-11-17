@@ -1,0 +1,48 @@
+{
+  "complete": true,
+  "study": 11,
+  "dataset": "dependent-n32768-d128",
+  "cohort": "b",
+  "shape": [
+    32768,
+    128
+  ],
+  "provenance": {
+    "profile": "dependent",
+    "seed": 20261217,
+    "generator": "PCG64 SeedSequence cohort/N/D/profile; integer-derived dyadic FP32 inputs"
+  },
+  "input_sha256": [
+    "0edcbe6e62bf45f28a6fb52b2e7a83ea00b34797dc29d3ac3fb7510696aa0a6d",
+    "7cd00bfcafbf607b77125c4ea06aa84d81993ea96c65a001c8c29f2a99d6268b"
+  ],
+  "source_sha256": {
+    "pca_study.py": "9022353e677d2b723851a268cbc0f695c7429e9d8ad491576e25742376cec690",
+    "pca_native.py": "65f5ef250246c193e4dff0a0a00531f81983101343232ee005767bf15c55ec53",
+    "pca_cases.py": "e49ee63c33777da7a44d34d3dd797de8874fed4c186c11db3ed94821d983f79c",
+    "pca_protocol.py": "510a7042a6ce31d9a24711a98bd92d8852550a231b34eda5497f25df13ba436e",
+    "pca_reference.py": "d109b3378d6bb4e34e2d90973b9542386baa9b69a8a359c5f4feacd7896d8859",
+    "reference.py": "b17f2880f57875909d8268091f026317dbf531b118b83322488c96ab7f62c9ef",
+    "native/pca_bridge.cu": "a117611fa68521748b2dfa0434ffaaed1a3e4fdbe7410f430a620b3b4d9f9cfc",
+    "native/hardware_bridge.cu": "dbc8f619e69d91a25ef7d6bd7eb984112f737afb44934e3694fe1db6511d9faf",
+    "native/application_bridge.cu": "1d2f0b190d1f27ee3408fa126fae43c0ee5907feaec4bd94353a802c94fa1336",
+    "native/optimized_bridge.cu": "9d718ad97e4c3c2d77afe6402f093ec0af48c46d5faeaf78ea44c2d5537e4a25",
+    "native/bridge.cu": "5bd319bed3f39f6a735e6036e643ad8091d198a40398760e7a57a75d275c19b8",
+    "build_pca.sh": "4d0a3a916374351d50d2a71082fb28b9a637fd828f22830f404499eabd602069"
+  },
+  "truth_scope": "All observations, direct two-pass FP64 centered products/eigh, independently checked count/mean/moment merge with different chunk boundaries",
+  "checks": [
+    {
+      "variant": 0,
+      "independent_merge_relative_covariance_error": 1.578678592486863e-16
+    },
+    {
+      "variant": 1,
+      "independent_merge_relative_covariance_error": 1.578678592486863e-16
+    }
+  ],
+  "cpu_truth_wall_ms": 136.207303,
+  "common_original_host_bytes": 33554432,
+  "witness_file": "dependent-n32768-d128-truth.npz",
+  "witness_sha256": "fc9d54e47e5d8872a411ee8d00ed433a44bee58fc543d418c3c160877c8fd267"
+}
