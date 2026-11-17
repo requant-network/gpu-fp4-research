@@ -56,3 +56,12 @@ jobs:
       - run: python verify_fft_controls.py
       - run: python verify_fft.py
       - run: python summarize_fft.py --check
+      - run: python -m compileall -q search_reference.py search_cases.py search_memory.py search_native.py search_native_full.py search_baselines.py search_validation.py search_stage_full.py search_preflight.py search_kernel_preflight.py search_study.py search_replay.py search_frontiers.py prepare_search_sift.py inspect_search_environment.py check_search_lifetime.py check_search_capture_memory.py verify_search_environment.py verify_search_preflight.py verify_search_kernel_preflight.py verify_search_sift.py verify_search.py summarize_search.py
+      - run: python verify_search_environment.py
+      - run: python verify_search_sift.py
+      - run: python verify_search_preflight.py
+      - run: python verify_search_kernel_preflight.py
+      - run: python verify_search.py --summary results/search-replay.json
+      - run: git diff --exit-code -- results/search-replay.json
+      - run: python summarize_search.py --check
+      - run: python summarize_search.py --smoke --check

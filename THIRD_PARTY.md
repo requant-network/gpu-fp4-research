@@ -48,3 +48,18 @@ examples are not relicensed by this repository. The filtering wrapper, signal
 fixtures and FFT validation code are original repository code.
 See [NVIDIA cuFFTDx](https://developer.nvidia.com/cufftdx) and
 [the cuFFTDx license](https://docs.nvidia.com/cuda/cufftdx/license.html).
+
+The vector-search study calls external Faiss 1.16.0 (MIT), cuVS/RAFT/RMM 26.10
+(their applicable NVIDIA/RAPIDS notices), CuPy and CUDA. The C++ select-k adapter
+includes installed public cuVS/RAFT headers; neither those headers nor the GPU
+libraries are vendored. Original adapters retain the repository code license.
+Exact package RECORD and loaded-library fingerprints are in
+[the search environment snapshot](results/search-environment.json).
+
+The lossless SIFT1M numerical descriptor fixtures have separate original dataset
+attribution and rights, not the repository MIT code license. The qbo-odp mirror's
+Apache-2.0 declaration does not establish a new license for original images or
+underlying descriptors. No images are included. Source URLs, exact whole-file
+hashes and every lossless uint8 shard hash are retained in
+[the SIFT provenance manifest](fixtures/search-sift/manifest.json); the fixture
+verifier restores the original per-row dimensions and FP32 bytes exactly.

@@ -2,7 +2,7 @@
 
 A research project by [Requant Network](https://requant.network).
 
-**Status: studies 1-9 complete within their declared protocols; the full fifteen-study program is active. Studies 10-15 remain pending.**
+**Status: studies 1-10 complete within their declared protocols; the full fifteen-study program is active. Studies 11-15 remain pending. CPU/artifact CI checks each published head.**
 
 Reproducible experiments on **NVIDIA RTX 5060 Ti 16 GB / SM120** asking when
 FP4 is useful after quantization cost, operand reuse and numerical error are
@@ -53,6 +53,7 @@ scope; its host-request results are distinct from the original repeated-graph pi
 - [Adaptive SPD solvers, native Cholesky/IR references and forward-error failures](SOLVER_REPORT.md)
 - [Hybrid sparse/dense SpMM versus native CSR/BSR/ELL/dense references](SPMM_REPORT.md)
 - [Complete spectral filtering: Tensor Core FFT, cuFFT and fused cuFFTDx](FFT_REPORT.md)
+- [Quantized vector search versus resident Faiss/cuVS and indexed references](SEARCH_REPORT.md)
 - [Research questions and follow-up gates](RESEARCH.md)
 - [Arithmetic, independent validation and timing methods](METHODS.md)
 - [Derived results](RESULTS.md) and [complete CSV](results/summary.csv)
@@ -96,6 +97,13 @@ python summarize_spmm.py --check
 python verify_fft_controls.py
 python verify_fft.py
 python summarize_fft.py --check
+python verify_search_environment.py
+python verify_search_sift.py
+python verify_search_preflight.py
+python verify_search_kernel_preflight.py
+python verify_search.py
+python summarize_search.py --check
+python summarize_search.py --smoke --check
 ```
 
 CPU CI performs these checks. It cannot rerun GPU performance or recover the
@@ -109,6 +117,10 @@ preserve the original JSON bytes and support CPU-only replay.
 The FFT study retains complete small/selected large output and spectral arrays,
 plus samples and independent stage witnesses. Its largest NPZ files are published
 in byte-preserving parts; the CPU loader verifies and assembles them automatically.
+The search study retains every returned top-10 ID/distance array and independent
+candidate/refinement stage witnesses. CPU replay recomputes all exact FP64 truth
+queries; large unselected score rankings have explicitly sampled scope. Original
+SIFT fvecs hashes are reconstructed from losslessly stored numerical descriptors.
 
 ## GPU reproduction
 
@@ -213,6 +225,53 @@ costs, explicit memory boundaries, FlashAttention/efficient/cuDNN and pinned fus
 SageAttention3 FP4 controls. Both real-model cohorts retain complete quality arrays.
 Native FP8 probability errors depend on the specified unit scaling; the report
 does not present them as a format-wide accuracy limit or an optimal kernel result.
+
+## Vector-search reproduction
+
+Search uses a separate Linux/Python 3.12 environment, pinned in
+`requirements-search-gpu.txt`. The actual snapshot is
+`results/search-environment.json`: the executed runtime API reports CUDA 13.2
+despite the CUDA-13.3 toolkit/package pins. Do not infer the runtime from package
+versions or attribute this observation to one library without a loader trace.
+No CPU verification requires these GPU packages.
+
+Use a separate reproduction checkout and preserve the published record directories
+and environment snapshot before fresh GPU work. The search drivers resume only
+matching sealed source/binary records; resuming existing records is not a new GPU
+experiment. Archive `results/search-smoke-a`, `results/search-full-a`,
+`results/search-full-b` and the environment/probe records together when replacing
+them. Rebuild and rerun the probes as well if replacing the snapshot.
+
+```sh
+python3.12 -m venv ../search-env
+../search-env/bin/python -m pip install -r requirements-search-gpu.txt
+../search-env/bin/python -m pip check
+mkdir -p build
+cp native/bridge.cu build/base-128.cuh
+bash build_search.sh ../cutlass-fp4 ../search-env
+bash build_search_full.sh ../cutlass-fp4 ../search-env
+export CUDA_VISIBLE_DEVICES=0 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1
+../search-env/bin/python verify_search_sift.py
+../search-env/bin/python inspect_search_environment.py
+../search-env/bin/python search_preflight.py
+../search-env/bin/python search_kernel_preflight.py
+../search-env/bin/python check_search_lifetime.py
+../search-env/bin/python check_search_capture_memory.py
+for dataset in uniform-small clustered shifted uniform-million sift-million; do
+  ../search-env/bin/python search_study.py --cohort a --smoke --dataset "$dataset"
+done
+../search-env/bin/python search_study.py --cohort a
+../search-env/bin/python search_study.py --cohort b
+../search-env/bin/python verify_search.py
+../search-env/bin/python summarize_search.py
+../search-env/bin/python summarize_search.py --check
+```
+
+The lossless SIFT fixtures are included. `prepare_search_sift.py --cache <directory>`
+can refetch their pinned original files; `verify_search_sift.py` reconstructs both
+whole-source hashes offline. CAGRA uses context-lifetime PTDS streams, and Faiss's
+shape-aware scratch reservation is explicitly charged. Unsupported/stale graph
+routes and incomplete/duplicate-ID outcomes are retained, not speed wins.
 
 ## License
 

@@ -1,0 +1,907 @@
+{
+  "study": 10,
+  "complete": true,
+  "gpu_index": 0,
+  "gpu_exclusive": false,
+  "scope": "One synthetic finite-FP32 database and four independent queries. Actual GPU exact/indexed/filter capability and CPU-replayed recall only; no Tensor Core proposal, full cost/memory comparison or study completion is claimed.",
+  "timing_scope": "Three API wall intervals after one warmup, with GPU synchronization. cuVS queries and results are device arrays; Faiss NumPy APIs include their implicit query/result transfers. No cross-method performance comparison is supported by these mixed probe boundaries.",
+  "source_sha256": {
+    "search_preflight.py": "20be861c4df63af6b7ccb06c1ef7ff2f1c807b72f106a8e43b780a772e29bf28",
+    "search_reference.py": "6e9f62d7ac6443512458f4896d07bf42b2bd1b2c9fec182fcb419d9c998778f9",
+    "reference.py": "b17f2880f57875909d8268091f026317dbf531b118b83322488c96ab7f62c9ef"
+  },
+  "packages": {
+    "faiss-gpu-cuvs": "1.16.0",
+    "cuda-toolkit": "13.3.1",
+    "nvidia-cusparse": "12.8.2.51",
+    "nvidia-cuda-runtime": "13.3.29",
+    "nvidia-curand": "10.4.3.29",
+    "nvidia-nvjitlink": "13.3.33",
+    "nvidia-cusolver": "12.2.6.9",
+    "libcuvs-cu13": "26.10.0",
+    "nvidia-cuda-nvrtc": "13.3.33",
+    "libkvikio-cu13": "26.10.0",
+    "cuda-bindings": "13.3.1",
+    "libraft-cu13": "26.10.0",
+    "packaging": "26.3",
+    "nvidia-cufile": "1.18.1.6",
+    "cupy-cuda13x": "14.2.0",
+    "cuda-python": "13.3.1",
+    "cuda-core": "1.0.1",
+    "numpy": "2.2.6",
+    "rapids-logger": "0.3.0",
+    "nvidia-cublas": "13.6.0.2",
+    "pylibraft-cu13": "26.10.0",
+    "cuvs-cu13": "26.10.0",
+    "pip": "24.0",
+    "rmm-cu13": "26.10.0",
+    "nvidia-nccl-cu13": "2.32.6",
+    "librmm-cu13": "26.10.0",
+    "cuda-pathfinder": "1.9.0"
+  },
+  "faiss_compile_options": "OPTIMIZE DD AVX2 GPU NVIDIA_CUVS ",
+  "runtime_api_version": 13020,
+  "driver_api_version": 13030,
+  "compute_capability": [
+    12,
+    0
+  ],
+  "database_sha256": "0b1bde830e666f2cd68e2e8276e143503d2d5717f4301b745be012cf0968c5b2",
+  "queries_sha256": "5ea53267dd6443c7836bda496c6e958e1c91b8d2860506aab01f6d46c1ff76d1",
+  "api_signatures": {
+    "ivf_pq.search": "(search_params, index, queries, k, neighbors=None, distances=None, resources=None)",
+    "ivf_flat.search": "(search_params, index, queries, k, neighbors=None, distances=None, resources=None, filter=None)",
+    "cagra.search": "(search_params, index, queries, k, neighbors=None, distances=None, resources=None, filter=None)",
+    "brute_force.search": "(index, queries, k, neighbors=None, distances=None, resources=None, prefilter=None)"
+  },
+  "cases": [
+    {
+      "family": "faiss-flat",
+      "precision": "fp32",
+      "allowed_fraction": 1.0,
+      "candidates": 10,
+      "n_probes": 16,
+      "prefix": "case0",
+      "available": true,
+      "setup_wall_ms": 152.395493,
+      "api_wall_ms": [
+        0.211702,
+        0.144064,
+        0.137351
+      ],
+      "candidate_set_quality": {
+        "recall": 1.0,
+        "tie_aware_recall": 1.0,
+        "duplicate_ids": 0,
+        "invalid_or_filtered_ids": 0,
+        "truth_counts": [
+          10,
+          10,
+          10,
+          10
+        ]
+      },
+      "refined_quality": {
+        "recall": 1.0,
+        "tie_aware_recall": 1.0,
+        "duplicate_ids": 0,
+        "invalid_or_filtered_ids": 0,
+        "truth_counts": [
+          10,
+          10,
+          10,
+          10
+        ]
+      },
+      "ids_sha256": "2c11f42d112a713a3e0cd5b8d230be91155f861b6b6b763662aecf60cd5a0abb",
+      "refined_ids_sha256": "2c11f42d112a713a3e0cd5b8d230be91155f861b6b6b763662aecf60cd5a0abb",
+      "reported_distances_sha256": "129968a2a300422bb137ef7fa018844761695ce88c133f91b00987a872258869"
+    },
+    {
+      "family": "faiss-flat",
+      "precision": "fp16",
+      "allowed_fraction": 1.0,
+      "candidates": 10,
+      "n_probes": 16,
+      "prefix": "case1",
+      "available": true,
+      "setup_wall_ms": 12.328852,
+      "api_wall_ms": [
+        0.171716,
+        0.155756,
+        0.168309
+      ],
+      "candidate_set_quality": {
+        "recall": 1.0,
+        "tie_aware_recall": 1.0,
+        "duplicate_ids": 0,
+        "invalid_or_filtered_ids": 0,
+        "truth_counts": [
+          10,
+          10,
+          10,
+          10
+        ]
+      },
+      "refined_quality": {
+        "recall": 1.0,
+        "tie_aware_recall": 1.0,
+        "duplicate_ids": 0,
+        "invalid_or_filtered_ids": 0,
+        "truth_counts": [
+          10,
+          10,
+          10,
+          10
+        ]
+      },
+      "ids_sha256": "2c11f42d112a713a3e0cd5b8d230be91155f861b6b6b763662aecf60cd5a0abb",
+      "refined_ids_sha256": "2c11f42d112a713a3e0cd5b8d230be91155f861b6b6b763662aecf60cd5a0abb",
+      "reported_distances_sha256": "e5e728ba656d1b5542cdfd6a4b065cedb018131ab13eacb7f19ced3a2b2143a1"
+    },
+    {
+      "family": "cuvs-brute",
+      "precision": "fp32",
+      "allowed_fraction": 1.0,
+      "candidates": 10,
+      "n_probes": 16,
+      "prefix": "case2",
+      "available": true,
+      "setup_wall_ms": 0.637962,
+      "api_wall_ms": [
+        0.425128,
+        0.26318,
+        0.26305
+      ],
+      "candidate_set_quality": {
+        "recall": 1.0,
+        "tie_aware_recall": 1.0,
+        "duplicate_ids": 0,
+        "invalid_or_filtered_ids": 0,
+        "truth_counts": [
+          10,
+          10,
+          10,
+          10
+        ]
+      },
+      "refined_quality": {
+        "recall": 1.0,
+        "tie_aware_recall": 1.0,
+        "duplicate_ids": 0,
+        "invalid_or_filtered_ids": 0,
+        "truth_counts": [
+          10,
+          10,
+          10,
+          10
+        ]
+      },
+      "ids_sha256": "2c11f42d112a713a3e0cd5b8d230be91155f861b6b6b763662aecf60cd5a0abb",
+      "refined_ids_sha256": "2c11f42d112a713a3e0cd5b8d230be91155f861b6b6b763662aecf60cd5a0abb",
+      "reported_distances_sha256": "22f66e59cc0042dc93fb4abefb22544e97852bd376c2a659fb94a268b2e7084c"
+    },
+    {
+      "family": "cuvs-brute",
+      "precision": "fp32",
+      "allowed_fraction": 0.5,
+      "candidates": 10,
+      "n_probes": 16,
+      "prefix": "case3",
+      "available": true,
+      "setup_wall_ms": 0.327723,
+      "api_wall_ms": [
+        0.250215,
+        0.260114,
+        0.248663
+      ],
+      "candidate_set_quality": {
+        "recall": 1.0,
+        "tie_aware_recall": 1.0,
+        "duplicate_ids": 0,
+        "invalid_or_filtered_ids": 0,
+        "truth_counts": [
+          10,
+          10,
+          10,
+          10
+        ]
+      },
+      "refined_quality": {
+        "recall": 1.0,
+        "tie_aware_recall": 1.0,
+        "duplicate_ids": 0,
+        "invalid_or_filtered_ids": 0,
+        "truth_counts": [
+          10,
+          10,
+          10,
+          10
+        ]
+      },
+      "ids_sha256": "cf31e33d402efdb0092874ea333d4a4d9377210f48c6f220256d12e8f38382a1",
+      "refined_ids_sha256": "cf31e33d402efdb0092874ea333d4a4d9377210f48c6f220256d12e8f38382a1",
+      "reported_distances_sha256": "60b54726183bb49dbce2dff85c2b472f40b7bd3da613ac4d11f2751544ceaa5d"
+    },
+    {
+      "family": "cuvs-brute",
+      "precision": "fp32",
+      "allowed_fraction": 0.1,
+      "candidates": 10,
+      "n_probes": 16,
+      "prefix": "case4",
+      "available": true,
+      "setup_wall_ms": 0.297445,
+      "api_wall_ms": [
+        0.250005,
+        0.249705,
+        0.253041
+      ],
+      "candidate_set_quality": {
+        "recall": 1.0,
+        "tie_aware_recall": 1.0,
+        "duplicate_ids": 0,
+        "invalid_or_filtered_ids": 0,
+        "truth_counts": [
+          10,
+          10,
+          10,
+          10
+        ]
+      },
+      "refined_quality": {
+        "recall": 1.0,
+        "tie_aware_recall": 1.0,
+        "duplicate_ids": 0,
+        "invalid_or_filtered_ids": 0,
+        "truth_counts": [
+          10,
+          10,
+          10,
+          10
+        ]
+      },
+      "ids_sha256": "609aa59ee42d033cb14c033833775cbe7f27c098a9a76f50e292fee9aa90184f",
+      "refined_ids_sha256": "609aa59ee42d033cb14c033833775cbe7f27c098a9a76f50e292fee9aa90184f",
+      "reported_distances_sha256": "3ecef55ef1a6f2a30922f0c629ced15386ca5b9ee775f1c667b2e71c0b699300"
+    },
+    {
+      "family": "cuvs-brute",
+      "precision": "fp16",
+      "allowed_fraction": 1.0,
+      "candidates": 10,
+      "n_probes": 16,
+      "prefix": "case5",
+      "available": true,
+      "setup_wall_ms": 106.08823,
+      "api_wall_ms": [
+        0.414808,
+        0.256608,
+        0.252189
+      ],
+      "candidate_set_quality": {
+        "recall": 1.0,
+        "tie_aware_recall": 1.0,
+        "duplicate_ids": 0,
+        "invalid_or_filtered_ids": 0,
+        "truth_counts": [
+          10,
+          10,
+          10,
+          10
+        ]
+      },
+      "refined_quality": {
+        "recall": 1.0,
+        "tie_aware_recall": 1.0,
+        "duplicate_ids": 0,
+        "invalid_or_filtered_ids": 0,
+        "truth_counts": [
+          10,
+          10,
+          10,
+          10
+        ]
+      },
+      "ids_sha256": "2c11f42d112a713a3e0cd5b8d230be91155f861b6b6b763662aecf60cd5a0abb",
+      "refined_ids_sha256": "2c11f42d112a713a3e0cd5b8d230be91155f861b6b6b763662aecf60cd5a0abb",
+      "reported_distances_sha256": "f295147f1dab13eaed6b443160ca926cb8e30b640e76fe72b8a1a61177e4c290"
+    },
+    {
+      "family": "cuvs-brute",
+      "precision": "fp16",
+      "allowed_fraction": 0.5,
+      "candidates": 10,
+      "n_probes": 16,
+      "prefix": "case6",
+      "available": true,
+      "setup_wall_ms": 0.690502,
+      "api_wall_ms": [
+        0.253822,
+        0.273439,
+        0.249414
+      ],
+      "candidate_set_quality": {
+        "recall": 1.0,
+        "tie_aware_recall": 1.0,
+        "duplicate_ids": 0,
+        "invalid_or_filtered_ids": 0,
+        "truth_counts": [
+          10,
+          10,
+          10,
+          10
+        ]
+      },
+      "refined_quality": {
+        "recall": 1.0,
+        "tie_aware_recall": 1.0,
+        "duplicate_ids": 0,
+        "invalid_or_filtered_ids": 0,
+        "truth_counts": [
+          10,
+          10,
+          10,
+          10
+        ]
+      },
+      "ids_sha256": "cf31e33d402efdb0092874ea333d4a4d9377210f48c6f220256d12e8f38382a1",
+      "refined_ids_sha256": "cf31e33d402efdb0092874ea333d4a4d9377210f48c6f220256d12e8f38382a1",
+      "reported_distances_sha256": "4642f1010eefb7267035aba634436db1dd0b2909ba961b1399f8b246437a7c70"
+    },
+    {
+      "family": "cuvs-brute",
+      "precision": "fp16",
+      "allowed_fraction": 0.1,
+      "candidates": 10,
+      "n_probes": 16,
+      "prefix": "case7",
+      "available": true,
+      "setup_wall_ms": 0.929506,
+      "api_wall_ms": [
+        0.249815,
+        0.274832,
+        0.247009
+      ],
+      "candidate_set_quality": {
+        "recall": 1.0,
+        "tie_aware_recall": 1.0,
+        "duplicate_ids": 0,
+        "invalid_or_filtered_ids": 0,
+        "truth_counts": [
+          10,
+          10,
+          10,
+          10
+        ]
+      },
+      "refined_quality": {
+        "recall": 1.0,
+        "tie_aware_recall": 1.0,
+        "duplicate_ids": 0,
+        "invalid_or_filtered_ids": 0,
+        "truth_counts": [
+          10,
+          10,
+          10,
+          10
+        ]
+      },
+      "ids_sha256": "609aa59ee42d033cb14c033833775cbe7f27c098a9a76f50e292fee9aa90184f",
+      "refined_ids_sha256": "609aa59ee42d033cb14c033833775cbe7f27c098a9a76f50e292fee9aa90184f",
+      "reported_distances_sha256": "8b4649b63055a59c37c2802a0031f075eeb7f01612e8dc545ef0f2d561999769"
+    },
+    {
+      "family": "cuvs-ivf-flat",
+      "precision": "fp32",
+      "allowed_fraction": 1.0,
+      "candidates": 10,
+      "n_probes": 8,
+      "prefix": "case8",
+      "available": true,
+      "setup_wall_ms": 31.955467,
+      "api_wall_ms": [
+        0.475804,
+        0.272688,
+        0.274852
+      ],
+      "candidate_set_quality": {
+        "recall": 0.35000000000000003,
+        "tie_aware_recall": 0.35000000000000003,
+        "duplicate_ids": 0,
+        "invalid_or_filtered_ids": 0,
+        "truth_counts": [
+          10,
+          10,
+          10,
+          10
+        ]
+      },
+      "refined_quality": {
+        "recall": 0.35000000000000003,
+        "tie_aware_recall": 0.35000000000000003,
+        "duplicate_ids": 0,
+        "invalid_or_filtered_ids": 0,
+        "truth_counts": [
+          10,
+          10,
+          10,
+          10
+        ]
+      },
+      "ids_sha256": "5a1a9ea87ed5dd367210a3d55d11faaf1b01a7f375252bd8fe97ee8e60718412",
+      "refined_ids_sha256": "5a1a9ea87ed5dd367210a3d55d11faaf1b01a7f375252bd8fe97ee8e60718412",
+      "reported_distances_sha256": "4ab1b175389d9e797f8b773d74d9ba62e966ee530998460c8b431f7f87c30bf5"
+    },
+    {
+      "family": "cuvs-ivf-flat",
+      "precision": "fp32",
+      "allowed_fraction": 1.0,
+      "candidates": 10,
+      "n_probes": 64,
+      "prefix": "case9",
+      "available": true,
+      "setup_wall_ms": 13.779407,
+      "api_wall_ms": [
+        0.29488,
+        0.276065,
+        0.270835
+      ],
+      "candidate_set_quality": {
+        "recall": 1.0,
+        "tie_aware_recall": 1.0,
+        "duplicate_ids": 0,
+        "invalid_or_filtered_ids": 0,
+        "truth_counts": [
+          10,
+          10,
+          10,
+          10
+        ]
+      },
+      "refined_quality": {
+        "recall": 1.0,
+        "tie_aware_recall": 1.0,
+        "duplicate_ids": 0,
+        "invalid_or_filtered_ids": 0,
+        "truth_counts": [
+          10,
+          10,
+          10,
+          10
+        ]
+      },
+      "ids_sha256": "2c11f42d112a713a3e0cd5b8d230be91155f861b6b6b763662aecf60cd5a0abb",
+      "refined_ids_sha256": "2c11f42d112a713a3e0cd5b8d230be91155f861b6b6b763662aecf60cd5a0abb",
+      "reported_distances_sha256": "2df11d5a37bd565783c1930e12cdbd305095edaf6e806840d376930317d5e798"
+    },
+    {
+      "family": "cuvs-ivf-flat",
+      "precision": "fp32",
+      "allowed_fraction": 0.5,
+      "candidates": 10,
+      "n_probes": 8,
+      "prefix": "case10",
+      "available": true,
+      "setup_wall_ms": 13.693614,
+      "api_wall_ms": [
+        0.303476,
+        0.27887,
+        0.271035
+      ],
+      "candidate_set_quality": {
+        "recall": 0.275,
+        "tie_aware_recall": 0.275,
+        "duplicate_ids": 0,
+        "invalid_or_filtered_ids": 0,
+        "truth_counts": [
+          10,
+          10,
+          10,
+          10
+        ]
+      },
+      "refined_quality": {
+        "recall": 0.275,
+        "tie_aware_recall": 0.275,
+        "duplicate_ids": 0,
+        "invalid_or_filtered_ids": 0,
+        "truth_counts": [
+          10,
+          10,
+          10,
+          10
+        ]
+      },
+      "ids_sha256": "332f7b81dab7487ee2f0eefe2506d5a10e37b5af5a6380a0b698126b849d989d",
+      "refined_ids_sha256": "332f7b81dab7487ee2f0eefe2506d5a10e37b5af5a6380a0b698126b849d989d",
+      "reported_distances_sha256": "cdf8e8da3c952cce640c3107a5e517e93b422fa5296790b838b725c5b8fe06d4"
+    },
+    {
+      "family": "cuvs-ivf-flat",
+      "precision": "fp32",
+      "allowed_fraction": 0.5,
+      "candidates": 10,
+      "n_probes": 64,
+      "prefix": "case11",
+      "available": true,
+      "setup_wall_ms": 13.610336,
+      "api_wall_ms": [
+        0.25795,
+        0.258892,
+        0.265675
+      ],
+      "candidate_set_quality": {
+        "recall": 1.0,
+        "tie_aware_recall": 1.0,
+        "duplicate_ids": 0,
+        "invalid_or_filtered_ids": 0,
+        "truth_counts": [
+          10,
+          10,
+          10,
+          10
+        ]
+      },
+      "refined_quality": {
+        "recall": 1.0,
+        "tie_aware_recall": 1.0,
+        "duplicate_ids": 0,
+        "invalid_or_filtered_ids": 0,
+        "truth_counts": [
+          10,
+          10,
+          10,
+          10
+        ]
+      },
+      "ids_sha256": "cf31e33d402efdb0092874ea333d4a4d9377210f48c6f220256d12e8f38382a1",
+      "refined_ids_sha256": "cf31e33d402efdb0092874ea333d4a4d9377210f48c6f220256d12e8f38382a1",
+      "reported_distances_sha256": "51a1da00c07a23a1fce8d7226bab5b805e21f61560cf898ef5a9fc5fd7e2323b"
+    },
+    {
+      "family": "cuvs-ivf-flat",
+      "precision": "fp32",
+      "allowed_fraction": 0.1,
+      "candidates": 10,
+      "n_probes": 8,
+      "prefix": "case12",
+      "available": true,
+      "setup_wall_ms": 13.448208,
+      "api_wall_ms": [
+        0.289811,
+        0.269602,
+        0.261516
+      ],
+      "candidate_set_quality": {
+        "recall": 0.35,
+        "tie_aware_recall": 0.35,
+        "duplicate_ids": 0,
+        "invalid_or_filtered_ids": 0,
+        "truth_counts": [
+          10,
+          10,
+          10,
+          10
+        ]
+      },
+      "refined_quality": {
+        "recall": 0.35,
+        "tie_aware_recall": 0.35,
+        "duplicate_ids": 0,
+        "invalid_or_filtered_ids": 0,
+        "truth_counts": [
+          10,
+          10,
+          10,
+          10
+        ]
+      },
+      "ids_sha256": "b379d0bcb57666e36720b118274ecf259a3578c153e76c769f2eb6b3ff0af76d",
+      "refined_ids_sha256": "b379d0bcb57666e36720b118274ecf259a3578c153e76c769f2eb6b3ff0af76d",
+      "reported_distances_sha256": "0d93500a9f21a59a3c0967a32e08d43f8cf5212913349fe12b963b59a1697112"
+    },
+    {
+      "family": "cuvs-ivf-flat",
+      "precision": "fp32",
+      "allowed_fraction": 0.1,
+      "candidates": 10,
+      "n_probes": 64,
+      "prefix": "case13",
+      "available": true,
+      "setup_wall_ms": 13.508523,
+      "api_wall_ms": [
+        0.285843,
+        0.270043,
+        0.258561
+      ],
+      "candidate_set_quality": {
+        "recall": 1.0,
+        "tie_aware_recall": 1.0,
+        "duplicate_ids": 0,
+        "invalid_or_filtered_ids": 0,
+        "truth_counts": [
+          10,
+          10,
+          10,
+          10
+        ]
+      },
+      "refined_quality": {
+        "recall": 1.0,
+        "tie_aware_recall": 1.0,
+        "duplicate_ids": 0,
+        "invalid_or_filtered_ids": 0,
+        "truth_counts": [
+          10,
+          10,
+          10,
+          10
+        ]
+      },
+      "ids_sha256": "609aa59ee42d033cb14c033833775cbe7f27c098a9a76f50e292fee9aa90184f",
+      "refined_ids_sha256": "609aa59ee42d033cb14c033833775cbe7f27c098a9a76f50e292fee9aa90184f",
+      "reported_distances_sha256": "db2db21b66057a8019580077dbb188f2e66defa8b28f6cee07ea2017b41155cd"
+    },
+    {
+      "family": "cuvs-ivf-pq",
+      "precision": "fp32",
+      "allowed_fraction": 1.0,
+      "candidates": 10,
+      "n_probes": 16,
+      "prefix": "case14",
+      "available": true,
+      "setup_wall_ms": 106.428005,
+      "api_wall_ms": [
+        0.475524,
+        0.291854,
+        0.279221
+      ],
+      "candidate_set_quality": {
+        "recall": 0.22500000000000003,
+        "tie_aware_recall": 0.22500000000000003,
+        "duplicate_ids": 0,
+        "invalid_or_filtered_ids": 0,
+        "truth_counts": [
+          10,
+          10,
+          10,
+          10
+        ]
+      },
+      "refined_quality": {
+        "recall": 0.22500000000000003,
+        "tie_aware_recall": 0.22500000000000003,
+        "duplicate_ids": 0,
+        "invalid_or_filtered_ids": 0,
+        "truth_counts": [
+          10,
+          10,
+          10,
+          10
+        ]
+      },
+      "ids_sha256": "1e8548281402c861d575433081670255e2b59f736d05eeb124c9059c7675824a",
+      "refined_ids_sha256": "8f909ec4083f8d8d14289de5d1f78ab1148b7fe6536bdf6bff095439c88974d7",
+      "reported_distances_sha256": "7ef9c890c4b478e31272028099f29082d775b40d897fc579f3346c212c55e4e7"
+    },
+    {
+      "family": "cuvs-ivf-pq",
+      "precision": "fp32",
+      "allowed_fraction": 1.0,
+      "candidates": 64,
+      "n_probes": 16,
+      "prefix": "case15",
+      "available": true,
+      "setup_wall_ms": 71.169133,
+      "api_wall_ms": [
+        0.480523,
+        0.288628,
+        0.285012
+      ],
+      "candidate_set_quality": {
+        "recall": 0.375,
+        "tie_aware_recall": 0.375,
+        "duplicate_ids": 0,
+        "invalid_or_filtered_ids": 0,
+        "truth_counts": [
+          10,
+          10,
+          10,
+          10
+        ]
+      },
+      "refined_quality": {
+        "recall": 0.375,
+        "tie_aware_recall": 0.375,
+        "duplicate_ids": 0,
+        "invalid_or_filtered_ids": 0,
+        "truth_counts": [
+          10,
+          10,
+          10,
+          10
+        ]
+      },
+      "ids_sha256": "585a9e0cba4255f67c45fdd828daa24e6865338b7d08e3db373f495068234062",
+      "refined_ids_sha256": "0a27cade631ba627bbe7a5ff17d97be14d80fa4131a5f920087fe4e80584d1f9",
+      "reported_distances_sha256": "099d78274591258f7f4b7c6c553e193932fd3712e597b008251dc83264c5bc18"
+    },
+    {
+      "family": "cuvs-ivf-pq",
+      "precision": "fp32",
+      "allowed_fraction": 0.5,
+      "candidates": 10,
+      "n_probes": 16,
+      "prefix": "case16",
+      "available": false,
+      "setup_wall_ms": 72.313046,
+      "error": "search() got an unexpected keyword argument 'filter'",
+      "elapsed_to_error_wall_ms": 72.387127
+    },
+    {
+      "family": "cuvs-ivf-pq",
+      "precision": "fp32",
+      "allowed_fraction": 0.5,
+      "candidates": 64,
+      "n_probes": 16,
+      "prefix": "case17",
+      "available": false,
+      "setup_wall_ms": 72.069463,
+      "error": "search() got an unexpected keyword argument 'filter'",
+      "elapsed_to_error_wall_ms": 72.092487
+    },
+    {
+      "family": "cuvs-ivf-pq",
+      "precision": "fp32",
+      "allowed_fraction": 0.1,
+      "candidates": 10,
+      "n_probes": 16,
+      "prefix": "case18",
+      "available": false,
+      "setup_wall_ms": 72.650197,
+      "error": "search() got an unexpected keyword argument 'filter'",
+      "elapsed_to_error_wall_ms": 72.669724
+    },
+    {
+      "family": "cuvs-ivf-pq",
+      "precision": "fp32",
+      "allowed_fraction": 0.1,
+      "candidates": 64,
+      "n_probes": 16,
+      "prefix": "case19",
+      "available": false,
+      "setup_wall_ms": 73.87305,
+      "error": "search() got an unexpected keyword argument 'filter'",
+      "elapsed_to_error_wall_ms": 73.892577
+    },
+    {
+      "family": "cuvs-cagra",
+      "precision": "fp32",
+      "allowed_fraction": 1.0,
+      "candidates": 10,
+      "n_probes": 16,
+      "prefix": "case20",
+      "available": true,
+      "setup_wall_ms": 1346.439357,
+      "api_wall_ms": [
+        0.600471,
+        0.369802,
+        0.369852
+      ],
+      "candidate_set_quality": {
+        "recall": 0.7499999999999999,
+        "tie_aware_recall": 0.7499999999999999,
+        "duplicate_ids": 0,
+        "invalid_or_filtered_ids": 0,
+        "truth_counts": [
+          10,
+          10,
+          10,
+          10
+        ]
+      },
+      "refined_quality": {
+        "recall": 0.7499999999999999,
+        "tie_aware_recall": 0.7499999999999999,
+        "duplicate_ids": 0,
+        "invalid_or_filtered_ids": 0,
+        "truth_counts": [
+          10,
+          10,
+          10,
+          10
+        ]
+      },
+      "ids_sha256": "e695698ecf3b29370917148c072169d5bc4717f13b90ac009167bb6a93b9ac59",
+      "refined_ids_sha256": "e695698ecf3b29370917148c072169d5bc4717f13b90ac009167bb6a93b9ac59",
+      "reported_distances_sha256": "21cac53cfbb2b0191ed62117a9747629296614ccbdc4960f8352805faf28e760"
+    },
+    {
+      "family": "cuvs-cagra",
+      "precision": "fp32",
+      "allowed_fraction": 0.5,
+      "candidates": 10,
+      "n_probes": 16,
+      "prefix": "case21",
+      "available": true,
+      "setup_wall_ms": 90.497101,
+      "api_wall_ms": [
+        0.402505,
+        0.375123,
+        0.371045
+      ],
+      "candidate_set_quality": {
+        "recall": 0.825,
+        "tie_aware_recall": 0.825,
+        "duplicate_ids": 0,
+        "invalid_or_filtered_ids": 0,
+        "truth_counts": [
+          10,
+          10,
+          10,
+          10
+        ]
+      },
+      "refined_quality": {
+        "recall": 0.825,
+        "tie_aware_recall": 0.825,
+        "duplicate_ids": 0,
+        "invalid_or_filtered_ids": 0,
+        "truth_counts": [
+          10,
+          10,
+          10,
+          10
+        ]
+      },
+      "ids_sha256": "18f13d7746cda1814f5c0dbe03f9a0d9086605e50ddcb456c59e8d779aea7c67",
+      "refined_ids_sha256": "18f13d7746cda1814f5c0dbe03f9a0d9086605e50ddcb456c59e8d779aea7c67",
+      "reported_distances_sha256": "afbdb38b02485388e99bacc2212defc7310a3c370cecc8328c92bcd3b7769321"
+    },
+    {
+      "family": "cuvs-cagra",
+      "precision": "fp32",
+      "allowed_fraction": 0.1,
+      "candidates": 10,
+      "n_probes": 16,
+      "prefix": "case22",
+      "available": true,
+      "setup_wall_ms": 90.320396,
+      "api_wall_ms": [
+        0.416231,
+        0.400111,
+        0.386845
+      ],
+      "candidate_set_quality": {
+        "recall": 0.975,
+        "tie_aware_recall": 0.975,
+        "duplicate_ids": 0,
+        "invalid_or_filtered_ids": 0,
+        "truth_counts": [
+          10,
+          10,
+          10,
+          10
+        ]
+      },
+      "refined_quality": {
+        "recall": 0.975,
+        "tie_aware_recall": 0.975,
+        "duplicate_ids": 0,
+        "invalid_or_filtered_ids": 0,
+        "truth_counts": [
+          10,
+          10,
+          10,
+          10
+        ]
+      },
+      "ids_sha256": "f1003059595fc749bac6f6648dcd3f8b91a253dcaea230dd15fc0b03c1135520",
+      "refined_ids_sha256": "f1003059595fc749bac6f6648dcd3f8b91a253dcaea230dd15fc0b03c1135520",
+      "reported_distances_sha256": "a1eac7b840d88ebcf9d0a1eb59dc634a3c8da5a0fecd2781ace4aba4974b5bd9"
+    }
+  ],
+  "witness_file": "search-preflight.npz",
+  "witness_sha256": "e9473e9d8419feebfd156cf88375d34df076a74fcde97bd50f49be686f3ba0ff"
+}
