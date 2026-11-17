@@ -1,0 +1,1594 @@
+{
+  "cases": 16,
+  "available": 16,
+  "unavailable": 0,
+  "operator_observations": 128,
+  "operator_stages": 18,
+  "poisson_solves": 64,
+  "heat_trajectories": 64,
+  "heat_steps": 128,
+  "outputs": 131,
+  "collection_path": "results/pde-smoke-a/e2-q4/collection.json",
+  "collection_sha256": "41ca07e22c1bc24d2d865ed3f0daf6c372b37e6cb4e8eb8f798f5082301bcc95",
+  "source_sha256": {
+    "pde_study.py": "5e9e9a51ca2bd22ed1a5dbb467e4f85c9af29445d94002fe0d68101a481dfd09",
+    "pde_evidence.py": "9cda41bad6c10b10826eb26835ae19e858aa360aa2f3c46e12a2f168ac023361",
+    "pde_cases.py": "f98b0d11fee0fdd19ce51b9d7b8e3b5ef548176e2bc78c93d9c9bb37e49d3597",
+    "pde_protocol.py": "04978441c3397f491cee41baa63fbe9709709325c498df9a5ad6828e6a80f391",
+    "pde_methods.py": "c029b0e0ab8c1ee262f5d40a178d0e2ffde9cf100f297db68149d2d3f198d9d8",
+    "pde_cg.py": "65d8b38b5eda83cad8d8f3f347927bb248bd005635788f20dc4390064ac36a24",
+    "pde_reference.py": "646a47a893d90a7cba27b78d4773046d75e06199e33b0d8df9e00e703fbc1437",
+    "pde_coefficients.py": "55dddf44c59115f6243cb9a449a33b4113e7052800e08de49e25ac22c0767bd4",
+    "prepare_pde_coefficients.py": "b0cae1ea19786850055065e864b35bf70f2782b496e8ee408c925ea11b59dd03",
+    "reference.py": "b17f2880f57875909d8268091f026317dbf531b118b83322488c96ab7f62c9ef",
+    "pde_cuda.py": "6a565e67e05dbd091377c518c1f4116b2b34250e0b051f31053c42b01ca2867e",
+    "native/pde_kernels.cu": "ae53ca767adae0237f3977f485efa7e3d385713792e1651cd0f1c7ec8b07bc97",
+    "pde_ceed.py": "4eaa745c7c13e32c7e5895061924b2284e026e9cc654d19300f96fa1303c04ed",
+    "native/pde_ceed_bridge.cpp": "dd9b85f643222f29695918f41e6e9da93ebd8a11184c096cc1955e3d6d04beb3",
+    "native/pde_ceed_qfunction.h": "2e97b4a811dc8df06509ab984b3809cfcc302654626176f11529ac1d79e37bda",
+    "build_pde_ceed.sh": "1ed1663ac62be7ee8ef265969877d22e38cefc82b8b7c142edb7c3632904e46f",
+    "pde_tensor.py": "6a5fe2f2de1fbe9a41dd78e3c0ef46b1499678726e6ffff6424f66b41d26c539",
+    "native/pde_tensor_kernels.cu": "efae065bf17d51e79ca696a7faa0b7dbd95ac2ba4882764e79beda4eae29583f",
+    "pde_packing.py": "ee44cda50fa58bc466af997ed197303cf00351b33e422d89ebb66c0759c4b300",
+    "pca_native.py": "65f5ef250246c193e4dff0a0a00531f81983101343232ee005767bf15c55ec53",
+    "native/pca_bridge.cu": "a117611fa68521748b2dfa0434ffaaed1a3e4fdbe7410f430a620b3b4d9f9cfc",
+    "native/hardware_bridge.cu": "dbc8f619e69d91a25ef7d6bd7eb984112f737afb44934e3694fe1db6511d9faf",
+    "native/application_bridge.cu": "1d2f0b190d1f27ee3408fa126fae43c0ee5907feaec4bd94353a802c94fa1336",
+    "native/optimized_bridge.cu": "9d718ad97e4c3c2d77afe6402f093ec0af48c46d5faeaf78ea44c2d5537e4a25",
+    "native/bridge.cu": "5bd319bed3f39f6a735e6036e643ad8091d198a40398760e7a57a75d275c19b8",
+    "build_pca.sh": "4d0a3a916374351d50d2a71082fb28b9a637fd828f22830f404499eabd602069",
+    "pde_small.py": "b0731105033815a8a83d94dbb816ea97095d666c66faa40a0057b6f782476659",
+    "native/pde_small_bridge.cu": "3b24020d519e24c186a11640da13c0200f58fbb509f8e8178b02fedce384df24",
+    "native/pde_small_kernels.cu": "a531b920e36846374acfa5f3bcad283eb427b9c0f6ea84a306b41c0cb426475b",
+    "build_pde_small.sh": "4f9df460608c9a2194aef86d0d5e1ef3462b5b0ee9219296465f1a6be11df12c"
+  },
+  "binary_sha256": {
+    "native_core": "513f137a3a692f100874a3b275f5c9172af9be1f6c932f513a9634bc813eba7d",
+    "ceed_bridge": "ccb27b9a39ad75cfe564247d38272e46e3147cde7630a3f9cf5d35722eadb550",
+    "short_q_bridge": "03ec2fbd8de5f556c48f05097d2876545472fb032d9916064fe8bf295dc058f8",
+    "libceed": "d7616cf9b1025d4a87da3d25afff661e481edd4b91de4c34d6bc081525f6a7cb"
+  },
+  "verifier_sha256": {
+    "pde_replay.py": "113a2c6145b6801a5a16c697a8994e5a0055f43d01449cd9c91d19f9a0f93fad",
+    "pde_models.py": "1eea713de774b86df493e84af6f086eb40e9e4e735ce64bf71f8bdb43276d126"
+  },
+  "qualities": {
+    "0": {
+      "operator": {
+        "o0": {
+          "variant": 0,
+          "relative_original_operator_error": 5.66124840434908e-07
+        },
+        "o1": {
+          "variant": 1,
+          "relative_original_operator_error": 4.341248902079212e-07
+        }
+      },
+      "poisson": [
+        {
+          "output": "o2",
+          "route": "resident",
+          "target": 0.001,
+          "policy": "fixed",
+          "finite": true,
+          "original_relative": 0.0002988879240801889,
+          "continuum_mass_relative": 0.0006513699756865333,
+          "target_met": true
+        },
+        {
+          "output": "o2",
+          "route": "host",
+          "target": 0.001,
+          "policy": "fixed",
+          "finite": true,
+          "original_relative": 0.0002988879240801889,
+          "continuum_mass_relative": 0.0006513699756865333,
+          "target_met": true
+        },
+        {
+          "output": "o3",
+          "route": "resident",
+          "target": 0.001,
+          "policy": "reliable",
+          "finite": true,
+          "original_relative": 0.00019137411285411694,
+          "continuum_mass_relative": 0.0006742443834936081,
+          "target_met": true
+        },
+        {
+          "output": "o3",
+          "route": "host",
+          "target": 0.001,
+          "policy": "reliable",
+          "finite": true,
+          "original_relative": 0.00019137411285411694,
+          "continuum_mass_relative": 0.0006742443834936081,
+          "target_met": true
+        }
+      ],
+      "heat": [
+        {
+          "steps": 2,
+          "route": "resident",
+          "policy": "fixed",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.020224981039328616,
+          "backward_euler_continuum_mass_relative": 0.0011806615791387703,
+          "final_step_original_relative": 0.0007977890460729788
+        },
+        {
+          "steps": 2,
+          "route": "host",
+          "policy": "fixed",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.020224981039328616,
+          "backward_euler_continuum_mass_relative": 0.0011806615791387703,
+          "final_step_original_relative": 0.0007977890460729788
+        },
+        {
+          "steps": 2,
+          "route": "resident",
+          "policy": "reliable",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.020658564943331598,
+          "backward_euler_continuum_mass_relative": 0.0007313529449150346,
+          "final_step_original_relative": 0.0003711659537797351
+        },
+        {
+          "steps": 2,
+          "route": "host",
+          "policy": "reliable",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.020658564943331598,
+          "backward_euler_continuum_mass_relative": 0.0007313529449150346,
+          "final_step_original_relative": 0.0003711659537797351
+        }
+      ]
+    },
+    "1": {
+      "operator": {
+        "o0": {
+          "variant": 0,
+          "relative_original_operator_error": 5.66124840434908e-07
+        },
+        "o1": {
+          "variant": 1,
+          "relative_original_operator_error": 4.341248902079212e-07
+        }
+      },
+      "poisson": [
+        {
+          "output": "o2",
+          "route": "resident",
+          "target": 0.001,
+          "policy": "fixed",
+          "finite": true,
+          "original_relative": 0.0002988879240801889,
+          "continuum_mass_relative": 0.0006513699756865333,
+          "target_met": true
+        },
+        {
+          "output": "o2",
+          "route": "host",
+          "target": 0.001,
+          "policy": "fixed",
+          "finite": true,
+          "original_relative": 0.0002988879240801889,
+          "continuum_mass_relative": 0.0006513699756865333,
+          "target_met": true
+        },
+        {
+          "output": "o3",
+          "route": "resident",
+          "target": 0.001,
+          "policy": "reliable",
+          "finite": true,
+          "original_relative": 0.00019137411285411694,
+          "continuum_mass_relative": 0.0006742443834936081,
+          "target_met": true
+        },
+        {
+          "output": "o3",
+          "route": "host",
+          "target": 0.001,
+          "policy": "reliable",
+          "finite": true,
+          "original_relative": 0.00019137411285411694,
+          "continuum_mass_relative": 0.0006742443834936081,
+          "target_met": true
+        }
+      ],
+      "heat": [
+        {
+          "steps": 2,
+          "route": "resident",
+          "policy": "fixed",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.020224981039328616,
+          "backward_euler_continuum_mass_relative": 0.0011806615791387703,
+          "final_step_original_relative": 0.0007977890460729788
+        },
+        {
+          "steps": 2,
+          "route": "host",
+          "policy": "fixed",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.020224981039328616,
+          "backward_euler_continuum_mass_relative": 0.0011806615791387703,
+          "final_step_original_relative": 0.0007977890460729788
+        },
+        {
+          "steps": 2,
+          "route": "resident",
+          "policy": "reliable",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.020658564943331598,
+          "backward_euler_continuum_mass_relative": 0.0007313529449150346,
+          "final_step_original_relative": 0.0003711659537797351
+        },
+        {
+          "steps": 2,
+          "route": "host",
+          "policy": "reliable",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.020658564943331598,
+          "backward_euler_continuum_mass_relative": 0.0007313529449150346,
+          "final_step_original_relative": 0.0003711659537797351
+        }
+      ]
+    },
+    "2": {
+      "operator": {
+        "o0": {
+          "variant": 0,
+          "relative_original_operator_error": 5.94803795150318e-17
+        },
+        "o1": {
+          "variant": 1,
+          "relative_original_operator_error": 9.217534579321255e-17
+        }
+      },
+      "poisson": [
+        {
+          "output": "o2",
+          "route": "resident",
+          "target": 0.001,
+          "policy": "fixed",
+          "finite": true,
+          "original_relative": 0.0002988948721860362,
+          "continuum_mass_relative": 0.0006513201240920151,
+          "target_met": true
+        },
+        {
+          "output": "o2",
+          "route": "host",
+          "target": 0.001,
+          "policy": "fixed",
+          "finite": true,
+          "original_relative": 0.0002988948721860362,
+          "continuum_mass_relative": 0.0006513201240920151,
+          "target_met": true
+        },
+        {
+          "output": "o3",
+          "route": "resident",
+          "target": 0.001,
+          "policy": "reliable",
+          "finite": true,
+          "original_relative": 0.0001913696615896627,
+          "continuum_mass_relative": 0.0006742454416028381,
+          "target_met": true
+        },
+        {
+          "output": "o3",
+          "route": "host",
+          "target": 0.001,
+          "policy": "reliable",
+          "finite": true,
+          "original_relative": 0.0001913696615896627,
+          "continuum_mass_relative": 0.0006742454416028381,
+          "target_met": true
+        }
+      ],
+      "heat": [
+        {
+          "steps": 2,
+          "route": "resident",
+          "policy": "fixed",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.02022485849504269,
+          "backward_euler_continuum_mass_relative": 0.0011806384777902758,
+          "final_step_original_relative": 0.0007977787218625941
+        },
+        {
+          "steps": 2,
+          "route": "host",
+          "policy": "fixed",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.02022485849504269,
+          "backward_euler_continuum_mass_relative": 0.0011806384777902758,
+          "final_step_original_relative": 0.0007977787218625941
+        },
+        {
+          "steps": 2,
+          "route": "resident",
+          "policy": "reliable",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.020658566305169244,
+          "backward_euler_continuum_mass_relative": 0.0007313535967355295,
+          "final_step_original_relative": 0.0003711669401160376
+        },
+        {
+          "steps": 2,
+          "route": "host",
+          "policy": "reliable",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.020658566305169244,
+          "backward_euler_continuum_mass_relative": 0.0007313535967355295,
+          "final_step_original_relative": 0.0003711669401160376
+        }
+      ]
+    },
+    "3": {
+      "operator": {
+        "o0": {
+          "variant": 0,
+          "relative_original_operator_error": 5.94803795150318e-17
+        },
+        "o1": {
+          "variant": 1,
+          "relative_original_operator_error": 9.217534579321255e-17
+        }
+      },
+      "poisson": [
+        {
+          "output": "o2",
+          "route": "resident",
+          "target": 0.001,
+          "policy": "fixed",
+          "finite": true,
+          "original_relative": 0.0002988948721860362,
+          "continuum_mass_relative": 0.0006513201240920151,
+          "target_met": true
+        },
+        {
+          "output": "o2",
+          "route": "host",
+          "target": 0.001,
+          "policy": "fixed",
+          "finite": true,
+          "original_relative": 0.0002988948721860362,
+          "continuum_mass_relative": 0.0006513201240920151,
+          "target_met": true
+        },
+        {
+          "output": "o3",
+          "route": "resident",
+          "target": 0.001,
+          "policy": "reliable",
+          "finite": true,
+          "original_relative": 0.0001913696615896627,
+          "continuum_mass_relative": 0.0006742454416028381,
+          "target_met": true
+        },
+        {
+          "output": "o3",
+          "route": "host",
+          "target": 0.001,
+          "policy": "reliable",
+          "finite": true,
+          "original_relative": 0.0001913696615896627,
+          "continuum_mass_relative": 0.0006742454416028381,
+          "target_met": true
+        }
+      ],
+      "heat": [
+        {
+          "steps": 2,
+          "route": "resident",
+          "policy": "fixed",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.02022485849504269,
+          "backward_euler_continuum_mass_relative": 0.0011806384777902758,
+          "final_step_original_relative": 0.0007977787218625941
+        },
+        {
+          "steps": 2,
+          "route": "host",
+          "policy": "fixed",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.02022485849504269,
+          "backward_euler_continuum_mass_relative": 0.0011806384777902758,
+          "final_step_original_relative": 0.0007977787218625941
+        },
+        {
+          "steps": 2,
+          "route": "resident",
+          "policy": "reliable",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.020658566305169244,
+          "backward_euler_continuum_mass_relative": 0.0007313535967355295,
+          "final_step_original_relative": 0.0003711669401160376
+        },
+        {
+          "steps": 2,
+          "route": "host",
+          "policy": "reliable",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.020658566305169244,
+          "backward_euler_continuum_mass_relative": 0.0007313535967355295,
+          "final_step_original_relative": 0.0003711669401160376
+        }
+      ]
+    },
+    "4": {
+      "operator": {
+        "o0": {
+          "variant": 0,
+          "relative_original_operator_error": 3.5212771399402824e-16
+        },
+        "o1": {
+          "variant": 1,
+          "relative_original_operator_error": 2.832078691590268e-16
+        }
+      },
+      "poisson": [
+        {
+          "output": "o2",
+          "route": "resident",
+          "target": 0.001,
+          "policy": "fixed",
+          "finite": true,
+          "original_relative": 0.0002988948721860441,
+          "continuum_mass_relative": 0.0006513201240920242,
+          "target_met": true
+        },
+        {
+          "output": "o2",
+          "route": "host",
+          "target": 0.001,
+          "policy": "fixed",
+          "finite": true,
+          "original_relative": 0.0002988948721860441,
+          "continuum_mass_relative": 0.0006513201240920242,
+          "target_met": true
+        },
+        {
+          "output": "o3",
+          "route": "resident",
+          "target": 0.001,
+          "policy": "reliable",
+          "finite": true,
+          "original_relative": 0.00019136966158965523,
+          "continuum_mass_relative": 0.0006742454416028462,
+          "target_met": true
+        },
+        {
+          "output": "o3",
+          "route": "host",
+          "target": 0.001,
+          "policy": "reliable",
+          "finite": true,
+          "original_relative": 0.00019136966158965523,
+          "continuum_mass_relative": 0.0006742454416028462,
+          "target_met": true
+        }
+      ],
+      "heat": [
+        {
+          "steps": 2,
+          "route": "resident",
+          "policy": "fixed",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.020224858495042738,
+          "backward_euler_continuum_mass_relative": 0.0011806384777902842,
+          "final_step_original_relative": 0.0007977787218626359
+        },
+        {
+          "steps": 2,
+          "route": "host",
+          "policy": "fixed",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.020224858495042738,
+          "backward_euler_continuum_mass_relative": 0.0011806384777902842,
+          "final_step_original_relative": 0.0007977787218626359
+        },
+        {
+          "steps": 2,
+          "route": "resident",
+          "policy": "reliable",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.020658566305169237,
+          "backward_euler_continuum_mass_relative": 0.0007313535967355265,
+          "final_step_original_relative": 0.000371166940116075
+        },
+        {
+          "steps": 2,
+          "route": "host",
+          "policy": "reliable",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.020658566305169237,
+          "backward_euler_continuum_mass_relative": 0.0007313535967355265,
+          "final_step_original_relative": 0.000371166940116075
+        }
+      ]
+    },
+    "5": {
+      "operator": {
+        "o0": {
+          "variant": 0,
+          "relative_original_operator_error": 3.552418613272528e-16
+        },
+        "o1": {
+          "variant": 1,
+          "relative_original_operator_error": 3.0183222027383695e-16
+        }
+      },
+      "poisson": [
+        {
+          "output": "o2",
+          "route": "resident",
+          "target": 0.001,
+          "policy": "fixed",
+          "finite": true,
+          "original_relative": 0.0002988948721859617,
+          "continuum_mass_relative": 0.000651320124092067,
+          "target_met": true
+        },
+        {
+          "output": "o2",
+          "route": "host",
+          "target": 0.001,
+          "policy": "fixed",
+          "finite": true,
+          "original_relative": 0.0002988948721859617,
+          "continuum_mass_relative": 0.000651320124092067,
+          "target_met": true
+        },
+        {
+          "output": "o3",
+          "route": "resident",
+          "target": 0.001,
+          "policy": "reliable",
+          "finite": true,
+          "original_relative": 0.00019136966158965534,
+          "continuum_mass_relative": 0.0006742454416028251,
+          "target_met": true
+        },
+        {
+          "output": "o3",
+          "route": "host",
+          "target": 0.001,
+          "policy": "reliable",
+          "finite": true,
+          "original_relative": 0.00019136966158965534,
+          "continuum_mass_relative": 0.0006742454416028251,
+          "target_met": true
+        }
+      ],
+      "heat": [
+        {
+          "steps": 2,
+          "route": "resident",
+          "policy": "fixed",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.02022485849504275,
+          "backward_euler_continuum_mass_relative": 0.0011806384777903033,
+          "final_step_original_relative": 0.0007977787218626442
+        },
+        {
+          "steps": 2,
+          "route": "host",
+          "policy": "fixed",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.02022485849504275,
+          "backward_euler_continuum_mass_relative": 0.0011806384777903033,
+          "final_step_original_relative": 0.0007977787218626442
+        },
+        {
+          "steps": 2,
+          "route": "resident",
+          "policy": "reliable",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.02065856630516925,
+          "backward_euler_continuum_mass_relative": 0.0007313535967355343,
+          "final_step_original_relative": 0.000371166940116084
+        },
+        {
+          "steps": 2,
+          "route": "host",
+          "policy": "reliable",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.02065856630516925,
+          "backward_euler_continuum_mass_relative": 0.0007313535967355343,
+          "final_step_original_relative": 0.000371166940116084
+        }
+      ]
+    },
+    "6": {
+      "operator": {
+        "o0": {
+          "variant": 0,
+          "relative_original_operator_error": 3.6071945615231025e-16
+        },
+        "o1": {
+          "variant": 1,
+          "relative_original_operator_error": 2.9893628232035267e-16
+        }
+      },
+      "poisson": [
+        {
+          "output": "o2",
+          "route": "resident",
+          "target": 0.001,
+          "policy": "fixed",
+          "finite": true,
+          "original_relative": 0.0002988948721858041,
+          "continuum_mass_relative": 0.0006513201240920868,
+          "target_met": true
+        },
+        {
+          "output": "o3",
+          "route": "host",
+          "target": 0.001,
+          "policy": "fixed",
+          "finite": true,
+          "original_relative": 0.0002988948721858993,
+          "continuum_mass_relative": 0.0006513201240920688,
+          "target_met": true
+        },
+        {
+          "output": "o4",
+          "route": "resident",
+          "target": 0.001,
+          "policy": "reliable",
+          "finite": true,
+          "original_relative": 0.000191369661589501,
+          "continuum_mass_relative": 0.000674245441602804,
+          "target_met": true
+        },
+        {
+          "output": "o4",
+          "route": "host",
+          "target": 0.001,
+          "policy": "reliable",
+          "finite": true,
+          "original_relative": 0.000191369661589501,
+          "continuum_mass_relative": 0.000674245441602804,
+          "target_met": true
+        }
+      ],
+      "heat": [
+        {
+          "steps": 2,
+          "route": "resident",
+          "policy": "fixed",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.020224858495042686,
+          "backward_euler_continuum_mass_relative": 0.0011806384777903228,
+          "final_step_original_relative": 0.0007977787218626621
+        },
+        {
+          "steps": 2,
+          "route": "host",
+          "policy": "fixed",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.02022485849504266,
+          "backward_euler_continuum_mass_relative": 0.0011806384777902864,
+          "final_step_original_relative": 0.0007977787218625801
+        },
+        {
+          "steps": 2,
+          "route": "resident",
+          "policy": "reliable",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.020658566305169258,
+          "backward_euler_continuum_mass_relative": 0.000731353596735541,
+          "final_step_original_relative": 0.00037116694011606635
+        },
+        {
+          "steps": 2,
+          "route": "host",
+          "policy": "reliable",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.020658566305169258,
+          "backward_euler_continuum_mass_relative": 0.000731353596735541,
+          "final_step_original_relative": 0.00037116694011606635
+        }
+      ]
+    },
+    "7": {
+      "operator": {
+        "o0": {
+          "variant": 0,
+          "relative_original_operator_error": 1.0827234329368325
+        },
+        "o1": {
+          "variant": 1,
+          "relative_original_operator_error": 0.8032696806032269
+        }
+      },
+      "poisson": [
+        {
+          "output": "o2",
+          "route": "resident",
+          "target": 0.001,
+          "policy": "fixed",
+          "finite": true,
+          "original_relative": 0.5002782626344738,
+          "continuum_mass_relative": 0.04467497599635104,
+          "target_met": false
+        },
+        {
+          "output": "o2",
+          "route": "host",
+          "target": 0.001,
+          "policy": "fixed",
+          "finite": true,
+          "original_relative": 0.5002782626344738,
+          "continuum_mass_relative": 0.04467497599635104,
+          "target_met": false
+        },
+        {
+          "output": "o3",
+          "route": "resident",
+          "target": 0.001,
+          "policy": "reliable",
+          "finite": true,
+          "original_relative": 0.00044777107446883715,
+          "continuum_mass_relative": 0.0007841905390739141,
+          "target_met": true
+        },
+        {
+          "output": "o3",
+          "route": "host",
+          "target": 0.001,
+          "policy": "reliable",
+          "finite": true,
+          "original_relative": 0.00044777107446883715,
+          "continuum_mass_relative": 0.0007841905390739141,
+          "target_met": true
+        }
+      ],
+      "heat": [
+        {
+          "steps": 2,
+          "route": "resident",
+          "policy": "fixed",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.08861979571667812,
+          "backward_euler_continuum_mass_relative": 0.08680152238777093,
+          "final_step_original_relative": 0.10175283228084557
+        },
+        {
+          "steps": 2,
+          "route": "host",
+          "policy": "fixed",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.08861979571667812,
+          "backward_euler_continuum_mass_relative": 0.08680152238777093,
+          "final_step_original_relative": 0.10175283228084557
+        },
+        {
+          "steps": 2,
+          "route": "resident",
+          "policy": "reliable",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.020345755834173848,
+          "backward_euler_continuum_mass_relative": 0.00042285226606481795,
+          "final_step_original_relative": 0.00040592174217896656
+        },
+        {
+          "steps": 2,
+          "route": "host",
+          "policy": "reliable",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.020345755834173848,
+          "backward_euler_continuum_mass_relative": 0.00042285226606481795,
+          "final_step_original_relative": 0.00040592174217896656
+        }
+      ]
+    },
+    "8": {
+      "operator": {
+        "o0": {
+          "variant": 0,
+          "relative_original_operator_error": 0.3044065505980894
+        },
+        "o1": {
+          "variant": 1,
+          "relative_original_operator_error": 0.33527444192333017
+        }
+      },
+      "poisson": [
+        {
+          "output": "o2",
+          "route": "resident",
+          "target": 0.001,
+          "policy": "fixed",
+          "finite": true,
+          "original_relative": 0.4330162680987213,
+          "continuum_mass_relative": 0.29958379367062704,
+          "target_met": false
+        },
+        {
+          "output": "o2",
+          "route": "host",
+          "target": 0.001,
+          "policy": "fixed",
+          "finite": true,
+          "original_relative": 0.4330162680987213,
+          "continuum_mass_relative": 0.29958379367062704,
+          "target_met": false
+        },
+        {
+          "output": "o3",
+          "route": "resident",
+          "target": 0.001,
+          "policy": "reliable",
+          "finite": true,
+          "original_relative": 0.00031857531263152796,
+          "continuum_mass_relative": 0.0006479010475988527,
+          "target_met": true
+        },
+        {
+          "output": "o3",
+          "route": "host",
+          "target": 0.001,
+          "policy": "reliable",
+          "finite": true,
+          "original_relative": 0.00031857531263152796,
+          "continuum_mass_relative": 0.0006479010475988527,
+          "target_met": true
+        }
+      ],
+      "heat": [
+        {
+          "steps": 2,
+          "route": "resident",
+          "policy": "fixed",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.08331939619962805,
+          "backward_euler_continuum_mass_relative": 0.06204007681378026,
+          "final_step_original_relative": 0.0349882146787551
+        },
+        {
+          "steps": 2,
+          "route": "host",
+          "policy": "fixed",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.08331939619962805,
+          "backward_euler_continuum_mass_relative": 0.06204007681378026,
+          "final_step_original_relative": 0.0349882146787551
+        },
+        {
+          "steps": 2,
+          "route": "resident",
+          "policy": "reliable",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.020449078353842513,
+          "backward_euler_continuum_mass_relative": 0.00043416718988610733,
+          "final_step_original_relative": 0.00034151748733346753
+        },
+        {
+          "steps": 2,
+          "route": "host",
+          "policy": "reliable",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.020449078353842513,
+          "backward_euler_continuum_mass_relative": 0.00043416718988610733,
+          "final_step_original_relative": 0.00034151748733346753
+        }
+      ]
+    },
+    "9": {
+      "operator": {
+        "o0": {
+          "variant": 0,
+          "relative_original_operator_error": 0.0017661760678098501
+        },
+        "o1": {
+          "variant": 1,
+          "relative_original_operator_error": 0.0019676079076985822
+        }
+      },
+      "poisson": [
+        {
+          "output": "o2",
+          "route": "resident",
+          "target": 0.001,
+          "policy": "fixed",
+          "finite": true,
+          "original_relative": 0.002408672733485935,
+          "continuum_mass_relative": 0.0009505398272018428,
+          "target_met": false
+        },
+        {
+          "output": "o2",
+          "route": "host",
+          "target": 0.001,
+          "policy": "fixed",
+          "finite": true,
+          "original_relative": 0.002408672733485935,
+          "continuum_mass_relative": 0.0009505398272018428,
+          "target_met": false
+        },
+        {
+          "output": "o3",
+          "route": "resident",
+          "target": 0.001,
+          "policy": "reliable",
+          "finite": true,
+          "original_relative": 0.00020237461401302647,
+          "continuum_mass_relative": 0.0006730650897373813,
+          "target_met": true
+        },
+        {
+          "output": "o3",
+          "route": "host",
+          "target": 0.001,
+          "policy": "reliable",
+          "finite": true,
+          "original_relative": 0.00020237461401302647,
+          "continuum_mass_relative": 0.0006730650897373813,
+          "target_met": true
+        }
+      ],
+      "heat": [
+        {
+          "steps": 2,
+          "route": "resident",
+          "policy": "fixed",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.020322072685561982,
+          "backward_euler_continuum_mass_relative": 0.0011744692502208309,
+          "final_step_original_relative": 0.0007577084332371487
+        },
+        {
+          "steps": 2,
+          "route": "host",
+          "policy": "fixed",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.020322072685561982,
+          "backward_euler_continuum_mass_relative": 0.0011744692502208309,
+          "final_step_original_relative": 0.0007577084332371487
+        },
+        {
+          "steps": 2,
+          "route": "resident",
+          "policy": "reliable",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.020655779471580007,
+          "backward_euler_continuum_mass_relative": 0.0007299873972400763,
+          "final_step_original_relative": 0.00036970999958923226
+        },
+        {
+          "steps": 2,
+          "route": "host",
+          "policy": "reliable",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.020655779471580007,
+          "backward_euler_continuum_mass_relative": 0.0007299873972400763,
+          "final_step_original_relative": 0.00036970999958923226
+        }
+      ]
+    },
+    "10": {
+      "operator": {
+        "o0": {
+          "variant": 0,
+          "relative_original_operator_error": 0.022489377593269133
+        },
+        "o1": {
+          "variant": 1,
+          "relative_original_operator_error": 0.016721039464039997
+        }
+      },
+      "poisson": [
+        {
+          "output": "o2",
+          "route": "resident",
+          "target": 0.001,
+          "policy": "fixed",
+          "finite": true,
+          "original_relative": 0.01953279299330844,
+          "continuum_mass_relative": 0.004385978647165129,
+          "target_met": false
+        },
+        {
+          "output": "o2",
+          "route": "host",
+          "target": 0.001,
+          "policy": "fixed",
+          "finite": true,
+          "original_relative": 0.01953279299330844,
+          "continuum_mass_relative": 0.004385978647165129,
+          "target_met": false
+        },
+        {
+          "output": "o3",
+          "route": "resident",
+          "target": 0.001,
+          "policy": "reliable",
+          "finite": true,
+          "original_relative": 0.00042945096387128303,
+          "continuum_mass_relative": 0.0005760879053542676,
+          "target_met": true
+        },
+        {
+          "output": "o3",
+          "route": "host",
+          "target": 0.001,
+          "policy": "reliable",
+          "finite": true,
+          "original_relative": 0.00042945096387128303,
+          "continuum_mass_relative": 0.0005760879053542676,
+          "target_met": true
+        }
+      ],
+      "heat": [
+        {
+          "steps": 2,
+          "route": "resident",
+          "policy": "fixed",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.019793907934528728,
+          "backward_euler_continuum_mass_relative": 0.00195675911648863,
+          "final_step_original_relative": 0.0036088914313778535
+        },
+        {
+          "steps": 2,
+          "route": "host",
+          "policy": "fixed",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.019793907934528728,
+          "backward_euler_continuum_mass_relative": 0.00195675911648863,
+          "final_step_original_relative": 0.0036088914313778535
+        },
+        {
+          "steps": 2,
+          "route": "resident",
+          "policy": "reliable",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.02068331948006392,
+          "backward_euler_continuum_mass_relative": 0.0007453660728906024,
+          "final_step_original_relative": 0.00038917039195762693
+        },
+        {
+          "steps": 2,
+          "route": "host",
+          "policy": "reliable",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.02068331948006392,
+          "backward_euler_continuum_mass_relative": 0.0007453660728906024,
+          "final_step_original_relative": 0.00038917039195762693
+        }
+      ]
+    },
+    "11": {
+      "operator": {
+        "o0": {
+          "variant": 0,
+          "relative_original_operator_error": 5.2059408735989e-07
+        },
+        "o1": {
+          "variant": 1,
+          "relative_original_operator_error": 3.9940394272020977e-07
+        }
+      },
+      "poisson": [
+        {
+          "output": "o2",
+          "route": "resident",
+          "target": 0.001,
+          "policy": "fixed",
+          "finite": true,
+          "original_relative": 0.0002988950645211658,
+          "continuum_mass_relative": 0.000651371679283872,
+          "target_met": true
+        },
+        {
+          "output": "o2",
+          "route": "host",
+          "target": 0.001,
+          "policy": "fixed",
+          "finite": true,
+          "original_relative": 0.0002988950645211658,
+          "continuum_mass_relative": 0.000651371679283872,
+          "target_met": true
+        },
+        {
+          "output": "o3",
+          "route": "resident",
+          "target": 0.001,
+          "policy": "reliable",
+          "finite": true,
+          "original_relative": 0.00019137431823371858,
+          "continuum_mass_relative": 0.0006742443156384781,
+          "target_met": true
+        },
+        {
+          "output": "o3",
+          "route": "host",
+          "target": 0.001,
+          "policy": "reliable",
+          "finite": true,
+          "original_relative": 0.00019137431823371858,
+          "continuum_mass_relative": 0.0006742443156384781,
+          "target_met": true
+        }
+      ],
+      "heat": [
+        {
+          "steps": 2,
+          "route": "resident",
+          "policy": "fixed",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.020224934164925774,
+          "backward_euler_continuum_mass_relative": 0.0011806556835667903,
+          "final_step_original_relative": 0.0007977860300921517
+        },
+        {
+          "steps": 2,
+          "route": "host",
+          "policy": "fixed",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.020224934164925774,
+          "backward_euler_continuum_mass_relative": 0.0011806556835667903,
+          "final_step_original_relative": 0.0007977860300921517
+        },
+        {
+          "steps": 2,
+          "route": "resident",
+          "policy": "reliable",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.02065856546815011,
+          "backward_euler_continuum_mass_relative": 0.0007313531396755037,
+          "final_step_original_relative": 0.00037116643845740176
+        },
+        {
+          "steps": 2,
+          "route": "host",
+          "policy": "reliable",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.02065856546815011,
+          "backward_euler_continuum_mass_relative": 0.0007313531396755037,
+          "final_step_original_relative": 0.00037116643845740176
+        }
+      ]
+    },
+    "12": {
+      "operator": {
+        "o0": {
+          "variant": 0,
+          "relative_original_operator_error": 0.3044065505980894
+        },
+        "o1": {
+          "variant": 1,
+          "relative_original_operator_error": 0.33527444192333017
+        }
+      },
+      "poisson": [
+        {
+          "output": "o2",
+          "route": "resident",
+          "target": 0.001,
+          "policy": "fixed",
+          "finite": true,
+          "original_relative": 0.4330162680987213,
+          "continuum_mass_relative": 0.29958379367062704,
+          "target_met": false
+        },
+        {
+          "output": "o2",
+          "route": "host",
+          "target": 0.001,
+          "policy": "fixed",
+          "finite": true,
+          "original_relative": 0.4330162680987213,
+          "continuum_mass_relative": 0.29958379367062704,
+          "target_met": false
+        },
+        {
+          "output": "o3",
+          "route": "resident",
+          "target": 0.001,
+          "policy": "reliable",
+          "finite": true,
+          "original_relative": 0.00031857531263152796,
+          "continuum_mass_relative": 0.0006479010475988527,
+          "target_met": true
+        },
+        {
+          "output": "o3",
+          "route": "host",
+          "target": 0.001,
+          "policy": "reliable",
+          "finite": true,
+          "original_relative": 0.00031857531263152796,
+          "continuum_mass_relative": 0.0006479010475988527,
+          "target_met": true
+        }
+      ],
+      "heat": [
+        {
+          "steps": 2,
+          "route": "resident",
+          "policy": "fixed",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.08331939619962805,
+          "backward_euler_continuum_mass_relative": 0.06204007681378026,
+          "final_step_original_relative": 0.0349882146787551
+        },
+        {
+          "steps": 2,
+          "route": "host",
+          "policy": "fixed",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.08331939619962805,
+          "backward_euler_continuum_mass_relative": 0.06204007681378026,
+          "final_step_original_relative": 0.0349882146787551
+        },
+        {
+          "steps": 2,
+          "route": "resident",
+          "policy": "reliable",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.020449078353842513,
+          "backward_euler_continuum_mass_relative": 0.00043416718988610733,
+          "final_step_original_relative": 0.00034151748733346753
+        },
+        {
+          "steps": 2,
+          "route": "host",
+          "policy": "reliable",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.020449078353842513,
+          "backward_euler_continuum_mass_relative": 0.00043416718988610733,
+          "final_step_original_relative": 0.00034151748733346753
+        }
+      ]
+    },
+    "13": {
+      "operator": {
+        "o0": {
+          "variant": 0,
+          "relative_original_operator_error": 0.0017661760678098501
+        },
+        "o1": {
+          "variant": 1,
+          "relative_original_operator_error": 0.0019676079076985822
+        }
+      },
+      "poisson": [
+        {
+          "output": "o2",
+          "route": "resident",
+          "target": 0.001,
+          "policy": "fixed",
+          "finite": true,
+          "original_relative": 0.002408672733485935,
+          "continuum_mass_relative": 0.0009505398272018428,
+          "target_met": false
+        },
+        {
+          "output": "o2",
+          "route": "host",
+          "target": 0.001,
+          "policy": "fixed",
+          "finite": true,
+          "original_relative": 0.002408672733485935,
+          "continuum_mass_relative": 0.0009505398272018428,
+          "target_met": false
+        },
+        {
+          "output": "o3",
+          "route": "resident",
+          "target": 0.001,
+          "policy": "reliable",
+          "finite": true,
+          "original_relative": 0.00020237461401302647,
+          "continuum_mass_relative": 0.0006730650897373813,
+          "target_met": true
+        },
+        {
+          "output": "o3",
+          "route": "host",
+          "target": 0.001,
+          "policy": "reliable",
+          "finite": true,
+          "original_relative": 0.00020237461401302647,
+          "continuum_mass_relative": 0.0006730650897373813,
+          "target_met": true
+        }
+      ],
+      "heat": [
+        {
+          "steps": 2,
+          "route": "resident",
+          "policy": "fixed",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.020322072685561982,
+          "backward_euler_continuum_mass_relative": 0.0011744692502208309,
+          "final_step_original_relative": 0.0007577084332371487
+        },
+        {
+          "steps": 2,
+          "route": "host",
+          "policy": "fixed",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.020322072685561982,
+          "backward_euler_continuum_mass_relative": 0.0011744692502208309,
+          "final_step_original_relative": 0.0007577084332371487
+        },
+        {
+          "steps": 2,
+          "route": "resident",
+          "policy": "reliable",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.020655779471580007,
+          "backward_euler_continuum_mass_relative": 0.0007299873972400763,
+          "final_step_original_relative": 0.00036970999958923226
+        },
+        {
+          "steps": 2,
+          "route": "host",
+          "policy": "reliable",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.020655779471580007,
+          "backward_euler_continuum_mass_relative": 0.0007299873972400763,
+          "final_step_original_relative": 0.00036970999958923226
+        }
+      ]
+    },
+    "14": {
+      "operator": {
+        "o0": {
+          "variant": 0,
+          "relative_original_operator_error": 0.022489377593269133
+        },
+        "o1": {
+          "variant": 1,
+          "relative_original_operator_error": 0.016721039464039997
+        }
+      },
+      "poisson": [
+        {
+          "output": "o2",
+          "route": "resident",
+          "target": 0.001,
+          "policy": "fixed",
+          "finite": true,
+          "original_relative": 0.01953279299330844,
+          "continuum_mass_relative": 0.004385978647165129,
+          "target_met": false
+        },
+        {
+          "output": "o2",
+          "route": "host",
+          "target": 0.001,
+          "policy": "fixed",
+          "finite": true,
+          "original_relative": 0.01953279299330844,
+          "continuum_mass_relative": 0.004385978647165129,
+          "target_met": false
+        },
+        {
+          "output": "o3",
+          "route": "resident",
+          "target": 0.001,
+          "policy": "reliable",
+          "finite": true,
+          "original_relative": 0.00042945096387128303,
+          "continuum_mass_relative": 0.0005760879053542676,
+          "target_met": true
+        },
+        {
+          "output": "o3",
+          "route": "host",
+          "target": 0.001,
+          "policy": "reliable",
+          "finite": true,
+          "original_relative": 0.00042945096387128303,
+          "continuum_mass_relative": 0.0005760879053542676,
+          "target_met": true
+        }
+      ],
+      "heat": [
+        {
+          "steps": 2,
+          "route": "resident",
+          "policy": "fixed",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.019793907934528728,
+          "backward_euler_continuum_mass_relative": 0.00195675911648863,
+          "final_step_original_relative": 0.0036088914313778535
+        },
+        {
+          "steps": 2,
+          "route": "host",
+          "policy": "fixed",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.019793907934528728,
+          "backward_euler_continuum_mass_relative": 0.00195675911648863,
+          "final_step_original_relative": 0.0036088914313778535
+        },
+        {
+          "steps": 2,
+          "route": "resident",
+          "policy": "reliable",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.02068331948006392,
+          "backward_euler_continuum_mass_relative": 0.0007453660728906024,
+          "final_step_original_relative": 0.00038917039195762693
+        },
+        {
+          "steps": 2,
+          "route": "host",
+          "policy": "reliable",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.02068331948006392,
+          "backward_euler_continuum_mass_relative": 0.0007453660728906024,
+          "final_step_original_relative": 0.00038917039195762693
+        }
+      ]
+    },
+    "15": {
+      "operator": {
+        "o0": {
+          "variant": 0,
+          "relative_original_operator_error": 4.7087801243930864e-07
+        },
+        "o1": {
+          "variant": 1,
+          "relative_original_operator_error": 4.4050316810702315e-07
+        }
+      },
+      "poisson": [
+        {
+          "output": "o2",
+          "route": "resident",
+          "target": 0.001,
+          "policy": "fixed",
+          "finite": true,
+          "original_relative": 0.0002989475813746364,
+          "continuum_mass_relative": 0.0006513057630077392,
+          "target_met": true
+        },
+        {
+          "output": "o2",
+          "route": "host",
+          "target": 0.001,
+          "policy": "fixed",
+          "finite": true,
+          "original_relative": 0.0002989475813746364,
+          "continuum_mass_relative": 0.0006513057630077392,
+          "target_met": true
+        },
+        {
+          "output": "o3",
+          "route": "resident",
+          "target": 0.001,
+          "policy": "reliable",
+          "finite": true,
+          "original_relative": 0.0001913715743846557,
+          "continuum_mass_relative": 0.0006742450655155283,
+          "target_met": true
+        },
+        {
+          "output": "o3",
+          "route": "host",
+          "target": 0.001,
+          "policy": "reliable",
+          "finite": true,
+          "original_relative": 0.0001913715743846557,
+          "continuum_mass_relative": 0.0006742450655155283,
+          "target_met": true
+        }
+      ],
+      "heat": [
+        {
+          "steps": 2,
+          "route": "resident",
+          "policy": "fixed",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.020224926993987292,
+          "backward_euler_continuum_mass_relative": 0.001180655438541419,
+          "final_step_original_relative": 0.0007978224210382337
+        },
+        {
+          "steps": 2,
+          "route": "host",
+          "policy": "fixed",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.020224926993987292,
+          "backward_euler_continuum_mass_relative": 0.001180655438541419,
+          "final_step_original_relative": 0.0007978224210382337
+        },
+        {
+          "steps": 2,
+          "route": "resident",
+          "policy": "reliable",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.020658565308517594,
+          "backward_euler_continuum_mass_relative": 0.0007313531021438604,
+          "final_step_original_relative": 0.0003711662743083797
+        },
+        {
+          "steps": 2,
+          "route": "host",
+          "policy": "reliable",
+          "target": 0.001,
+          "completed": 2,
+          "continuum_mass_relative": 0.020658565308517594,
+          "backward_euler_continuum_mass_relative": 0.0007313531021438604,
+          "final_step_original_relative": 0.0003711662743083797
+        }
+      ]
+    }
+  },
+  "scope": "Complete retained numeric arithmetic/final original-system replay for this collection only; separate cost/full-set/publication gates still required"
+}

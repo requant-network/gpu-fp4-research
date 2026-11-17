@@ -1,0 +1,290 @@
+{
+  "scope": "Complete declared dataset collection; independent whole replay and publication are still required",
+  "cohort": "a",
+  "elements": 8,
+  "q": 8,
+  "dofs": 185193,
+  "protocol": {
+    "phase": "full",
+    "targets": [
+      0.001,
+      1e-08
+    ],
+    "resident_observations": 16,
+    "host_observations": 16,
+    "poisson_repetitions_per_route": 2,
+    "heat_repetitions_per_route": 1,
+    "policies": [
+      "fixed",
+      "reliable"
+    ],
+    "heat_steps": [
+      4,
+      8
+    ],
+    "heat_final_time": 0.01,
+    "max_iterations": 1024,
+    "low_budget": 32,
+    "segment_iterations": 16,
+    "heat_scope": "E1/2 at q4/8/16 only; operator/Poisson include all declared geometries",
+    "operator_inputs": "Independent cohort-specific smooth sine field and sine plus changing dyadic rough perturbation with nonzero boundary",
+    "resident_scope": "Already resident source, charged D2D staging plus complete operation and context acknowledgment",
+    "host_scope": "H2D input plus complete operation plus D2H output",
+    "solver_scope": "Common host-controlled FP64-vector Jacobi PCG, charged staging/reductions/true checks/fallback; not a best-of-all solver claim",
+    "observation_integrity": "Full changing-original host/device fingerprints outside named service boundaries; these diagnostics alter inter-request spacing",
+    "retention": "Every timed final output losslessly retained; first resident output of each variant additionally has complete GEMM-product/encoding witnesses",
+    "reuse": [
+      1,
+      100,
+      10000
+    ],
+    "exclusive_device": false,
+    "instruction_trace": false,
+    "physical_peak_memory": false
+  },
+  "input_metadata": {
+    "seed": 120808,
+    "modes": [
+      [
+        1.0,
+        [
+          1,
+          1,
+          1
+        ]
+      ]
+    ],
+    "eigenvalues": [
+      29.608813203268074
+    ]
+  },
+  "heat_included": false,
+  "truth": {
+    "initial": {
+      "path": "results/pde-full-a/e8-q8/truth-initial.npz",
+      "sha256": "df0dcdea27836b03b75f29f6907d117e2df7dd5d722476cce66710c7087ae272",
+      "array_sha256": "c96af47130298dfe918f3840082109cc7b11f6a65f573f692b0326d5e40377b0",
+      "shape": [
+        185193
+      ],
+      "dtype": "<f8"
+    },
+    "poisson_rhs": {
+      "path": "results/pde-full-a/e8-q8/truth-poisson_rhs.npz",
+      "sha256": "f52e879c6762fb625c5c19b88c444427c3cac92275a1f2f680ebd0f60a72b083",
+      "array_sha256": "31b7f40a6d555a667399f74a5f072ad5997fd97a48191a5b92f88c51fb968955",
+      "shape": [
+        185193
+      ],
+      "dtype": "<f8"
+    },
+    "mass": {
+      "path": "results/pde-full-a/e8-q8/truth-mass.npz",
+      "sha256": "702c58ff24fc8168c730ca147cd0cd1347cefdc1bc755e3a214d44796f5f484d",
+      "array_sha256": "660ade17f1b809dac273060c5a5ee0baa6008a67a6e6ed1c2be346099a41ea8f",
+      "shape": [
+        185193
+      ],
+      "dtype": "<f8"
+    },
+    "operator0": {
+      "path": "results/pde-full-a/e8-q8/truth-operator0.npz",
+      "sha256": "df0dcdea27836b03b75f29f6907d117e2df7dd5d722476cce66710c7087ae272",
+      "array_sha256": "c96af47130298dfe918f3840082109cc7b11f6a65f573f692b0326d5e40377b0",
+      "shape": [
+        185193
+      ],
+      "dtype": "<f8"
+    },
+    "heat_exact": {
+      "path": "results/pde-full-a/e8-q8/truth-heat_exact.npz",
+      "sha256": "168a92ac7a05ac1c3fd18daa95249badd79a1acaa1498a9db7ec4dc98bd4342a",
+      "array_sha256": "8baa70a58b41c41114e0d80a27f77f74678604de10c85de79fcb4bf56a9893c4",
+      "shape": [
+        185193
+      ],
+      "dtype": "<f8"
+    },
+    "operator1": {
+      "path": "results/pde-full-a/e8-q8/truth-operator1.npz",
+      "sha256": "255a8b791522c612e916f4610a9bb0ca472e5b3f1893842afb0f17c5c4b51b9b",
+      "array_sha256": "635ddc077b48a2cc3e8a60c9389336f63eb35542682aa4b33260c6f98c45fe77",
+      "shape": [
+        185193
+      ],
+      "dtype": "<f8"
+    },
+    "backward_euler_4": {
+      "path": "results/pde-full-a/e8-q8/truth-backward_euler_4.npz",
+      "sha256": "ce50ba1c3265a220e5e3f7873a933028d0a306ee5ff47168a0df8617f148eb91",
+      "array_sha256": "efa719b92748bb2202771f9523980513081296f034edeb7002c520adedc8517c",
+      "shape": [
+        185193
+      ],
+      "dtype": "<f8"
+    },
+    "backward_euler_8": {
+      "path": "results/pde-full-a/e8-q8/truth-backward_euler_8.npz",
+      "sha256": "b76e424137e021bf5ccc967440390ebfade50147152241cda3a83d1b70df1418",
+      "array_sha256": "28555b28cef61e3ad4852dee9146fa283c46686b84f07f084520e42ad1f34e1b",
+      "shape": [
+        185193
+      ],
+      "dtype": "<f8"
+    }
+  },
+  "common_preparation_ms": 121.57036600547144,
+  "common_reference_metadata": {
+    "family": "direct-cuda-sumfactorization",
+    "component_precision": "fp64",
+    "input_output_storage": "fp64",
+    "threads": 256,
+    "local_kernel_attributes": {
+      "max_threads_per_block": 1024,
+      "shared_size_bytes": 0,
+      "const_size_bytes": 0,
+      "local_size_bytes": 0,
+      "num_regs": 40,
+      "ptx_version": 120,
+      "binary_version": 120,
+      "cache_mode_ca": 0,
+      "max_dynamic_shared_size_bytes": 49152,
+      "preferred_shared_memory_carveout": -1
+    },
+    "assembly_kernel_attributes": {
+      "max_threads_per_block": 1024,
+      "shared_size_bytes": 0,
+      "const_size_bytes": 0,
+      "local_size_bytes": 0,
+      "num_regs": 40,
+      "ptx_version": 120,
+      "binary_version": 120,
+      "cache_mode_ca": 0,
+      "max_dynamic_shared_size_bytes": 49152,
+      "preferred_shared_memory_carveout": -1
+    },
+    "named_owned_device_bytes": 7776129,
+    "named_device_buffers": {
+      "data": 1481544,
+      "output": 1481544,
+      "local": 2097152,
+      "indices": 1048576,
+      "stiffness": 512,
+      "weights": 64,
+      "mass": 1481544,
+      "boundary": 185193
+    },
+    "memory_scope": "Named buffers only; excludes allocator cache, module/JIT/driver and temporary physical peaks",
+    "completion": "Two complete uncaptured kernels plus current-context device synchronization; default stream0, no graph/cold-system claim"
+  },
+  "common_named_device_bytes": 13702305,
+  "startup_scope": "Python/import/device-discovery startup not measured; warm disk/allocator/JIT caches and diagnostic gaps are not cold-start claims",
+  "source_sha256": {
+    "pde_study.py": "5e9e9a51ca2bd22ed1a5dbb467e4f85c9af29445d94002fe0d68101a481dfd09",
+    "pde_evidence.py": "9cda41bad6c10b10826eb26835ae19e858aa360aa2f3c46e12a2f168ac023361",
+    "pde_cases.py": "f98b0d11fee0fdd19ce51b9d7b8e3b5ef548176e2bc78c93d9c9bb37e49d3597",
+    "pde_protocol.py": "04978441c3397f491cee41baa63fbe9709709325c498df9a5ad6828e6a80f391",
+    "pde_methods.py": "c029b0e0ab8c1ee262f5d40a178d0e2ffde9cf100f297db68149d2d3f198d9d8",
+    "pde_cg.py": "65d8b38b5eda83cad8d8f3f347927bb248bd005635788f20dc4390064ac36a24",
+    "pde_reference.py": "646a47a893d90a7cba27b78d4773046d75e06199e33b0d8df9e00e703fbc1437",
+    "pde_coefficients.py": "55dddf44c59115f6243cb9a449a33b4113e7052800e08de49e25ac22c0767bd4",
+    "prepare_pde_coefficients.py": "b0cae1ea19786850055065e864b35bf70f2782b496e8ee408c925ea11b59dd03",
+    "reference.py": "b17f2880f57875909d8268091f026317dbf531b118b83322488c96ab7f62c9ef",
+    "pde_cuda.py": "6a565e67e05dbd091377c518c1f4116b2b34250e0b051f31053c42b01ca2867e",
+    "native/pde_kernels.cu": "ae53ca767adae0237f3977f485efa7e3d385713792e1651cd0f1c7ec8b07bc97",
+    "pde_ceed.py": "4eaa745c7c13e32c7e5895061924b2284e026e9cc654d19300f96fa1303c04ed",
+    "native/pde_ceed_bridge.cpp": "dd9b85f643222f29695918f41e6e9da93ebd8a11184c096cc1955e3d6d04beb3",
+    "native/pde_ceed_qfunction.h": "2e97b4a811dc8df06509ab984b3809cfcc302654626176f11529ac1d79e37bda",
+    "build_pde_ceed.sh": "1ed1663ac62be7ee8ef265969877d22e38cefc82b8b7c142edb7c3632904e46f",
+    "pde_tensor.py": "6a5fe2f2de1fbe9a41dd78e3c0ef46b1499678726e6ffff6424f66b41d26c539",
+    "native/pde_tensor_kernels.cu": "efae065bf17d51e79ca696a7faa0b7dbd95ac2ba4882764e79beda4eae29583f",
+    "pde_packing.py": "ee44cda50fa58bc466af997ed197303cf00351b33e422d89ebb66c0759c4b300",
+    "pca_native.py": "65f5ef250246c193e4dff0a0a00531f81983101343232ee005767bf15c55ec53",
+    "native/pca_bridge.cu": "a117611fa68521748b2dfa0434ffaaed1a3e4fdbe7410f430a620b3b4d9f9cfc",
+    "native/hardware_bridge.cu": "dbc8f619e69d91a25ef7d6bd7eb984112f737afb44934e3694fe1db6511d9faf",
+    "native/application_bridge.cu": "1d2f0b190d1f27ee3408fa126fae43c0ee5907feaec4bd94353a802c94fa1336",
+    "native/optimized_bridge.cu": "9d718ad97e4c3c2d77afe6402f093ec0af48c46d5faeaf78ea44c2d5537e4a25",
+    "native/bridge.cu": "5bd319bed3f39f6a735e6036e643ad8091d198a40398760e7a57a75d275c19b8",
+    "build_pca.sh": "4d0a3a916374351d50d2a71082fb28b9a637fd828f22830f404499eabd602069",
+    "pde_small.py": "b0731105033815a8a83d94dbb816ea97095d666c66faa40a0057b6f782476659",
+    "native/pde_small_bridge.cu": "3b24020d519e24c186a11640da13c0200f58fbb509f8e8178b02fedce384df24",
+    "native/pde_small_kernels.cu": "a531b920e36846374acfa5f3bcad283eb427b9c0f6ea84a306b41c0cb426475b",
+    "build_pde_small.sh": "4f9df460608c9a2194aef86d0d5e1ef3462b5b0ee9219296465f1a6be11df12c"
+  },
+  "binary_sha256": {
+    "native_core": "513f137a3a692f100874a3b275f5c9172af9be1f6c932f513a9634bc813eba7d",
+    "ceed_bridge": "ccb27b9a39ad75cfe564247d38272e46e3147cde7630a3f9cf5d35722eadb550",
+    "short_q_bridge": "03ec2fbd8de5f556c48f05097d2876545472fb032d9916064fe8bf295dc058f8",
+    "libceed": "d7616cf9b1025d4a87da3d25afff661e481edd4b91de4c34d6bc081525f6a7cb"
+  },
+  "environment": {
+    "path": "results/pde-full-a/e8-q8/environment.json",
+    "sha256": "24ace5ebc1ba7fcc9cb5fe15eae950916d43b307f1b2b3ebb79abda3c538aa54"
+  },
+  "cases": [
+    {
+      "path": "results/pde-full-a/e8-q8/case-00.json",
+      "sha256": "015985e43d299664daa555439d92e84878ade80be48edd51654ddcc63e4f73e6"
+    },
+    {
+      "path": "results/pde-full-a/e8-q8/case-01.json",
+      "sha256": "6ec759a897283575764914c270f31ab0f8daa0c3d6b0bdd48932a98eae59d63b"
+    },
+    {
+      "path": "results/pde-full-a/e8-q8/case-02.json",
+      "sha256": "cd23d20347b236f696651627d44e0e6361905f90ae576658e3885b975a19958a"
+    },
+    {
+      "path": "results/pde-full-a/e8-q8/case-03.json",
+      "sha256": "b3775a90d0ed3f54844c67b24c42c2d0df7fd7d92a94930ec29232bd3a9e2a11"
+    },
+    {
+      "path": "results/pde-full-a/e8-q8/case-04.json",
+      "sha256": "e138a61f3cdc965350180a3b3c8fb1404bb21346591015ad1550ecb1f1e3edac"
+    },
+    {
+      "path": "results/pde-full-a/e8-q8/case-05.json",
+      "sha256": "30f551d9ea1033e331712f6be9315df134325881d35801f8048445ad1c507551"
+    },
+    {
+      "path": "results/pde-full-a/e8-q8/case-06.json",
+      "sha256": "9d9a0af59da4b738c5bdea676be4b724fca94e5636d9f3e2981f3a5e43844fd2"
+    },
+    {
+      "path": "results/pde-full-a/e8-q8/case-07.json",
+      "sha256": "b7c26c5980b56efb291704a41d31c65a7f761de898e304a8cd80f86d07a72c92"
+    },
+    {
+      "path": "results/pde-full-a/e8-q8/case-08.json",
+      "sha256": "8b6ac986538dd0d1b78b1bed3bbf17292f5b083f4e94fa2f13736000442fc0f6"
+    },
+    {
+      "path": "results/pde-full-a/e8-q8/case-09.json",
+      "sha256": "409f6e6ade646deac44a4485cfa57e3783530976ff4011c6296e74e4450aaf52"
+    },
+    {
+      "path": "results/pde-full-a/e8-q8/case-10.json",
+      "sha256": "5651993188516ac0a3a5bf3d7ab19f6f50e86965cdb25da6689db1db993c73c5"
+    },
+    {
+      "path": "results/pde-full-a/e8-q8/case-11.json",
+      "sha256": "fe6b2cf879e3c8f6757393a6301319e69db81b00b51436932fa0f5f79ff1b491"
+    },
+    {
+      "path": "results/pde-full-a/e8-q8/case-12.json",
+      "sha256": "62cc264951be36bbda802e7f516a5cd3978374c0a0f966e02aa212c0e7787bdf"
+    },
+    {
+      "path": "results/pde-full-a/e8-q8/case-13.json",
+      "sha256": "e6c43fbd4d22275054f5de7ed18c4d7049b33270cd019147680b5ba0fb27a9b1"
+    },
+    {
+      "path": "results/pde-full-a/e8-q8/case-14.json",
+      "sha256": "efaffbf7e80c30f9cc93a848405edf2def71f1c6e523f06c2d805b68b9d15c69"
+    },
+    {
+      "path": "results/pde-full-a/e8-q8/case-15.json",
+      "sha256": "2c284a9e4b176834cb770ed560ce9a2b55514349e07596b332e4fddbceb171b0"
+    }
+  ]
+}

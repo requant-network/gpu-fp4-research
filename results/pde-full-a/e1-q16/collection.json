@@ -1,0 +1,290 @@
+{
+  "scope": "Complete declared dataset collection; independent whole replay and publication are still required",
+  "cohort": "a",
+  "elements": 1,
+  "q": 16,
+  "dofs": 4096,
+  "protocol": {
+    "phase": "full",
+    "targets": [
+      0.001,
+      1e-08
+    ],
+    "resident_observations": 16,
+    "host_observations": 16,
+    "poisson_repetitions_per_route": 2,
+    "heat_repetitions_per_route": 1,
+    "policies": [
+      "fixed",
+      "reliable"
+    ],
+    "heat_steps": [
+      4,
+      8
+    ],
+    "heat_final_time": 0.01,
+    "max_iterations": 1024,
+    "low_budget": 32,
+    "segment_iterations": 16,
+    "heat_scope": "E1/2 at q4/8/16 only; operator/Poisson include all declared geometries",
+    "operator_inputs": "Independent cohort-specific smooth sine field and sine plus changing dyadic rough perturbation with nonzero boundary",
+    "resident_scope": "Already resident source, charged D2D staging plus complete operation and context acknowledgment",
+    "host_scope": "H2D input plus complete operation plus D2H output",
+    "solver_scope": "Common host-controlled FP64-vector Jacobi PCG, charged staging/reductions/true checks/fallback; not a best-of-all solver claim",
+    "observation_integrity": "Full changing-original host/device fingerprints outside named service boundaries; these diagnostics alter inter-request spacing",
+    "retention": "Every timed final output losslessly retained; first resident output of each variant additionally has complete GEMM-product/encoding witnesses",
+    "reuse": [
+      1,
+      100,
+      10000
+    ],
+    "exclusive_device": false,
+    "instruction_trace": false,
+    "physical_peak_memory": false
+  },
+  "input_metadata": {
+    "seed": 120116,
+    "modes": [
+      [
+        1.0,
+        [
+          1,
+          1,
+          1
+        ]
+      ]
+    ],
+    "eigenvalues": [
+      29.608813203268074
+    ]
+  },
+  "heat_included": true,
+  "truth": {
+    "initial": {
+      "path": "results/pde-full-a/e1-q16/truth-initial.npz",
+      "sha256": "a5f7d8433367a87b4086206ccc91dc13860ee06a7f931c0716a18f220d10a079",
+      "array_sha256": "88a7ee97cd9e4c88f7996e8c62868b195e031311cae394de9b24c7948abca37a",
+      "shape": [
+        4096
+      ],
+      "dtype": "<f8"
+    },
+    "poisson_rhs": {
+      "path": "results/pde-full-a/e1-q16/truth-poisson_rhs.npz",
+      "sha256": "4b1e62debcf7b48aa54d0758ab54e391668560d943a9d1dc76a3a8ccb3abf730",
+      "array_sha256": "e822422faed8b40b930db2b4fc2925d4c591c37557ef65edf448e837a2cdff92",
+      "shape": [
+        4096
+      ],
+      "dtype": "<f8"
+    },
+    "mass": {
+      "path": "results/pde-full-a/e1-q16/truth-mass.npz",
+      "sha256": "129bf3020079d89083f712575586788849e249a4e1b791c294d5910689b335dc",
+      "array_sha256": "e6ba110786026e0c677328157b2e62bbb096d9c88bb0acef37a2535a3e9234bd",
+      "shape": [
+        4096
+      ],
+      "dtype": "<f8"
+    },
+    "operator0": {
+      "path": "results/pde-full-a/e1-q16/truth-operator0.npz",
+      "sha256": "a5f7d8433367a87b4086206ccc91dc13860ee06a7f931c0716a18f220d10a079",
+      "array_sha256": "88a7ee97cd9e4c88f7996e8c62868b195e031311cae394de9b24c7948abca37a",
+      "shape": [
+        4096
+      ],
+      "dtype": "<f8"
+    },
+    "heat_exact": {
+      "path": "results/pde-full-a/e1-q16/truth-heat_exact.npz",
+      "sha256": "a9b72adafcd019f4bd2a16ca18b0b2554ee03e36443b8b5b67d2ed13cd181355",
+      "array_sha256": "3132ac8b9264834d9dae694c487cde13d563fbe022f4b3aacd02da1ce4a633ac",
+      "shape": [
+        4096
+      ],
+      "dtype": "<f8"
+    },
+    "operator1": {
+      "path": "results/pde-full-a/e1-q16/truth-operator1.npz",
+      "sha256": "38714721e137e4f82a29d6cfdb12402d06beec80806ed7abffb42492dd6f9852",
+      "array_sha256": "dc8e21fb5284ec45e6a5ebf58cbc348aaa7756faa597f9bf419b0331e33f4511",
+      "shape": [
+        4096
+      ],
+      "dtype": "<f8"
+    },
+    "backward_euler_4": {
+      "path": "results/pde-full-a/e1-q16/truth-backward_euler_4.npz",
+      "sha256": "2227c2068d16fafc03f52c55c94a45608443f49b7dec2c3bf71577f411789bfe",
+      "array_sha256": "be4c57c97e92114ab734f379a412ddeb5fc076bebef2aeb3e3372696cd416ca6",
+      "shape": [
+        4096
+      ],
+      "dtype": "<f8"
+    },
+    "backward_euler_8": {
+      "path": "results/pde-full-a/e1-q16/truth-backward_euler_8.npz",
+      "sha256": "35639b39887478aacc25c21b70f0ec2a18d406644840be6aa8a5a7ecdc018953",
+      "array_sha256": "d20c8a63e2e096e4355a8e0be0aa80bfa20d95a5b3219668e09c93b3d2916c7d",
+      "shape": [
+        4096
+      ],
+      "dtype": "<f8"
+    }
+  },
+  "common_preparation_ms": 45.71446100453613,
+  "common_reference_metadata": {
+    "family": "direct-cuda-sumfactorization",
+    "component_precision": "fp64",
+    "input_output_storage": "fp64",
+    "threads": 256,
+    "local_kernel_attributes": {
+      "max_threads_per_block": 1024,
+      "shared_size_bytes": 0,
+      "const_size_bytes": 0,
+      "local_size_bytes": 0,
+      "num_regs": 38,
+      "ptx_version": 120,
+      "binary_version": 120,
+      "cache_mode_ca": 0,
+      "max_dynamic_shared_size_bytes": 49152,
+      "preferred_shared_memory_carveout": -1
+    },
+    "assembly_kernel_attributes": {
+      "max_threads_per_block": 1024,
+      "shared_size_bytes": 0,
+      "const_size_bytes": 0,
+      "local_size_bytes": 0,
+      "num_regs": 40,
+      "ptx_version": 120,
+      "binary_version": 120,
+      "cache_mode_ca": 0,
+      "max_dynamic_shared_size_bytes": 49152,
+      "preferred_shared_memory_carveout": -1
+    },
+    "named_owned_device_bytes": 153728,
+    "named_device_buffers": {
+      "data": 32768,
+      "output": 32768,
+      "local": 32768,
+      "indices": 16384,
+      "stiffness": 2048,
+      "weights": 128,
+      "mass": 32768,
+      "boundary": 4096
+    },
+    "memory_scope": "Named buffers only; excludes allocator cache, module/JIT/driver and temporary physical peaks",
+    "completion": "Two complete uncaptured kernels plus current-context device synchronization; default stream0, no graph/cold-system claim"
+  },
+  "common_named_device_bytes": 284800,
+  "startup_scope": "Python/import/device-discovery startup not measured; warm disk/allocator/JIT caches and diagnostic gaps are not cold-start claims",
+  "source_sha256": {
+    "pde_study.py": "5e9e9a51ca2bd22ed1a5dbb467e4f85c9af29445d94002fe0d68101a481dfd09",
+    "pde_evidence.py": "9cda41bad6c10b10826eb26835ae19e858aa360aa2f3c46e12a2f168ac023361",
+    "pde_cases.py": "f98b0d11fee0fdd19ce51b9d7b8e3b5ef548176e2bc78c93d9c9bb37e49d3597",
+    "pde_protocol.py": "04978441c3397f491cee41baa63fbe9709709325c498df9a5ad6828e6a80f391",
+    "pde_methods.py": "c029b0e0ab8c1ee262f5d40a178d0e2ffde9cf100f297db68149d2d3f198d9d8",
+    "pde_cg.py": "65d8b38b5eda83cad8d8f3f347927bb248bd005635788f20dc4390064ac36a24",
+    "pde_reference.py": "646a47a893d90a7cba27b78d4773046d75e06199e33b0d8df9e00e703fbc1437",
+    "pde_coefficients.py": "55dddf44c59115f6243cb9a449a33b4113e7052800e08de49e25ac22c0767bd4",
+    "prepare_pde_coefficients.py": "b0cae1ea19786850055065e864b35bf70f2782b496e8ee408c925ea11b59dd03",
+    "reference.py": "b17f2880f57875909d8268091f026317dbf531b118b83322488c96ab7f62c9ef",
+    "pde_cuda.py": "6a565e67e05dbd091377c518c1f4116b2b34250e0b051f31053c42b01ca2867e",
+    "native/pde_kernels.cu": "ae53ca767adae0237f3977f485efa7e3d385713792e1651cd0f1c7ec8b07bc97",
+    "pde_ceed.py": "4eaa745c7c13e32c7e5895061924b2284e026e9cc654d19300f96fa1303c04ed",
+    "native/pde_ceed_bridge.cpp": "dd9b85f643222f29695918f41e6e9da93ebd8a11184c096cc1955e3d6d04beb3",
+    "native/pde_ceed_qfunction.h": "2e97b4a811dc8df06509ab984b3809cfcc302654626176f11529ac1d79e37bda",
+    "build_pde_ceed.sh": "1ed1663ac62be7ee8ef265969877d22e38cefc82b8b7c142edb7c3632904e46f",
+    "pde_tensor.py": "6a5fe2f2de1fbe9a41dd78e3c0ef46b1499678726e6ffff6424f66b41d26c539",
+    "native/pde_tensor_kernels.cu": "efae065bf17d51e79ca696a7faa0b7dbd95ac2ba4882764e79beda4eae29583f",
+    "pde_packing.py": "ee44cda50fa58bc466af997ed197303cf00351b33e422d89ebb66c0759c4b300",
+    "pca_native.py": "65f5ef250246c193e4dff0a0a00531f81983101343232ee005767bf15c55ec53",
+    "native/pca_bridge.cu": "a117611fa68521748b2dfa0434ffaaed1a3e4fdbe7410f430a620b3b4d9f9cfc",
+    "native/hardware_bridge.cu": "dbc8f619e69d91a25ef7d6bd7eb984112f737afb44934e3694fe1db6511d9faf",
+    "native/application_bridge.cu": "1d2f0b190d1f27ee3408fa126fae43c0ee5907feaec4bd94353a802c94fa1336",
+    "native/optimized_bridge.cu": "9d718ad97e4c3c2d77afe6402f093ec0af48c46d5faeaf78ea44c2d5537e4a25",
+    "native/bridge.cu": "5bd319bed3f39f6a735e6036e643ad8091d198a40398760e7a57a75d275c19b8",
+    "build_pca.sh": "4d0a3a916374351d50d2a71082fb28b9a637fd828f22830f404499eabd602069",
+    "pde_small.py": "b0731105033815a8a83d94dbb816ea97095d666c66faa40a0057b6f782476659",
+    "native/pde_small_bridge.cu": "3b24020d519e24c186a11640da13c0200f58fbb509f8e8178b02fedce384df24",
+    "native/pde_small_kernels.cu": "a531b920e36846374acfa5f3bcad283eb427b9c0f6ea84a306b41c0cb426475b",
+    "build_pde_small.sh": "4f9df460608c9a2194aef86d0d5e1ef3462b5b0ee9219296465f1a6be11df12c"
+  },
+  "binary_sha256": {
+    "native_core": "513f137a3a692f100874a3b275f5c9172af9be1f6c932f513a9634bc813eba7d",
+    "ceed_bridge": "ccb27b9a39ad75cfe564247d38272e46e3147cde7630a3f9cf5d35722eadb550",
+    "short_q_bridge": "03ec2fbd8de5f556c48f05097d2876545472fb032d9916064fe8bf295dc058f8",
+    "libceed": "d7616cf9b1025d4a87da3d25afff661e481edd4b91de4c34d6bc081525f6a7cb"
+  },
+  "environment": {
+    "path": "results/pde-full-a/e1-q16/environment.json",
+    "sha256": "24ace5ebc1ba7fcc9cb5fe15eae950916d43b307f1b2b3ebb79abda3c538aa54"
+  },
+  "cases": [
+    {
+      "path": "results/pde-full-a/e1-q16/case-00.json",
+      "sha256": "72c4ecc3603b6e4215a948130bf5f6de76edd88d646ec3bcf74dfd9f94f18249"
+    },
+    {
+      "path": "results/pde-full-a/e1-q16/case-01.json",
+      "sha256": "aaed9d5bb14200aa19b28e4cf96ed8d821e995b0a04995be3a33080cb306f23a"
+    },
+    {
+      "path": "results/pde-full-a/e1-q16/case-02.json",
+      "sha256": "2352a827e66d295b58c811f15b5bb1239f7e27bf652ef0009218908d049257d0"
+    },
+    {
+      "path": "results/pde-full-a/e1-q16/case-03.json",
+      "sha256": "1de8eb36147f47fe3ec09aef24496c4d5fd7379c1b0b4fcbe75b503799e4237b"
+    },
+    {
+      "path": "results/pde-full-a/e1-q16/case-04.json",
+      "sha256": "334b8a1baea283431060e9eee5cda5ca62e3377c5d05baf6113ec2f7ed912eb7"
+    },
+    {
+      "path": "results/pde-full-a/e1-q16/case-05.json",
+      "sha256": "a9ff2fde90314204a5934566cf056ac8bf0c17caee62e491cceb1a9eba901c14"
+    },
+    {
+      "path": "results/pde-full-a/e1-q16/case-06.json",
+      "sha256": "08a160e322b566ff1987f487392e64c77b3bf39170152b50f375c8a577a687b4"
+    },
+    {
+      "path": "results/pde-full-a/e1-q16/case-07.json",
+      "sha256": "898a4948d41f6c9a78f2b46bc7d349b1d588c9c8cd171d516233d1a5f8a27126"
+    },
+    {
+      "path": "results/pde-full-a/e1-q16/case-08.json",
+      "sha256": "f5501111461ff9fe559d011ac17722540f4e762ae3f84fdaeb9672ef444c799b"
+    },
+    {
+      "path": "results/pde-full-a/e1-q16/case-09.json",
+      "sha256": "ec249ee64943312614b6377915c04332bb359cbb16cdcab4e85bab9d02c3d3bb"
+    },
+    {
+      "path": "results/pde-full-a/e1-q16/case-10.json",
+      "sha256": "98516b977056dc11aa90be7952178a25b183a82d2ee097b14ee4dd95570bfb08"
+    },
+    {
+      "path": "results/pde-full-a/e1-q16/case-11.json",
+      "sha256": "d31a4f7ebb4032f2eedbe2717a74634af81f4a0800a7c7f12d1d8f292fda926c"
+    },
+    {
+      "path": "results/pde-full-a/e1-q16/case-12.json",
+      "sha256": "99f4c34ac04b04cb5f18d630d4242959f183cdcbca041017a9a879f42469786d"
+    },
+    {
+      "path": "results/pde-full-a/e1-q16/case-13.json",
+      "sha256": "ef38a7ee68c3009b4e8d3c0f4f57a1cfebae33008946c70ae2e6e9c72c679e44"
+    },
+    {
+      "path": "results/pde-full-a/e1-q16/case-14.json",
+      "sha256": "dc55c168eca86497ad761096c62a2e4a6e5aa1c0a6af149ae3b0714ac6890929"
+    },
+    {
+      "path": "results/pde-full-a/e1-q16/case-15.json",
+      "sha256": "4861549e09513f1173994d0f99da782c35193b128007c62306e52c8c884800e3"
+    }
+  ]
+}

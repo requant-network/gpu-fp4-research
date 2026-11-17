@@ -1,0 +1,279 @@
+{
+  "scope": "Complete declared dataset collection; independent whole replay and publication are still required",
+  "cohort": "a",
+  "elements": 2,
+  "q": 4,
+  "dofs": 343,
+  "protocol": {
+    "phase": "smoke",
+    "targets": [
+      0.001
+    ],
+    "resident_observations": 4,
+    "host_observations": 4,
+    "poisson_repetitions_per_route": 1,
+    "heat_repetitions_per_route": 1,
+    "policies": [
+      "fixed",
+      "reliable"
+    ],
+    "heat_steps": [
+      2
+    ],
+    "heat_final_time": 0.01,
+    "max_iterations": 1024,
+    "low_budget": 32,
+    "segment_iterations": 16,
+    "heat_scope": "E1/2 at q4/8/16 only; operator/Poisson include all declared geometries",
+    "operator_inputs": "Independent cohort-specific smooth sine field and sine plus changing dyadic rough perturbation with nonzero boundary",
+    "resident_scope": "Already resident source, charged D2D staging plus complete operation and context acknowledgment",
+    "host_scope": "H2D input plus complete operation plus D2H output",
+    "solver_scope": "Common host-controlled FP64-vector Jacobi PCG, charged staging/reductions/true checks/fallback; not a best-of-all solver claim",
+    "observation_integrity": "Full changing-original host/device fingerprints outside named service boundaries; these diagnostics alter inter-request spacing",
+    "retention": "Every timed final output losslessly retained; first resident output of each variant additionally has complete GEMM-product/encoding witnesses",
+    "reuse": [
+      1,
+      100,
+      10000
+    ],
+    "exclusive_device": false,
+    "instruction_trace": false,
+    "physical_peak_memory": false
+  },
+  "input_metadata": {
+    "seed": 120204,
+    "modes": [
+      [
+        1.0,
+        [
+          1,
+          1,
+          1
+        ]
+      ]
+    ],
+    "eigenvalues": [
+      29.608813203268074
+    ]
+  },
+  "heat_included": true,
+  "truth": {
+    "initial": {
+      "path": "results/pde-smoke-a/e2-q4/truth-initial.npz",
+      "sha256": "68597f6f97740184f55fe8186022d2091bf2618fcf09246d44533edf6b867076",
+      "array_sha256": "efca53f06c05f7f3c4a697d269d69b533dedd9f0eceeffcdabe7e4c8f1dbf3ce",
+      "shape": [
+        343
+      ],
+      "dtype": "<f8"
+    },
+    "poisson_rhs": {
+      "path": "results/pde-smoke-a/e2-q4/truth-poisson_rhs.npz",
+      "sha256": "1d6e5f28615af2ecca1ba054c19f2ba9c3255bd39c0c007c38e35139aa8d5910",
+      "array_sha256": "29d6923f94097e106e09d74599b49885855f6e4866f341eae330e9f9daf5a3e7",
+      "shape": [
+        343
+      ],
+      "dtype": "<f8"
+    },
+    "mass": {
+      "path": "results/pde-smoke-a/e2-q4/truth-mass.npz",
+      "sha256": "e9eaf17772d61725cb3c0e6e65f39e3d912f82293aa974ca68a0203645b16c8e",
+      "array_sha256": "8f89215dbe869e71c4c5c05ee6086f33b733bfe89eb4165c75df242a32548633",
+      "shape": [
+        343
+      ],
+      "dtype": "<f8"
+    },
+    "operator0": {
+      "path": "results/pde-smoke-a/e2-q4/truth-operator0.npz",
+      "sha256": "68597f6f97740184f55fe8186022d2091bf2618fcf09246d44533edf6b867076",
+      "array_sha256": "efca53f06c05f7f3c4a697d269d69b533dedd9f0eceeffcdabe7e4c8f1dbf3ce",
+      "shape": [
+        343
+      ],
+      "dtype": "<f8"
+    },
+    "heat_exact": {
+      "path": "results/pde-smoke-a/e2-q4/truth-heat_exact.npz",
+      "sha256": "59a3722db092edabf9ee43bff61d98fbfed750ad4c3c2381ed292d34e743a5ce",
+      "array_sha256": "9fdb2bd1ccb907e0bf6acdf28615245374e8209dd0f440dc42024fbbda4bf55e",
+      "shape": [
+        343
+      ],
+      "dtype": "<f8"
+    },
+    "operator1": {
+      "path": "results/pde-smoke-a/e2-q4/truth-operator1.npz",
+      "sha256": "ba0027222391276086e8d30f2c11782d73abc1241001c8114509ee86afbdb65d",
+      "array_sha256": "74e632b313098030f044d867e4a0241ca102e4438865a0636626cf4e22c43f48",
+      "shape": [
+        343
+      ],
+      "dtype": "<f8"
+    },
+    "backward_euler_2": {
+      "path": "results/pde-smoke-a/e2-q4/truth-backward_euler_2.npz",
+      "sha256": "ce12894340e48e024f2bd422893f328429b09491d93193803857d3b73202f7ea",
+      "array_sha256": "b6ad3d32d2df5d92f5738bb93d33bd5a1f8751f1fa1c492ece395e0a8291d152",
+      "shape": [
+        343
+      ],
+      "dtype": "<f8"
+    }
+  },
+  "common_preparation_ms": 42.349549003120046,
+  "common_reference_metadata": {
+    "family": "direct-cuda-sumfactorization",
+    "component_precision": "fp64",
+    "input_output_storage": "fp64",
+    "threads": 256,
+    "local_kernel_attributes": {
+      "max_threads_per_block": 1024,
+      "shared_size_bytes": 0,
+      "const_size_bytes": 0,
+      "local_size_bytes": 0,
+      "num_regs": 40,
+      "ptx_version": 120,
+      "binary_version": 120,
+      "cache_mode_ca": 0,
+      "max_dynamic_shared_size_bytes": 49152,
+      "preferred_shared_memory_carveout": -1
+    },
+    "assembly_kernel_attributes": {
+      "max_threads_per_block": 1024,
+      "shared_size_bytes": 0,
+      "const_size_bytes": 0,
+      "local_size_bytes": 0,
+      "num_regs": 40,
+      "ptx_version": 120,
+      "binary_version": 120,
+      "cache_mode_ca": 0,
+      "max_dynamic_shared_size_bytes": 49152,
+      "preferred_shared_memory_carveout": -1
+    },
+    "named_owned_device_bytes": 14879,
+    "named_device_buffers": {
+      "data": 2744,
+      "output": 2744,
+      "local": 4096,
+      "indices": 2048,
+      "stiffness": 128,
+      "weights": 32,
+      "mass": 2744,
+      "boundary": 343
+    },
+    "memory_scope": "Named buffers only; excludes allocator cache, module/JIT/driver and temporary physical peaks",
+    "completion": "Two complete uncaptured kernels plus current-context device synchronization; default stream0, no graph/cold-system claim"
+  },
+  "common_named_device_bytes": 25855,
+  "startup_scope": "Python/import/device-discovery startup not measured; warm disk/allocator/JIT caches and diagnostic gaps are not cold-start claims",
+  "source_sha256": {
+    "pde_study.py": "5e9e9a51ca2bd22ed1a5dbb467e4f85c9af29445d94002fe0d68101a481dfd09",
+    "pde_evidence.py": "9cda41bad6c10b10826eb26835ae19e858aa360aa2f3c46e12a2f168ac023361",
+    "pde_cases.py": "f98b0d11fee0fdd19ce51b9d7b8e3b5ef548176e2bc78c93d9c9bb37e49d3597",
+    "pde_protocol.py": "04978441c3397f491cee41baa63fbe9709709325c498df9a5ad6828e6a80f391",
+    "pde_methods.py": "c029b0e0ab8c1ee262f5d40a178d0e2ffde9cf100f297db68149d2d3f198d9d8",
+    "pde_cg.py": "65d8b38b5eda83cad8d8f3f347927bb248bd005635788f20dc4390064ac36a24",
+    "pde_reference.py": "646a47a893d90a7cba27b78d4773046d75e06199e33b0d8df9e00e703fbc1437",
+    "pde_coefficients.py": "55dddf44c59115f6243cb9a449a33b4113e7052800e08de49e25ac22c0767bd4",
+    "prepare_pde_coefficients.py": "b0cae1ea19786850055065e864b35bf70f2782b496e8ee408c925ea11b59dd03",
+    "reference.py": "b17f2880f57875909d8268091f026317dbf531b118b83322488c96ab7f62c9ef",
+    "pde_cuda.py": "6a565e67e05dbd091377c518c1f4116b2b34250e0b051f31053c42b01ca2867e",
+    "native/pde_kernels.cu": "ae53ca767adae0237f3977f485efa7e3d385713792e1651cd0f1c7ec8b07bc97",
+    "pde_ceed.py": "4eaa745c7c13e32c7e5895061924b2284e026e9cc654d19300f96fa1303c04ed",
+    "native/pde_ceed_bridge.cpp": "dd9b85f643222f29695918f41e6e9da93ebd8a11184c096cc1955e3d6d04beb3",
+    "native/pde_ceed_qfunction.h": "2e97b4a811dc8df06509ab984b3809cfcc302654626176f11529ac1d79e37bda",
+    "build_pde_ceed.sh": "1ed1663ac62be7ee8ef265969877d22e38cefc82b8b7c142edb7c3632904e46f",
+    "pde_tensor.py": "6a5fe2f2de1fbe9a41dd78e3c0ef46b1499678726e6ffff6424f66b41d26c539",
+    "native/pde_tensor_kernels.cu": "efae065bf17d51e79ca696a7faa0b7dbd95ac2ba4882764e79beda4eae29583f",
+    "pde_packing.py": "ee44cda50fa58bc466af997ed197303cf00351b33e422d89ebb66c0759c4b300",
+    "pca_native.py": "65f5ef250246c193e4dff0a0a00531f81983101343232ee005767bf15c55ec53",
+    "native/pca_bridge.cu": "a117611fa68521748b2dfa0434ffaaed1a3e4fdbe7410f430a620b3b4d9f9cfc",
+    "native/hardware_bridge.cu": "dbc8f619e69d91a25ef7d6bd7eb984112f737afb44934e3694fe1db6511d9faf",
+    "native/application_bridge.cu": "1d2f0b190d1f27ee3408fa126fae43c0ee5907feaec4bd94353a802c94fa1336",
+    "native/optimized_bridge.cu": "9d718ad97e4c3c2d77afe6402f093ec0af48c46d5faeaf78ea44c2d5537e4a25",
+    "native/bridge.cu": "5bd319bed3f39f6a735e6036e643ad8091d198a40398760e7a57a75d275c19b8",
+    "build_pca.sh": "4d0a3a916374351d50d2a71082fb28b9a637fd828f22830f404499eabd602069",
+    "pde_small.py": "b0731105033815a8a83d94dbb816ea97095d666c66faa40a0057b6f782476659",
+    "native/pde_small_bridge.cu": "3b24020d519e24c186a11640da13c0200f58fbb509f8e8178b02fedce384df24",
+    "native/pde_small_kernels.cu": "a531b920e36846374acfa5f3bcad283eb427b9c0f6ea84a306b41c0cb426475b",
+    "build_pde_small.sh": "4f9df460608c9a2194aef86d0d5e1ef3462b5b0ee9219296465f1a6be11df12c"
+  },
+  "binary_sha256": {
+    "native_core": "513f137a3a692f100874a3b275f5c9172af9be1f6c932f513a9634bc813eba7d",
+    "ceed_bridge": "ccb27b9a39ad75cfe564247d38272e46e3147cde7630a3f9cf5d35722eadb550",
+    "short_q_bridge": "03ec2fbd8de5f556c48f05097d2876545472fb032d9916064fe8bf295dc058f8",
+    "libceed": "d7616cf9b1025d4a87da3d25afff661e481edd4b91de4c34d6bc081525f6a7cb"
+  },
+  "environment": {
+    "path": "results/pde-smoke-a/e2-q4/environment.json",
+    "sha256": "24ace5ebc1ba7fcc9cb5fe15eae950916d43b307f1b2b3ebb79abda3c538aa54"
+  },
+  "cases": [
+    {
+      "path": "results/pde-smoke-a/e2-q4/case-00.json",
+      "sha256": "bea9b10908037a0747510764b5fa17bf6ee28357cb783fb1c65376dc1e0335b8"
+    },
+    {
+      "path": "results/pde-smoke-a/e2-q4/case-01.json",
+      "sha256": "8c769eb560767eaf5fc3842726130355f855c18d322d992be7223ddecb640d54"
+    },
+    {
+      "path": "results/pde-smoke-a/e2-q4/case-02.json",
+      "sha256": "b5f194c762f71a1fd4cf3aa3ce0e57095d6440174af8e12329746cd54ad2f42f"
+    },
+    {
+      "path": "results/pde-smoke-a/e2-q4/case-03.json",
+      "sha256": "aa3e8f0425316ad7a7d6bd38d00cfacecbd27a50622ab5a237f5330f4e1386e9"
+    },
+    {
+      "path": "results/pde-smoke-a/e2-q4/case-04.json",
+      "sha256": "c510e4149113fa7522bfcaff99a231b5c7cdc2071711d9e2a6a93c2e8924cf9e"
+    },
+    {
+      "path": "results/pde-smoke-a/e2-q4/case-05.json",
+      "sha256": "075560ce2de8d9f4aaba53b55a7c35445ed1e7ac7617de9c015999e093edf33f"
+    },
+    {
+      "path": "results/pde-smoke-a/e2-q4/case-06.json",
+      "sha256": "e9748b6f501d4e403869fa705884ec02873779728da5ec5b60e4efb5e63e551f"
+    },
+    {
+      "path": "results/pde-smoke-a/e2-q4/case-07.json",
+      "sha256": "aaea369629d7db1d2db8bf7c5e048b150a73e398e1b20bb007e79cbd913e4a95"
+    },
+    {
+      "path": "results/pde-smoke-a/e2-q4/case-08.json",
+      "sha256": "a4b7999bbabdf7fa2fdff6ff149b31eb7420666b239db4e47d0d7880cedc3935"
+    },
+    {
+      "path": "results/pde-smoke-a/e2-q4/case-09.json",
+      "sha256": "994a26d338d2a2ddda090a367f03cbffda2854aa831d5a7897f2de8fde1023c7"
+    },
+    {
+      "path": "results/pde-smoke-a/e2-q4/case-10.json",
+      "sha256": "01799ca5af5352450bb0c9cacbb56de6897b1954b9611b3bbae9f993ef21ebfd"
+    },
+    {
+      "path": "results/pde-smoke-a/e2-q4/case-11.json",
+      "sha256": "60b290077bb2038693b1f30ce81bd4aed6da1dc3cba7a9a7dc33fed6039772bc"
+    },
+    {
+      "path": "results/pde-smoke-a/e2-q4/case-12.json",
+      "sha256": "a6f8d35e0210d9189c971e2d747622305a08211122301e44de465c80308ce9ab"
+    },
+    {
+      "path": "results/pde-smoke-a/e2-q4/case-13.json",
+      "sha256": "973141a1f2b3bd1a74847a45bafb8731bc8594da158b0891aeecffbae453ad3a"
+    },
+    {
+      "path": "results/pde-smoke-a/e2-q4/case-14.json",
+      "sha256": "5c5cd4005b47a7b040f7f2ff6f99b67a40b7ac49cf23ce93d00e910c88ed40ec"
+    },
+    {
+      "path": "results/pde-smoke-a/e2-q4/case-15.json",
+      "sha256": "54d3f59eefd7d907cce6b274b89a6e6ca23363b049c1341a09926c1436ac8111"
+    }
+  ]
+}

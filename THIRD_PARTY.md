@@ -63,3 +63,13 @@ underlying descriptors. No images are included. Source URLs, exact whole-file
 hashes and every lossless uint8 shard hash are retained in
 [the SIFT provenance manifest](fixtures/search-sift/manifest.json); the fixture
 verifier restores the original per-row dimensions and FP32 bytes exactly.
+
+The physical-operator study calls external libCEED v1.1.0 at commit
+`3e98d546622c05ba46cfce6d4ba2e7d0b9ad4b97` under its BSD-2-Clause license.
+Its checkout, headers and compiled library are not vendored. The project-local
+QFunction, thin C/C++ adapter, CUDA kernels and independent physical models are
+original repository code. CUDA/cuBLASLt and the unchanged external CUTLASS
+checkout retain their applicable notices. Canonical GLL coefficient arrays are
+original numerical fixtures prepared with mpmath; NumPy, CuPy and mpmath retain
+their own licenses. See [physical source context](PDE_SOURCES.md) and
+[reproduction details](PDE_REPRODUCTION.md).

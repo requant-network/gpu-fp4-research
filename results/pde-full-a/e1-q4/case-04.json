@@ -1,0 +1,5277 @@
+{
+  "configuration": {
+    "family": "ceed",
+    "precision": "fp64",
+    "backend": "ref",
+    "threads": 256
+  },
+  "configuration_index": 4,
+  "source_sha256": {
+    "pde_study.py": "5e9e9a51ca2bd22ed1a5dbb467e4f85c9af29445d94002fe0d68101a481dfd09",
+    "pde_evidence.py": "9cda41bad6c10b10826eb26835ae19e858aa360aa2f3c46e12a2f168ac023361",
+    "pde_cases.py": "f98b0d11fee0fdd19ce51b9d7b8e3b5ef548176e2bc78c93d9c9bb37e49d3597",
+    "pde_protocol.py": "04978441c3397f491cee41baa63fbe9709709325c498df9a5ad6828e6a80f391",
+    "pde_methods.py": "c029b0e0ab8c1ee262f5d40a178d0e2ffde9cf100f297db68149d2d3f198d9d8",
+    "pde_cg.py": "65d8b38b5eda83cad8d8f3f347927bb248bd005635788f20dc4390064ac36a24",
+    "pde_reference.py": "646a47a893d90a7cba27b78d4773046d75e06199e33b0d8df9e00e703fbc1437",
+    "pde_coefficients.py": "55dddf44c59115f6243cb9a449a33b4113e7052800e08de49e25ac22c0767bd4",
+    "prepare_pde_coefficients.py": "b0cae1ea19786850055065e864b35bf70f2782b496e8ee408c925ea11b59dd03",
+    "reference.py": "b17f2880f57875909d8268091f026317dbf531b118b83322488c96ab7f62c9ef",
+    "pde_cuda.py": "6a565e67e05dbd091377c518c1f4116b2b34250e0b051f31053c42b01ca2867e",
+    "native/pde_kernels.cu": "ae53ca767adae0237f3977f485efa7e3d385713792e1651cd0f1c7ec8b07bc97",
+    "pde_ceed.py": "4eaa745c7c13e32c7e5895061924b2284e026e9cc654d19300f96fa1303c04ed",
+    "native/pde_ceed_bridge.cpp": "dd9b85f643222f29695918f41e6e9da93ebd8a11184c096cc1955e3d6d04beb3",
+    "native/pde_ceed_qfunction.h": "2e97b4a811dc8df06509ab984b3809cfcc302654626176f11529ac1d79e37bda",
+    "build_pde_ceed.sh": "1ed1663ac62be7ee8ef265969877d22e38cefc82b8b7c142edb7c3632904e46f",
+    "pde_tensor.py": "6a5fe2f2de1fbe9a41dd78e3c0ef46b1499678726e6ffff6424f66b41d26c539",
+    "native/pde_tensor_kernels.cu": "efae065bf17d51e79ca696a7faa0b7dbd95ac2ba4882764e79beda4eae29583f",
+    "pde_packing.py": "ee44cda50fa58bc466af997ed197303cf00351b33e422d89ebb66c0759c4b300",
+    "pca_native.py": "65f5ef250246c193e4dff0a0a00531f81983101343232ee005767bf15c55ec53",
+    "native/pca_bridge.cu": "a117611fa68521748b2dfa0434ffaaed1a3e4fdbe7410f430a620b3b4d9f9cfc",
+    "native/hardware_bridge.cu": "dbc8f619e69d91a25ef7d6bd7eb984112f737afb44934e3694fe1db6511d9faf",
+    "native/application_bridge.cu": "1d2f0b190d1f27ee3408fa126fae43c0ee5907feaec4bd94353a802c94fa1336",
+    "native/optimized_bridge.cu": "9d718ad97e4c3c2d77afe6402f093ec0af48c46d5faeaf78ea44c2d5537e4a25",
+    "native/bridge.cu": "5bd319bed3f39f6a735e6036e643ad8091d198a40398760e7a57a75d275c19b8",
+    "build_pca.sh": "4d0a3a916374351d50d2a71082fb28b9a637fd828f22830f404499eabd602069",
+    "pde_small.py": "b0731105033815a8a83d94dbb816ea97095d666c66faa40a0057b6f782476659",
+    "native/pde_small_bridge.cu": "3b24020d519e24c186a11640da13c0200f58fbb509f8e8178b02fedce384df24",
+    "native/pde_small_kernels.cu": "a531b920e36846374acfa5f3bcad283eb427b9c0f6ea84a306b41c0cb426475b",
+    "build_pde_small.sh": "4f9df460608c9a2194aef86d0d5e1ef3462b5b0ee9219296465f1a6be11df12c"
+  },
+  "binary_sha256": {
+    "native_core": "513f137a3a692f100874a3b275f5c9172af9be1f6c932f513a9634bc813eba7d",
+    "ceed_bridge": "ccb27b9a39ad75cfe564247d38272e46e3147cde7630a3f9cf5d35722eadb550",
+    "short_q_bridge": "03ec2fbd8de5f556c48f05097d2876545472fb032d9916064fe8bf295dc058f8",
+    "libceed": "d7616cf9b1025d4a87da3d25afff661e481edd4b91de4c34d6bc081525f6a7cb"
+  },
+  "available": true,
+  "construction_ms": 28.76463800203055,
+  "first_data_load_ms": 0.09247199341189116,
+  "calibration_ms": 0.004749002982862294,
+  "first_complete_use_ms": 35.15403300116304,
+  "first_use_output": "o0",
+  "first_use_input_sha256": "b3fd4de40a8d2f254659e6fc7fdf441bdf11d1a61620c0108ad57fbe5fe090ab",
+  "cuda_event_scope": "Input staging through operation acknowledgment; host D2H is included only in wall time",
+  "method_metadata": {
+    "family": "libceed-cuda",
+    "requested_resource": "/gpu/cuda/ref",
+    "root_resource": "/gpu/cuda/ref",
+    "precision": "FP64 CeedScalar API; not an executed instruction trace",
+    "source_commit": "3e98d546622c05ba46cfce6d4ba2e7d0b9ad4b97",
+    "libceed_binary_sha256": "d7616cf9b1025d4a87da3d25afff661e481edd4b91de4c34d6bc081525f6a7cb",
+    "bridge_binary_sha256": "ccb27b9a39ad75cfe564247d38272e46e3147cde7630a3f9cf5d35722eadb550",
+    "python_named_device_buffers": {
+      "data": 512,
+      "masked": 512,
+      "output": 512,
+      "boundary": 64
+    },
+    "python_named_owned_device_bytes": 1600,
+    "libceed_requested_qdata_bytes": 2048,
+    "libceed_requested_index_bytes": 256,
+    "memory_scope": "CuPy named buffers plus separate libCEED request categories; opaque library workspace/cache/temporary physical peak excluded",
+    "completion": "Mask, actual CEED apply, original boundary identity, current-context device sync; legacy stream0; no graph/cold-system/dispatch-trace claim"
+  },
+  "operator_observations": [
+    {
+      "route": "resident",
+      "ordinal": 0,
+      "variant": 0,
+      "input_sha256": "b3fd4de40a8d2f254659e6fc7fdf441bdf11d1a61620c0108ad57fbe5fe090ab",
+      "output": "o0",
+      "wall_ms": 0.12928000069223344,
+      "cuda_ms": 0.11945600062608719
+    },
+    {
+      "route": "resident",
+      "ordinal": 1,
+      "variant": 1,
+      "input_sha256": "8be8c1f27b5901ce06d8dc67312bed144383a33746c65690839afb434d70beb8",
+      "output": "o1",
+      "wall_ms": 0.09344999853055924,
+      "cuda_ms": 0.08345600217580795
+    },
+    {
+      "route": "resident",
+      "ordinal": 2,
+      "variant": 0,
+      "input_sha256": "b3fd4de40a8d2f254659e6fc7fdf441bdf11d1a61620c0108ad57fbe5fe090ab",
+      "output": "o0",
+      "wall_ms": 0.08534899825463071,
+      "cuda_ms": 0.07657600194215775
+    },
+    {
+      "route": "resident",
+      "ordinal": 3,
+      "variant": 1,
+      "input_sha256": "8be8c1f27b5901ce06d8dc67312bed144383a33746c65690839afb434d70beb8",
+      "output": "o1",
+      "wall_ms": 0.09729199518915266,
+      "cuda_ms": 0.08835200220346451
+    },
+    {
+      "route": "resident",
+      "ordinal": 4,
+      "variant": 0,
+      "input_sha256": "b3fd4de40a8d2f254659e6fc7fdf441bdf11d1a61620c0108ad57fbe5fe090ab",
+      "output": "o0",
+      "wall_ms": 0.08346299728145823,
+      "cuda_ms": 0.0751039981842041
+    },
+    {
+      "route": "resident",
+      "ordinal": 5,
+      "variant": 1,
+      "input_sha256": "8be8c1f27b5901ce06d8dc67312bed144383a33746c65690839afb434d70beb8",
+      "output": "o1",
+      "wall_ms": 0.09093499829759821,
+      "cuda_ms": 0.08230400085449219
+    },
+    {
+      "route": "resident",
+      "ordinal": 6,
+      "variant": 0,
+      "input_sha256": "b3fd4de40a8d2f254659e6fc7fdf441bdf11d1a61620c0108ad57fbe5fe090ab",
+      "output": "o0",
+      "wall_ms": 0.08157700358424336,
+      "cuda_ms": 0.07264000177383423
+    },
+    {
+      "route": "resident",
+      "ordinal": 7,
+      "variant": 1,
+      "input_sha256": "8be8c1f27b5901ce06d8dc67312bed144383a33746c65690839afb434d70beb8",
+      "output": "o1",
+      "wall_ms": 0.08178700227290392,
+      "cuda_ms": 0.0732479989528656
+    },
+    {
+      "route": "resident",
+      "ordinal": 8,
+      "variant": 0,
+      "input_sha256": "b3fd4de40a8d2f254659e6fc7fdf441bdf11d1a61620c0108ad57fbe5fe090ab",
+      "output": "o0",
+      "wall_ms": 0.0815759995020926,
+      "cuda_ms": 0.07289600372314453
+    },
+    {
+      "route": "resident",
+      "ordinal": 9,
+      "variant": 1,
+      "input_sha256": "8be8c1f27b5901ce06d8dc67312bed144383a33746c65690839afb434d70beb8",
+      "output": "o1",
+      "wall_ms": 0.0795519954408519,
+      "cuda_ms": 0.07081600278615952
+    },
+    {
+      "route": "resident",
+      "ordinal": 10,
+      "variant": 0,
+      "input_sha256": "b3fd4de40a8d2f254659e6fc7fdf441bdf11d1a61620c0108ad57fbe5fe090ab",
+      "output": "o0",
+      "wall_ms": 0.09582499478710815,
+      "cuda_ms": 0.08569599688053131
+    },
+    {
+      "route": "resident",
+      "ordinal": 11,
+      "variant": 1,
+      "input_sha256": "8be8c1f27b5901ce06d8dc67312bed144383a33746c65690839afb434d70beb8",
+      "output": "o1",
+      "wall_ms": 0.08367199916392565,
+      "cuda_ms": 0.07465600222349167
+    },
+    {
+      "route": "resident",
+      "ordinal": 12,
+      "variant": 0,
+      "input_sha256": "b3fd4de40a8d2f254659e6fc7fdf441bdf11d1a61620c0108ad57fbe5fe090ab",
+      "output": "o0",
+      "wall_ms": 0.08157699630828574,
+      "cuda_ms": 0.07280000299215317
+    },
+    {
+      "route": "resident",
+      "ordinal": 13,
+      "variant": 1,
+      "input_sha256": "8be8c1f27b5901ce06d8dc67312bed144383a33746c65690839afb434d70beb8",
+      "output": "o1",
+      "wall_ms": 0.08031899778870866,
+      "cuda_ms": 0.0716480016708374
+    },
+    {
+      "route": "resident",
+      "ordinal": 14,
+      "variant": 0,
+      "input_sha256": "b3fd4de40a8d2f254659e6fc7fdf441bdf11d1a61620c0108ad57fbe5fe090ab",
+      "output": "o0",
+      "wall_ms": 0.08052899647736922,
+      "cuda_ms": 0.0716480016708374
+    },
+    {
+      "route": "resident",
+      "ordinal": 15,
+      "variant": 1,
+      "input_sha256": "8be8c1f27b5901ce06d8dc67312bed144383a33746c65690839afb434d70beb8",
+      "output": "o1",
+      "wall_ms": 0.07983099931152537,
+      "cuda_ms": 0.07094399631023407
+    },
+    {
+      "route": "host",
+      "ordinal": 0,
+      "variant": 0,
+      "input_sha256": "b3fd4de40a8d2f254659e6fc7fdf441bdf11d1a61620c0108ad57fbe5fe090ab",
+      "output": "o0",
+      "wall_ms": 0.13018800382269546,
+      "cuda_ms": 0.10262399911880493
+    },
+    {
+      "route": "host",
+      "ordinal": 1,
+      "variant": 1,
+      "input_sha256": "8be8c1f27b5901ce06d8dc67312bed144383a33746c65690839afb434d70beb8",
+      "output": "o1",
+      "wall_ms": 0.12613699800567701,
+      "cuda_ms": 0.09775999933481216
+    },
+    {
+      "route": "host",
+      "ordinal": 2,
+      "variant": 0,
+      "input_sha256": "b3fd4de40a8d2f254659e6fc7fdf441bdf11d1a61620c0108ad57fbe5fe090ab",
+      "output": "o0",
+      "wall_ms": 0.10923499939963222,
+      "cuda_ms": 0.08153600245714188
+    },
+    {
+      "route": "host",
+      "ordinal": 3,
+      "variant": 1,
+      "input_sha256": "8be8c1f27b5901ce06d8dc67312bed144383a33746c65690839afb434d70beb8",
+      "output": "o1",
+      "wall_ms": 0.10602199472486973,
+      "cuda_ms": 0.0790719985961914
+    },
+    {
+      "route": "host",
+      "ordinal": 4,
+      "variant": 0,
+      "input_sha256": "b3fd4de40a8d2f254659e6fc7fdf441bdf11d1a61620c0108ad57fbe5fe090ab",
+      "output": "o0",
+      "wall_ms": 0.1075590043910779,
+      "cuda_ms": 0.0804160013794899
+    },
+    {
+      "route": "host",
+      "ordinal": 5,
+      "variant": 1,
+      "input_sha256": "8be8c1f27b5901ce06d8dc67312bed144383a33746c65690839afb434d70beb8",
+      "output": "o1",
+      "wall_ms": 0.10595200001262128,
+      "cuda_ms": 0.0790719985961914
+    },
+    {
+      "route": "host",
+      "ordinal": 6,
+      "variant": 0,
+      "input_sha256": "b3fd4de40a8d2f254659e6fc7fdf441bdf11d1a61620c0108ad57fbe5fe090ab",
+      "output": "o0",
+      "wall_ms": 0.1053930027410388,
+      "cuda_ms": 0.08028800040483475
+    },
+    {
+      "route": "host",
+      "ordinal": 7,
+      "variant": 1,
+      "input_sha256": "8be8c1f27b5901ce06d8dc67312bed144383a33746c65690839afb434d70beb8",
+      "output": "o1",
+      "wall_ms": 0.10581200331216678,
+      "cuda_ms": 0.07939200103282928
+    },
+    {
+      "route": "host",
+      "ordinal": 8,
+      "variant": 0,
+      "input_sha256": "b3fd4de40a8d2f254659e6fc7fdf441bdf11d1a61620c0108ad57fbe5fe090ab",
+      "output": "o0",
+      "wall_ms": 0.11726700176950544,
+      "cuda_ms": 0.09148799628019333
+    },
+    {
+      "route": "host",
+      "ordinal": 9,
+      "variant": 1,
+      "input_sha256": "8be8c1f27b5901ce06d8dc67312bed144383a33746c65690839afb434d70beb8",
+      "output": "o1",
+      "wall_ms": 0.11496199294924736,
+      "cuda_ms": 0.08879999816417694
+    },
+    {
+      "route": "host",
+      "ordinal": 10,
+      "variant": 0,
+      "input_sha256": "b3fd4de40a8d2f254659e6fc7fdf441bdf11d1a61620c0108ad57fbe5fe090ab",
+      "output": "o0",
+      "wall_ms": 0.10574299813015386,
+      "cuda_ms": 0.07968000322580338
+    },
+    {
+      "route": "host",
+      "ordinal": 11,
+      "variant": 1,
+      "input_sha256": "8be8c1f27b5901ce06d8dc67312bed144383a33746c65690839afb434d70beb8",
+      "output": "o1",
+      "wall_ms": 0.10434500291012228,
+      "cuda_ms": 0.07872000336647034
+    },
+    {
+      "route": "host",
+      "ordinal": 12,
+      "variant": 0,
+      "input_sha256": "b3fd4de40a8d2f254659e6fc7fdf441bdf11d1a61620c0108ad57fbe5fe090ab",
+      "output": "o0",
+      "wall_ms": 0.10343699977966025,
+      "cuda_ms": 0.07676800340414047
+    },
+    {
+      "route": "host",
+      "ordinal": 13,
+      "variant": 1,
+      "input_sha256": "8be8c1f27b5901ce06d8dc67312bed144383a33746c65690839afb434d70beb8",
+      "output": "o1",
+      "wall_ms": 0.10427599772810936,
+      "cuda_ms": 0.07817599922418594
+    },
+    {
+      "route": "host",
+      "ordinal": 14,
+      "variant": 0,
+      "input_sha256": "b3fd4de40a8d2f254659e6fc7fdf441bdf11d1a61620c0108ad57fbe5fe090ab",
+      "output": "o0",
+      "wall_ms": 0.10162200487684458,
+      "cuda_ms": 0.07631999999284744
+    },
+    {
+      "route": "host",
+      "ordinal": 15,
+      "variant": 1,
+      "input_sha256": "8be8c1f27b5901ce06d8dc67312bed144383a33746c65690839afb434d70beb8",
+      "output": "o1",
+      "wall_ms": 0.12355299986666068,
+      "cuda_ms": 0.09731200337409973
+    }
+  ],
+  "operator_stages": {
+    "0": {
+      "output": "o0",
+      "observation": 0,
+      "witness": null
+    },
+    "1": {
+      "output": "o1",
+      "observation": 1,
+      "witness": null
+    }
+  },
+  "poisson_runs": [
+    {
+      "route": "resident",
+      "repetition": 0,
+      "target": 0.001,
+      "policy": "fixed",
+      "input_sha256": "169a41df52328cff369333df8599647ec9471e856754bfcbc4f18748e504d369",
+      "output": "o2",
+      "wall_ms": 1.2403460059431382,
+      "controller": {
+        "status": "internal-converged",
+        "iterations": 1,
+        "operator_calls": 1,
+        "trace": [
+          {
+            "iteration": 0,
+            "recursive_relative": 1.0
+          },
+          {
+            "iteration": 1,
+            "recursive_relative": 1.596386809836471e-16,
+            "alpha": 2.0,
+            "curvature": 0.8357722288117722
+          }
+        ],
+        "physical_finite": true,
+        "gpu_original_relative": 1.796674077024497e-16,
+        "original_target_met": true,
+        "endpoint_original_checks": 1,
+        "actual_operator_calls": 1,
+        "actual_original_calls": 1
+      }
+    },
+    {
+      "route": "resident",
+      "repetition": 1,
+      "target": 0.001,
+      "policy": "fixed",
+      "input_sha256": "169a41df52328cff369333df8599647ec9471e856754bfcbc4f18748e504d369",
+      "output": "o2",
+      "wall_ms": 1.0989130023517646,
+      "controller": {
+        "status": "internal-converged",
+        "iterations": 1,
+        "operator_calls": 1,
+        "trace": [
+          {
+            "iteration": 0,
+            "recursive_relative": 1.0
+          },
+          {
+            "iteration": 1,
+            "recursive_relative": 1.596386809836471e-16,
+            "alpha": 2.0,
+            "curvature": 0.8357722288117722
+          }
+        ],
+        "physical_finite": true,
+        "gpu_original_relative": 1.796674077024497e-16,
+        "original_target_met": true,
+        "endpoint_original_checks": 1,
+        "actual_operator_calls": 1,
+        "actual_original_calls": 1
+      }
+    },
+    {
+      "route": "host",
+      "repetition": 0,
+      "target": 0.001,
+      "policy": "fixed",
+      "input_sha256": "169a41df52328cff369333df8599647ec9471e856754bfcbc4f18748e504d369",
+      "output": "o2",
+      "wall_ms": 1.1497589948703535,
+      "controller": {
+        "status": "internal-converged",
+        "iterations": 1,
+        "operator_calls": 1,
+        "trace": [
+          {
+            "iteration": 0,
+            "recursive_relative": 1.0
+          },
+          {
+            "iteration": 1,
+            "recursive_relative": 1.596386809836471e-16,
+            "alpha": 2.0,
+            "curvature": 0.8357722288117722
+          }
+        ],
+        "physical_finite": true,
+        "gpu_original_relative": 1.796674077024497e-16,
+        "original_target_met": true,
+        "endpoint_original_checks": 1,
+        "actual_operator_calls": 1,
+        "actual_original_calls": 1
+      }
+    },
+    {
+      "route": "host",
+      "repetition": 1,
+      "target": 0.001,
+      "policy": "fixed",
+      "input_sha256": "169a41df52328cff369333df8599647ec9471e856754bfcbc4f18748e504d369",
+      "output": "o2",
+      "wall_ms": 1.1286660010227934,
+      "controller": {
+        "status": "internal-converged",
+        "iterations": 1,
+        "operator_calls": 1,
+        "trace": [
+          {
+            "iteration": 0,
+            "recursive_relative": 1.0
+          },
+          {
+            "iteration": 1,
+            "recursive_relative": 1.596386809836471e-16,
+            "alpha": 2.0,
+            "curvature": 0.8357722288117722
+          }
+        ],
+        "physical_finite": true,
+        "gpu_original_relative": 1.796674077024497e-16,
+        "original_target_met": true,
+        "endpoint_original_checks": 1,
+        "actual_operator_calls": 1,
+        "actual_original_calls": 1
+      }
+    },
+    {
+      "route": "resident",
+      "repetition": 0,
+      "target": 0.001,
+      "policy": "reliable",
+      "input_sha256": "169a41df52328cff369333df8599647ec9471e856754bfcbc4f18748e504d369",
+      "output": "o3",
+      "wall_ms": 1.5137809969019145,
+      "controller": {
+        "status": "original-converged",
+        "iterations": 1,
+        "operator_calls": 3,
+        "low_operator_calls": 1,
+        "high_operator_calls": 2,
+        "fallback": false,
+        "original_relative": 1.796674077024497e-16,
+        "trace": [
+          {
+            "phase": "low-correction",
+            "low_operator_calls": 1,
+            "inner_status": "internal-converged",
+            "inner_trace": [
+              {
+                "iteration": 0,
+                "recursive_relative": 1.0
+              },
+              {
+                "iteration": 1,
+                "recursive_relative": 1.596386809836471e-16,
+                "alpha": 2.0,
+                "curvature": 0.8357722288117722
+              }
+            ],
+            "original_before": 1.0,
+            "original_candidate": 1.796674077024497e-16,
+            "accepted": true
+          }
+        ],
+        "physical_finite": true,
+        "gpu_original_relative": 1.796674077024497e-16,
+        "original_target_met": true,
+        "endpoint_original_checks": 1,
+        "actual_operator_calls": 1,
+        "actual_original_calls": 3
+      }
+    },
+    {
+      "route": "resident",
+      "repetition": 1,
+      "target": 0.001,
+      "policy": "reliable",
+      "input_sha256": "169a41df52328cff369333df8599647ec9471e856754bfcbc4f18748e504d369",
+      "output": "o3",
+      "wall_ms": 1.4938759995857254,
+      "controller": {
+        "status": "original-converged",
+        "iterations": 1,
+        "operator_calls": 3,
+        "low_operator_calls": 1,
+        "high_operator_calls": 2,
+        "fallback": false,
+        "original_relative": 1.796674077024497e-16,
+        "trace": [
+          {
+            "phase": "low-correction",
+            "low_operator_calls": 1,
+            "inner_status": "internal-converged",
+            "inner_trace": [
+              {
+                "iteration": 0,
+                "recursive_relative": 1.0
+              },
+              {
+                "iteration": 1,
+                "recursive_relative": 1.596386809836471e-16,
+                "alpha": 2.0,
+                "curvature": 0.8357722288117722
+              }
+            ],
+            "original_before": 1.0,
+            "original_candidate": 1.796674077024497e-16,
+            "accepted": true
+          }
+        ],
+        "physical_finite": true,
+        "gpu_original_relative": 1.796674077024497e-16,
+        "original_target_met": true,
+        "endpoint_original_checks": 1,
+        "actual_operator_calls": 1,
+        "actual_original_calls": 3
+      }
+    },
+    {
+      "route": "host",
+      "repetition": 0,
+      "target": 0.001,
+      "policy": "reliable",
+      "input_sha256": "169a41df52328cff369333df8599647ec9471e856754bfcbc4f18748e504d369",
+      "output": "o3",
+      "wall_ms": 1.5553379998891614,
+      "controller": {
+        "status": "original-converged",
+        "iterations": 1,
+        "operator_calls": 3,
+        "low_operator_calls": 1,
+        "high_operator_calls": 2,
+        "fallback": false,
+        "original_relative": 1.796674077024497e-16,
+        "trace": [
+          {
+            "phase": "low-correction",
+            "low_operator_calls": 1,
+            "inner_status": "internal-converged",
+            "inner_trace": [
+              {
+                "iteration": 0,
+                "recursive_relative": 1.0
+              },
+              {
+                "iteration": 1,
+                "recursive_relative": 1.596386809836471e-16,
+                "alpha": 2.0,
+                "curvature": 0.8357722288117722
+              }
+            ],
+            "original_before": 1.0,
+            "original_candidate": 1.796674077024497e-16,
+            "accepted": true
+          }
+        ],
+        "physical_finite": true,
+        "gpu_original_relative": 1.796674077024497e-16,
+        "original_target_met": true,
+        "endpoint_original_checks": 1,
+        "actual_operator_calls": 1,
+        "actual_original_calls": 3
+      }
+    },
+    {
+      "route": "host",
+      "repetition": 1,
+      "target": 0.001,
+      "policy": "reliable",
+      "input_sha256": "169a41df52328cff369333df8599647ec9471e856754bfcbc4f18748e504d369",
+      "output": "o3",
+      "wall_ms": 2.217941000708379,
+      "controller": {
+        "status": "original-converged",
+        "iterations": 1,
+        "operator_calls": 3,
+        "low_operator_calls": 1,
+        "high_operator_calls": 2,
+        "fallback": false,
+        "original_relative": 1.796674077024497e-16,
+        "trace": [
+          {
+            "phase": "low-correction",
+            "low_operator_calls": 1,
+            "inner_status": "internal-converged",
+            "inner_trace": [
+              {
+                "iteration": 0,
+                "recursive_relative": 1.0
+              },
+              {
+                "iteration": 1,
+                "recursive_relative": 1.596386809836471e-16,
+                "alpha": 2.0,
+                "curvature": 0.8357722288117722
+              }
+            ],
+            "original_before": 1.0,
+            "original_candidate": 1.796674077024497e-16,
+            "accepted": true
+          }
+        ],
+        "physical_finite": true,
+        "gpu_original_relative": 1.796674077024497e-16,
+        "original_target_met": true,
+        "endpoint_original_checks": 1,
+        "actual_operator_calls": 1,
+        "actual_original_calls": 3
+      }
+    },
+    {
+      "route": "resident",
+      "repetition": 0,
+      "target": 1e-08,
+      "policy": "fixed",
+      "input_sha256": "169a41df52328cff369333df8599647ec9471e856754bfcbc4f18748e504d369",
+      "output": "o4",
+      "wall_ms": 1.164914996479638,
+      "controller": {
+        "status": "internal-converged",
+        "iterations": 1,
+        "operator_calls": 1,
+        "trace": [
+          {
+            "iteration": 0,
+            "recursive_relative": 1.0
+          },
+          {
+            "iteration": 1,
+            "recursive_relative": 1.596386809836471e-16,
+            "alpha": 2.0,
+            "curvature": 0.8357722288117722
+          }
+        ],
+        "physical_finite": true,
+        "gpu_original_relative": 1.796674077024497e-16,
+        "original_target_met": true,
+        "endpoint_original_checks": 1,
+        "actual_operator_calls": 1,
+        "actual_original_calls": 1
+      }
+    },
+    {
+      "route": "resident",
+      "repetition": 1,
+      "target": 1e-08,
+      "policy": "fixed",
+      "input_sha256": "169a41df52328cff369333df8599647ec9471e856754bfcbc4f18748e504d369",
+      "output": "o4",
+      "wall_ms": 1.0536549962125719,
+      "controller": {
+        "status": "internal-converged",
+        "iterations": 1,
+        "operator_calls": 1,
+        "trace": [
+          {
+            "iteration": 0,
+            "recursive_relative": 1.0
+          },
+          {
+            "iteration": 1,
+            "recursive_relative": 1.596386809836471e-16,
+            "alpha": 2.0,
+            "curvature": 0.8357722288117722
+          }
+        ],
+        "physical_finite": true,
+        "gpu_original_relative": 1.796674077024497e-16,
+        "original_target_met": true,
+        "endpoint_original_checks": 1,
+        "actual_operator_calls": 1,
+        "actual_original_calls": 1
+      }
+    },
+    {
+      "route": "host",
+      "repetition": 0,
+      "target": 1e-08,
+      "policy": "fixed",
+      "input_sha256": "169a41df52328cff369333df8599647ec9471e856754bfcbc4f18748e504d369",
+      "output": "o4",
+      "wall_ms": 1.1040809986297973,
+      "controller": {
+        "status": "internal-converged",
+        "iterations": 1,
+        "operator_calls": 1,
+        "trace": [
+          {
+            "iteration": 0,
+            "recursive_relative": 1.0
+          },
+          {
+            "iteration": 1,
+            "recursive_relative": 1.596386809836471e-16,
+            "alpha": 2.0,
+            "curvature": 0.8357722288117722
+          }
+        ],
+        "physical_finite": true,
+        "gpu_original_relative": 1.796674077024497e-16,
+        "original_target_met": true,
+        "endpoint_original_checks": 1,
+        "actual_operator_calls": 1,
+        "actual_original_calls": 1
+      }
+    },
+    {
+      "route": "host",
+      "repetition": 1,
+      "target": 1e-08,
+      "policy": "fixed",
+      "input_sha256": "169a41df52328cff369333df8599647ec9471e856754bfcbc4f18748e504d369",
+      "output": "o4",
+      "wall_ms": 1.097027001378592,
+      "controller": {
+        "status": "internal-converged",
+        "iterations": 1,
+        "operator_calls": 1,
+        "trace": [
+          {
+            "iteration": 0,
+            "recursive_relative": 1.0
+          },
+          {
+            "iteration": 1,
+            "recursive_relative": 1.596386809836471e-16,
+            "alpha": 2.0,
+            "curvature": 0.8357722288117722
+          }
+        ],
+        "physical_finite": true,
+        "gpu_original_relative": 1.796674077024497e-16,
+        "original_target_met": true,
+        "endpoint_original_checks": 1,
+        "actual_operator_calls": 1,
+        "actual_original_calls": 1
+      }
+    },
+    {
+      "route": "resident",
+      "repetition": 0,
+      "target": 1e-08,
+      "policy": "reliable",
+      "input_sha256": "169a41df52328cff369333df8599647ec9471e856754bfcbc4f18748e504d369",
+      "output": "o5",
+      "wall_ms": 1.4824210011283867,
+      "controller": {
+        "status": "original-converged",
+        "iterations": 1,
+        "operator_calls": 3,
+        "low_operator_calls": 1,
+        "high_operator_calls": 2,
+        "fallback": false,
+        "original_relative": 1.796674077024497e-16,
+        "trace": [
+          {
+            "phase": "low-correction",
+            "low_operator_calls": 1,
+            "inner_status": "internal-converged",
+            "inner_trace": [
+              {
+                "iteration": 0,
+                "recursive_relative": 1.0
+              },
+              {
+                "iteration": 1,
+                "recursive_relative": 1.596386809836471e-16,
+                "alpha": 2.0,
+                "curvature": 0.8357722288117722
+              }
+            ],
+            "original_before": 1.0,
+            "original_candidate": 1.796674077024497e-16,
+            "accepted": true
+          }
+        ],
+        "physical_finite": true,
+        "gpu_original_relative": 1.796674077024497e-16,
+        "original_target_met": true,
+        "endpoint_original_checks": 1,
+        "actual_operator_calls": 1,
+        "actual_original_calls": 3
+      }
+    },
+    {
+      "route": "resident",
+      "repetition": 1,
+      "target": 1e-08,
+      "policy": "reliable",
+      "input_sha256": "169a41df52328cff369333df8599647ec9471e856754bfcbc4f18748e504d369",
+      "output": "o5",
+      "wall_ms": 1.7277810038649477,
+      "controller": {
+        "status": "original-converged",
+        "iterations": 1,
+        "operator_calls": 3,
+        "low_operator_calls": 1,
+        "high_operator_calls": 2,
+        "fallback": false,
+        "original_relative": 1.796674077024497e-16,
+        "trace": [
+          {
+            "phase": "low-correction",
+            "low_operator_calls": 1,
+            "inner_status": "internal-converged",
+            "inner_trace": [
+              {
+                "iteration": 0,
+                "recursive_relative": 1.0
+              },
+              {
+                "iteration": 1,
+                "recursive_relative": 1.596386809836471e-16,
+                "alpha": 2.0,
+                "curvature": 0.8357722288117722
+              }
+            ],
+            "original_before": 1.0,
+            "original_candidate": 1.796674077024497e-16,
+            "accepted": true
+          }
+        ],
+        "physical_finite": true,
+        "gpu_original_relative": 1.796674077024497e-16,
+        "original_target_met": true,
+        "endpoint_original_checks": 1,
+        "actual_operator_calls": 1,
+        "actual_original_calls": 3
+      }
+    },
+    {
+      "route": "host",
+      "repetition": 0,
+      "target": 1e-08,
+      "policy": "reliable",
+      "input_sha256": "169a41df52328cff369333df8599647ec9471e856754bfcbc4f18748e504d369",
+      "output": "o5",
+      "wall_ms": 1.72910800029058,
+      "controller": {
+        "status": "original-converged",
+        "iterations": 1,
+        "operator_calls": 3,
+        "low_operator_calls": 1,
+        "high_operator_calls": 2,
+        "fallback": false,
+        "original_relative": 1.796674077024497e-16,
+        "trace": [
+          {
+            "phase": "low-correction",
+            "low_operator_calls": 1,
+            "inner_status": "internal-converged",
+            "inner_trace": [
+              {
+                "iteration": 0,
+                "recursive_relative": 1.0
+              },
+              {
+                "iteration": 1,
+                "recursive_relative": 1.596386809836471e-16,
+                "alpha": 2.0,
+                "curvature": 0.8357722288117722
+              }
+            ],
+            "original_before": 1.0,
+            "original_candidate": 1.796674077024497e-16,
+            "accepted": true
+          }
+        ],
+        "physical_finite": true,
+        "gpu_original_relative": 1.796674077024497e-16,
+        "original_target_met": true,
+        "endpoint_original_checks": 1,
+        "actual_operator_calls": 1,
+        "actual_original_calls": 3
+      }
+    },
+    {
+      "route": "host",
+      "repetition": 1,
+      "target": 1e-08,
+      "policy": "reliable",
+      "input_sha256": "169a41df52328cff369333df8599647ec9471e856754bfcbc4f18748e504d369",
+      "output": "o5",
+      "wall_ms": 1.7042429972207174,
+      "controller": {
+        "status": "original-converged",
+        "iterations": 1,
+        "operator_calls": 3,
+        "low_operator_calls": 1,
+        "high_operator_calls": 2,
+        "fallback": false,
+        "original_relative": 1.796674077024497e-16,
+        "trace": [
+          {
+            "phase": "low-correction",
+            "low_operator_calls": 1,
+            "inner_status": "internal-converged",
+            "inner_trace": [
+              {
+                "iteration": 0,
+                "recursive_relative": 1.0
+              },
+              {
+                "iteration": 1,
+                "recursive_relative": 1.596386809836471e-16,
+                "alpha": 2.0,
+                "curvature": 0.8357722288117722
+              }
+            ],
+            "original_before": 1.0,
+            "original_candidate": 1.796674077024497e-16,
+            "accepted": true
+          }
+        ],
+        "physical_finite": true,
+        "gpu_original_relative": 1.796674077024497e-16,
+        "original_target_met": true,
+        "endpoint_original_checks": 1,
+        "actual_operator_calls": 1,
+        "actual_original_calls": 3
+      }
+    }
+  ],
+  "outputs": {
+    "o0": {
+      "label": "operator0",
+      "key": "p0",
+      "input_sha256": "b3fd4de40a8d2f254659e6fc7fdf441bdf11d1a61620c0108ad57fbe5fe090ab",
+      "output_sha256": "5c63b7d713130a7668ce29cf31ea2e41026261e11db29035a012fa002e962a9e",
+      "shape": [
+        64
+      ],
+      "dtype": "<f8",
+      "encoding": "full",
+      "base": null
+    },
+    "o1": {
+      "label": "operator1",
+      "key": "p1",
+      "input_sha256": "8be8c1f27b5901ce06d8dc67312bed144383a33746c65690839afb434d70beb8",
+      "output_sha256": "f6d67c2377ec48e3420493e3cd5afc1b22da54341441bd70767588f387045554",
+      "shape": [
+        64
+      ],
+      "dtype": "<f8",
+      "encoding": "full",
+      "base": null
+    },
+    "o2": {
+      "label": "poisson/fixed/0.001",
+      "key": "p2",
+      "input_sha256": "169a41df52328cff369333df8599647ec9471e856754bfcbc4f18748e504d369",
+      "output_sha256": "7751fc093484a71db3140b35670a4975afdea23024be71e38fa1d79dfa06de13",
+      "shape": [
+        64
+      ],
+      "dtype": "<f8",
+      "encoding": "full",
+      "base": null
+    },
+    "o3": {
+      "label": "poisson/reliable/0.001",
+      "key": "p3",
+      "input_sha256": "169a41df52328cff369333df8599647ec9471e856754bfcbc4f18748e504d369",
+      "output_sha256": "7751fc093484a71db3140b35670a4975afdea23024be71e38fa1d79dfa06de13",
+      "shape": [
+        64
+      ],
+      "dtype": "<f8",
+      "encoding": "full",
+      "base": null
+    },
+    "o4": {
+      "label": "poisson/fixed/1e-08",
+      "key": "p4",
+      "input_sha256": "169a41df52328cff369333df8599647ec9471e856754bfcbc4f18748e504d369",
+      "output_sha256": "7751fc093484a71db3140b35670a4975afdea23024be71e38fa1d79dfa06de13",
+      "shape": [
+        64
+      ],
+      "dtype": "<f8",
+      "encoding": "full",
+      "base": null
+    },
+    "o5": {
+      "label": "poisson/reliable/1e-08",
+      "key": "p5",
+      "input_sha256": "169a41df52328cff369333df8599647ec9471e856754bfcbc4f18748e504d369",
+      "output_sha256": "7751fc093484a71db3140b35670a4975afdea23024be71e38fa1d79dfa06de13",
+      "shape": [
+        64
+      ],
+      "dtype": "<f8",
+      "encoding": "full",
+      "base": null
+    }
+  },
+  "payloads": [
+    {
+      "path": "results/pde-full-a/e1-q4/case-04-part-0.npz",
+      "sha256": "f116daab3faa4b07237d74757fa87a64335147220049efa84ac7bc1fe9a3deac",
+      "keys": [
+        "p0",
+        "p1",
+        "p2",
+        "p3",
+        "p4",
+        "p5"
+      ]
+    }
+  ],
+  "heat": [
+    {
+      "steps": 4,
+      "reaction": 400.0,
+      "setup_ms": 14.626560994656757,
+      "method_metadata": {
+        "family": "libceed-cuda",
+        "requested_resource": "/gpu/cuda/ref",
+        "root_resource": "/gpu/cuda/ref",
+        "precision": "FP64 CeedScalar API; not an executed instruction trace",
+        "source_commit": "3e98d546622c05ba46cfce6d4ba2e7d0b9ad4b97",
+        "libceed_binary_sha256": "d7616cf9b1025d4a87da3d25afff661e481edd4b91de4c34d6bc081525f6a7cb",
+        "bridge_binary_sha256": "ccb27b9a39ad75cfe564247d38272e46e3147cde7630a3f9cf5d35722eadb550",
+        "python_named_device_buffers": {
+          "data": 512,
+          "masked": 512,
+          "output": 512,
+          "boundary": 64
+        },
+        "python_named_owned_device_bytes": 1600,
+        "libceed_requested_qdata_bytes": 2048,
+        "libceed_requested_index_bytes": 256,
+        "memory_scope": "CuPy named buffers plus separate libCEED request categories; opaque library workspace/cache/temporary physical peak excluded",
+        "completion": "Mask, actual CEED apply, original boundary identity, current-context device sync; legacy stream0; no graph/cold-system/dispatch-trace claim"
+      },
+      "original_metadata": {
+        "family": "direct-cuda-sumfactorization",
+        "component_precision": "fp64",
+        "input_output_storage": "fp64",
+        "threads": 256,
+        "local_kernel_attributes": {
+          "max_threads_per_block": 1024,
+          "shared_size_bytes": 0,
+          "const_size_bytes": 0,
+          "local_size_bytes": 0,
+          "num_regs": 40,
+          "ptx_version": 120,
+          "binary_version": 120,
+          "cache_mode_ca": 0,
+          "max_dynamic_shared_size_bytes": 49152,
+          "preferred_shared_memory_carveout": -1
+        },
+        "assembly_kernel_attributes": {
+          "max_threads_per_block": 1024,
+          "shared_size_bytes": 0,
+          "const_size_bytes": 0,
+          "local_size_bytes": 0,
+          "num_regs": 40,
+          "ptx_version": 120,
+          "binary_version": 120,
+          "cache_mode_ca": 0,
+          "max_dynamic_shared_size_bytes": 49152,
+          "preferred_shared_memory_carveout": -1
+        },
+        "named_owned_device_bytes": 2528,
+        "named_device_buffers": {
+          "data": 512,
+          "output": 512,
+          "local": 512,
+          "indices": 256,
+          "stiffness": 128,
+          "weights": 32,
+          "mass": 512,
+          "boundary": 64
+        },
+        "memory_scope": "Named buffers only; excludes allocator cache, module/JIT/driver and temporary physical peaks",
+        "completion": "Two complete uncaptured kernels plus current-context device synchronization; default stream0, no graph/cold-system claim"
+      },
+      "retained_gpu_state_rhs_bytes": 4096,
+      "memory_scope": "Named plan/vector categories plus retained step references; no temporary/cached/physical-peak claim",
+      "outputs": {
+        "o0": {
+          "label": "step0",
+          "key": "p0",
+          "input_sha256": "6b672d7602e3f2249d55f60c6eeef502ec5f5e31371d44c5cb41a526c26b382f",
+          "output_sha256": "4d4b5ce6f81cd5b0378bcb8fe8047f8303c8c1ac8958f6b849786879459ee493",
+          "shape": [
+            64
+          ],
+          "dtype": "<f8",
+          "encoding": "full",
+          "base": null
+        },
+        "o1": {
+          "label": "step1",
+          "key": "p1",
+          "input_sha256": "785086bb893e61198bd2b91b191dbc165d9484521e0fdf8a44dce50fd12373f1",
+          "output_sha256": "a527a489552df4e182d4af8fab167f39a3b12b7d77c5d1198c53cb6421231f70",
+          "shape": [
+            64
+          ],
+          "dtype": "<f8",
+          "encoding": "full",
+          "base": null
+        },
+        "o2": {
+          "label": "step2",
+          "key": "p2",
+          "input_sha256": "e8d29f6010b97c17cff43ca47d2ee6b433872faab39bc0b805b2d719d4657d95",
+          "output_sha256": "563d5065697e5824785de515f9d6ec2f878f43ff177507e5b456924fb2cc8792",
+          "shape": [
+            64
+          ],
+          "dtype": "<f8",
+          "encoding": "full",
+          "base": null
+        },
+        "o3": {
+          "label": "step3",
+          "key": "p3",
+          "input_sha256": "c25560da040781edacd23b26fd95373c145f86daf18af1a6fec5dcd3127ff590",
+          "output_sha256": "7edfb6190b228b47449949b4c1370540204d17e3aed5add3f2bfeace3525ad92",
+          "shape": [
+            64
+          ],
+          "dtype": "<f8",
+          "encoding": "full",
+          "base": null
+        },
+        "o4": {
+          "label": "step0",
+          "key": "p4",
+          "input_sha256": "6b672d7602e3f2249d55f60c6eeef502ec5f5e31371d44c5cb41a526c26b382f",
+          "output_sha256": "a698cb8833f4919147b98949ed2c019e828f78cb1f9229dd6bbe984e185cbd89",
+          "shape": [
+            64
+          ],
+          "dtype": "<f8",
+          "encoding": "xor64",
+          "base": "p0",
+          "base_sha256": "4d4b5ce6f81cd5b0378bcb8fe8047f8303c8c1ac8958f6b849786879459ee493"
+        },
+        "o5": {
+          "label": "step1",
+          "key": "p5",
+          "input_sha256": "88931310cc2104ef2d4f0a2e1fead7f3217082cc63165e61cd2d30bb4b4a9789",
+          "output_sha256": "67b08b7271ed7bc7e380a0bf26492d1814e5b14fe23804715dfc1c8a0454af20",
+          "shape": [
+            64
+          ],
+          "dtype": "<f8",
+          "encoding": "xor64",
+          "base": "p1",
+          "base_sha256": "a527a489552df4e182d4af8fab167f39a3b12b7d77c5d1198c53cb6421231f70"
+        },
+        "o6": {
+          "label": "step2",
+          "key": "p6",
+          "input_sha256": "c4bfc52e3d403de0e0e1c7bf5f8dadb1e69d57c4d3a3d6a3f8d0e2f6e6536006",
+          "output_sha256": "f31c4acce3277b0345bb8e0b613646fb459729ca3da46d6597f98b4faf1282bf",
+          "shape": [
+            64
+          ],
+          "dtype": "<f8",
+          "encoding": "xor64",
+          "base": "p2",
+          "base_sha256": "563d5065697e5824785de515f9d6ec2f878f43ff177507e5b456924fb2cc8792"
+        },
+        "o7": {
+          "label": "step3",
+          "key": "p7",
+          "input_sha256": "916e459797143f18aeda83011ca0d6e17b144f2fd484a06fe4c4853d75bb8ed5",
+          "output_sha256": "3d2911e1c79d890cf5a03ad17a3192c3fafc23080fcfbc809837436344db7f00",
+          "shape": [
+            64
+          ],
+          "dtype": "<f8",
+          "encoding": "xor64",
+          "base": "p3",
+          "base_sha256": "7edfb6190b228b47449949b4c1370540204d17e3aed5add3f2bfeace3525ad92"
+        }
+      },
+      "payloads": [
+        {
+          "path": "results/pde-full-a/e1-q4/case-04-heat4-part-0.npz",
+          "sha256": "c9ab217fc79e15c9d2389dc96f79863b8c57fbc8de21258a7ef849652ab8e24a",
+          "keys": [
+            "p0",
+            "p1",
+            "p2",
+            "p3",
+            "p4",
+            "p5",
+            "p6",
+            "p7",
+            "rhs0",
+            "rhs1",
+            "rhs10",
+            "rhs11",
+            "rhs12",
+            "rhs13",
+            "rhs14",
+            "rhs15",
+            "rhs16",
+            "rhs17",
+            "rhs18",
+            "rhs19",
+            "rhs2",
+            "rhs20",
+            "rhs21",
+            "rhs22",
+            "rhs23",
+            "rhs24",
+            "rhs25",
+            "rhs26",
+            "rhs27",
+            "rhs28",
+            "rhs29",
+            "rhs3",
+            "rhs30",
+            "rhs31",
+            "rhs4",
+            "rhs5",
+            "rhs6",
+            "rhs7",
+            "rhs8",
+            "rhs9"
+          ]
+        }
+      ],
+      "runs": [
+        {
+          "route": "resident",
+          "target": 0.001,
+          "policy": "fixed",
+          "wall_ms": 42.40682900126558,
+          "steps_completed": 4,
+          "step_records": [
+            {
+              "step": 1,
+              "rhs_key": "rhs0",
+              "input_sha256": "6b672d7602e3f2249d55f60c6eeef502ec5f5e31371d44c5cb41a526c26b382f",
+              "output": "o0",
+              "controller": {
+                "status": "internal-converged",
+                "iterations": 1,
+                "operator_calls": 2,
+                "trace": [
+                  {
+                    "iteration": 0,
+                    "recursive_relative": 0.07500000000000011
+                  },
+                  {
+                    "iteration": 1,
+                    "recursive_relative": 1.555751340996443e-17,
+                    "alpha": 1.0697674418604652,
+                    "curvature": 0.20922929115731853
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 1.6190856932937895e-16,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 2,
+                "actual_original_calls": 1
+              }
+            },
+            {
+              "step": 2,
+              "rhs_key": "rhs1",
+              "input_sha256": "785086bb893e61198bd2b91b191dbc165d9484521e0fdf8a44dce50fd12373f1",
+              "output": "o1",
+              "controller": {
+                "status": "internal-converged",
+                "iterations": 1,
+                "operator_calls": 2,
+                "trace": [
+                  {
+                    "iteration": 0,
+                    "recursive_relative": 0.07500000000000007
+                  },
+                  {
+                    "iteration": 1,
+                    "recursive_relative": 1.2272300817084622e-17,
+                    "alpha": 1.069767441860465,
+                    "curvature": 0.1810529290706919
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 1.4843179875008315e-16,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 2,
+                "actual_original_calls": 1
+              }
+            },
+            {
+              "step": 3,
+              "rhs_key": "rhs2",
+              "input_sha256": "e8d29f6010b97c17cff43ca47d2ee6b433872faab39bc0b805b2d719d4657d95",
+              "output": "o2",
+              "controller": {
+                "status": "internal-converged",
+                "iterations": 1,
+                "operator_calls": 2,
+                "trace": [
+                  {
+                    "iteration": 0,
+                    "recursive_relative": 0.07499999999999993
+                  },
+                  {
+                    "iteration": 1,
+                    "recursive_relative": 0.0,
+                    "alpha": 1.069767441860465,
+                    "curvature": 0.15667100406333476
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 5.641445814894662e-17,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 2,
+                "actual_original_calls": 1
+              }
+            },
+            {
+              "step": 4,
+              "rhs_key": "rhs3",
+              "input_sha256": "c25560da040781edacd23b26fd95373c145f86daf18af1a6fec5dcd3127ff590",
+              "output": "o3",
+              "controller": {
+                "status": "internal-converged",
+                "iterations": 1,
+                "operator_calls": 2,
+                "trace": [
+                  {
+                    "iteration": 0,
+                    "recursive_relative": 0.07500000000000012
+                  },
+                  {
+                    "iteration": 1,
+                    "recursive_relative": 1.3130145110012738e-17,
+                    "alpha": 1.0697674418604652,
+                    "curvature": 0.13557252920569862
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 2.712151111699525e-16,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 2,
+                "actual_original_calls": 1
+              }
+            }
+          ]
+        },
+        {
+          "route": "host",
+          "target": 0.001,
+          "policy": "fixed",
+          "wall_ms": 4.777762995217927,
+          "steps_completed": 4,
+          "step_records": [
+            {
+              "step": 1,
+              "rhs_key": "rhs4",
+              "input_sha256": "6b672d7602e3f2249d55f60c6eeef502ec5f5e31371d44c5cb41a526c26b382f",
+              "output": "o0",
+              "controller": {
+                "status": "internal-converged",
+                "iterations": 1,
+                "operator_calls": 2,
+                "trace": [
+                  {
+                    "iteration": 0,
+                    "recursive_relative": 0.07500000000000011
+                  },
+                  {
+                    "iteration": 1,
+                    "recursive_relative": 1.555751340996443e-17,
+                    "alpha": 1.0697674418604652,
+                    "curvature": 0.20922929115731853
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 1.6190856932937895e-16,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 2,
+                "actual_original_calls": 1
+              }
+            },
+            {
+              "step": 2,
+              "rhs_key": "rhs5",
+              "input_sha256": "785086bb893e61198bd2b91b191dbc165d9484521e0fdf8a44dce50fd12373f1",
+              "output": "o1",
+              "controller": {
+                "status": "internal-converged",
+                "iterations": 1,
+                "operator_calls": 2,
+                "trace": [
+                  {
+                    "iteration": 0,
+                    "recursive_relative": 0.07500000000000007
+                  },
+                  {
+                    "iteration": 1,
+                    "recursive_relative": 1.2272300817084622e-17,
+                    "alpha": 1.069767441860465,
+                    "curvature": 0.1810529290706919
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 1.4843179875008315e-16,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 2,
+                "actual_original_calls": 1
+              }
+            },
+            {
+              "step": 3,
+              "rhs_key": "rhs6",
+              "input_sha256": "e8d29f6010b97c17cff43ca47d2ee6b433872faab39bc0b805b2d719d4657d95",
+              "output": "o2",
+              "controller": {
+                "status": "internal-converged",
+                "iterations": 1,
+                "operator_calls": 2,
+                "trace": [
+                  {
+                    "iteration": 0,
+                    "recursive_relative": 0.07499999999999993
+                  },
+                  {
+                    "iteration": 1,
+                    "recursive_relative": 0.0,
+                    "alpha": 1.069767441860465,
+                    "curvature": 0.15667100406333476
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 5.641445814894662e-17,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 2,
+                "actual_original_calls": 1
+              }
+            },
+            {
+              "step": 4,
+              "rhs_key": "rhs7",
+              "input_sha256": "c25560da040781edacd23b26fd95373c145f86daf18af1a6fec5dcd3127ff590",
+              "output": "o3",
+              "controller": {
+                "status": "internal-converged",
+                "iterations": 1,
+                "operator_calls": 2,
+                "trace": [
+                  {
+                    "iteration": 0,
+                    "recursive_relative": 0.07500000000000012
+                  },
+                  {
+                    "iteration": 1,
+                    "recursive_relative": 1.3130145110012738e-17,
+                    "alpha": 1.0697674418604652,
+                    "curvature": 0.13557252920569862
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 2.712151111699525e-16,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 2,
+                "actual_original_calls": 1
+              }
+            }
+          ]
+        },
+        {
+          "route": "resident",
+          "target": 0.001,
+          "policy": "reliable",
+          "wall_ms": 6.250755999644753,
+          "steps_completed": 4,
+          "step_records": [
+            {
+              "step": 1,
+              "rhs_key": "rhs8",
+              "input_sha256": "6b672d7602e3f2249d55f60c6eeef502ec5f5e31371d44c5cb41a526c26b382f",
+              "output": "o4",
+              "controller": {
+                "status": "original-converged",
+                "iterations": 1,
+                "operator_calls": 3,
+                "low_operator_calls": 1,
+                "high_operator_calls": 2,
+                "fallback": false,
+                "original_relative": 0.0,
+                "trace": [
+                  {
+                    "phase": "low-correction",
+                    "low_operator_calls": 1,
+                    "inner_status": "internal-converged",
+                    "inner_trace": [
+                      {
+                        "iteration": 0,
+                        "recursive_relative": 1.0
+                      },
+                      {
+                        "iteration": 1,
+                        "recursive_relative": 1.9509950370385755e-16,
+                        "alpha": 1.0697674418604652,
+                        "curvature": 0.20922929115731764
+                      }
+                    ],
+                    "original_before": 0.07499999999999996,
+                    "original_candidate": 0.0,
+                    "accepted": true
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 0.0,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 1,
+                "actual_original_calls": 3
+              }
+            },
+            {
+              "step": 2,
+              "rhs_key": "rhs9",
+              "input_sha256": "88931310cc2104ef2d4f0a2e1fead7f3217082cc63165e61cd2d30bb4b4a9789",
+              "output": "o5",
+              "controller": {
+                "status": "original-converged",
+                "iterations": 1,
+                "operator_calls": 3,
+                "low_operator_calls": 1,
+                "high_operator_calls": 2,
+                "fallback": false,
+                "original_relative": 0.0,
+                "trace": [
+                  {
+                    "phase": "low-correction",
+                    "low_operator_calls": 1,
+                    "inner_status": "internal-converged",
+                    "inner_trace": [
+                      {
+                        "iteration": 0,
+                        "recursive_relative": 1.0
+                      },
+                      {
+                        "iteration": 1,
+                        "recursive_relative": 2.4738633125013867e-16,
+                        "alpha": 1.069767441860465,
+                        "curvature": 0.18105292907069137
+                      }
+                    ],
+                    "original_before": 0.07499999999999997,
+                    "original_candidate": 0.0,
+                    "accepted": true
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 0.0,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 1,
+                "actual_original_calls": 3
+              }
+            },
+            {
+              "step": 3,
+              "rhs_key": "rhs10",
+              "input_sha256": "c4bfc52e3d403de0e0e1c7bf5f8dadb1e69d57c4d3a3d6a3f8d0e2f6e6536006",
+              "output": "o6",
+              "controller": {
+                "status": "original-converged",
+                "iterations": 1,
+                "operator_calls": 3,
+                "low_operator_calls": 1,
+                "high_operator_calls": 2,
+                "fallback": false,
+                "original_relative": 0.0,
+                "trace": [
+                  {
+                    "phase": "low-correction",
+                    "low_operator_calls": 1,
+                    "inner_status": "internal-converged",
+                    "inner_trace": [
+                      {
+                        "iteration": 0,
+                        "recursive_relative": 1.0
+                      },
+                      {
+                        "iteration": 1,
+                        "recursive_relative": 0.0,
+                        "alpha": 1.069767441860465,
+                        "curvature": 0.15667100406333476
+                      }
+                    ],
+                    "original_before": 0.0749999999999999,
+                    "original_candidate": 0.0,
+                    "accepted": true
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 0.0,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 1,
+                "actual_original_calls": 3
+              }
+            },
+            {
+              "step": 4,
+              "rhs_key": "rhs11",
+              "input_sha256": "916e459797143f18aeda83011ca0d6e17b144f2fd484a06fe4c4853d75bb8ed5",
+              "output": "o7",
+              "controller": {
+                "status": "original-converged",
+                "iterations": 1,
+                "operator_calls": 3,
+                "low_operator_calls": 1,
+                "high_operator_calls": 2,
+                "fallback": false,
+                "original_relative": 0.0,
+                "trace": [
+                  {
+                    "phase": "low-correction",
+                    "low_operator_calls": 1,
+                    "inner_status": "internal-converged",
+                    "inner_trace": [
+                      {
+                        "iteration": 0,
+                        "recursive_relative": 1.0
+                      },
+                      {
+                        "iteration": 1,
+                        "recursive_relative": 0.0,
+                        "alpha": 1.0697674418604652,
+                        "curvature": 0.13557252920569787
+                      }
+                    ],
+                    "original_before": 0.07499999999999986,
+                    "original_candidate": 0.0,
+                    "accepted": true
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 0.0,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 1,
+                "actual_original_calls": 3
+              }
+            }
+          ]
+        },
+        {
+          "route": "host",
+          "target": 0.001,
+          "policy": "reliable",
+          "wall_ms": 6.245726995985024,
+          "steps_completed": 4,
+          "step_records": [
+            {
+              "step": 1,
+              "rhs_key": "rhs12",
+              "input_sha256": "6b672d7602e3f2249d55f60c6eeef502ec5f5e31371d44c5cb41a526c26b382f",
+              "output": "o4",
+              "controller": {
+                "status": "original-converged",
+                "iterations": 1,
+                "operator_calls": 3,
+                "low_operator_calls": 1,
+                "high_operator_calls": 2,
+                "fallback": false,
+                "original_relative": 0.0,
+                "trace": [
+                  {
+                    "phase": "low-correction",
+                    "low_operator_calls": 1,
+                    "inner_status": "internal-converged",
+                    "inner_trace": [
+                      {
+                        "iteration": 0,
+                        "recursive_relative": 1.0
+                      },
+                      {
+                        "iteration": 1,
+                        "recursive_relative": 1.9509950370385755e-16,
+                        "alpha": 1.0697674418604652,
+                        "curvature": 0.20922929115731764
+                      }
+                    ],
+                    "original_before": 0.07499999999999996,
+                    "original_candidate": 0.0,
+                    "accepted": true
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 0.0,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 1,
+                "actual_original_calls": 3
+              }
+            },
+            {
+              "step": 2,
+              "rhs_key": "rhs13",
+              "input_sha256": "88931310cc2104ef2d4f0a2e1fead7f3217082cc63165e61cd2d30bb4b4a9789",
+              "output": "o5",
+              "controller": {
+                "status": "original-converged",
+                "iterations": 1,
+                "operator_calls": 3,
+                "low_operator_calls": 1,
+                "high_operator_calls": 2,
+                "fallback": false,
+                "original_relative": 0.0,
+                "trace": [
+                  {
+                    "phase": "low-correction",
+                    "low_operator_calls": 1,
+                    "inner_status": "internal-converged",
+                    "inner_trace": [
+                      {
+                        "iteration": 0,
+                        "recursive_relative": 1.0
+                      },
+                      {
+                        "iteration": 1,
+                        "recursive_relative": 2.4738633125013867e-16,
+                        "alpha": 1.069767441860465,
+                        "curvature": 0.18105292907069137
+                      }
+                    ],
+                    "original_before": 0.07499999999999997,
+                    "original_candidate": 0.0,
+                    "accepted": true
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 0.0,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 1,
+                "actual_original_calls": 3
+              }
+            },
+            {
+              "step": 3,
+              "rhs_key": "rhs14",
+              "input_sha256": "c4bfc52e3d403de0e0e1c7bf5f8dadb1e69d57c4d3a3d6a3f8d0e2f6e6536006",
+              "output": "o6",
+              "controller": {
+                "status": "original-converged",
+                "iterations": 1,
+                "operator_calls": 3,
+                "low_operator_calls": 1,
+                "high_operator_calls": 2,
+                "fallback": false,
+                "original_relative": 0.0,
+                "trace": [
+                  {
+                    "phase": "low-correction",
+                    "low_operator_calls": 1,
+                    "inner_status": "internal-converged",
+                    "inner_trace": [
+                      {
+                        "iteration": 0,
+                        "recursive_relative": 1.0
+                      },
+                      {
+                        "iteration": 1,
+                        "recursive_relative": 0.0,
+                        "alpha": 1.069767441860465,
+                        "curvature": 0.15667100406333476
+                      }
+                    ],
+                    "original_before": 0.0749999999999999,
+                    "original_candidate": 0.0,
+                    "accepted": true
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 0.0,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 1,
+                "actual_original_calls": 3
+              }
+            },
+            {
+              "step": 4,
+              "rhs_key": "rhs15",
+              "input_sha256": "916e459797143f18aeda83011ca0d6e17b144f2fd484a06fe4c4853d75bb8ed5",
+              "output": "o7",
+              "controller": {
+                "status": "original-converged",
+                "iterations": 1,
+                "operator_calls": 3,
+                "low_operator_calls": 1,
+                "high_operator_calls": 2,
+                "fallback": false,
+                "original_relative": 0.0,
+                "trace": [
+                  {
+                    "phase": "low-correction",
+                    "low_operator_calls": 1,
+                    "inner_status": "internal-converged",
+                    "inner_trace": [
+                      {
+                        "iteration": 0,
+                        "recursive_relative": 1.0
+                      },
+                      {
+                        "iteration": 1,
+                        "recursive_relative": 0.0,
+                        "alpha": 1.0697674418604652,
+                        "curvature": 0.13557252920569787
+                      }
+                    ],
+                    "original_before": 0.07499999999999986,
+                    "original_candidate": 0.0,
+                    "accepted": true
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 0.0,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 1,
+                "actual_original_calls": 3
+              }
+            }
+          ]
+        },
+        {
+          "route": "resident",
+          "target": 1e-08,
+          "policy": "fixed",
+          "wall_ms": 5.048614999395795,
+          "steps_completed": 4,
+          "step_records": [
+            {
+              "step": 1,
+              "rhs_key": "rhs16",
+              "input_sha256": "6b672d7602e3f2249d55f60c6eeef502ec5f5e31371d44c5cb41a526c26b382f",
+              "output": "o0",
+              "controller": {
+                "status": "internal-converged",
+                "iterations": 1,
+                "operator_calls": 2,
+                "trace": [
+                  {
+                    "iteration": 0,
+                    "recursive_relative": 0.07500000000000011
+                  },
+                  {
+                    "iteration": 1,
+                    "recursive_relative": 1.555751340996443e-17,
+                    "alpha": 1.0697674418604652,
+                    "curvature": 0.20922929115731853
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 1.6190856932937895e-16,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 2,
+                "actual_original_calls": 1
+              }
+            },
+            {
+              "step": 2,
+              "rhs_key": "rhs17",
+              "input_sha256": "785086bb893e61198bd2b91b191dbc165d9484521e0fdf8a44dce50fd12373f1",
+              "output": "o1",
+              "controller": {
+                "status": "internal-converged",
+                "iterations": 1,
+                "operator_calls": 2,
+                "trace": [
+                  {
+                    "iteration": 0,
+                    "recursive_relative": 0.07500000000000007
+                  },
+                  {
+                    "iteration": 1,
+                    "recursive_relative": 1.2272300817084622e-17,
+                    "alpha": 1.069767441860465,
+                    "curvature": 0.1810529290706919
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 1.4843179875008315e-16,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 2,
+                "actual_original_calls": 1
+              }
+            },
+            {
+              "step": 3,
+              "rhs_key": "rhs18",
+              "input_sha256": "e8d29f6010b97c17cff43ca47d2ee6b433872faab39bc0b805b2d719d4657d95",
+              "output": "o2",
+              "controller": {
+                "status": "internal-converged",
+                "iterations": 1,
+                "operator_calls": 2,
+                "trace": [
+                  {
+                    "iteration": 0,
+                    "recursive_relative": 0.07499999999999993
+                  },
+                  {
+                    "iteration": 1,
+                    "recursive_relative": 0.0,
+                    "alpha": 1.069767441860465,
+                    "curvature": 0.15667100406333476
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 5.641445814894662e-17,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 2,
+                "actual_original_calls": 1
+              }
+            },
+            {
+              "step": 4,
+              "rhs_key": "rhs19",
+              "input_sha256": "c25560da040781edacd23b26fd95373c145f86daf18af1a6fec5dcd3127ff590",
+              "output": "o3",
+              "controller": {
+                "status": "internal-converged",
+                "iterations": 1,
+                "operator_calls": 2,
+                "trace": [
+                  {
+                    "iteration": 0,
+                    "recursive_relative": 0.07500000000000012
+                  },
+                  {
+                    "iteration": 1,
+                    "recursive_relative": 1.3130145110012738e-17,
+                    "alpha": 1.0697674418604652,
+                    "curvature": 0.13557252920569862
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 2.712151111699525e-16,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 2,
+                "actual_original_calls": 1
+              }
+            }
+          ]
+        },
+        {
+          "route": "host",
+          "target": 1e-08,
+          "policy": "fixed",
+          "wall_ms": 4.748078994452953,
+          "steps_completed": 4,
+          "step_records": [
+            {
+              "step": 1,
+              "rhs_key": "rhs20",
+              "input_sha256": "6b672d7602e3f2249d55f60c6eeef502ec5f5e31371d44c5cb41a526c26b382f",
+              "output": "o0",
+              "controller": {
+                "status": "internal-converged",
+                "iterations": 1,
+                "operator_calls": 2,
+                "trace": [
+                  {
+                    "iteration": 0,
+                    "recursive_relative": 0.07500000000000011
+                  },
+                  {
+                    "iteration": 1,
+                    "recursive_relative": 1.555751340996443e-17,
+                    "alpha": 1.0697674418604652,
+                    "curvature": 0.20922929115731853
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 1.6190856932937895e-16,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 2,
+                "actual_original_calls": 1
+              }
+            },
+            {
+              "step": 2,
+              "rhs_key": "rhs21",
+              "input_sha256": "785086bb893e61198bd2b91b191dbc165d9484521e0fdf8a44dce50fd12373f1",
+              "output": "o1",
+              "controller": {
+                "status": "internal-converged",
+                "iterations": 1,
+                "operator_calls": 2,
+                "trace": [
+                  {
+                    "iteration": 0,
+                    "recursive_relative": 0.07500000000000007
+                  },
+                  {
+                    "iteration": 1,
+                    "recursive_relative": 1.2272300817084622e-17,
+                    "alpha": 1.069767441860465,
+                    "curvature": 0.1810529290706919
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 1.4843179875008315e-16,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 2,
+                "actual_original_calls": 1
+              }
+            },
+            {
+              "step": 3,
+              "rhs_key": "rhs22",
+              "input_sha256": "e8d29f6010b97c17cff43ca47d2ee6b433872faab39bc0b805b2d719d4657d95",
+              "output": "o2",
+              "controller": {
+                "status": "internal-converged",
+                "iterations": 1,
+                "operator_calls": 2,
+                "trace": [
+                  {
+                    "iteration": 0,
+                    "recursive_relative": 0.07499999999999993
+                  },
+                  {
+                    "iteration": 1,
+                    "recursive_relative": 0.0,
+                    "alpha": 1.069767441860465,
+                    "curvature": 0.15667100406333476
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 5.641445814894662e-17,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 2,
+                "actual_original_calls": 1
+              }
+            },
+            {
+              "step": 4,
+              "rhs_key": "rhs23",
+              "input_sha256": "c25560da040781edacd23b26fd95373c145f86daf18af1a6fec5dcd3127ff590",
+              "output": "o3",
+              "controller": {
+                "status": "internal-converged",
+                "iterations": 1,
+                "operator_calls": 2,
+                "trace": [
+                  {
+                    "iteration": 0,
+                    "recursive_relative": 0.07500000000000012
+                  },
+                  {
+                    "iteration": 1,
+                    "recursive_relative": 1.3130145110012738e-17,
+                    "alpha": 1.0697674418604652,
+                    "curvature": 0.13557252920569862
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 2.712151111699525e-16,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 2,
+                "actual_original_calls": 1
+              }
+            }
+          ]
+        },
+        {
+          "route": "resident",
+          "target": 1e-08,
+          "policy": "reliable",
+          "wall_ms": 6.107437999162357,
+          "steps_completed": 4,
+          "step_records": [
+            {
+              "step": 1,
+              "rhs_key": "rhs24",
+              "input_sha256": "6b672d7602e3f2249d55f60c6eeef502ec5f5e31371d44c5cb41a526c26b382f",
+              "output": "o4",
+              "controller": {
+                "status": "original-converged",
+                "iterations": 1,
+                "operator_calls": 3,
+                "low_operator_calls": 1,
+                "high_operator_calls": 2,
+                "fallback": false,
+                "original_relative": 0.0,
+                "trace": [
+                  {
+                    "phase": "low-correction",
+                    "low_operator_calls": 1,
+                    "inner_status": "internal-converged",
+                    "inner_trace": [
+                      {
+                        "iteration": 0,
+                        "recursive_relative": 1.0
+                      },
+                      {
+                        "iteration": 1,
+                        "recursive_relative": 1.9509950370385755e-16,
+                        "alpha": 1.0697674418604652,
+                        "curvature": 0.20922929115731764
+                      }
+                    ],
+                    "original_before": 0.07499999999999996,
+                    "original_candidate": 0.0,
+                    "accepted": true
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 0.0,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 1,
+                "actual_original_calls": 3
+              }
+            },
+            {
+              "step": 2,
+              "rhs_key": "rhs25",
+              "input_sha256": "88931310cc2104ef2d4f0a2e1fead7f3217082cc63165e61cd2d30bb4b4a9789",
+              "output": "o5",
+              "controller": {
+                "status": "original-converged",
+                "iterations": 1,
+                "operator_calls": 3,
+                "low_operator_calls": 1,
+                "high_operator_calls": 2,
+                "fallback": false,
+                "original_relative": 0.0,
+                "trace": [
+                  {
+                    "phase": "low-correction",
+                    "low_operator_calls": 1,
+                    "inner_status": "internal-converged",
+                    "inner_trace": [
+                      {
+                        "iteration": 0,
+                        "recursive_relative": 1.0
+                      },
+                      {
+                        "iteration": 1,
+                        "recursive_relative": 2.4738633125013867e-16,
+                        "alpha": 1.069767441860465,
+                        "curvature": 0.18105292907069137
+                      }
+                    ],
+                    "original_before": 0.07499999999999997,
+                    "original_candidate": 0.0,
+                    "accepted": true
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 0.0,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 1,
+                "actual_original_calls": 3
+              }
+            },
+            {
+              "step": 3,
+              "rhs_key": "rhs26",
+              "input_sha256": "c4bfc52e3d403de0e0e1c7bf5f8dadb1e69d57c4d3a3d6a3f8d0e2f6e6536006",
+              "output": "o6",
+              "controller": {
+                "status": "original-converged",
+                "iterations": 1,
+                "operator_calls": 3,
+                "low_operator_calls": 1,
+                "high_operator_calls": 2,
+                "fallback": false,
+                "original_relative": 0.0,
+                "trace": [
+                  {
+                    "phase": "low-correction",
+                    "low_operator_calls": 1,
+                    "inner_status": "internal-converged",
+                    "inner_trace": [
+                      {
+                        "iteration": 0,
+                        "recursive_relative": 1.0
+                      },
+                      {
+                        "iteration": 1,
+                        "recursive_relative": 0.0,
+                        "alpha": 1.069767441860465,
+                        "curvature": 0.15667100406333476
+                      }
+                    ],
+                    "original_before": 0.0749999999999999,
+                    "original_candidate": 0.0,
+                    "accepted": true
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 0.0,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 1,
+                "actual_original_calls": 3
+              }
+            },
+            {
+              "step": 4,
+              "rhs_key": "rhs27",
+              "input_sha256": "916e459797143f18aeda83011ca0d6e17b144f2fd484a06fe4c4853d75bb8ed5",
+              "output": "o7",
+              "controller": {
+                "status": "original-converged",
+                "iterations": 1,
+                "operator_calls": 3,
+                "low_operator_calls": 1,
+                "high_operator_calls": 2,
+                "fallback": false,
+                "original_relative": 0.0,
+                "trace": [
+                  {
+                    "phase": "low-correction",
+                    "low_operator_calls": 1,
+                    "inner_status": "internal-converged",
+                    "inner_trace": [
+                      {
+                        "iteration": 0,
+                        "recursive_relative": 1.0
+                      },
+                      {
+                        "iteration": 1,
+                        "recursive_relative": 0.0,
+                        "alpha": 1.0697674418604652,
+                        "curvature": 0.13557252920569787
+                      }
+                    ],
+                    "original_before": 0.07499999999999986,
+                    "original_candidate": 0.0,
+                    "accepted": true
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 0.0,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 1,
+                "actual_original_calls": 3
+              }
+            }
+          ]
+        },
+        {
+          "route": "host",
+          "target": 1e-08,
+          "policy": "reliable",
+          "wall_ms": 6.178398005431518,
+          "steps_completed": 4,
+          "step_records": [
+            {
+              "step": 1,
+              "rhs_key": "rhs28",
+              "input_sha256": "6b672d7602e3f2249d55f60c6eeef502ec5f5e31371d44c5cb41a526c26b382f",
+              "output": "o4",
+              "controller": {
+                "status": "original-converged",
+                "iterations": 1,
+                "operator_calls": 3,
+                "low_operator_calls": 1,
+                "high_operator_calls": 2,
+                "fallback": false,
+                "original_relative": 0.0,
+                "trace": [
+                  {
+                    "phase": "low-correction",
+                    "low_operator_calls": 1,
+                    "inner_status": "internal-converged",
+                    "inner_trace": [
+                      {
+                        "iteration": 0,
+                        "recursive_relative": 1.0
+                      },
+                      {
+                        "iteration": 1,
+                        "recursive_relative": 1.9509950370385755e-16,
+                        "alpha": 1.0697674418604652,
+                        "curvature": 0.20922929115731764
+                      }
+                    ],
+                    "original_before": 0.07499999999999996,
+                    "original_candidate": 0.0,
+                    "accepted": true
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 0.0,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 1,
+                "actual_original_calls": 3
+              }
+            },
+            {
+              "step": 2,
+              "rhs_key": "rhs29",
+              "input_sha256": "88931310cc2104ef2d4f0a2e1fead7f3217082cc63165e61cd2d30bb4b4a9789",
+              "output": "o5",
+              "controller": {
+                "status": "original-converged",
+                "iterations": 1,
+                "operator_calls": 3,
+                "low_operator_calls": 1,
+                "high_operator_calls": 2,
+                "fallback": false,
+                "original_relative": 0.0,
+                "trace": [
+                  {
+                    "phase": "low-correction",
+                    "low_operator_calls": 1,
+                    "inner_status": "internal-converged",
+                    "inner_trace": [
+                      {
+                        "iteration": 0,
+                        "recursive_relative": 1.0
+                      },
+                      {
+                        "iteration": 1,
+                        "recursive_relative": 2.4738633125013867e-16,
+                        "alpha": 1.069767441860465,
+                        "curvature": 0.18105292907069137
+                      }
+                    ],
+                    "original_before": 0.07499999999999997,
+                    "original_candidate": 0.0,
+                    "accepted": true
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 0.0,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 1,
+                "actual_original_calls": 3
+              }
+            },
+            {
+              "step": 3,
+              "rhs_key": "rhs30",
+              "input_sha256": "c4bfc52e3d403de0e0e1c7bf5f8dadb1e69d57c4d3a3d6a3f8d0e2f6e6536006",
+              "output": "o6",
+              "controller": {
+                "status": "original-converged",
+                "iterations": 1,
+                "operator_calls": 3,
+                "low_operator_calls": 1,
+                "high_operator_calls": 2,
+                "fallback": false,
+                "original_relative": 0.0,
+                "trace": [
+                  {
+                    "phase": "low-correction",
+                    "low_operator_calls": 1,
+                    "inner_status": "internal-converged",
+                    "inner_trace": [
+                      {
+                        "iteration": 0,
+                        "recursive_relative": 1.0
+                      },
+                      {
+                        "iteration": 1,
+                        "recursive_relative": 0.0,
+                        "alpha": 1.069767441860465,
+                        "curvature": 0.15667100406333476
+                      }
+                    ],
+                    "original_before": 0.0749999999999999,
+                    "original_candidate": 0.0,
+                    "accepted": true
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 0.0,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 1,
+                "actual_original_calls": 3
+              }
+            },
+            {
+              "step": 4,
+              "rhs_key": "rhs31",
+              "input_sha256": "916e459797143f18aeda83011ca0d6e17b144f2fd484a06fe4c4853d75bb8ed5",
+              "output": "o7",
+              "controller": {
+                "status": "original-converged",
+                "iterations": 1,
+                "operator_calls": 3,
+                "low_operator_calls": 1,
+                "high_operator_calls": 2,
+                "fallback": false,
+                "original_relative": 0.0,
+                "trace": [
+                  {
+                    "phase": "low-correction",
+                    "low_operator_calls": 1,
+                    "inner_status": "internal-converged",
+                    "inner_trace": [
+                      {
+                        "iteration": 0,
+                        "recursive_relative": 1.0
+                      },
+                      {
+                        "iteration": 1,
+                        "recursive_relative": 0.0,
+                        "alpha": 1.0697674418604652,
+                        "curvature": 0.13557252920569787
+                      }
+                    ],
+                    "original_before": 0.07499999999999986,
+                    "original_candidate": 0.0,
+                    "accepted": true
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 0.0,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 1,
+                "actual_original_calls": 3
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "steps": 8,
+      "reaction": 800.0,
+      "setup_ms": 14.66511499893386,
+      "method_metadata": {
+        "family": "libceed-cuda",
+        "requested_resource": "/gpu/cuda/ref",
+        "root_resource": "/gpu/cuda/ref",
+        "precision": "FP64 CeedScalar API; not an executed instruction trace",
+        "source_commit": "3e98d546622c05ba46cfce6d4ba2e7d0b9ad4b97",
+        "libceed_binary_sha256": "d7616cf9b1025d4a87da3d25afff661e481edd4b91de4c34d6bc081525f6a7cb",
+        "bridge_binary_sha256": "ccb27b9a39ad75cfe564247d38272e46e3147cde7630a3f9cf5d35722eadb550",
+        "python_named_device_buffers": {
+          "data": 512,
+          "masked": 512,
+          "output": 512,
+          "boundary": 64
+        },
+        "python_named_owned_device_bytes": 1600,
+        "libceed_requested_qdata_bytes": 2048,
+        "libceed_requested_index_bytes": 256,
+        "memory_scope": "CuPy named buffers plus separate libCEED request categories; opaque library workspace/cache/temporary physical peak excluded",
+        "completion": "Mask, actual CEED apply, original boundary identity, current-context device sync; legacy stream0; no graph/cold-system/dispatch-trace claim"
+      },
+      "original_metadata": {
+        "family": "direct-cuda-sumfactorization",
+        "component_precision": "fp64",
+        "input_output_storage": "fp64",
+        "threads": 256,
+        "local_kernel_attributes": {
+          "max_threads_per_block": 1024,
+          "shared_size_bytes": 0,
+          "const_size_bytes": 0,
+          "local_size_bytes": 0,
+          "num_regs": 40,
+          "ptx_version": 120,
+          "binary_version": 120,
+          "cache_mode_ca": 0,
+          "max_dynamic_shared_size_bytes": 49152,
+          "preferred_shared_memory_carveout": -1
+        },
+        "assembly_kernel_attributes": {
+          "max_threads_per_block": 1024,
+          "shared_size_bytes": 0,
+          "const_size_bytes": 0,
+          "local_size_bytes": 0,
+          "num_regs": 40,
+          "ptx_version": 120,
+          "binary_version": 120,
+          "cache_mode_ca": 0,
+          "max_dynamic_shared_size_bytes": 49152,
+          "preferred_shared_memory_carveout": -1
+        },
+        "named_owned_device_bytes": 2528,
+        "named_device_buffers": {
+          "data": 512,
+          "output": 512,
+          "local": 512,
+          "indices": 256,
+          "stiffness": 128,
+          "weights": 32,
+          "mass": 512,
+          "boundary": 64
+        },
+        "memory_scope": "Named buffers only; excludes allocator cache, module/JIT/driver and temporary physical peaks",
+        "completion": "Two complete uncaptured kernels plus current-context device synchronization; default stream0, no graph/cold-system claim"
+      },
+      "retained_gpu_state_rhs_bytes": 8192,
+      "memory_scope": "Named plan/vector categories plus retained step references; no temporary/cached/physical-peak claim",
+      "outputs": {
+        "o0": {
+          "label": "step0",
+          "key": "p0",
+          "input_sha256": "2a3fad563f536dd166af1e66da6f1eb480dbec0689404818527697b901b95503",
+          "output_sha256": "5d6a0d4ea343d4ea53bbd801b314a9921872b4966672520a67ec7786621066fc",
+          "shape": [
+            64
+          ],
+          "dtype": "<f8",
+          "encoding": "full",
+          "base": null
+        },
+        "o1": {
+          "label": "step1",
+          "key": "p1",
+          "input_sha256": "3a9c4bedbad6dc1f03b7c14e5ed43231f1cf1f35069d2483138f0b1a8347b7c1",
+          "output_sha256": "128bd6c2051c5bec039cec8135fcd9ac0d8fccb0386330a85928e53cd4892942",
+          "shape": [
+            64
+          ],
+          "dtype": "<f8",
+          "encoding": "full",
+          "base": null
+        },
+        "o2": {
+          "label": "step2",
+          "key": "p2",
+          "input_sha256": "88457a16d486a347d675b98698d3859b9675eb13a9abd9bd6e058416ef826d53",
+          "output_sha256": "306870c043523f504a6c43324e504ba3b0cb209d1ff47b1da696a0f99db17fa9",
+          "shape": [
+            64
+          ],
+          "dtype": "<f8",
+          "encoding": "full",
+          "base": null
+        },
+        "o3": {
+          "label": "step3",
+          "key": "p3",
+          "input_sha256": "a311bb31bcb318a667b530a811ec85c2ce1a263028b6f265b3a95992330c86c0",
+          "output_sha256": "a13a2c67e3ea7e7838be1b86d5ae6dcdf3cdc345016a6b7b6adfd576103496bf",
+          "shape": [
+            64
+          ],
+          "dtype": "<f8",
+          "encoding": "full",
+          "base": null
+        },
+        "o4": {
+          "label": "step4",
+          "key": "p4",
+          "input_sha256": "4dbeaf64218cd91a054ec25b94026a8292812fdc312f451bd2a5d0daef359b7a",
+          "output_sha256": "be3433f48669e9d295fbaa37d76ca837f9b323949fa3b56e0ef1df5ce8839dda",
+          "shape": [
+            64
+          ],
+          "dtype": "<f8",
+          "encoding": "full",
+          "base": null
+        },
+        "o5": {
+          "label": "step5",
+          "key": "p5",
+          "input_sha256": "a6f22b9c58a8ed2620b6236bf5dc2ffbf2942a541ee90e8336fd555f7e3edcf8",
+          "output_sha256": "f9e55a80da312ad3f1601dad9c86faf00a76bc934066b539dfa5806609b429fb",
+          "shape": [
+            64
+          ],
+          "dtype": "<f8",
+          "encoding": "full",
+          "base": null
+        },
+        "o6": {
+          "label": "step6",
+          "key": "p6",
+          "input_sha256": "596701304605830ac40343afdf066c53fe78c1dd844bd44d3064386065804edd",
+          "output_sha256": "77cc6ea821d2c0dd2237674ad29f8a1151983d0abc4b356c914c7831ba37723e",
+          "shape": [
+            64
+          ],
+          "dtype": "<f8",
+          "encoding": "full",
+          "base": null
+        },
+        "o7": {
+          "label": "step7",
+          "key": "p7",
+          "input_sha256": "f9e82b7a325228337fab1c72255c2227d31f9aca9dac8767e0a996b30c429e83",
+          "output_sha256": "a74e567d484f2e858f99055988e7585b07d961e817d4a219c3b22172e7ab961d",
+          "shape": [
+            64
+          ],
+          "dtype": "<f8",
+          "encoding": "full",
+          "base": null
+        },
+        "o8": {
+          "label": "step0",
+          "key": "p8",
+          "input_sha256": "2a3fad563f536dd166af1e66da6f1eb480dbec0689404818527697b901b95503",
+          "output_sha256": "acf3ea9b6cd8c8bca2cc5ea859f5b25db01c565b2ce3a5f32f91761416a0953c",
+          "shape": [
+            64
+          ],
+          "dtype": "<f8",
+          "encoding": "xor64",
+          "base": "p0",
+          "base_sha256": "5d6a0d4ea343d4ea53bbd801b314a9921872b4966672520a67ec7786621066fc"
+        },
+        "o9": {
+          "label": "step1",
+          "key": "p9",
+          "input_sha256": "24f8654782ea38599a901442a1e9cbaa535afb72709d77a9fd3a938d7dcfdf8b",
+          "output_sha256": "9582fa1bbe69c9dd9958294d4a5526efdad4671c67d0f83f501127f76497ac09",
+          "shape": [
+            64
+          ],
+          "dtype": "<f8",
+          "encoding": "xor64",
+          "base": "p1",
+          "base_sha256": "128bd6c2051c5bec039cec8135fcd9ac0d8fccb0386330a85928e53cd4892942"
+        },
+        "o10": {
+          "label": "step2",
+          "key": "p10",
+          "input_sha256": "c5111b1cd6aedb6246d03870b1e3ac4d8c84928f8a9e2812d7b42c9cefd8aeb8",
+          "output_sha256": "d1f3a43649f813eeb555bd76178bc80579e9dddf39a66ea4801bc9b7b18d8b14",
+          "shape": [
+            64
+          ],
+          "dtype": "<f8",
+          "encoding": "xor64",
+          "base": "p2",
+          "base_sha256": "306870c043523f504a6c43324e504ba3b0cb209d1ff47b1da696a0f99db17fa9"
+        },
+        "o11": {
+          "label": "step3",
+          "key": "p11",
+          "input_sha256": "82369c72610a9fbadcb6132387c66253e83770066a9ffc2523319fc2e5464d18",
+          "output_sha256": "c4c345e25984ee8478ae5c4a76d61c7d8fedfd8a362114c0e4e4f1a2a18bbee2",
+          "shape": [
+            64
+          ],
+          "dtype": "<f8",
+          "encoding": "xor64",
+          "base": "p3",
+          "base_sha256": "a13a2c67e3ea7e7838be1b86d5ae6dcdf3cdc345016a6b7b6adfd576103496bf"
+        },
+        "o12": {
+          "label": "step4",
+          "key": "p12",
+          "input_sha256": "f3bae70418d983c878a520ab187b01c1cd06e359b602a15e13aa9afd6a53b95e",
+          "output_sha256": "f41edf63c5449e6f27086547415303c9ab9745f97e6a97cded5ef1338b6b1ee0",
+          "shape": [
+            64
+          ],
+          "dtype": "<f8",
+          "encoding": "xor64",
+          "base": "p4",
+          "base_sha256": "be3433f48669e9d295fbaa37d76ca837f9b323949fa3b56e0ef1df5ce8839dda"
+        },
+        "o13": {
+          "label": "step5",
+          "key": "p13",
+          "input_sha256": "9cd6948d0192597d1f35b59988ec46b7e43703ccaed68ace5c990437952162d7",
+          "output_sha256": "5dd9d5f6da8c5c052480954d635db49f61d970b2f0400bfc1918cef4abffce85",
+          "shape": [
+            64
+          ],
+          "dtype": "<f8",
+          "encoding": "xor64",
+          "base": "p5",
+          "base_sha256": "f9e55a80da312ad3f1601dad9c86faf00a76bc934066b539dfa5806609b429fb"
+        },
+        "o14": {
+          "label": "step6",
+          "key": "p14",
+          "input_sha256": "8b43bb491a2b5b990411ebcbbf0d82ba87d182254856d278172253139caf7d87",
+          "output_sha256": "e0a7f16e6a2e7a564b5a9ef305d84049e0ab5b00971376eeb564a7e9c1cbeae0",
+          "shape": [
+            64
+          ],
+          "dtype": "<f8",
+          "encoding": "xor64",
+          "base": "p6",
+          "base_sha256": "77cc6ea821d2c0dd2237674ad29f8a1151983d0abc4b356c914c7831ba37723e"
+        },
+        "o15": {
+          "label": "step7",
+          "key": "p15",
+          "input_sha256": "446352b7d290129f0123115d4fcc2bc6c0725b26b408772d1ce4806ed3a9c297",
+          "output_sha256": "a4711873dd0ba518a9fac24088f236451fb08f17d04cf1478f036e56968aa0f3",
+          "shape": [
+            64
+          ],
+          "dtype": "<f8",
+          "encoding": "xor64",
+          "base": "p7",
+          "base_sha256": "a74e567d484f2e858f99055988e7585b07d961e817d4a219c3b22172e7ab961d"
+        }
+      },
+      "payloads": [
+        {
+          "path": "results/pde-full-a/e1-q4/case-04-heat8-part-0.npz",
+          "sha256": "b37ad7b8222a78beae831eff298e35f17d44e73f12f0c172e1f6a4a869f86699",
+          "keys": [
+            "p0",
+            "p1",
+            "p10",
+            "p11",
+            "p12",
+            "p13",
+            "p14",
+            "p15",
+            "p2",
+            "p3",
+            "p4",
+            "p5",
+            "p6",
+            "p7",
+            "p8",
+            "p9",
+            "rhs0",
+            "rhs1",
+            "rhs10",
+            "rhs11",
+            "rhs12",
+            "rhs13",
+            "rhs14",
+            "rhs15",
+            "rhs16",
+            "rhs17",
+            "rhs18",
+            "rhs19",
+            "rhs2",
+            "rhs20",
+            "rhs21",
+            "rhs22",
+            "rhs23",
+            "rhs24",
+            "rhs25",
+            "rhs26",
+            "rhs27",
+            "rhs28",
+            "rhs29",
+            "rhs3",
+            "rhs30",
+            "rhs31",
+            "rhs32",
+            "rhs33",
+            "rhs34",
+            "rhs35",
+            "rhs36",
+            "rhs37",
+            "rhs38",
+            "rhs39",
+            "rhs4",
+            "rhs40",
+            "rhs41",
+            "rhs42",
+            "rhs43",
+            "rhs44",
+            "rhs45",
+            "rhs46",
+            "rhs47",
+            "rhs48",
+            "rhs49",
+            "rhs5",
+            "rhs50",
+            "rhs51",
+            "rhs52",
+            "rhs53",
+            "rhs54",
+            "rhs55",
+            "rhs56",
+            "rhs57",
+            "rhs58",
+            "rhs59",
+            "rhs6",
+            "rhs60",
+            "rhs61",
+            "rhs62",
+            "rhs63",
+            "rhs7",
+            "rhs8",
+            "rhs9"
+          ]
+        }
+      ],
+      "runs": [
+        {
+          "route": "resident",
+          "target": 0.001,
+          "policy": "fixed",
+          "wall_ms": 44.94395299843745,
+          "steps_completed": 8,
+          "step_records": [
+            {
+              "step": 1,
+              "rhs_key": "rhs0",
+              "input_sha256": "2a3fad563f536dd166af1e66da6f1eb480dbec0689404818527697b901b95503",
+              "output": "o0",
+              "controller": {
+                "status": "internal-converged",
+                "iterations": 1,
+                "operator_calls": 2,
+                "trace": [
+                  {
+                    "iteration": 0,
+                    "recursive_relative": 0.037499999999999825
+                  },
+                  {
+                    "iteration": 1,
+                    "recursive_relative": 5.708046891667266e-18,
+                    "alpha": 1.036144578313253,
+                    "curvature": 0.1155449266963195
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 1.2915835726171898e-16,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 2,
+                "actual_original_calls": 1
+              }
+            },
+            {
+              "step": 2,
+              "rhs_key": "rhs1",
+              "input_sha256": "3a9c4bedbad6dc1f03b7c14e5ed43231f1cf1f35069d2483138f0b1a8347b7c1",
+              "output": "o1",
+              "controller": {
+                "status": "internal-converged",
+                "iterations": 1,
+                "operator_calls": 2,
+                "trace": [
+                  {
+                    "iteration": 0,
+                    "recursive_relative": 0.037500000000000124
+                  },
+                  {
+                    "iteration": 1,
+                    "recursive_relative": 1.0850769767999767e-17,
+                    "alpha": 1.0361445783132532,
+                    "curvature": 0.1073432328141177
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 2.265043754849867e-16,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 2,
+                "actual_original_calls": 1
+              }
+            },
+            {
+              "step": 3,
+              "rhs_key": "rhs2",
+              "input_sha256": "88457a16d486a347d675b98698d3859b9675eb13a9abd9bd6e058416ef826d53",
+              "output": "o2",
+              "controller": {
+                "status": "internal-converged",
+                "iterations": 1,
+                "operator_calls": 2,
+                "trace": [
+                  {
+                    "iteration": 0,
+                    "recursive_relative": 0.03749999999999976
+                  },
+                  {
+                    "iteration": 1,
+                    "recursive_relative": 4.644561507945688e-18,
+                    "alpha": 1.036144578313253,
+                    "curvature": 0.09972371752218609
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 1.48625968254262e-16,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 2,
+                "actual_original_calls": 1
+              }
+            },
+            {
+              "step": 4,
+              "rhs_key": "rhs3",
+              "input_sha256": "a311bb31bcb318a667b530a811ec85c2ce1a263028b6f265b3a95992330c86c0",
+              "output": "o3",
+              "controller": {
+                "status": "internal-converged",
+                "iterations": 1,
+                "operator_calls": 2,
+                "trace": [
+                  {
+                    "iteration": 0,
+                    "recursive_relative": 0.03749999999999997
+                  },
+                  {
+                    "iteration": 1,
+                    "recursive_relative": 3.407358473077902e-18,
+                    "alpha": 1.036144578313253,
+                    "curvature": 0.0926450561971256
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 0.0,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 2,
+                "actual_original_calls": 1
+              }
+            },
+            {
+              "step": 5,
+              "rhs_key": "rhs4",
+              "input_sha256": "4dbeaf64218cd91a054ec25b94026a8292812fdc312f451bd2a5d0daef359b7a",
+              "output": "o4",
+              "controller": {
+                "status": "internal-converged",
+                "iterations": 1,
+                "operator_calls": 2,
+                "trace": [
+                  {
+                    "iteration": 0,
+                    "recursive_relative": 0.03750000000000011
+                  },
+                  {
+                    "iteration": 1,
+                    "recursive_relative": 6.123032419782658e-18,
+                    "alpha": 1.036144578313253,
+                    "curvature": 0.0860688575499504
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 1.875954310518657e-16,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 2,
+                "actual_original_calls": 1
+              }
+            },
+            {
+              "step": 6,
+              "rhs_key": "rhs5",
+              "input_sha256": "a6f22b9c58a8ed2620b6236bf5dc2ffbf2942a541ee90e8336fd555f7e3edcf8",
+              "output": "o5",
+              "controller": {
+                "status": "internal-converged",
+                "iterations": 1,
+                "operator_calls": 2,
+                "trace": [
+                  {
+                    "iteration": 0,
+                    "recursive_relative": 0.037499999999999714
+                  },
+                  {
+                    "iteration": 1,
+                    "recursive_relative": 5.501552934617266e-18,
+                    "alpha": 1.0361445783132532,
+                    "curvature": 0.07995945541002622
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 1.552612361563187e-16,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 2,
+                "actual_original_calls": 1
+              }
+            },
+            {
+              "step": 7,
+              "rhs_key": "rhs6",
+              "input_sha256": "596701304605830ac40343afdf066c53fe78c1dd844bd44d3064386065804edd",
+              "output": "o6",
+              "controller": {
+                "status": "internal-converged",
+                "iterations": 1,
+                "operator_calls": 2,
+                "trace": [
+                  {
+                    "iteration": 0,
+                    "recursive_relative": 0.03750000000000015
+                  },
+                  {
+                    "iteration": 1,
+                    "recursive_relative": 9.701498495000825e-18,
+                    "alpha": 1.036144578313253,
+                    "curvature": 0.07428371528874729
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 1.7220553980338316e-16,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 2,
+                "actual_original_calls": 1
+              }
+            },
+            {
+              "step": 8,
+              "rhs_key": "rhs7",
+              "input_sha256": "f9e82b7a325228337fab1c72255c2227d31f9aca9dac8767e0a996b30c429e83",
+              "output": "o7",
+              "controller": {
+                "status": "internal-converged",
+                "iterations": 1,
+                "operator_calls": 2,
+                "trace": [
+                  {
+                    "iteration": 0,
+                    "recursive_relative": 0.0374999999999998
+                  },
+                  {
+                    "iteration": 1,
+                    "recursive_relative": 0.0,
+                    "alpha": 1.0361445783132532,
+                    "curvature": 0.069010854673824
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 1.7866324754601003e-16,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 2,
+                "actual_original_calls": 1
+              }
+            }
+          ]
+        },
+        {
+          "route": "host",
+          "target": 0.001,
+          "policy": "fixed",
+          "wall_ms": 9.31924700125819,
+          "steps_completed": 8,
+          "step_records": [
+            {
+              "step": 1,
+              "rhs_key": "rhs8",
+              "input_sha256": "2a3fad563f536dd166af1e66da6f1eb480dbec0689404818527697b901b95503",
+              "output": "o0",
+              "controller": {
+                "status": "internal-converged",
+                "iterations": 1,
+                "operator_calls": 2,
+                "trace": [
+                  {
+                    "iteration": 0,
+                    "recursive_relative": 0.037499999999999825
+                  },
+                  {
+                    "iteration": 1,
+                    "recursive_relative": 5.708046891667266e-18,
+                    "alpha": 1.036144578313253,
+                    "curvature": 0.1155449266963195
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 1.2915835726171898e-16,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 2,
+                "actual_original_calls": 1
+              }
+            },
+            {
+              "step": 2,
+              "rhs_key": "rhs9",
+              "input_sha256": "3a9c4bedbad6dc1f03b7c14e5ed43231f1cf1f35069d2483138f0b1a8347b7c1",
+              "output": "o1",
+              "controller": {
+                "status": "internal-converged",
+                "iterations": 1,
+                "operator_calls": 2,
+                "trace": [
+                  {
+                    "iteration": 0,
+                    "recursive_relative": 0.037500000000000124
+                  },
+                  {
+                    "iteration": 1,
+                    "recursive_relative": 1.0850769767999767e-17,
+                    "alpha": 1.0361445783132532,
+                    "curvature": 0.1073432328141177
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 2.265043754849867e-16,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 2,
+                "actual_original_calls": 1
+              }
+            },
+            {
+              "step": 3,
+              "rhs_key": "rhs10",
+              "input_sha256": "88457a16d486a347d675b98698d3859b9675eb13a9abd9bd6e058416ef826d53",
+              "output": "o2",
+              "controller": {
+                "status": "internal-converged",
+                "iterations": 1,
+                "operator_calls": 2,
+                "trace": [
+                  {
+                    "iteration": 0,
+                    "recursive_relative": 0.03749999999999976
+                  },
+                  {
+                    "iteration": 1,
+                    "recursive_relative": 4.644561507945688e-18,
+                    "alpha": 1.036144578313253,
+                    "curvature": 0.09972371752218609
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 1.48625968254262e-16,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 2,
+                "actual_original_calls": 1
+              }
+            },
+            {
+              "step": 4,
+              "rhs_key": "rhs11",
+              "input_sha256": "a311bb31bcb318a667b530a811ec85c2ce1a263028b6f265b3a95992330c86c0",
+              "output": "o3",
+              "controller": {
+                "status": "internal-converged",
+                "iterations": 1,
+                "operator_calls": 2,
+                "trace": [
+                  {
+                    "iteration": 0,
+                    "recursive_relative": 0.03749999999999997
+                  },
+                  {
+                    "iteration": 1,
+                    "recursive_relative": 3.407358473077902e-18,
+                    "alpha": 1.036144578313253,
+                    "curvature": 0.0926450561971256
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 0.0,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 2,
+                "actual_original_calls": 1
+              }
+            },
+            {
+              "step": 5,
+              "rhs_key": "rhs12",
+              "input_sha256": "4dbeaf64218cd91a054ec25b94026a8292812fdc312f451bd2a5d0daef359b7a",
+              "output": "o4",
+              "controller": {
+                "status": "internal-converged",
+                "iterations": 1,
+                "operator_calls": 2,
+                "trace": [
+                  {
+                    "iteration": 0,
+                    "recursive_relative": 0.03750000000000011
+                  },
+                  {
+                    "iteration": 1,
+                    "recursive_relative": 6.123032419782658e-18,
+                    "alpha": 1.036144578313253,
+                    "curvature": 0.0860688575499504
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 1.875954310518657e-16,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 2,
+                "actual_original_calls": 1
+              }
+            },
+            {
+              "step": 6,
+              "rhs_key": "rhs13",
+              "input_sha256": "a6f22b9c58a8ed2620b6236bf5dc2ffbf2942a541ee90e8336fd555f7e3edcf8",
+              "output": "o5",
+              "controller": {
+                "status": "internal-converged",
+                "iterations": 1,
+                "operator_calls": 2,
+                "trace": [
+                  {
+                    "iteration": 0,
+                    "recursive_relative": 0.037499999999999714
+                  },
+                  {
+                    "iteration": 1,
+                    "recursive_relative": 5.501552934617266e-18,
+                    "alpha": 1.0361445783132532,
+                    "curvature": 0.07995945541002622
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 1.552612361563187e-16,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 2,
+                "actual_original_calls": 1
+              }
+            },
+            {
+              "step": 7,
+              "rhs_key": "rhs14",
+              "input_sha256": "596701304605830ac40343afdf066c53fe78c1dd844bd44d3064386065804edd",
+              "output": "o6",
+              "controller": {
+                "status": "internal-converged",
+                "iterations": 1,
+                "operator_calls": 2,
+                "trace": [
+                  {
+                    "iteration": 0,
+                    "recursive_relative": 0.03750000000000015
+                  },
+                  {
+                    "iteration": 1,
+                    "recursive_relative": 9.701498495000825e-18,
+                    "alpha": 1.036144578313253,
+                    "curvature": 0.07428371528874729
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 1.7220553980338316e-16,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 2,
+                "actual_original_calls": 1
+              }
+            },
+            {
+              "step": 8,
+              "rhs_key": "rhs15",
+              "input_sha256": "f9e82b7a325228337fab1c72255c2227d31f9aca9dac8767e0a996b30c429e83",
+              "output": "o7",
+              "controller": {
+                "status": "internal-converged",
+                "iterations": 1,
+                "operator_calls": 2,
+                "trace": [
+                  {
+                    "iteration": 0,
+                    "recursive_relative": 0.0374999999999998
+                  },
+                  {
+                    "iteration": 1,
+                    "recursive_relative": 0.0,
+                    "alpha": 1.0361445783132532,
+                    "curvature": 0.069010854673824
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 1.7866324754601003e-16,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 2,
+                "actual_original_calls": 1
+              }
+            }
+          ]
+        },
+        {
+          "route": "resident",
+          "target": 0.001,
+          "policy": "reliable",
+          "wall_ms": 15.447567995579448,
+          "steps_completed": 8,
+          "step_records": [
+            {
+              "step": 1,
+              "rhs_key": "rhs16",
+              "input_sha256": "2a3fad563f536dd166af1e66da6f1eb480dbec0689404818527697b901b95503",
+              "output": "o8",
+              "controller": {
+                "status": "original-converged",
+                "iterations": 1,
+                "operator_calls": 3,
+                "low_operator_calls": 1,
+                "high_operator_calls": 2,
+                "fallback": false,
+                "original_relative": 0.0,
+                "trace": [
+                  {
+                    "phase": "low-correction",
+                    "low_operator_calls": 1,
+                    "inner_status": "internal-converged",
+                    "inner_trace": [
+                      {
+                        "iteration": 0,
+                        "recursive_relative": 1.0
+                      },
+                      {
+                        "iteration": 1,
+                        "recursive_relative": 2.818466422799892e-16,
+                        "alpha": 1.036144578313253,
+                        "curvature": 0.11554492669632024
+                      }
+                    ],
+                    "original_before": 0.03749999999999995,
+                    "original_candidate": 0.0,
+                    "accepted": true
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 0.0,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 1,
+                "actual_original_calls": 3
+              }
+            },
+            {
+              "step": 2,
+              "rhs_key": "rhs17",
+              "input_sha256": "24f8654782ea38599a901442a1e9cbaa535afb72709d77a9fd3a938d7dcfdf8b",
+              "output": "o9",
+              "controller": {
+                "status": "original-converged",
+                "iterations": 1,
+                "operator_calls": 3,
+                "low_operator_calls": 1,
+                "high_operator_calls": 2,
+                "fallback": false,
+                "original_relative": 0.0,
+                "trace": [
+                  {
+                    "phase": "low-correction",
+                    "low_operator_calls": 1,
+                    "inner_status": "internal-converged",
+                    "inner_trace": [
+                      {
+                        "iteration": 0,
+                        "recursive_relative": 1.0
+                      },
+                      {
+                        "iteration": 1,
+                        "recursive_relative": 1.1937828775442765e-16,
+                        "alpha": 1.036144578313253,
+                        "curvature": 0.10734323281411638
+                      }
+                    ],
+                    "original_before": 0.0374999999999999,
+                    "original_candidate": 0.0,
+                    "accepted": true
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 0.0,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 1,
+                "actual_original_calls": 3
+              }
+            },
+            {
+              "step": 3,
+              "rhs_key": "rhs18",
+              "input_sha256": "c5111b1cd6aedb6246d03870b1e3ac4d8c84928f8a9e2812d7b42c9cefd8aeb8",
+              "output": "o10",
+              "controller": {
+                "status": "original-converged",
+                "iterations": 1,
+                "operator_calls": 3,
+                "low_operator_calls": 1,
+                "high_operator_calls": 2,
+                "fallback": false,
+                "original_relative": 0.0,
+                "trace": [
+                  {
+                    "phase": "low-correction",
+                    "low_operator_calls": 1,
+                    "inner_status": "internal-converged",
+                    "inner_trace": [
+                      {
+                        "iteration": 0,
+                        "recursive_relative": 1.0
+                      },
+                      {
+                        "iteration": 1,
+                        "recursive_relative": 0.0,
+                        "alpha": 1.036144578313253,
+                        "curvature": 0.09972371752218717
+                      }
+                    ],
+                    "original_before": 0.037499999999999964,
+                    "original_candidate": 0.0,
+                    "accepted": true
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 0.0,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 1,
+                "actual_original_calls": 3
+              }
+            },
+            {
+              "step": 4,
+              "rhs_key": "rhs19",
+              "input_sha256": "82369c72610a9fbadcb6132387c66253e83770066a9ffc2523319fc2e5464d18",
+              "output": "o11",
+              "controller": {
+                "status": "original-converged",
+                "iterations": 1,
+                "operator_calls": 3,
+                "low_operator_calls": 1,
+                "high_operator_calls": 2,
+                "fallback": false,
+                "original_relative": 0.0,
+                "trace": [
+                  {
+                    "phase": "low-correction",
+                    "low_operator_calls": 1,
+                    "inner_status": "internal-converged",
+                    "inner_trace": [
+                      {
+                        "iteration": 0,
+                        "recursive_relative": 1.0
+                      },
+                      {
+                        "iteration": 1,
+                        "recursive_relative": 1.2849953505316403e-16,
+                        "alpha": 1.0361445783132532,
+                        "curvature": 0.09264505619712568
+                      }
+                    ],
+                    "original_before": 0.0375,
+                    "original_candidate": 0.0,
+                    "accepted": true
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 0.0,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 1,
+                "actual_original_calls": 3
+              }
+            },
+            {
+              "step": 5,
+              "rhs_key": "rhs20",
+              "input_sha256": "f3bae70418d983c878a520ab187b01c1cd06e359b602a15e13aa9afd6a53b95e",
+              "output": "o12",
+              "controller": {
+                "status": "original-converged",
+                "iterations": 1,
+                "operator_calls": 3,
+                "low_operator_calls": 1,
+                "high_operator_calls": 2,
+                "fallback": false,
+                "original_relative": 0.0,
+                "trace": [
+                  {
+                    "phase": "low-correction",
+                    "low_operator_calls": 1,
+                    "inner_status": "internal-converged",
+                    "inner_trace": [
+                      {
+                        "iteration": 0,
+                        "recursive_relative": 1.0
+                      },
+                      {
+                        "iteration": 1,
+                        "recursive_relative": 1.333182676176579e-16,
+                        "alpha": 1.036144578313253,
+                        "curvature": 0.08606885754994958
+                      }
+                    ],
+                    "original_before": 0.037499999999999936,
+                    "original_candidate": 0.0,
+                    "accepted": true
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 0.0,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 1,
+                "actual_original_calls": 3
+              }
+            },
+            {
+              "step": 6,
+              "rhs_key": "rhs21",
+              "input_sha256": "9cd6948d0192597d1f35b59988ec46b7e43703ccaed68ace5c990437952162d7",
+              "output": "o13",
+              "controller": {
+                "status": "original-converged",
+                "iterations": 1,
+                "operator_calls": 3,
+                "low_operator_calls": 1,
+                "high_operator_calls": 2,
+                "fallback": false,
+                "original_relative": 0.0,
+                "trace": [
+                  {
+                    "phase": "low-correction",
+                    "low_operator_calls": 1,
+                    "inner_status": "internal-converged",
+                    "inner_trace": [
+                      {
+                        "iteration": 0,
+                        "recursive_relative": 1.0
+                      },
+                      {
+                        "iteration": 1,
+                        "recursive_relative": 0.0,
+                        "alpha": 1.0361445783132528,
+                        "curvature": 0.07995945541002687
+                      }
+                    ],
+                    "original_before": 0.03749999999999986,
+                    "original_candidate": 0.0,
+                    "accepted": true
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 0.0,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 1,
+                "actual_original_calls": 3
+              }
+            },
+            {
+              "step": 7,
+              "rhs_key": "rhs22",
+              "input_sha256": "8b43bb491a2b5b990411ebcbbf0d82ba87d182254856d278172253139caf7d87",
+              "output": "o14",
+              "controller": {
+                "status": "original-converged",
+                "iterations": 1,
+                "operator_calls": 3,
+                "low_operator_calls": 1,
+                "high_operator_calls": 2,
+                "fallback": false,
+                "original_relative": 0.0,
+                "trace": [
+                  {
+                    "phase": "low-correction",
+                    "low_operator_calls": 1,
+                    "inner_status": "internal-converged",
+                    "inner_trace": [
+                      {
+                        "iteration": 0,
+                        "recursive_relative": 1.0
+                      },
+                      {
+                        "iteration": 1,
+                        "recursive_relative": 1.4350461650281912e-16,
+                        "alpha": 1.036144578313253,
+                        "curvature": 0.07428371528874686
+                      }
+                    ],
+                    "original_before": 0.037500000000000054,
+                    "original_candidate": 0.0,
+                    "accepted": true
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 0.0,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 1,
+                "actual_original_calls": 3
+              }
+            },
+            {
+              "step": 8,
+              "rhs_key": "rhs23",
+              "input_sha256": "446352b7d290129f0123115d4fcc2bc6c0725b26b408772d1ce4806ed3a9c297",
+              "output": "o15",
+              "controller": {
+                "status": "original-converged",
+                "iterations": 1,
+                "operator_calls": 3,
+                "low_operator_calls": 1,
+                "high_operator_calls": 2,
+                "fallback": false,
+                "original_relative": 0.0,
+                "trace": [
+                  {
+                    "phase": "low-correction",
+                    "low_operator_calls": 1,
+                    "inner_status": "internal-converged",
+                    "inner_trace": [
+                      {
+                        "iteration": 0,
+                        "recursive_relative": 1.0
+                      },
+                      {
+                        "iteration": 1,
+                        "recursive_relative": 0.0,
+                        "alpha": 1.0361445783132528,
+                        "curvature": 0.06901085467382467
+                      }
+                    ],
+                    "original_before": 0.03749999999999997,
+                    "original_candidate": 0.0,
+                    "accepted": true
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 0.0,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 1,
+                "actual_original_calls": 3
+              }
+            }
+          ]
+        },
+        {
+          "route": "host",
+          "target": 0.001,
+          "policy": "reliable",
+          "wall_ms": 12.14733700180659,
+          "steps_completed": 8,
+          "step_records": [
+            {
+              "step": 1,
+              "rhs_key": "rhs24",
+              "input_sha256": "2a3fad563f536dd166af1e66da6f1eb480dbec0689404818527697b901b95503",
+              "output": "o8",
+              "controller": {
+                "status": "original-converged",
+                "iterations": 1,
+                "operator_calls": 3,
+                "low_operator_calls": 1,
+                "high_operator_calls": 2,
+                "fallback": false,
+                "original_relative": 0.0,
+                "trace": [
+                  {
+                    "phase": "low-correction",
+                    "low_operator_calls": 1,
+                    "inner_status": "internal-converged",
+                    "inner_trace": [
+                      {
+                        "iteration": 0,
+                        "recursive_relative": 1.0
+                      },
+                      {
+                        "iteration": 1,
+                        "recursive_relative": 2.818466422799892e-16,
+                        "alpha": 1.036144578313253,
+                        "curvature": 0.11554492669632024
+                      }
+                    ],
+                    "original_before": 0.03749999999999995,
+                    "original_candidate": 0.0,
+                    "accepted": true
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 0.0,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 1,
+                "actual_original_calls": 3
+              }
+            },
+            {
+              "step": 2,
+              "rhs_key": "rhs25",
+              "input_sha256": "24f8654782ea38599a901442a1e9cbaa535afb72709d77a9fd3a938d7dcfdf8b",
+              "output": "o9",
+              "controller": {
+                "status": "original-converged",
+                "iterations": 1,
+                "operator_calls": 3,
+                "low_operator_calls": 1,
+                "high_operator_calls": 2,
+                "fallback": false,
+                "original_relative": 0.0,
+                "trace": [
+                  {
+                    "phase": "low-correction",
+                    "low_operator_calls": 1,
+                    "inner_status": "internal-converged",
+                    "inner_trace": [
+                      {
+                        "iteration": 0,
+                        "recursive_relative": 1.0
+                      },
+                      {
+                        "iteration": 1,
+                        "recursive_relative": 1.1937828775442765e-16,
+                        "alpha": 1.036144578313253,
+                        "curvature": 0.10734323281411638
+                      }
+                    ],
+                    "original_before": 0.0374999999999999,
+                    "original_candidate": 0.0,
+                    "accepted": true
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 0.0,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 1,
+                "actual_original_calls": 3
+              }
+            },
+            {
+              "step": 3,
+              "rhs_key": "rhs26",
+              "input_sha256": "c5111b1cd6aedb6246d03870b1e3ac4d8c84928f8a9e2812d7b42c9cefd8aeb8",
+              "output": "o10",
+              "controller": {
+                "status": "original-converged",
+                "iterations": 1,
+                "operator_calls": 3,
+                "low_operator_calls": 1,
+                "high_operator_calls": 2,
+                "fallback": false,
+                "original_relative": 0.0,
+                "trace": [
+                  {
+                    "phase": "low-correction",
+                    "low_operator_calls": 1,
+                    "inner_status": "internal-converged",
+                    "inner_trace": [
+                      {
+                        "iteration": 0,
+                        "recursive_relative": 1.0
+                      },
+                      {
+                        "iteration": 1,
+                        "recursive_relative": 0.0,
+                        "alpha": 1.036144578313253,
+                        "curvature": 0.09972371752218717
+                      }
+                    ],
+                    "original_before": 0.037499999999999964,
+                    "original_candidate": 0.0,
+                    "accepted": true
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 0.0,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 1,
+                "actual_original_calls": 3
+              }
+            },
+            {
+              "step": 4,
+              "rhs_key": "rhs27",
+              "input_sha256": "82369c72610a9fbadcb6132387c66253e83770066a9ffc2523319fc2e5464d18",
+              "output": "o11",
+              "controller": {
+                "status": "original-converged",
+                "iterations": 1,
+                "operator_calls": 3,
+                "low_operator_calls": 1,
+                "high_operator_calls": 2,
+                "fallback": false,
+                "original_relative": 0.0,
+                "trace": [
+                  {
+                    "phase": "low-correction",
+                    "low_operator_calls": 1,
+                    "inner_status": "internal-converged",
+                    "inner_trace": [
+                      {
+                        "iteration": 0,
+                        "recursive_relative": 1.0
+                      },
+                      {
+                        "iteration": 1,
+                        "recursive_relative": 1.2849953505316403e-16,
+                        "alpha": 1.0361445783132532,
+                        "curvature": 0.09264505619712568
+                      }
+                    ],
+                    "original_before": 0.0375,
+                    "original_candidate": 0.0,
+                    "accepted": true
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 0.0,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 1,
+                "actual_original_calls": 3
+              }
+            },
+            {
+              "step": 5,
+              "rhs_key": "rhs28",
+              "input_sha256": "f3bae70418d983c878a520ab187b01c1cd06e359b602a15e13aa9afd6a53b95e",
+              "output": "o12",
+              "controller": {
+                "status": "original-converged",
+                "iterations": 1,
+                "operator_calls": 3,
+                "low_operator_calls": 1,
+                "high_operator_calls": 2,
+                "fallback": false,
+                "original_relative": 0.0,
+                "trace": [
+                  {
+                    "phase": "low-correction",
+                    "low_operator_calls": 1,
+                    "inner_status": "internal-converged",
+                    "inner_trace": [
+                      {
+                        "iteration": 0,
+                        "recursive_relative": 1.0
+                      },
+                      {
+                        "iteration": 1,
+                        "recursive_relative": 1.333182676176579e-16,
+                        "alpha": 1.036144578313253,
+                        "curvature": 0.08606885754994958
+                      }
+                    ],
+                    "original_before": 0.037499999999999936,
+                    "original_candidate": 0.0,
+                    "accepted": true
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 0.0,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 1,
+                "actual_original_calls": 3
+              }
+            },
+            {
+              "step": 6,
+              "rhs_key": "rhs29",
+              "input_sha256": "9cd6948d0192597d1f35b59988ec46b7e43703ccaed68ace5c990437952162d7",
+              "output": "o13",
+              "controller": {
+                "status": "original-converged",
+                "iterations": 1,
+                "operator_calls": 3,
+                "low_operator_calls": 1,
+                "high_operator_calls": 2,
+                "fallback": false,
+                "original_relative": 0.0,
+                "trace": [
+                  {
+                    "phase": "low-correction",
+                    "low_operator_calls": 1,
+                    "inner_status": "internal-converged",
+                    "inner_trace": [
+                      {
+                        "iteration": 0,
+                        "recursive_relative": 1.0
+                      },
+                      {
+                        "iteration": 1,
+                        "recursive_relative": 0.0,
+                        "alpha": 1.0361445783132528,
+                        "curvature": 0.07995945541002687
+                      }
+                    ],
+                    "original_before": 0.03749999999999986,
+                    "original_candidate": 0.0,
+                    "accepted": true
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 0.0,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 1,
+                "actual_original_calls": 3
+              }
+            },
+            {
+              "step": 7,
+              "rhs_key": "rhs30",
+              "input_sha256": "8b43bb491a2b5b990411ebcbbf0d82ba87d182254856d278172253139caf7d87",
+              "output": "o14",
+              "controller": {
+                "status": "original-converged",
+                "iterations": 1,
+                "operator_calls": 3,
+                "low_operator_calls": 1,
+                "high_operator_calls": 2,
+                "fallback": false,
+                "original_relative": 0.0,
+                "trace": [
+                  {
+                    "phase": "low-correction",
+                    "low_operator_calls": 1,
+                    "inner_status": "internal-converged",
+                    "inner_trace": [
+                      {
+                        "iteration": 0,
+                        "recursive_relative": 1.0
+                      },
+                      {
+                        "iteration": 1,
+                        "recursive_relative": 1.4350461650281912e-16,
+                        "alpha": 1.036144578313253,
+                        "curvature": 0.07428371528874686
+                      }
+                    ],
+                    "original_before": 0.037500000000000054,
+                    "original_candidate": 0.0,
+                    "accepted": true
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 0.0,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 1,
+                "actual_original_calls": 3
+              }
+            },
+            {
+              "step": 8,
+              "rhs_key": "rhs31",
+              "input_sha256": "446352b7d290129f0123115d4fcc2bc6c0725b26b408772d1ce4806ed3a9c297",
+              "output": "o15",
+              "controller": {
+                "status": "original-converged",
+                "iterations": 1,
+                "operator_calls": 3,
+                "low_operator_calls": 1,
+                "high_operator_calls": 2,
+                "fallback": false,
+                "original_relative": 0.0,
+                "trace": [
+                  {
+                    "phase": "low-correction",
+                    "low_operator_calls": 1,
+                    "inner_status": "internal-converged",
+                    "inner_trace": [
+                      {
+                        "iteration": 0,
+                        "recursive_relative": 1.0
+                      },
+                      {
+                        "iteration": 1,
+                        "recursive_relative": 0.0,
+                        "alpha": 1.0361445783132528,
+                        "curvature": 0.06901085467382467
+                      }
+                    ],
+                    "original_before": 0.03749999999999997,
+                    "original_candidate": 0.0,
+                    "accepted": true
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 0.0,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 1,
+                "actual_original_calls": 3
+              }
+            }
+          ]
+        },
+        {
+          "route": "resident",
+          "target": 1e-08,
+          "policy": "fixed",
+          "wall_ms": 9.204285001032986,
+          "steps_completed": 8,
+          "step_records": [
+            {
+              "step": 1,
+              "rhs_key": "rhs32",
+              "input_sha256": "2a3fad563f536dd166af1e66da6f1eb480dbec0689404818527697b901b95503",
+              "output": "o0",
+              "controller": {
+                "status": "internal-converged",
+                "iterations": 1,
+                "operator_calls": 2,
+                "trace": [
+                  {
+                    "iteration": 0,
+                    "recursive_relative": 0.037499999999999825
+                  },
+                  {
+                    "iteration": 1,
+                    "recursive_relative": 5.708046891667266e-18,
+                    "alpha": 1.036144578313253,
+                    "curvature": 0.1155449266963195
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 1.2915835726171898e-16,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 2,
+                "actual_original_calls": 1
+              }
+            },
+            {
+              "step": 2,
+              "rhs_key": "rhs33",
+              "input_sha256": "3a9c4bedbad6dc1f03b7c14e5ed43231f1cf1f35069d2483138f0b1a8347b7c1",
+              "output": "o1",
+              "controller": {
+                "status": "internal-converged",
+                "iterations": 1,
+                "operator_calls": 2,
+                "trace": [
+                  {
+                    "iteration": 0,
+                    "recursive_relative": 0.037500000000000124
+                  },
+                  {
+                    "iteration": 1,
+                    "recursive_relative": 1.0850769767999767e-17,
+                    "alpha": 1.0361445783132532,
+                    "curvature": 0.1073432328141177
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 2.265043754849867e-16,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 2,
+                "actual_original_calls": 1
+              }
+            },
+            {
+              "step": 3,
+              "rhs_key": "rhs34",
+              "input_sha256": "88457a16d486a347d675b98698d3859b9675eb13a9abd9bd6e058416ef826d53",
+              "output": "o2",
+              "controller": {
+                "status": "internal-converged",
+                "iterations": 1,
+                "operator_calls": 2,
+                "trace": [
+                  {
+                    "iteration": 0,
+                    "recursive_relative": 0.03749999999999976
+                  },
+                  {
+                    "iteration": 1,
+                    "recursive_relative": 4.644561507945688e-18,
+                    "alpha": 1.036144578313253,
+                    "curvature": 0.09972371752218609
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 1.48625968254262e-16,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 2,
+                "actual_original_calls": 1
+              }
+            },
+            {
+              "step": 4,
+              "rhs_key": "rhs35",
+              "input_sha256": "a311bb31bcb318a667b530a811ec85c2ce1a263028b6f265b3a95992330c86c0",
+              "output": "o3",
+              "controller": {
+                "status": "internal-converged",
+                "iterations": 1,
+                "operator_calls": 2,
+                "trace": [
+                  {
+                    "iteration": 0,
+                    "recursive_relative": 0.03749999999999997
+                  },
+                  {
+                    "iteration": 1,
+                    "recursive_relative": 3.407358473077902e-18,
+                    "alpha": 1.036144578313253,
+                    "curvature": 0.0926450561971256
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 0.0,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 2,
+                "actual_original_calls": 1
+              }
+            },
+            {
+              "step": 5,
+              "rhs_key": "rhs36",
+              "input_sha256": "4dbeaf64218cd91a054ec25b94026a8292812fdc312f451bd2a5d0daef359b7a",
+              "output": "o4",
+              "controller": {
+                "status": "internal-converged",
+                "iterations": 1,
+                "operator_calls": 2,
+                "trace": [
+                  {
+                    "iteration": 0,
+                    "recursive_relative": 0.03750000000000011
+                  },
+                  {
+                    "iteration": 1,
+                    "recursive_relative": 6.123032419782658e-18,
+                    "alpha": 1.036144578313253,
+                    "curvature": 0.0860688575499504
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 1.875954310518657e-16,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 2,
+                "actual_original_calls": 1
+              }
+            },
+            {
+              "step": 6,
+              "rhs_key": "rhs37",
+              "input_sha256": "a6f22b9c58a8ed2620b6236bf5dc2ffbf2942a541ee90e8336fd555f7e3edcf8",
+              "output": "o5",
+              "controller": {
+                "status": "internal-converged",
+                "iterations": 1,
+                "operator_calls": 2,
+                "trace": [
+                  {
+                    "iteration": 0,
+                    "recursive_relative": 0.037499999999999714
+                  },
+                  {
+                    "iteration": 1,
+                    "recursive_relative": 5.501552934617266e-18,
+                    "alpha": 1.0361445783132532,
+                    "curvature": 0.07995945541002622
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 1.552612361563187e-16,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 2,
+                "actual_original_calls": 1
+              }
+            },
+            {
+              "step": 7,
+              "rhs_key": "rhs38",
+              "input_sha256": "596701304605830ac40343afdf066c53fe78c1dd844bd44d3064386065804edd",
+              "output": "o6",
+              "controller": {
+                "status": "internal-converged",
+                "iterations": 1,
+                "operator_calls": 2,
+                "trace": [
+                  {
+                    "iteration": 0,
+                    "recursive_relative": 0.03750000000000015
+                  },
+                  {
+                    "iteration": 1,
+                    "recursive_relative": 9.701498495000825e-18,
+                    "alpha": 1.036144578313253,
+                    "curvature": 0.07428371528874729
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 1.7220553980338316e-16,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 2,
+                "actual_original_calls": 1
+              }
+            },
+            {
+              "step": 8,
+              "rhs_key": "rhs39",
+              "input_sha256": "f9e82b7a325228337fab1c72255c2227d31f9aca9dac8767e0a996b30c429e83",
+              "output": "o7",
+              "controller": {
+                "status": "internal-converged",
+                "iterations": 1,
+                "operator_calls": 2,
+                "trace": [
+                  {
+                    "iteration": 0,
+                    "recursive_relative": 0.0374999999999998
+                  },
+                  {
+                    "iteration": 1,
+                    "recursive_relative": 0.0,
+                    "alpha": 1.0361445783132532,
+                    "curvature": 0.069010854673824
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 1.7866324754601003e-16,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 2,
+                "actual_original_calls": 1
+              }
+            }
+          ]
+        },
+        {
+          "route": "host",
+          "target": 1e-08,
+          "policy": "fixed",
+          "wall_ms": 9.14896900212625,
+          "steps_completed": 8,
+          "step_records": [
+            {
+              "step": 1,
+              "rhs_key": "rhs40",
+              "input_sha256": "2a3fad563f536dd166af1e66da6f1eb480dbec0689404818527697b901b95503",
+              "output": "o0",
+              "controller": {
+                "status": "internal-converged",
+                "iterations": 1,
+                "operator_calls": 2,
+                "trace": [
+                  {
+                    "iteration": 0,
+                    "recursive_relative": 0.037499999999999825
+                  },
+                  {
+                    "iteration": 1,
+                    "recursive_relative": 5.708046891667266e-18,
+                    "alpha": 1.036144578313253,
+                    "curvature": 0.1155449266963195
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 1.2915835726171898e-16,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 2,
+                "actual_original_calls": 1
+              }
+            },
+            {
+              "step": 2,
+              "rhs_key": "rhs41",
+              "input_sha256": "3a9c4bedbad6dc1f03b7c14e5ed43231f1cf1f35069d2483138f0b1a8347b7c1",
+              "output": "o1",
+              "controller": {
+                "status": "internal-converged",
+                "iterations": 1,
+                "operator_calls": 2,
+                "trace": [
+                  {
+                    "iteration": 0,
+                    "recursive_relative": 0.037500000000000124
+                  },
+                  {
+                    "iteration": 1,
+                    "recursive_relative": 1.0850769767999767e-17,
+                    "alpha": 1.0361445783132532,
+                    "curvature": 0.1073432328141177
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 2.265043754849867e-16,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 2,
+                "actual_original_calls": 1
+              }
+            },
+            {
+              "step": 3,
+              "rhs_key": "rhs42",
+              "input_sha256": "88457a16d486a347d675b98698d3859b9675eb13a9abd9bd6e058416ef826d53",
+              "output": "o2",
+              "controller": {
+                "status": "internal-converged",
+                "iterations": 1,
+                "operator_calls": 2,
+                "trace": [
+                  {
+                    "iteration": 0,
+                    "recursive_relative": 0.03749999999999976
+                  },
+                  {
+                    "iteration": 1,
+                    "recursive_relative": 4.644561507945688e-18,
+                    "alpha": 1.036144578313253,
+                    "curvature": 0.09972371752218609
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 1.48625968254262e-16,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 2,
+                "actual_original_calls": 1
+              }
+            },
+            {
+              "step": 4,
+              "rhs_key": "rhs43",
+              "input_sha256": "a311bb31bcb318a667b530a811ec85c2ce1a263028b6f265b3a95992330c86c0",
+              "output": "o3",
+              "controller": {
+                "status": "internal-converged",
+                "iterations": 1,
+                "operator_calls": 2,
+                "trace": [
+                  {
+                    "iteration": 0,
+                    "recursive_relative": 0.03749999999999997
+                  },
+                  {
+                    "iteration": 1,
+                    "recursive_relative": 3.407358473077902e-18,
+                    "alpha": 1.036144578313253,
+                    "curvature": 0.0926450561971256
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 0.0,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 2,
+                "actual_original_calls": 1
+              }
+            },
+            {
+              "step": 5,
+              "rhs_key": "rhs44",
+              "input_sha256": "4dbeaf64218cd91a054ec25b94026a8292812fdc312f451bd2a5d0daef359b7a",
+              "output": "o4",
+              "controller": {
+                "status": "internal-converged",
+                "iterations": 1,
+                "operator_calls": 2,
+                "trace": [
+                  {
+                    "iteration": 0,
+                    "recursive_relative": 0.03750000000000011
+                  },
+                  {
+                    "iteration": 1,
+                    "recursive_relative": 6.123032419782658e-18,
+                    "alpha": 1.036144578313253,
+                    "curvature": 0.0860688575499504
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 1.875954310518657e-16,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 2,
+                "actual_original_calls": 1
+              }
+            },
+            {
+              "step": 6,
+              "rhs_key": "rhs45",
+              "input_sha256": "a6f22b9c58a8ed2620b6236bf5dc2ffbf2942a541ee90e8336fd555f7e3edcf8",
+              "output": "o5",
+              "controller": {
+                "status": "internal-converged",
+                "iterations": 1,
+                "operator_calls": 2,
+                "trace": [
+                  {
+                    "iteration": 0,
+                    "recursive_relative": 0.037499999999999714
+                  },
+                  {
+                    "iteration": 1,
+                    "recursive_relative": 5.501552934617266e-18,
+                    "alpha": 1.0361445783132532,
+                    "curvature": 0.07995945541002622
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 1.552612361563187e-16,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 2,
+                "actual_original_calls": 1
+              }
+            },
+            {
+              "step": 7,
+              "rhs_key": "rhs46",
+              "input_sha256": "596701304605830ac40343afdf066c53fe78c1dd844bd44d3064386065804edd",
+              "output": "o6",
+              "controller": {
+                "status": "internal-converged",
+                "iterations": 1,
+                "operator_calls": 2,
+                "trace": [
+                  {
+                    "iteration": 0,
+                    "recursive_relative": 0.03750000000000015
+                  },
+                  {
+                    "iteration": 1,
+                    "recursive_relative": 9.701498495000825e-18,
+                    "alpha": 1.036144578313253,
+                    "curvature": 0.07428371528874729
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 1.7220553980338316e-16,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 2,
+                "actual_original_calls": 1
+              }
+            },
+            {
+              "step": 8,
+              "rhs_key": "rhs47",
+              "input_sha256": "f9e82b7a325228337fab1c72255c2227d31f9aca9dac8767e0a996b30c429e83",
+              "output": "o7",
+              "controller": {
+                "status": "internal-converged",
+                "iterations": 1,
+                "operator_calls": 2,
+                "trace": [
+                  {
+                    "iteration": 0,
+                    "recursive_relative": 0.0374999999999998
+                  },
+                  {
+                    "iteration": 1,
+                    "recursive_relative": 0.0,
+                    "alpha": 1.0361445783132532,
+                    "curvature": 0.069010854673824
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 1.7866324754601003e-16,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 2,
+                "actual_original_calls": 1
+              }
+            }
+          ]
+        },
+        {
+          "route": "resident",
+          "target": 1e-08,
+          "policy": "reliable",
+          "wall_ms": 11.986487996182404,
+          "steps_completed": 8,
+          "step_records": [
+            {
+              "step": 1,
+              "rhs_key": "rhs48",
+              "input_sha256": "2a3fad563f536dd166af1e66da6f1eb480dbec0689404818527697b901b95503",
+              "output": "o8",
+              "controller": {
+                "status": "original-converged",
+                "iterations": 1,
+                "operator_calls": 3,
+                "low_operator_calls": 1,
+                "high_operator_calls": 2,
+                "fallback": false,
+                "original_relative": 0.0,
+                "trace": [
+                  {
+                    "phase": "low-correction",
+                    "low_operator_calls": 1,
+                    "inner_status": "internal-converged",
+                    "inner_trace": [
+                      {
+                        "iteration": 0,
+                        "recursive_relative": 1.0
+                      },
+                      {
+                        "iteration": 1,
+                        "recursive_relative": 2.818466422799892e-16,
+                        "alpha": 1.036144578313253,
+                        "curvature": 0.11554492669632024
+                      }
+                    ],
+                    "original_before": 0.03749999999999995,
+                    "original_candidate": 0.0,
+                    "accepted": true
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 0.0,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 1,
+                "actual_original_calls": 3
+              }
+            },
+            {
+              "step": 2,
+              "rhs_key": "rhs49",
+              "input_sha256": "24f8654782ea38599a901442a1e9cbaa535afb72709d77a9fd3a938d7dcfdf8b",
+              "output": "o9",
+              "controller": {
+                "status": "original-converged",
+                "iterations": 1,
+                "operator_calls": 3,
+                "low_operator_calls": 1,
+                "high_operator_calls": 2,
+                "fallback": false,
+                "original_relative": 0.0,
+                "trace": [
+                  {
+                    "phase": "low-correction",
+                    "low_operator_calls": 1,
+                    "inner_status": "internal-converged",
+                    "inner_trace": [
+                      {
+                        "iteration": 0,
+                        "recursive_relative": 1.0
+                      },
+                      {
+                        "iteration": 1,
+                        "recursive_relative": 1.1937828775442765e-16,
+                        "alpha": 1.036144578313253,
+                        "curvature": 0.10734323281411638
+                      }
+                    ],
+                    "original_before": 0.0374999999999999,
+                    "original_candidate": 0.0,
+                    "accepted": true
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 0.0,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 1,
+                "actual_original_calls": 3
+              }
+            },
+            {
+              "step": 3,
+              "rhs_key": "rhs50",
+              "input_sha256": "c5111b1cd6aedb6246d03870b1e3ac4d8c84928f8a9e2812d7b42c9cefd8aeb8",
+              "output": "o10",
+              "controller": {
+                "status": "original-converged",
+                "iterations": 1,
+                "operator_calls": 3,
+                "low_operator_calls": 1,
+                "high_operator_calls": 2,
+                "fallback": false,
+                "original_relative": 0.0,
+                "trace": [
+                  {
+                    "phase": "low-correction",
+                    "low_operator_calls": 1,
+                    "inner_status": "internal-converged",
+                    "inner_trace": [
+                      {
+                        "iteration": 0,
+                        "recursive_relative": 1.0
+                      },
+                      {
+                        "iteration": 1,
+                        "recursive_relative": 0.0,
+                        "alpha": 1.036144578313253,
+                        "curvature": 0.09972371752218717
+                      }
+                    ],
+                    "original_before": 0.037499999999999964,
+                    "original_candidate": 0.0,
+                    "accepted": true
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 0.0,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 1,
+                "actual_original_calls": 3
+              }
+            },
+            {
+              "step": 4,
+              "rhs_key": "rhs51",
+              "input_sha256": "82369c72610a9fbadcb6132387c66253e83770066a9ffc2523319fc2e5464d18",
+              "output": "o11",
+              "controller": {
+                "status": "original-converged",
+                "iterations": 1,
+                "operator_calls": 3,
+                "low_operator_calls": 1,
+                "high_operator_calls": 2,
+                "fallback": false,
+                "original_relative": 0.0,
+                "trace": [
+                  {
+                    "phase": "low-correction",
+                    "low_operator_calls": 1,
+                    "inner_status": "internal-converged",
+                    "inner_trace": [
+                      {
+                        "iteration": 0,
+                        "recursive_relative": 1.0
+                      },
+                      {
+                        "iteration": 1,
+                        "recursive_relative": 1.2849953505316403e-16,
+                        "alpha": 1.0361445783132532,
+                        "curvature": 0.09264505619712568
+                      }
+                    ],
+                    "original_before": 0.0375,
+                    "original_candidate": 0.0,
+                    "accepted": true
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 0.0,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 1,
+                "actual_original_calls": 3
+              }
+            },
+            {
+              "step": 5,
+              "rhs_key": "rhs52",
+              "input_sha256": "f3bae70418d983c878a520ab187b01c1cd06e359b602a15e13aa9afd6a53b95e",
+              "output": "o12",
+              "controller": {
+                "status": "original-converged",
+                "iterations": 1,
+                "operator_calls": 3,
+                "low_operator_calls": 1,
+                "high_operator_calls": 2,
+                "fallback": false,
+                "original_relative": 0.0,
+                "trace": [
+                  {
+                    "phase": "low-correction",
+                    "low_operator_calls": 1,
+                    "inner_status": "internal-converged",
+                    "inner_trace": [
+                      {
+                        "iteration": 0,
+                        "recursive_relative": 1.0
+                      },
+                      {
+                        "iteration": 1,
+                        "recursive_relative": 1.333182676176579e-16,
+                        "alpha": 1.036144578313253,
+                        "curvature": 0.08606885754994958
+                      }
+                    ],
+                    "original_before": 0.037499999999999936,
+                    "original_candidate": 0.0,
+                    "accepted": true
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 0.0,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 1,
+                "actual_original_calls": 3
+              }
+            },
+            {
+              "step": 6,
+              "rhs_key": "rhs53",
+              "input_sha256": "9cd6948d0192597d1f35b59988ec46b7e43703ccaed68ace5c990437952162d7",
+              "output": "o13",
+              "controller": {
+                "status": "original-converged",
+                "iterations": 1,
+                "operator_calls": 3,
+                "low_operator_calls": 1,
+                "high_operator_calls": 2,
+                "fallback": false,
+                "original_relative": 0.0,
+                "trace": [
+                  {
+                    "phase": "low-correction",
+                    "low_operator_calls": 1,
+                    "inner_status": "internal-converged",
+                    "inner_trace": [
+                      {
+                        "iteration": 0,
+                        "recursive_relative": 1.0
+                      },
+                      {
+                        "iteration": 1,
+                        "recursive_relative": 0.0,
+                        "alpha": 1.0361445783132528,
+                        "curvature": 0.07995945541002687
+                      }
+                    ],
+                    "original_before": 0.03749999999999986,
+                    "original_candidate": 0.0,
+                    "accepted": true
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 0.0,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 1,
+                "actual_original_calls": 3
+              }
+            },
+            {
+              "step": 7,
+              "rhs_key": "rhs54",
+              "input_sha256": "8b43bb491a2b5b990411ebcbbf0d82ba87d182254856d278172253139caf7d87",
+              "output": "o14",
+              "controller": {
+                "status": "original-converged",
+                "iterations": 1,
+                "operator_calls": 3,
+                "low_operator_calls": 1,
+                "high_operator_calls": 2,
+                "fallback": false,
+                "original_relative": 0.0,
+                "trace": [
+                  {
+                    "phase": "low-correction",
+                    "low_operator_calls": 1,
+                    "inner_status": "internal-converged",
+                    "inner_trace": [
+                      {
+                        "iteration": 0,
+                        "recursive_relative": 1.0
+                      },
+                      {
+                        "iteration": 1,
+                        "recursive_relative": 1.4350461650281912e-16,
+                        "alpha": 1.036144578313253,
+                        "curvature": 0.07428371528874686
+                      }
+                    ],
+                    "original_before": 0.037500000000000054,
+                    "original_candidate": 0.0,
+                    "accepted": true
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 0.0,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 1,
+                "actual_original_calls": 3
+              }
+            },
+            {
+              "step": 8,
+              "rhs_key": "rhs55",
+              "input_sha256": "446352b7d290129f0123115d4fcc2bc6c0725b26b408772d1ce4806ed3a9c297",
+              "output": "o15",
+              "controller": {
+                "status": "original-converged",
+                "iterations": 1,
+                "operator_calls": 3,
+                "low_operator_calls": 1,
+                "high_operator_calls": 2,
+                "fallback": false,
+                "original_relative": 0.0,
+                "trace": [
+                  {
+                    "phase": "low-correction",
+                    "low_operator_calls": 1,
+                    "inner_status": "internal-converged",
+                    "inner_trace": [
+                      {
+                        "iteration": 0,
+                        "recursive_relative": 1.0
+                      },
+                      {
+                        "iteration": 1,
+                        "recursive_relative": 0.0,
+                        "alpha": 1.0361445783132528,
+                        "curvature": 0.06901085467382467
+                      }
+                    ],
+                    "original_before": 0.03749999999999997,
+                    "original_candidate": 0.0,
+                    "accepted": true
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 0.0,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 1,
+                "actual_original_calls": 3
+              }
+            }
+          ]
+        },
+        {
+          "route": "host",
+          "target": 1e-08,
+          "policy": "reliable",
+          "wall_ms": 12.336612002400216,
+          "steps_completed": 8,
+          "step_records": [
+            {
+              "step": 1,
+              "rhs_key": "rhs56",
+              "input_sha256": "2a3fad563f536dd166af1e66da6f1eb480dbec0689404818527697b901b95503",
+              "output": "o8",
+              "controller": {
+                "status": "original-converged",
+                "iterations": 1,
+                "operator_calls": 3,
+                "low_operator_calls": 1,
+                "high_operator_calls": 2,
+                "fallback": false,
+                "original_relative": 0.0,
+                "trace": [
+                  {
+                    "phase": "low-correction",
+                    "low_operator_calls": 1,
+                    "inner_status": "internal-converged",
+                    "inner_trace": [
+                      {
+                        "iteration": 0,
+                        "recursive_relative": 1.0
+                      },
+                      {
+                        "iteration": 1,
+                        "recursive_relative": 2.818466422799892e-16,
+                        "alpha": 1.036144578313253,
+                        "curvature": 0.11554492669632024
+                      }
+                    ],
+                    "original_before": 0.03749999999999995,
+                    "original_candidate": 0.0,
+                    "accepted": true
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 0.0,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 1,
+                "actual_original_calls": 3
+              }
+            },
+            {
+              "step": 2,
+              "rhs_key": "rhs57",
+              "input_sha256": "24f8654782ea38599a901442a1e9cbaa535afb72709d77a9fd3a938d7dcfdf8b",
+              "output": "o9",
+              "controller": {
+                "status": "original-converged",
+                "iterations": 1,
+                "operator_calls": 3,
+                "low_operator_calls": 1,
+                "high_operator_calls": 2,
+                "fallback": false,
+                "original_relative": 0.0,
+                "trace": [
+                  {
+                    "phase": "low-correction",
+                    "low_operator_calls": 1,
+                    "inner_status": "internal-converged",
+                    "inner_trace": [
+                      {
+                        "iteration": 0,
+                        "recursive_relative": 1.0
+                      },
+                      {
+                        "iteration": 1,
+                        "recursive_relative": 1.1937828775442765e-16,
+                        "alpha": 1.036144578313253,
+                        "curvature": 0.10734323281411638
+                      }
+                    ],
+                    "original_before": 0.0374999999999999,
+                    "original_candidate": 0.0,
+                    "accepted": true
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 0.0,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 1,
+                "actual_original_calls": 3
+              }
+            },
+            {
+              "step": 3,
+              "rhs_key": "rhs58",
+              "input_sha256": "c5111b1cd6aedb6246d03870b1e3ac4d8c84928f8a9e2812d7b42c9cefd8aeb8",
+              "output": "o10",
+              "controller": {
+                "status": "original-converged",
+                "iterations": 1,
+                "operator_calls": 3,
+                "low_operator_calls": 1,
+                "high_operator_calls": 2,
+                "fallback": false,
+                "original_relative": 0.0,
+                "trace": [
+                  {
+                    "phase": "low-correction",
+                    "low_operator_calls": 1,
+                    "inner_status": "internal-converged",
+                    "inner_trace": [
+                      {
+                        "iteration": 0,
+                        "recursive_relative": 1.0
+                      },
+                      {
+                        "iteration": 1,
+                        "recursive_relative": 0.0,
+                        "alpha": 1.036144578313253,
+                        "curvature": 0.09972371752218717
+                      }
+                    ],
+                    "original_before": 0.037499999999999964,
+                    "original_candidate": 0.0,
+                    "accepted": true
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 0.0,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 1,
+                "actual_original_calls": 3
+              }
+            },
+            {
+              "step": 4,
+              "rhs_key": "rhs59",
+              "input_sha256": "82369c72610a9fbadcb6132387c66253e83770066a9ffc2523319fc2e5464d18",
+              "output": "o11",
+              "controller": {
+                "status": "original-converged",
+                "iterations": 1,
+                "operator_calls": 3,
+                "low_operator_calls": 1,
+                "high_operator_calls": 2,
+                "fallback": false,
+                "original_relative": 0.0,
+                "trace": [
+                  {
+                    "phase": "low-correction",
+                    "low_operator_calls": 1,
+                    "inner_status": "internal-converged",
+                    "inner_trace": [
+                      {
+                        "iteration": 0,
+                        "recursive_relative": 1.0
+                      },
+                      {
+                        "iteration": 1,
+                        "recursive_relative": 1.2849953505316403e-16,
+                        "alpha": 1.0361445783132532,
+                        "curvature": 0.09264505619712568
+                      }
+                    ],
+                    "original_before": 0.0375,
+                    "original_candidate": 0.0,
+                    "accepted": true
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 0.0,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 1,
+                "actual_original_calls": 3
+              }
+            },
+            {
+              "step": 5,
+              "rhs_key": "rhs60",
+              "input_sha256": "f3bae70418d983c878a520ab187b01c1cd06e359b602a15e13aa9afd6a53b95e",
+              "output": "o12",
+              "controller": {
+                "status": "original-converged",
+                "iterations": 1,
+                "operator_calls": 3,
+                "low_operator_calls": 1,
+                "high_operator_calls": 2,
+                "fallback": false,
+                "original_relative": 0.0,
+                "trace": [
+                  {
+                    "phase": "low-correction",
+                    "low_operator_calls": 1,
+                    "inner_status": "internal-converged",
+                    "inner_trace": [
+                      {
+                        "iteration": 0,
+                        "recursive_relative": 1.0
+                      },
+                      {
+                        "iteration": 1,
+                        "recursive_relative": 1.333182676176579e-16,
+                        "alpha": 1.036144578313253,
+                        "curvature": 0.08606885754994958
+                      }
+                    ],
+                    "original_before": 0.037499999999999936,
+                    "original_candidate": 0.0,
+                    "accepted": true
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 0.0,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 1,
+                "actual_original_calls": 3
+              }
+            },
+            {
+              "step": 6,
+              "rhs_key": "rhs61",
+              "input_sha256": "9cd6948d0192597d1f35b59988ec46b7e43703ccaed68ace5c990437952162d7",
+              "output": "o13",
+              "controller": {
+                "status": "original-converged",
+                "iterations": 1,
+                "operator_calls": 3,
+                "low_operator_calls": 1,
+                "high_operator_calls": 2,
+                "fallback": false,
+                "original_relative": 0.0,
+                "trace": [
+                  {
+                    "phase": "low-correction",
+                    "low_operator_calls": 1,
+                    "inner_status": "internal-converged",
+                    "inner_trace": [
+                      {
+                        "iteration": 0,
+                        "recursive_relative": 1.0
+                      },
+                      {
+                        "iteration": 1,
+                        "recursive_relative": 0.0,
+                        "alpha": 1.0361445783132528,
+                        "curvature": 0.07995945541002687
+                      }
+                    ],
+                    "original_before": 0.03749999999999986,
+                    "original_candidate": 0.0,
+                    "accepted": true
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 0.0,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 1,
+                "actual_original_calls": 3
+              }
+            },
+            {
+              "step": 7,
+              "rhs_key": "rhs62",
+              "input_sha256": "8b43bb491a2b5b990411ebcbbf0d82ba87d182254856d278172253139caf7d87",
+              "output": "o14",
+              "controller": {
+                "status": "original-converged",
+                "iterations": 1,
+                "operator_calls": 3,
+                "low_operator_calls": 1,
+                "high_operator_calls": 2,
+                "fallback": false,
+                "original_relative": 0.0,
+                "trace": [
+                  {
+                    "phase": "low-correction",
+                    "low_operator_calls": 1,
+                    "inner_status": "internal-converged",
+                    "inner_trace": [
+                      {
+                        "iteration": 0,
+                        "recursive_relative": 1.0
+                      },
+                      {
+                        "iteration": 1,
+                        "recursive_relative": 1.4350461650281912e-16,
+                        "alpha": 1.036144578313253,
+                        "curvature": 0.07428371528874686
+                      }
+                    ],
+                    "original_before": 0.037500000000000054,
+                    "original_candidate": 0.0,
+                    "accepted": true
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 0.0,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 1,
+                "actual_original_calls": 3
+              }
+            },
+            {
+              "step": 8,
+              "rhs_key": "rhs63",
+              "input_sha256": "446352b7d290129f0123115d4fcc2bc6c0725b26b408772d1ce4806ed3a9c297",
+              "output": "o15",
+              "controller": {
+                "status": "original-converged",
+                "iterations": 1,
+                "operator_calls": 3,
+                "low_operator_calls": 1,
+                "high_operator_calls": 2,
+                "fallback": false,
+                "original_relative": 0.0,
+                "trace": [
+                  {
+                    "phase": "low-correction",
+                    "low_operator_calls": 1,
+                    "inner_status": "internal-converged",
+                    "inner_trace": [
+                      {
+                        "iteration": 0,
+                        "recursive_relative": 1.0
+                      },
+                      {
+                        "iteration": 1,
+                        "recursive_relative": 0.0,
+                        "alpha": 1.0361445783132528,
+                        "curvature": 0.06901085467382467
+                      }
+                    ],
+                    "original_before": 0.03749999999999997,
+                    "original_candidate": 0.0,
+                    "accepted": true
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 0.0,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 1,
+                "actual_original_calls": 3
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

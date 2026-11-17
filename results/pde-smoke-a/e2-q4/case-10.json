@@ -1,0 +1,1684 @@
+{
+  "configuration": {
+    "family": "tensor",
+    "precision": "bf16",
+    "threads": 256
+  },
+  "configuration_index": 10,
+  "source_sha256": {
+    "pde_study.py": "5e9e9a51ca2bd22ed1a5dbb467e4f85c9af29445d94002fe0d68101a481dfd09",
+    "pde_evidence.py": "9cda41bad6c10b10826eb26835ae19e858aa360aa2f3c46e12a2f168ac023361",
+    "pde_cases.py": "f98b0d11fee0fdd19ce51b9d7b8e3b5ef548176e2bc78c93d9c9bb37e49d3597",
+    "pde_protocol.py": "04978441c3397f491cee41baa63fbe9709709325c498df9a5ad6828e6a80f391",
+    "pde_methods.py": "c029b0e0ab8c1ee262f5d40a178d0e2ffde9cf100f297db68149d2d3f198d9d8",
+    "pde_cg.py": "65d8b38b5eda83cad8d8f3f347927bb248bd005635788f20dc4390064ac36a24",
+    "pde_reference.py": "646a47a893d90a7cba27b78d4773046d75e06199e33b0d8df9e00e703fbc1437",
+    "pde_coefficients.py": "55dddf44c59115f6243cb9a449a33b4113e7052800e08de49e25ac22c0767bd4",
+    "prepare_pde_coefficients.py": "b0cae1ea19786850055065e864b35bf70f2782b496e8ee408c925ea11b59dd03",
+    "reference.py": "b17f2880f57875909d8268091f026317dbf531b118b83322488c96ab7f62c9ef",
+    "pde_cuda.py": "6a565e67e05dbd091377c518c1f4116b2b34250e0b051f31053c42b01ca2867e",
+    "native/pde_kernels.cu": "ae53ca767adae0237f3977f485efa7e3d385713792e1651cd0f1c7ec8b07bc97",
+    "pde_ceed.py": "4eaa745c7c13e32c7e5895061924b2284e026e9cc654d19300f96fa1303c04ed",
+    "native/pde_ceed_bridge.cpp": "dd9b85f643222f29695918f41e6e9da93ebd8a11184c096cc1955e3d6d04beb3",
+    "native/pde_ceed_qfunction.h": "2e97b4a811dc8df06509ab984b3809cfcc302654626176f11529ac1d79e37bda",
+    "build_pde_ceed.sh": "1ed1663ac62be7ee8ef265969877d22e38cefc82b8b7c142edb7c3632904e46f",
+    "pde_tensor.py": "6a5fe2f2de1fbe9a41dd78e3c0ef46b1499678726e6ffff6424f66b41d26c539",
+    "native/pde_tensor_kernels.cu": "efae065bf17d51e79ca696a7faa0b7dbd95ac2ba4882764e79beda4eae29583f",
+    "pde_packing.py": "ee44cda50fa58bc466af997ed197303cf00351b33e422d89ebb66c0759c4b300",
+    "pca_native.py": "65f5ef250246c193e4dff0a0a00531f81983101343232ee005767bf15c55ec53",
+    "native/pca_bridge.cu": "a117611fa68521748b2dfa0434ffaaed1a3e4fdbe7410f430a620b3b4d9f9cfc",
+    "native/hardware_bridge.cu": "dbc8f619e69d91a25ef7d6bd7eb984112f737afb44934e3694fe1db6511d9faf",
+    "native/application_bridge.cu": "1d2f0b190d1f27ee3408fa126fae43c0ee5907feaec4bd94353a802c94fa1336",
+    "native/optimized_bridge.cu": "9d718ad97e4c3c2d77afe6402f093ec0af48c46d5faeaf78ea44c2d5537e4a25",
+    "native/bridge.cu": "5bd319bed3f39f6a735e6036e643ad8091d198a40398760e7a57a75d275c19b8",
+    "build_pca.sh": "4d0a3a916374351d50d2a71082fb28b9a637fd828f22830f404499eabd602069",
+    "pde_small.py": "b0731105033815a8a83d94dbb816ea97095d666c66faa40a0057b6f782476659",
+    "native/pde_small_bridge.cu": "3b24020d519e24c186a11640da13c0200f58fbb509f8e8178b02fedce384df24",
+    "native/pde_small_kernels.cu": "a531b920e36846374acfa5f3bcad283eb427b9c0f6ea84a306b41c0cb426475b",
+    "build_pde_small.sh": "4f9df460608c9a2194aef86d0d5e1ef3462b5b0ee9219296465f1a6be11df12c"
+  },
+  "binary_sha256": {
+    "native_core": "513f137a3a692f100874a3b275f5c9172af9be1f6c932f513a9634bc813eba7d",
+    "ceed_bridge": "ccb27b9a39ad75cfe564247d38272e46e3147cde7630a3f9cf5d35722eadb550",
+    "short_q_bridge": "03ec2fbd8de5f556c48f05097d2876545472fb032d9916064fe8bf295dc058f8",
+    "libceed": "d7616cf9b1025d4a87da3d25afff661e481edd4b91de4c34d6bc081525f6a7cb"
+  },
+  "available": true,
+  "construction_ms": 62.76998400426237,
+  "first_data_load_ms": 0.10427599772810936,
+  "calibration_ms": 8.677231999172363,
+  "first_complete_use_ms": 0.08353200246347114,
+  "first_use_output": "o0",
+  "first_use_input_sha256": "efca53f06c05f7f3c4a697d269d69b533dedd9f0eceeffcdabe7e4c8f1dbf3ce",
+  "cuda_event_scope": "Input staging through operation acknowledgment; host D2H is included only in wall time",
+  "method_metadata": {
+    "family": "grouped-native-gemm",
+    "component_precision": "bf16",
+    "input_output_storage": "fp64",
+    "threads": 256,
+    "assembly_kernel_attributes": {
+      "max_threads_per_block": 1024,
+      "shared_size_bytes": 0,
+      "const_size_bytes": 0,
+      "local_size_bytes": 0,
+      "num_regs": 40,
+      "ptx_version": 120,
+      "binary_version": 120,
+      "cache_mode_ca": 0,
+      "max_dynamic_shared_size_bytes": 49152,
+      "preferred_shared_memory_carveout": -1
+    },
+    "named_owned_device_bytes": 33831455,
+    "named_device_buffers": {
+      "data": 2744,
+      "output": 2744,
+      "local": 4096,
+      "indices": 2048,
+      "stiffness": 128,
+      "weights": 32,
+      "mass": 2744,
+      "boundary": 343,
+      "left": 65536,
+      "right": 65536,
+      "product": 65536
+    },
+    "memory_scope": "Named buffers only; excludes allocator cache, module/JIT/driver and temporary physical peaks",
+    "completion": "Changing-original pack, dynamic B encoding, native GEMM, all-axis FP64 weighting, deterministic assembly, context acknowledgment; no prepacked-input or dispatch-trace claim",
+    "product_storage": "fp32",
+    "post_arithmetic": "fp64",
+    "layout": {
+      "rows": 128,
+      "reduction": 128,
+      "columns": 128,
+      "groups": 32,
+      "physical_vectors": 384,
+      "physical_values": 1536,
+      "padded_values": 16384,
+      "scope": "Axis-concatenated physical vectors grouped into fixed128-row block-diagonal contractions; padding explicitly retained"
+    },
+    "encoder_variant": null,
+    "selected_candidate": 3,
+    "selected_flags": 197122,
+    "tuning": [
+      {
+        "candidate": 0,
+        "flags": 197122,
+        "algorithm_id": 67,
+        "available": true,
+        "cuda_ms": [
+          1.17740797996521,
+          0.018144000321626663,
+          0.010208000428974628
+        ]
+      },
+      {
+        "candidate": 1,
+        "flags": 197122,
+        "algorithm_id": 67,
+        "available": true,
+        "cuda_ms": [
+          0.8979840278625488,
+          0.01616000011563301,
+          0.010304000228643417
+        ]
+      },
+      {
+        "candidate": 2,
+        "flags": 197122,
+        "algorithm_id": 67,
+        "available": true,
+        "cuda_ms": [
+          0.9464319944381714,
+          0.015647999942302704,
+          0.009535999968647957
+        ]
+      },
+      {
+        "candidate": 3,
+        "flags": 197122,
+        "algorithm_id": 67,
+        "available": true,
+        "cuda_ms": [
+          0.932703971862793,
+          0.015200000256299973,
+          0.010400000028312206
+        ]
+      },
+      {
+        "candidate": 4,
+        "flags": 197122,
+        "algorithm_id": 67,
+        "available": true,
+        "cuda_ms": [
+          1.036255955696106,
+          0.01664000004529953,
+          0.01017600018531084
+        ]
+      },
+      {
+        "candidate": 5,
+        "flags": 197122,
+        "algorithm_id": 67,
+        "available": true,
+        "cuda_ms": [
+          1.134335994720459,
+          0.0163199994713068,
+          0.010111999697983265
+        ]
+      },
+      {
+        "candidate": 6,
+        "flags": 197122,
+        "algorithm_id": 67,
+        "available": true,
+        "cuda_ms": [
+          0.8049920201301575,
+          0.01571200042963028,
+          0.010495999827980995
+        ]
+      },
+      {
+        "candidate": 7,
+        "flags": 197122,
+        "algorithm_id": 67,
+        "available": true,
+        "cuda_ms": [
+          0.9080320000648499,
+          0.01772800087928772,
+          0.011872000060975552
+        ]
+      }
+    ],
+    "python_named_owned_device_bytes": 211487,
+    "native_owned_device_bytes": 33619968,
+    "pack_kernel_attributes": {
+      "max_threads_per_block": 1024,
+      "shared_size_bytes": 0,
+      "const_size_bytes": 0,
+      "local_size_bytes": 0,
+      "num_regs": 22,
+      "ptx_version": 120,
+      "binary_version": 120,
+      "cache_mode_ca": 0,
+      "max_dynamic_shared_size_bytes": 49152,
+      "preferred_shared_memory_carveout": -1
+    },
+    "unweight_kernel_attributes": {
+      "max_threads_per_block": 1024,
+      "shared_size_bytes": 0,
+      "const_size_bytes": 0,
+      "local_size_bytes": 0,
+      "num_regs": 22,
+      "ptx_version": 120,
+      "binary_version": 120,
+      "cache_mode_ca": 0,
+      "max_dynamic_shared_size_bytes": 49152,
+      "preferred_shared_memory_carveout": -1
+    },
+    "native_binary_sha256": "513f137a3a692f100874a3b275f5c9172af9be1f6c932f513a9634bc813eba7d",
+    "setup": "Static left source encoding once; measured eligible GEMM candidate calibration is separate and charged by caller"
+  },
+  "operator_observations": [
+    {
+      "route": "resident",
+      "ordinal": 0,
+      "variant": 0,
+      "input_sha256": "efca53f06c05f7f3c4a697d269d69b533dedd9f0eceeffcdabe7e4c8f1dbf3ce",
+      "output": "o0",
+      "wall_ms": 0.11202799942111596,
+      "cuda_ms": 0.10313600301742554
+    },
+    {
+      "route": "resident",
+      "ordinal": 1,
+      "variant": 1,
+      "input_sha256": "74e632b313098030f044d867e4a0241ca102e4438865a0636626cf4e22c43f48",
+      "output": "o1",
+      "wall_ms": 0.08835199696477503,
+      "cuda_ms": 0.07913599908351898
+    },
+    {
+      "route": "resident",
+      "ordinal": 2,
+      "variant": 0,
+      "input_sha256": "efca53f06c05f7f3c4a697d269d69b533dedd9f0eceeffcdabe7e4c8f1dbf3ce",
+      "output": "o0",
+      "wall_ms": 0.08681500185048208,
+      "cuda_ms": 0.07711999863386154
+    },
+    {
+      "route": "resident",
+      "ordinal": 3,
+      "variant": 1,
+      "input_sha256": "74e632b313098030f044d867e4a0241ca102e4438865a0636626cf4e22c43f48",
+      "output": "o1",
+      "wall_ms": 0.0813670048955828,
+      "cuda_ms": 0.07283200323581696
+    },
+    {
+      "route": "host",
+      "ordinal": 0,
+      "variant": 0,
+      "input_sha256": "efca53f06c05f7f3c4a697d269d69b533dedd9f0eceeffcdabe7e4c8f1dbf3ce",
+      "output": "o0",
+      "wall_ms": 0.11915199866052717,
+      "cuda_ms": 0.09030400216579437
+    },
+    {
+      "route": "host",
+      "ordinal": 1,
+      "variant": 1,
+      "input_sha256": "74e632b313098030f044d867e4a0241ca102e4438865a0636626cf4e22c43f48",
+      "output": "o1",
+      "wall_ms": 0.11056099901907146,
+      "cuda_ms": 0.0817599967122078
+    },
+    {
+      "route": "host",
+      "ordinal": 2,
+      "variant": 0,
+      "input_sha256": "efca53f06c05f7f3c4a697d269d69b533dedd9f0eceeffcdabe7e4c8f1dbf3ce",
+      "output": "o0",
+      "wall_ms": 0.10881500202231109,
+      "cuda_ms": 0.08137600123882294
+    },
+    {
+      "route": "host",
+      "ordinal": 3,
+      "variant": 1,
+      "input_sha256": "74e632b313098030f044d867e4a0241ca102e4438865a0636626cf4e22c43f48",
+      "output": "o1",
+      "wall_ms": 0.10783800098579377,
+      "cuda_ms": 0.08028800040483475
+    }
+  ],
+  "operator_stages": {
+    "0": {
+      "output": "o0",
+      "observation": 0,
+      "witness": {
+        "product_key": "gemm0",
+        "product_sha256": "db2231f6e9ed0217e9e9ed9eca336648f32642df1ac4368d0f9186f2dca33e4a",
+        "left_sha256": "f5fc50ddeaf5513117beabb8a5abc7448ec3f411dccecacc40ba9e26f3da80e7",
+        "right_sha256": "ffac64476399e4699683ea26160021edc055f3194802c4dbfc48a505844e0960",
+        "encoded_sha256": {
+          "0": "f9cd11d0b653ddafe952b9e5e5120ddf9be8084cd6c22d9ccacd65f57cad3aef",
+          "1": "9811268f0a48141ff43456c4a13ec7978c9ec2728b4c27aa5553571f4af9979b"
+        }
+      }
+    },
+    "1": {
+      "output": "o1",
+      "observation": 1,
+      "witness": {
+        "product_key": "gemm1",
+        "product_sha256": "42c05a1c60fa7cf0fefb86d88e07b86d9db5baf278454919663571e00cedca65",
+        "left_sha256": "f5fc50ddeaf5513117beabb8a5abc7448ec3f411dccecacc40ba9e26f3da80e7",
+        "right_sha256": "b45645268f7e5d175d6adaf7de0e7a95cbc68a8635af4f3a82c7fbed3e9e0c61",
+        "encoded_sha256": {
+          "0": "f9cd11d0b653ddafe952b9e5e5120ddf9be8084cd6c22d9ccacd65f57cad3aef",
+          "1": "cd593eaf8976e318a195e351bdd1c85003c7bae810899439acc62a34d4733c1c"
+        }
+      }
+    }
+  },
+  "poisson_runs": [
+    {
+      "route": "resident",
+      "repetition": 0,
+      "target": 0.001,
+      "policy": "fixed",
+      "input_sha256": "29d6923f94097e106e09d74599b49885855f6e4866f341eae330e9f9daf5a3e7",
+      "output": "o2",
+      "wall_ms": 4.053062999446411,
+      "controller": {
+        "status": "internal-converged",
+        "iterations": 8,
+        "operator_calls": 8,
+        "trace": [
+          {
+            "iteration": 0,
+            "recursive_relative": 1.0
+          },
+          {
+            "iteration": 1,
+            "recursive_relative": 1.2742803993044294,
+            "alpha": 6.49479602605994,
+            "curvature": 0.05909237542048772
+          },
+          {
+            "iteration": 2,
+            "recursive_relative": 0.5433262843895397,
+            "alpha": 1.273218967199965,
+            "curvature": 0.5924609632593777
+          },
+          {
+            "iteration": 3,
+            "recursive_relative": 0.2231948782171915,
+            "alpha": 0.927674564014836,
+            "curvature": 0.21778840180092682
+          },
+          {
+            "iteration": 4,
+            "recursive_relative": 0.13151723988344693,
+            "alpha": 0.9832027223793502,
+            "curvature": 0.03218495689152017
+          },
+          {
+            "iteration": 5,
+            "recursive_relative": 0.07502986861775102,
+            "alpha": 1.259534832769393,
+            "curvature": 0.007155288677598454
+          },
+          {
+            "iteration": 6,
+            "recursive_relative": 0.023928186943656057,
+            "alpha": 0.9971629674897228,
+            "curvature": 0.002931684847117707
+          },
+          {
+            "iteration": 7,
+            "recursive_relative": 0.0027802803754162797,
+            "alpha": 0.9996248633253796,
+            "curvature": 0.00023042264777184602
+          },
+          {
+            "iteration": 8,
+            "recursive_relative": 0.0006585509979100851,
+            "alpha": 1.5462529452291103,
+            "curvature": 3.0199990314930505e-06
+          }
+        ],
+        "physical_finite": true,
+        "gpu_original_relative": 0.01953279299330844,
+        "original_target_met": false,
+        "endpoint_original_checks": 1,
+        "actual_operator_calls": 8,
+        "actual_original_calls": 1
+      }
+    },
+    {
+      "route": "host",
+      "repetition": 0,
+      "target": 0.001,
+      "policy": "fixed",
+      "input_sha256": "29d6923f94097e106e09d74599b49885855f6e4866f341eae330e9f9daf5a3e7",
+      "output": "o2",
+      "wall_ms": 3.893541004799772,
+      "controller": {
+        "status": "internal-converged",
+        "iterations": 8,
+        "operator_calls": 8,
+        "trace": [
+          {
+            "iteration": 0,
+            "recursive_relative": 1.0
+          },
+          {
+            "iteration": 1,
+            "recursive_relative": 1.2742803993044294,
+            "alpha": 6.49479602605994,
+            "curvature": 0.05909237542048772
+          },
+          {
+            "iteration": 2,
+            "recursive_relative": 0.5433262843895397,
+            "alpha": 1.273218967199965,
+            "curvature": 0.5924609632593777
+          },
+          {
+            "iteration": 3,
+            "recursive_relative": 0.2231948782171915,
+            "alpha": 0.927674564014836,
+            "curvature": 0.21778840180092682
+          },
+          {
+            "iteration": 4,
+            "recursive_relative": 0.13151723988344693,
+            "alpha": 0.9832027223793502,
+            "curvature": 0.03218495689152017
+          },
+          {
+            "iteration": 5,
+            "recursive_relative": 0.07502986861775102,
+            "alpha": 1.259534832769393,
+            "curvature": 0.007155288677598454
+          },
+          {
+            "iteration": 6,
+            "recursive_relative": 0.023928186943656057,
+            "alpha": 0.9971629674897228,
+            "curvature": 0.002931684847117707
+          },
+          {
+            "iteration": 7,
+            "recursive_relative": 0.0027802803754162797,
+            "alpha": 0.9996248633253796,
+            "curvature": 0.00023042264777184602
+          },
+          {
+            "iteration": 8,
+            "recursive_relative": 0.0006585509979100851,
+            "alpha": 1.5462529452291103,
+            "curvature": 3.0199990314930505e-06
+          }
+        ],
+        "physical_finite": true,
+        "gpu_original_relative": 0.01953279299330844,
+        "original_target_met": false,
+        "endpoint_original_checks": 1,
+        "actual_operator_calls": 8,
+        "actual_original_calls": 1
+      }
+    },
+    {
+      "route": "resident",
+      "repetition": 0,
+      "target": 0.001,
+      "policy": "reliable",
+      "input_sha256": "29d6923f94097e106e09d74599b49885855f6e4866f341eae330e9f9daf5a3e7",
+      "output": "o3",
+      "wall_ms": 7.929352002975065,
+      "controller": {
+        "status": "original-converged",
+        "iterations": 14,
+        "operator_calls": 18,
+        "low_operator_calls": 14,
+        "high_operator_calls": 4,
+        "fallback": false,
+        "original_relative": 0.0004294509638712862,
+        "trace": [
+          {
+            "phase": "low-correction",
+            "low_operator_calls": 5,
+            "inner_status": "internal-converged",
+            "inner_trace": [
+              {
+                "iteration": 0,
+                "recursive_relative": 1.0
+              },
+              {
+                "iteration": 1,
+                "recursive_relative": 1.2742803993044294,
+                "alpha": 6.49479602605994,
+                "curvature": 0.05909237542048772
+              },
+              {
+                "iteration": 2,
+                "recursive_relative": 0.5433262843895397,
+                "alpha": 1.273218967199965,
+                "curvature": 0.5924609632593777
+              },
+              {
+                "iteration": 3,
+                "recursive_relative": 0.2231948782171915,
+                "alpha": 0.927674564014836,
+                "curvature": 0.21778840180092682
+              },
+              {
+                "iteration": 4,
+                "recursive_relative": 0.13151723988344693,
+                "alpha": 0.9832027223793502,
+                "curvature": 0.03218495689152017
+              },
+              {
+                "iteration": 5,
+                "recursive_relative": 0.07502986861775102,
+                "alpha": 1.259534832769393,
+                "curvature": 0.007155288677598454
+              }
+            ],
+            "original_before": 1.0,
+            "original_candidate": 0.08189869531183186,
+            "accepted": true
+          },
+          {
+            "phase": "low-correction",
+            "low_operator_calls": 4,
+            "inner_status": "internal-converged",
+            "inner_trace": [
+              {
+                "iteration": 0,
+                "recursive_relative": 1.0
+              },
+              {
+                "iteration": 1,
+                "recursive_relative": 0.5007352829748488,
+                "alpha": 0.7958198069946759,
+                "curvature": 0.004193326490808047
+              },
+              {
+                "iteration": 2,
+                "recursive_relative": 0.23070502070731644,
+                "alpha": 1.1443781906379682,
+                "curvature": 0.0005684041517880899
+              },
+              {
+                "iteration": 3,
+                "recursive_relative": 0.11685738569631145,
+                "alpha": 1.2146735345395747,
+                "curvature": 0.00019523139280728328
+              },
+              {
+                "iteration": 4,
+                "recursive_relative": 0.05671527760821051,
+                "alpha": 1.0238255321569312,
+                "curvature": 5.89969967757797e-05
+              }
+            ],
+            "original_before": 0.08189869531183186,
+            "original_candidate": 0.004749117092916998,
+            "accepted": true
+          },
+          {
+            "phase": "low-correction",
+            "low_operator_calls": 5,
+            "inner_status": "internal-converged",
+            "inner_trace": [
+              {
+                "iteration": 0,
+                "recursive_relative": 1.0
+              },
+              {
+                "iteration": 1,
+                "recursive_relative": 0.8557729353456714,
+                "alpha": 1.1501568539304825,
+                "curvature": 1.0137905596362105e-05
+              },
+              {
+                "iteration": 2,
+                "recursive_relative": 0.9217407027996456,
+                "alpha": 2.711076683091433,
+                "curvature": 2.656718944003998e-06
+              },
+              {
+                "iteration": 3,
+                "recursive_relative": 0.5793683545096379,
+                "alpha": 1.4803767451552714,
+                "curvature": 6.365902180694558e-06
+              },
+              {
+                "iteration": 4,
+                "recursive_relative": 0.23858489845318936,
+                "alpha": 0.931640299811019,
+                "curvature": 4.651507887679538e-06
+              },
+              {
+                "iteration": 5,
+                "recursive_relative": 0.0884506190444922,
+                "alpha": 0.9227375477779772,
+                "curvature": 6.947614599840332e-07
+              }
+            ],
+            "original_before": 0.004749117092916998,
+            "original_candidate": 0.0004294509638712862,
+            "accepted": true
+          }
+        ],
+        "physical_finite": true,
+        "gpu_original_relative": 0.0004294509638712862,
+        "original_target_met": true,
+        "endpoint_original_checks": 1,
+        "actual_operator_calls": 14,
+        "actual_original_calls": 5
+      }
+    },
+    {
+      "route": "host",
+      "repetition": 0,
+      "target": 0.001,
+      "policy": "reliable",
+      "input_sha256": "29d6923f94097e106e09d74599b49885855f6e4866f341eae330e9f9daf5a3e7",
+      "output": "o3",
+      "wall_ms": 7.934380999358837,
+      "controller": {
+        "status": "original-converged",
+        "iterations": 14,
+        "operator_calls": 18,
+        "low_operator_calls": 14,
+        "high_operator_calls": 4,
+        "fallback": false,
+        "original_relative": 0.0004294509638712862,
+        "trace": [
+          {
+            "phase": "low-correction",
+            "low_operator_calls": 5,
+            "inner_status": "internal-converged",
+            "inner_trace": [
+              {
+                "iteration": 0,
+                "recursive_relative": 1.0
+              },
+              {
+                "iteration": 1,
+                "recursive_relative": 1.2742803993044294,
+                "alpha": 6.49479602605994,
+                "curvature": 0.05909237542048772
+              },
+              {
+                "iteration": 2,
+                "recursive_relative": 0.5433262843895397,
+                "alpha": 1.273218967199965,
+                "curvature": 0.5924609632593777
+              },
+              {
+                "iteration": 3,
+                "recursive_relative": 0.2231948782171915,
+                "alpha": 0.927674564014836,
+                "curvature": 0.21778840180092682
+              },
+              {
+                "iteration": 4,
+                "recursive_relative": 0.13151723988344693,
+                "alpha": 0.9832027223793502,
+                "curvature": 0.03218495689152017
+              },
+              {
+                "iteration": 5,
+                "recursive_relative": 0.07502986861775102,
+                "alpha": 1.259534832769393,
+                "curvature": 0.007155288677598454
+              }
+            ],
+            "original_before": 1.0,
+            "original_candidate": 0.08189869531183186,
+            "accepted": true
+          },
+          {
+            "phase": "low-correction",
+            "low_operator_calls": 4,
+            "inner_status": "internal-converged",
+            "inner_trace": [
+              {
+                "iteration": 0,
+                "recursive_relative": 1.0
+              },
+              {
+                "iteration": 1,
+                "recursive_relative": 0.5007352829748488,
+                "alpha": 0.7958198069946759,
+                "curvature": 0.004193326490808047
+              },
+              {
+                "iteration": 2,
+                "recursive_relative": 0.23070502070731644,
+                "alpha": 1.1443781906379682,
+                "curvature": 0.0005684041517880899
+              },
+              {
+                "iteration": 3,
+                "recursive_relative": 0.11685738569631145,
+                "alpha": 1.2146735345395747,
+                "curvature": 0.00019523139280728328
+              },
+              {
+                "iteration": 4,
+                "recursive_relative": 0.05671527760821051,
+                "alpha": 1.0238255321569312,
+                "curvature": 5.89969967757797e-05
+              }
+            ],
+            "original_before": 0.08189869531183186,
+            "original_candidate": 0.004749117092916998,
+            "accepted": true
+          },
+          {
+            "phase": "low-correction",
+            "low_operator_calls": 5,
+            "inner_status": "internal-converged",
+            "inner_trace": [
+              {
+                "iteration": 0,
+                "recursive_relative": 1.0
+              },
+              {
+                "iteration": 1,
+                "recursive_relative": 0.8557729353456714,
+                "alpha": 1.1501568539304825,
+                "curvature": 1.0137905596362105e-05
+              },
+              {
+                "iteration": 2,
+                "recursive_relative": 0.9217407027996456,
+                "alpha": 2.711076683091433,
+                "curvature": 2.656718944003998e-06
+              },
+              {
+                "iteration": 3,
+                "recursive_relative": 0.5793683545096379,
+                "alpha": 1.4803767451552714,
+                "curvature": 6.365902180694558e-06
+              },
+              {
+                "iteration": 4,
+                "recursive_relative": 0.23858489845318936,
+                "alpha": 0.931640299811019,
+                "curvature": 4.651507887679538e-06
+              },
+              {
+                "iteration": 5,
+                "recursive_relative": 0.0884506190444922,
+                "alpha": 0.9227375477779772,
+                "curvature": 6.947614599840332e-07
+              }
+            ],
+            "original_before": 0.004749117092916998,
+            "original_candidate": 0.0004294509638712862,
+            "accepted": true
+          }
+        ],
+        "physical_finite": true,
+        "gpu_original_relative": 0.0004294509638712862,
+        "original_target_met": true,
+        "endpoint_original_checks": 1,
+        "actual_operator_calls": 14,
+        "actual_original_calls": 5
+      }
+    }
+  ],
+  "outputs": {
+    "o0": {
+      "label": "operator0",
+      "key": "p0",
+      "input_sha256": "efca53f06c05f7f3c4a697d269d69b533dedd9f0eceeffcdabe7e4c8f1dbf3ce",
+      "output_sha256": "6eb4ace34dcb5c6c21ae59847ff74d6bb6ddafce778359f1a26676ea53ad9550",
+      "shape": [
+        343
+      ],
+      "dtype": "<f8",
+      "encoding": "full",
+      "base": null
+    },
+    "o1": {
+      "label": "operator1",
+      "key": "p1",
+      "input_sha256": "74e632b313098030f044d867e4a0241ca102e4438865a0636626cf4e22c43f48",
+      "output_sha256": "af765aeaa3b773bdc622063c206ebc331d8648b570e5efe3c6589a5b4bf79fe7",
+      "shape": [
+        343
+      ],
+      "dtype": "<f8",
+      "encoding": "full",
+      "base": null
+    },
+    "o2": {
+      "label": "poisson/fixed/0.001",
+      "key": "p2",
+      "input_sha256": "29d6923f94097e106e09d74599b49885855f6e4866f341eae330e9f9daf5a3e7",
+      "output_sha256": "46191c6cd731f5cdf06a5429a6077c5293a3df5aa6f513b0fdac17a69b164e3e",
+      "shape": [
+        343
+      ],
+      "dtype": "<f8",
+      "encoding": "full",
+      "base": null
+    },
+    "o3": {
+      "label": "poisson/reliable/0.001",
+      "key": "p3",
+      "input_sha256": "29d6923f94097e106e09d74599b49885855f6e4866f341eae330e9f9daf5a3e7",
+      "output_sha256": "d60209715a1b3da22d3721d6c3c0e56acbd2ac44beda333206d1e949e3b96c28",
+      "shape": [
+        343
+      ],
+      "dtype": "<f8",
+      "encoding": "full",
+      "base": null
+    }
+  },
+  "payloads": [
+    {
+      "path": "results/pde-smoke-a/e2-q4/case-10-part-0.npz",
+      "sha256": "3622dc28f6635d55b6dcc7577e0a757e34066bbc9d832418adac8ac3fdfcd84a",
+      "keys": [
+        "gemm0",
+        "gemm1",
+        "p0",
+        "p1",
+        "p2",
+        "p3"
+      ]
+    }
+  ],
+  "heat": [
+    {
+      "steps": 2,
+      "reaction": 200.0,
+      "setup_ms": 2.0179749990347773,
+      "method_metadata": {
+        "family": "grouped-native-gemm",
+        "component_precision": "bf16",
+        "input_output_storage": "fp64",
+        "threads": 256,
+        "assembly_kernel_attributes": {
+          "max_threads_per_block": 1024,
+          "shared_size_bytes": 0,
+          "const_size_bytes": 0,
+          "local_size_bytes": 0,
+          "num_regs": 40,
+          "ptx_version": 120,
+          "binary_version": 120,
+          "cache_mode_ca": 0,
+          "max_dynamic_shared_size_bytes": 49152,
+          "preferred_shared_memory_carveout": -1
+        },
+        "named_owned_device_bytes": 33831455,
+        "named_device_buffers": {
+          "data": 2744,
+          "output": 2744,
+          "local": 4096,
+          "indices": 2048,
+          "stiffness": 128,
+          "weights": 32,
+          "mass": 2744,
+          "boundary": 343,
+          "left": 65536,
+          "right": 65536,
+          "product": 65536
+        },
+        "memory_scope": "Named buffers only; excludes allocator cache, module/JIT/driver and temporary physical peaks",
+        "completion": "Changing-original pack, dynamic B encoding, native GEMM, all-axis FP64 weighting, deterministic assembly, context acknowledgment; no prepacked-input or dispatch-trace claim",
+        "product_storage": "fp32",
+        "post_arithmetic": "fp64",
+        "layout": {
+          "rows": 128,
+          "reduction": 128,
+          "columns": 128,
+          "groups": 32,
+          "physical_vectors": 384,
+          "physical_values": 1536,
+          "padded_values": 16384,
+          "scope": "Axis-concatenated physical vectors grouped into fixed128-row block-diagonal contractions; padding explicitly retained"
+        },
+        "encoder_variant": null,
+        "selected_candidate": 1,
+        "selected_flags": 197122,
+        "tuning": [
+          {
+            "candidate": 0,
+            "flags": 197122,
+            "algorithm_id": 67,
+            "available": true,
+            "cuda_ms": [
+              0.01990400068461895,
+              0.011776000261306763,
+              0.010463999584317207
+            ]
+          },
+          {
+            "candidate": 1,
+            "flags": 197122,
+            "algorithm_id": 67,
+            "available": true,
+            "cuda_ms": [
+              0.011744000017642975,
+              0.00902399979531765,
+              0.009344000369310379
+            ]
+          },
+          {
+            "candidate": 2,
+            "flags": 197122,
+            "algorithm_id": 67,
+            "available": true,
+            "cuda_ms": [
+              0.011359999887645245,
+              0.00979200005531311,
+              0.008895999751985073
+            ]
+          },
+          {
+            "candidate": 3,
+            "flags": 197122,
+            "algorithm_id": 67,
+            "available": true,
+            "cuda_ms": [
+              0.010143999941647053,
+              0.01071999967098236,
+              0.00848000030964613
+            ]
+          },
+          {
+            "candidate": 4,
+            "flags": 197122,
+            "algorithm_id": 67,
+            "available": true,
+            "cuda_ms": [
+              0.011552000418305397,
+              0.009119999594986439,
+              0.009664000011980534
+            ]
+          },
+          {
+            "candidate": 5,
+            "flags": 197122,
+            "algorithm_id": 67,
+            "available": true,
+            "cuda_ms": [
+              0.01071999967098236,
+              0.010367999784648418,
+              0.02537599951028824
+            ]
+          },
+          {
+            "candidate": 6,
+            "flags": 197122,
+            "algorithm_id": 67,
+            "available": true,
+            "cuda_ms": [
+              0.017535999417304993,
+              0.009600000455975533,
+              0.01071999967098236
+            ]
+          },
+          {
+            "candidate": 7,
+            "flags": 197122,
+            "algorithm_id": 67,
+            "available": true,
+            "cuda_ms": [
+              0.016767999157309532,
+              0.01158399973064661,
+              0.01027199998497963
+            ]
+          }
+        ],
+        "python_named_owned_device_bytes": 211487,
+        "native_owned_device_bytes": 33619968,
+        "pack_kernel_attributes": {
+          "max_threads_per_block": 1024,
+          "shared_size_bytes": 0,
+          "const_size_bytes": 0,
+          "local_size_bytes": 0,
+          "num_regs": 22,
+          "ptx_version": 120,
+          "binary_version": 120,
+          "cache_mode_ca": 0,
+          "max_dynamic_shared_size_bytes": 49152,
+          "preferred_shared_memory_carveout": -1
+        },
+        "unweight_kernel_attributes": {
+          "max_threads_per_block": 1024,
+          "shared_size_bytes": 0,
+          "const_size_bytes": 0,
+          "local_size_bytes": 0,
+          "num_regs": 22,
+          "ptx_version": 120,
+          "binary_version": 120,
+          "cache_mode_ca": 0,
+          "max_dynamic_shared_size_bytes": 49152,
+          "preferred_shared_memory_carveout": -1
+        },
+        "native_binary_sha256": "513f137a3a692f100874a3b275f5c9172af9be1f6c932f513a9634bc813eba7d",
+        "setup": "Static left source encoding once; measured eligible GEMM candidate calibration is separate and charged by caller"
+      },
+      "original_metadata": {
+        "family": "direct-cuda-sumfactorization",
+        "component_precision": "fp64",
+        "input_output_storage": "fp64",
+        "threads": 256,
+        "local_kernel_attributes": {
+          "max_threads_per_block": 1024,
+          "shared_size_bytes": 0,
+          "const_size_bytes": 0,
+          "local_size_bytes": 0,
+          "num_regs": 40,
+          "ptx_version": 120,
+          "binary_version": 120,
+          "cache_mode_ca": 0,
+          "max_dynamic_shared_size_bytes": 49152,
+          "preferred_shared_memory_carveout": -1
+        },
+        "assembly_kernel_attributes": {
+          "max_threads_per_block": 1024,
+          "shared_size_bytes": 0,
+          "const_size_bytes": 0,
+          "local_size_bytes": 0,
+          "num_regs": 40,
+          "ptx_version": 120,
+          "binary_version": 120,
+          "cache_mode_ca": 0,
+          "max_dynamic_shared_size_bytes": 49152,
+          "preferred_shared_memory_carveout": -1
+        },
+        "named_owned_device_bytes": 14879,
+        "named_device_buffers": {
+          "data": 2744,
+          "output": 2744,
+          "local": 4096,
+          "indices": 2048,
+          "stiffness": 128,
+          "weights": 32,
+          "mass": 2744,
+          "boundary": 343
+        },
+        "memory_scope": "Named buffers only; excludes allocator cache, module/JIT/driver and temporary physical peaks",
+        "completion": "Two complete uncaptured kernels plus current-context device synchronization; default stream0, no graph/cold-system claim"
+      },
+      "retained_gpu_state_rhs_bytes": 10976,
+      "memory_scope": "Named plan/vector categories plus retained step references; no temporary/cached/physical-peak claim",
+      "outputs": {
+        "o0": {
+          "label": "step0",
+          "key": "p0",
+          "input_sha256": "4920d05bd388a3a8d5c4d1535b19f9cd53f8eb8d578a95fd130b6af42f441c9b",
+          "output_sha256": "8d93cf92162b713c14b189571a0afcba0af648180b2b519174b874756c306728",
+          "shape": [
+            343
+          ],
+          "dtype": "<f8",
+          "encoding": "full",
+          "base": null
+        },
+        "o1": {
+          "label": "step1",
+          "key": "p1",
+          "input_sha256": "59931d4be7462f3c96c2ff1ebea19a9148893af194911a21d54536a5ac8a8fe7",
+          "output_sha256": "6753658dc801f065159229b5126f89260e78caa6215250e542ad2cc27f530d69",
+          "shape": [
+            343
+          ],
+          "dtype": "<f8",
+          "encoding": "full",
+          "base": null
+        },
+        "o2": {
+          "label": "step0",
+          "key": "p2",
+          "input_sha256": "4920d05bd388a3a8d5c4d1535b19f9cd53f8eb8d578a95fd130b6af42f441c9b",
+          "output_sha256": "da5562d2daf4d5d6e88b11dddbac8419966c4c3f91824152f0d555ac252e98d3",
+          "shape": [
+            343
+          ],
+          "dtype": "<f8",
+          "encoding": "xor64",
+          "base": "p0",
+          "base_sha256": "8d93cf92162b713c14b189571a0afcba0af648180b2b519174b874756c306728"
+        },
+        "o3": {
+          "label": "step1",
+          "key": "p3",
+          "input_sha256": "406298106d2142574021d774ccc2b20ecaa002a8129cbed4502fd55365bcb87b",
+          "output_sha256": "34f07a4fc4dfa8dfa7541f0e34516c351198a5e3a728306c47309a73498ff9b8",
+          "shape": [
+            343
+          ],
+          "dtype": "<f8",
+          "encoding": "xor64",
+          "base": "p1",
+          "base_sha256": "6753658dc801f065159229b5126f89260e78caa6215250e542ad2cc27f530d69"
+        }
+      },
+      "payloads": [
+        {
+          "path": "results/pde-smoke-a/e2-q4/case-10-heat2-part-0.npz",
+          "sha256": "bec81bd64c6a5b886716a2c7c64b6d17da9299b8dc1a072fafab8f231285939f",
+          "keys": [
+            "p0",
+            "p1",
+            "p2",
+            "p3",
+            "rhs0",
+            "rhs1",
+            "rhs2",
+            "rhs3",
+            "rhs4",
+            "rhs5",
+            "rhs6",
+            "rhs7"
+          ]
+        }
+      ],
+      "runs": [
+        {
+          "route": "resident",
+          "target": 0.001,
+          "policy": "fixed",
+          "wall_ms": 4.995804003556259,
+          "steps_completed": 2,
+          "step_records": [
+            {
+              "step": 1,
+              "rhs_key": "rhs0",
+              "input_sha256": "4920d05bd388a3a8d5c4d1535b19f9cd53f8eb8d578a95fd130b6af42f441c9b",
+              "output": "o0",
+              "controller": {
+                "status": "internal-converged",
+                "iterations": 4,
+                "operator_calls": 5,
+                "trace": [
+                  {
+                    "iteration": 0,
+                    "recursive_relative": 0.14691192870871725
+                  },
+                  {
+                    "iteration": 1,
+                    "recursive_relative": 0.032184887066971646,
+                    "alpha": 2.0776498730343094,
+                    "curvature": 0.10697484677728379
+                  },
+                  {
+                    "iteration": 2,
+                    "recursive_relative": 0.006721882251232518,
+                    "alpha": 1.1347864850381186,
+                    "curvature": 0.012631417560229112
+                  },
+                  {
+                    "iteration": 3,
+                    "recursive_relative": 0.0018610682499873698,
+                    "alpha": 1.022970635036282,
+                    "curvature": 0.0008093501550855608
+                  },
+                  {
+                    "iteration": 4,
+                    "recursive_relative": 0.0005261949823934555,
+                    "alpha": 1.137265512430535,
+                    "curvature": 5.188655571521999e-05
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 0.002993639376044822,
+                "original_target_met": false,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 5,
+                "actual_original_calls": 1
+              }
+            },
+            {
+              "step": 2,
+              "rhs_key": "rhs1",
+              "input_sha256": "59931d4be7462f3c96c2ff1ebea19a9148893af194911a21d54536a5ac8a8fe7",
+              "output": "o1",
+              "controller": {
+                "status": "internal-converged",
+                "iterations": 4,
+                "operator_calls": 5,
+                "trace": [
+                  {
+                    "iteration": 0,
+                    "recursive_relative": 0.14837614643084632
+                  },
+                  {
+                    "iteration": 1,
+                    "recursive_relative": 0.03911415951357359,
+                    "alpha": 2.0466515801034983,
+                    "curvature": 0.08291749278361954
+                  },
+                  {
+                    "iteration": 2,
+                    "recursive_relative": 0.010589224285430602,
+                    "alpha": 0.9952025414013772,
+                    "curvature": 0.014772430253307524
+                  },
+                  {
+                    "iteration": 3,
+                    "recursive_relative": 0.0028247863952289105,
+                    "alpha": 0.8968119518621219,
+                    "curvature": 0.0016320824586138342
+                  },
+                  {
+                    "iteration": 4,
+                    "recursive_relative": 0.0008398708679983663,
+                    "alpha": 1.0336504724432851,
+                    "curvature": 0.00010156418604882799
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 0.0036088914313778635,
+                "original_target_met": false,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 5,
+                "actual_original_calls": 1
+              }
+            }
+          ]
+        },
+        {
+          "route": "host",
+          "target": 0.001,
+          "policy": "fixed",
+          "wall_ms": 4.820638001547195,
+          "steps_completed": 2,
+          "step_records": [
+            {
+              "step": 1,
+              "rhs_key": "rhs2",
+              "input_sha256": "4920d05bd388a3a8d5c4d1535b19f9cd53f8eb8d578a95fd130b6af42f441c9b",
+              "output": "o0",
+              "controller": {
+                "status": "internal-converged",
+                "iterations": 4,
+                "operator_calls": 5,
+                "trace": [
+                  {
+                    "iteration": 0,
+                    "recursive_relative": 0.14691192870871725
+                  },
+                  {
+                    "iteration": 1,
+                    "recursive_relative": 0.032184887066971646,
+                    "alpha": 2.0776498730343094,
+                    "curvature": 0.10697484677728379
+                  },
+                  {
+                    "iteration": 2,
+                    "recursive_relative": 0.006721882251232518,
+                    "alpha": 1.1347864850381186,
+                    "curvature": 0.012631417560229112
+                  },
+                  {
+                    "iteration": 3,
+                    "recursive_relative": 0.0018610682499873698,
+                    "alpha": 1.022970635036282,
+                    "curvature": 0.0008093501550855608
+                  },
+                  {
+                    "iteration": 4,
+                    "recursive_relative": 0.0005261949823934555,
+                    "alpha": 1.137265512430535,
+                    "curvature": 5.188655571521999e-05
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 0.002993639376044822,
+                "original_target_met": false,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 5,
+                "actual_original_calls": 1
+              }
+            },
+            {
+              "step": 2,
+              "rhs_key": "rhs3",
+              "input_sha256": "59931d4be7462f3c96c2ff1ebea19a9148893af194911a21d54536a5ac8a8fe7",
+              "output": "o1",
+              "controller": {
+                "status": "internal-converged",
+                "iterations": 4,
+                "operator_calls": 5,
+                "trace": [
+                  {
+                    "iteration": 0,
+                    "recursive_relative": 0.14837614643084632
+                  },
+                  {
+                    "iteration": 1,
+                    "recursive_relative": 0.03911415951357359,
+                    "alpha": 2.0466515801034983,
+                    "curvature": 0.08291749278361954
+                  },
+                  {
+                    "iteration": 2,
+                    "recursive_relative": 0.010589224285430602,
+                    "alpha": 0.9952025414013772,
+                    "curvature": 0.014772430253307524
+                  },
+                  {
+                    "iteration": 3,
+                    "recursive_relative": 0.0028247863952289105,
+                    "alpha": 0.8968119518621219,
+                    "curvature": 0.0016320824586138342
+                  },
+                  {
+                    "iteration": 4,
+                    "recursive_relative": 0.0008398708679983663,
+                    "alpha": 1.0336504724432851,
+                    "curvature": 0.00010156418604882799
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 0.0036088914313778635,
+                "original_target_met": false,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 5,
+                "actual_original_calls": 1
+              }
+            }
+          ]
+        },
+        {
+          "route": "resident",
+          "target": 0.001,
+          "policy": "reliable",
+          "wall_ms": 7.616664996021427,
+          "steps_completed": 2,
+          "step_records": [
+            {
+              "step": 1,
+              "rhs_key": "rhs4",
+              "input_sha256": "4920d05bd388a3a8d5c4d1535b19f9cd53f8eb8d578a95fd130b6af42f441c9b",
+              "output": "o2",
+              "controller": {
+                "status": "original-converged",
+                "iterations": 5,
+                "operator_calls": 8,
+                "low_operator_calls": 5,
+                "high_operator_calls": 3,
+                "fallback": false,
+                "original_relative": 0.00038742289220651814,
+                "trace": [
+                  {
+                    "phase": "low-correction",
+                    "low_operator_calls": 2,
+                    "inner_status": "internal-converged",
+                    "inner_trace": [
+                      {
+                        "iteration": 0,
+                        "recursive_relative": 1.0
+                      },
+                      {
+                        "iteration": 1,
+                        "recursive_relative": 0.23656199686788068,
+                        "alpha": 2.0573946556089195,
+                        "curvature": 0.10816949132582905
+                      },
+                      {
+                        "iteration": 2,
+                        "recursive_relative": 0.05472968883290336,
+                        "alpha": 1.0992685427195084,
+                        "curvature": 0.01480106412630639
+                      }
+                    ],
+                    "original_before": 0.14793384347239028,
+                    "original_candidate": 0.008001417973527332,
+                    "accepted": true
+                  },
+                  {
+                    "phase": "low-correction",
+                    "low_operator_calls": 3,
+                    "inner_status": "internal-converged",
+                    "inner_trace": [
+                      {
+                        "iteration": 0,
+                        "recursive_relative": 1.0
+                      },
+                      {
+                        "iteration": 1,
+                        "recursive_relative": 0.3800353471849409,
+                        "alpha": 0.9114874781741201,
+                        "curvature": 0.0012686738644931603
+                      },
+                      {
+                        "iteration": 2,
+                        "recursive_relative": 0.10860007633787398,
+                        "alpha": 1.1197089949363437,
+                        "curvature": 0.00013058452421569407
+                      },
+                      {
+                        "iteration": 3,
+                        "recursive_relative": 0.047926226523345807,
+                        "alpha": 0.9673460560307977,
+                        "curvature": 1.4061320432785625e-05
+                      }
+                    ],
+                    "original_before": 0.008001417973527332,
+                    "original_candidate": 0.00038742289220651814,
+                    "accepted": true
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 0.00038742289220651814,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 5,
+                "actual_original_calls": 4
+              }
+            },
+            {
+              "step": 2,
+              "rhs_key": "rhs5",
+              "input_sha256": "406298106d2142574021d774ccc2b20ecaa002a8129cbed4502fd55365bcb87b",
+              "output": "o3",
+              "controller": {
+                "status": "original-converged",
+                "iterations": 5,
+                "operator_calls": 8,
+                "low_operator_calls": 5,
+                "high_operator_calls": 3,
+                "fallback": false,
+                "original_relative": 0.00038917039195761344,
+                "trace": [
+                  {
+                    "phase": "low-correction",
+                    "low_operator_calls": 2,
+                    "inner_status": "internal-converged",
+                    "inner_trace": [
+                      {
+                        "iteration": 0,
+                        "recursive_relative": 1.0
+                      },
+                      {
+                        "iteration": 1,
+                        "recursive_relative": 0.23908917198274632,
+                        "alpha": 2.0551804929939697,
+                        "curvature": 0.08223930404271013
+                      },
+                      {
+                        "iteration": 2,
+                        "recursive_relative": 0.05505322902938589,
+                        "alpha": 1.0958724656339414,
+                        "curvature": 0.011504054583663676
+                      }
+                    ],
+                    "original_before": 0.14803492651559275,
+                    "original_candidate": 0.00818221502175779,
+                    "accepted": true
+                  },
+                  {
+                    "phase": "low-correction",
+                    "low_operator_calls": 3,
+                    "inner_status": "internal-converged",
+                    "inner_trace": [
+                      {
+                        "iteration": 0,
+                        "recursive_relative": 1.0
+                      },
+                      {
+                        "iteration": 1,
+                        "recursive_relative": 0.3718268151570587,
+                        "alpha": 0.9048295621985641,
+                        "curvature": 0.0010290115205119643
+                      },
+                      {
+                        "iteration": 2,
+                        "recursive_relative": 0.10748064304313953,
+                        "alpha": 1.1305000159192313,
+                        "curvature": 9.919012322023773e-05
+                      },
+                      {
+                        "iteration": 3,
+                        "recursive_relative": 0.047632250252882403,
+                        "alpha": 0.9656794543999148,
+                        "curvature": 1.0637877665216558e-05
+                      }
+                    ],
+                    "original_before": 0.00818221502175779,
+                    "original_candidate": 0.00038917039195761344,
+                    "accepted": true
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 0.00038917039195761344,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 5,
+                "actual_original_calls": 4
+              }
+            }
+          ]
+        },
+        {
+          "route": "host",
+          "target": 0.001,
+          "policy": "reliable",
+          "wall_ms": 7.692794002650771,
+          "steps_completed": 2,
+          "step_records": [
+            {
+              "step": 1,
+              "rhs_key": "rhs6",
+              "input_sha256": "4920d05bd388a3a8d5c4d1535b19f9cd53f8eb8d578a95fd130b6af42f441c9b",
+              "output": "o2",
+              "controller": {
+                "status": "original-converged",
+                "iterations": 5,
+                "operator_calls": 8,
+                "low_operator_calls": 5,
+                "high_operator_calls": 3,
+                "fallback": false,
+                "original_relative": 0.00038742289220651814,
+                "trace": [
+                  {
+                    "phase": "low-correction",
+                    "low_operator_calls": 2,
+                    "inner_status": "internal-converged",
+                    "inner_trace": [
+                      {
+                        "iteration": 0,
+                        "recursive_relative": 1.0
+                      },
+                      {
+                        "iteration": 1,
+                        "recursive_relative": 0.23656199686788068,
+                        "alpha": 2.0573946556089195,
+                        "curvature": 0.10816949132582905
+                      },
+                      {
+                        "iteration": 2,
+                        "recursive_relative": 0.05472968883290336,
+                        "alpha": 1.0992685427195084,
+                        "curvature": 0.01480106412630639
+                      }
+                    ],
+                    "original_before": 0.14793384347239028,
+                    "original_candidate": 0.008001417973527332,
+                    "accepted": true
+                  },
+                  {
+                    "phase": "low-correction",
+                    "low_operator_calls": 3,
+                    "inner_status": "internal-converged",
+                    "inner_trace": [
+                      {
+                        "iteration": 0,
+                        "recursive_relative": 1.0
+                      },
+                      {
+                        "iteration": 1,
+                        "recursive_relative": 0.3800353471849409,
+                        "alpha": 0.9114874781741201,
+                        "curvature": 0.0012686738644931603
+                      },
+                      {
+                        "iteration": 2,
+                        "recursive_relative": 0.10860007633787398,
+                        "alpha": 1.1197089949363437,
+                        "curvature": 0.00013058452421569407
+                      },
+                      {
+                        "iteration": 3,
+                        "recursive_relative": 0.047926226523345807,
+                        "alpha": 0.9673460560307977,
+                        "curvature": 1.4061320432785625e-05
+                      }
+                    ],
+                    "original_before": 0.008001417973527332,
+                    "original_candidate": 0.00038742289220651814,
+                    "accepted": true
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 0.00038742289220651814,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 5,
+                "actual_original_calls": 4
+              }
+            },
+            {
+              "step": 2,
+              "rhs_key": "rhs7",
+              "input_sha256": "406298106d2142574021d774ccc2b20ecaa002a8129cbed4502fd55365bcb87b",
+              "output": "o3",
+              "controller": {
+                "status": "original-converged",
+                "iterations": 5,
+                "operator_calls": 8,
+                "low_operator_calls": 5,
+                "high_operator_calls": 3,
+                "fallback": false,
+                "original_relative": 0.00038917039195761344,
+                "trace": [
+                  {
+                    "phase": "low-correction",
+                    "low_operator_calls": 2,
+                    "inner_status": "internal-converged",
+                    "inner_trace": [
+                      {
+                        "iteration": 0,
+                        "recursive_relative": 1.0
+                      },
+                      {
+                        "iteration": 1,
+                        "recursive_relative": 0.23908917198274632,
+                        "alpha": 2.0551804929939697,
+                        "curvature": 0.08223930404271013
+                      },
+                      {
+                        "iteration": 2,
+                        "recursive_relative": 0.05505322902938589,
+                        "alpha": 1.0958724656339414,
+                        "curvature": 0.011504054583663676
+                      }
+                    ],
+                    "original_before": 0.14803492651559275,
+                    "original_candidate": 0.00818221502175779,
+                    "accepted": true
+                  },
+                  {
+                    "phase": "low-correction",
+                    "low_operator_calls": 3,
+                    "inner_status": "internal-converged",
+                    "inner_trace": [
+                      {
+                        "iteration": 0,
+                        "recursive_relative": 1.0
+                      },
+                      {
+                        "iteration": 1,
+                        "recursive_relative": 0.3718268151570587,
+                        "alpha": 0.9048295621985641,
+                        "curvature": 0.0010290115205119643
+                      },
+                      {
+                        "iteration": 2,
+                        "recursive_relative": 0.10748064304313953,
+                        "alpha": 1.1305000159192313,
+                        "curvature": 9.919012322023773e-05
+                      },
+                      {
+                        "iteration": 3,
+                        "recursive_relative": 0.047632250252882403,
+                        "alpha": 0.9656794543999148,
+                        "curvature": 1.0637877665216558e-05
+                      }
+                    ],
+                    "original_before": 0.00818221502175779,
+                    "original_candidate": 0.00038917039195761344,
+                    "accepted": true
+                  }
+                ],
+                "physical_finite": true,
+                "gpu_original_relative": 0.00038917039195761344,
+                "original_target_met": true,
+                "endpoint_original_checks": 1,
+                "actual_operator_calls": 5,
+                "actual_original_calls": 4
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
