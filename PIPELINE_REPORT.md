@@ -1,6 +1,6 @@
 # Native SM120 pipelines, traversal and cache pressure
 
-**Status: study 4's bounded configuration investigation is complete. The complete fifteen-study program remains active.**
+**Status: study 4's bounded configuration investigation is complete. See the [completed programme ledger](PROGRAM.md).**
 
 Two cohorts contain 924 configurations, 166,320 retained observations and 655,097,856 output entries checked before and after timing. Eleven shapes and normal/outlier inputs cover twelve usable pipeline builds plus nine traversal configurations. Four additional compiled configurations fail their runtime resource request and remain in the evidence. Four small input/output witness files support CPU numerical replay. All configurations preserve identical FP4 encoded values/scales; configuration selection changes implementation rather than the quantization contract.
 

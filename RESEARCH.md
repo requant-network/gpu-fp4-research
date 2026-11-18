@@ -7,7 +7,7 @@ A research project by [Requant Network](https://requant.network).
 When does FP4 reduce the time to a useful matrix product on a consumer NVIDIA
 RTX 5060 Ti 16 GB once input preparation and numerical error are made explicit?
 
-This begins the low-precision research program. It is separate from the earlier
+This is the starting question of the low-precision research programme. It is separate from the earlier
 exact modular Tensor Core study: these are approximate real-valued products,
 with genuine data-dependent 16-value FP4 block scales.
 
@@ -42,7 +42,7 @@ quality claim is made.
 
 ## Follow-up gates
 
-The first campaign starts the project; it does not complete the research program.
+The original campaign defined six follow-up gates. The [programme ledger](PROGRAM.md) records the completed investigations.
 
 1. Extend the shape/distribution grid and include model-derived shapes/activations.
 2. Tune FP4 tile/schedule and quantization kernels; compare stronger FP4 backends.
@@ -91,6 +91,10 @@ an FP32 sparse remainder, strong CSR/BSR/Blocked-ELL/dense references, two cohor
 real matrices and complete conversion/reuse costs. Its active hybrid wins none of
 the 52 online-B groups at error 0.001. Zero-block cases and approximate FP32-storage
 ELL outcomes remain explicit; native library comparisons materially change the
-conclusion. The full fifteen-study program remains active with studies 9-15 pending.
-The program has not established the best possible SM120
-implementation or scientific novelty; the fifteen-study goal remains active.
+conclusion.
+
+The completed extension covers [spectral filtering](FFT_REPORT.md),
+[vector search](SEARCH_REPORT.md), [covariance and PCA](PCA_REPORT.md),
+[matrix-free physical operators](PDE_REPORT.md), [visibility and scene edits](RT_VISIBILITY_REPORT.md),
+[lossless CPU-to-GPU streaming](COMPRESSION_REPORT.md) and [board energy and tail latency](ENERGY_REPORT.md).
+The experimental scope establishes bounded results for the recorded hardware and workloads.

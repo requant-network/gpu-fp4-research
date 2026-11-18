@@ -2,7 +2,7 @@
 
 A research project by [Requant Network](https://requant.network).
 
-**Status: studies 1-12 have completed their bounded experiments and independent replay; the full fifteen-study program remains active. Studies 13-15 are pending. Publication is gated by CPU/artifact CI on each exact published head.**
+**Status: all fifteen investigations are complete within their declared protocols.** See the [programme ledger](PROGRAM.md), [public research collection](https://requant.network/research/consumer-blackwell) and [passing CPU/artifact CI for the experimental revision](https://github.com/requant-network/gpu-fp4-research/actions/runs/44383368311).
 
 Reproducible experiments on **NVIDIA RTX 5060 Ti 16 GB / SM120** asking when
 FP4 is useful after quantization cost, operand reuse and numerical error are
@@ -56,7 +56,10 @@ scope; its host-request results are distinct from the original repeated-graph pi
 - [Quantized vector search versus resident Faiss/cuVS and indexed references](SEARCH_REPORT.md)
 - [Streaming covariance/PCA, weak-spectrum failures and retained input-fault evidence](PCA_REPORT.md)
 - [Matrix-free Poisson/heat, strong short-q/CEED controls and complete physical solves](PDE_REPORT.md)
-- [Research questions and follow-up gates](RESEARCH.md)
+- [Vulkan Ray Query, CUDA BVH, and exact CPU visibility replay](RT_VISIBILITY_REPORT.md)
+- [Bounded lossless transfer beyond VRAM and SIFT accounting](COMPRESSION_REPORT.md)
+- [Board energy, kernel choices and held-out tail-latency budgets](ENERGY_REPORT.md)
+- [Original pilot protocol and the completed follow-ups](RESEARCH.md)
 - [Arithmetic, independent validation and timing methods](METHODS.md)
 - [Derived results](RESULTS.md) and [complete CSV](results/summary.csv)
 - [Pilot interpretation and next experiment](PILOT_REPORT.md)
@@ -114,6 +117,9 @@ OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python verify_pde.py --workers 4 \
 python compare_pde_receipts.py results/pde-replay.json build/pde-replay-check.json
 python compare_pde_receipts.py results/pde-cost-audit.json build/pde-cost-check.json
 python summarize_pde.py --check
+python -B verify_study13_dispatch.py results/study13-matched-dispatch
+python -B render_study13_report.py --check
+python -B verify_study14_sift_receipts.py
 ```
 
 CPU CI performs these checks. It cannot rerun GPU performance or recover the
@@ -145,6 +151,11 @@ Fresh CPU replay checks original-system residuals and physical/discretization
 quality; it does not certify every unretained CG intermediate. Exact launch,
 canonical-fixture, thirty-source and four-binary epochs are recorded. Named
 allocation/request categories and calibration selection are audited separately.
+
+The visibility replay uses the public MIT artifact package. The compression
+and board-energy reports publish compact results and verification source.
+Full native reproductions of those measurements require the pinned input,
+runtime and evidence archives described in each report.
 
 ## GPU reproduction
 
@@ -179,7 +190,7 @@ the clean CUTLASS pin are retained. New observations must keep their actual sour
 binary, toolchain, generator and timing boundaries; changed code does not reproduce
 the published experiment merely by using the same seed.
 
-## Current limits and next step
+## Pilot extensions and declared limits
 
 The additive study adds four byte-identical cooperative encoders, fused bias/ReLU
 preparation, two CUTLASS tile shapes, four numerical profiles and held-out sizes.

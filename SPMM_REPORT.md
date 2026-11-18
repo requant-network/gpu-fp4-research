@@ -1,6 +1,6 @@
 # Hybrid sparse/dense SpMM on consumer Blackwell
 
-**Status: study 8 is complete within the operator protocol below. Studies 9-15 remain in the active fifteen-study program.**
+**Status: study 8 is complete within the operator protocol below. See the [completed programme ledger](PROGRAM.md).**
 
 Two independent input cohorts attempted 2,496 configurations; 2,496 ran. There are 299,520 retained timing observations, 30,882 distinct input/output check records covering 8,794,996,992 full output entries at runtime, 1,976,448 retained numerical samples and 1,181 complete numerical witnesses (25,598,976 FP32 entries) for independent CPU replay.
 

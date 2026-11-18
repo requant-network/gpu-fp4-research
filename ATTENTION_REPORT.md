@@ -1,6 +1,6 @@
 # Mixed-precision attention on RTX 5060 Ti
 
-**Status: study 5 is complete within this declared inference protocol. The full fifteen-study program remains active.**
+**Status: study 5 is complete within this declared inference protocol. See the [completed programme ledger](PROGRAM.md).**
 
 Two independent input/model cohorts retain 1,512 attention configurations, 138 complete transformer configurations, 148,500 timing observations and 300 rejected/unsupported attempts. CPU replay separately checks native arithmetic, fused reference outputs, frozen model inference, complete quality arrays and changing-image requests. No training-speed or LLM-perplexity claim is made.
 

@@ -1,6 +1,6 @@
 # Held-out per-operation format selection
 
-**Status: the remaining error-prediction gate of study 1 has been experimentally evaluated. The empirical selector has a retained budget violation and is not a certified error-constrained dispatcher. The fifteen-study program remains active.**
+**Status: the remaining error-prediction gate of study 1 has been experimentally evaluated. The empirical selector has a retained budget violation and is not a certified error-constrained dispatcher. See the [completed programme ledger](PROGRAM.md).**
 
 The campaign retains 384 reference configurations, 224 complete selection decisions at four budgets, 52,800 timing observations and 96,632,832 reference-output entries checked at three checkpoints. Of these decisions, 192 involve unseen shapes, distributions, model data or the independent second cohort; 1 violate their requested budget. Ten full small-case witnesses and two changing-input witnesses permit independent CPU replay.
 

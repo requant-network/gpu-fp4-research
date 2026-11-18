@@ -3,10 +3,9 @@
 A research program by [Requant Network](https://requant.network), targeting one
 RTX 5060 Ti 16 GB. All code, protocols, public data and reports are in English.
 
-The objective is to finish all fifteen planned investigations. The first GEMM
-pilot is evidence for study 1, not completion of this program. Related studies
-may share a repository and pinned implementations; repository count is not an
-experimental completion criterion.
+All fifteen investigations have completed their declared protocols. The first GEMM
+pilot supplies part of the evidence for study 1. The [public research collection](https://requant.network/research/consumer-blackwell)
+provides one report page per study.
 
 ## Completion contract
 
@@ -44,6 +43,5 @@ Claims of scientific novelty require a separate literature assessment.
 
 ## Evidence status
 
-Completed pilot evidence is in [RESULTS.md](RESULTS.md). Study completion will be
-updated only when its actual required evidence and final report exist. Future
-reports must distinguish bounded experimental conclusions from general claims.
+The experiment and artifact revision passed [all CPU CI jobs](https://github.com/requant-network/gpu-fp4-research/actions/runs/44383368311).
+The [pilot results](RESULTS.md) cover the initial campaign. The reports above define the measured scopes and the evidence available for replay.

@@ -1,6 +1,6 @@
 # Quantization/activation fusion: resource checkpoint
 
-**Status: study 3's declared fusion comparison is complete within the retained protocol. The full research program remains active.**
+**Status: study 3's declared fusion comparison is complete within the retained protocol. See the [completed programme ledger](PROGRAM.md).**
 
 The [encoder study](ENCODER_REPORT.md) compares separate and fused bias/ReLU/FP4 preparation across shapes and profiles. The [native hardware study](HARDWARE_REPORT.md) adds hardware packed conversion and byte-identical fused/separate controls. The [complete-application study](APPLICATION_REPORT.md) evaluates two classifiers, final labels/task accuracy, complete host requests, native cuBLASLt FP4 and eager/compiled/CUDA-Graph PyTorch references. Those reports retain both useful gains and slower configurations. Compiled-reference CUDA/toolchain differences are recorded rather than hidden.
 

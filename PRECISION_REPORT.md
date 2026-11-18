@@ -1,6 +1,6 @@
 # High-precision products from INT8 components
 
-**Status: study 6's bounded precision/reconstruction comparison is complete. The full fifteen-study program remains active.**
+**Status: study 6's bounded precision/reconstruction comparison is complete. See the [completed programme ledger](PROGRAM.md).**
 
 Two independent input/model cohorts contain 1,008 configurations, 120,960 retained device/host timing observations and 645,005,312 output entries checked at three checkpoints. Eight full-product witnesses and two changing-input transition witnesses support CPU replay. Each case additionally retains 64 exact-integer product samples and exact INT8 product samples where components are used, before timing, after timing and after host requests.
 

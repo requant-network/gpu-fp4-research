@@ -2,7 +2,7 @@
 
 A research project by [Requant Network](https://requant.network).
 
-**Status: the first bounded pilot is complete; the broader research program is in progress.**
+**Status.** This page presents the original bounded pilot. The [completed programme ledger](PROGRAM.md) indexes all fifteen investigations.
 
 Two input cohorts contain 120 mode/shape/profile cases, 10,800 retained timing observations and 33,259,520 output entries checked both before and after timing. Twenty complete small-case numerical witnesses are replayable on CPU. Each observation times 32 repeated operations.
 
