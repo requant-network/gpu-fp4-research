@@ -61,7 +61,7 @@ def outputs():
             observations+=len(row["host_request_ms"])
     held=[d for d in decisions if d["held_out"]]
     lines=["# Held-out per-operation format selection","",
-           "**Status: the remaining error-prediction gate of study 1 has been experimentally evaluated. The empirical selector has a retained budget violation and is not a certified error-constrained dispatcher. The fifteen-study program remains active.**","",
+           "**Status: the remaining error-prediction gate of study 1 has been experimentally evaluated. The empirical selector has a retained budget violation and is not a certified error-constrained dispatcher. See the [completed programme ledger](PROGRAM.md).**","",
            f"The campaign retains {cases_count:,} reference configurations, {len(decisions)} complete selection decisions at four budgets, {observations:,} timing observations and {entries:,} reference-output entries checked at three checkpoints. "
            f"Of these decisions, {len(held)} involve unseen shapes, distributions, model data or the independent second cohort; {sum(not d['feasible'] for d in held)} violate their requested budget. "
            "Ten full small-case witnesses and two changing-input witnesses permit independent CPU replay.","",

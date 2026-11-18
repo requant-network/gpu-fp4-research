@@ -49,7 +49,7 @@ def outputs():
                         "relative_error":None if chosen is None else chosen["checks"]["relative_frobenius_error"]})
     total=sum(c["shape"][0]*c["shape"][1] for r in records for c in r["cases"])
     lines=["# FP4 outlier correction: accuracy and complete cost","",
-           "**Status: study 2's bounded column/block/residual comparison is complete. The fifteen-study program remains active.**","",
+           "**Status: study 2's bounded column/block/residual comparison is complete. See the [completed programme ledger](PROGRAM.md).**","",
            f"Two independent input/model cohorts contain 598 configurations, 89,700 retained observations and {total:,} output entries checked before and after timing. "
            "The grid includes seven synthetic shapes, four distributions and two real-model layers at three batches. "
            "Twelve complete small numerical witnesses permit CPU replay. All selected columns, block masks and FP16 factors were checked against independent CPU construction.","",

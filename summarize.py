@@ -38,7 +38,7 @@ def artifacts():
     count = sum(len(record["cases"]) for record in records)
     entries = sum(case["checks"]["checked_output_entries"] for record in records for case in record["cases"])
     lines = ["# Pilot results", "", "A research project by [Requant Network](https://requant.network).", "",
-             "**Status: the first bounded pilot is complete; the broader research program is in progress.**", "",
+             "**Status.** This page presents the original bounded pilot. The [completed programme ledger](PROGRAM.md) indexes all fifteen investigations.", "",
              f"Two input cohorts contain {count} mode/shape/profile cases, {count*90:,} retained timing observations "
              f"and {entries:,} output entries checked both before and after timing. Twenty complete small-case "
              "numerical witnesses are replayable on CPU. Each observation times 32 repeated operations.", "",

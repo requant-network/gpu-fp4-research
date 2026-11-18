@@ -80,7 +80,7 @@ def artifacts():
                 total=statistics.median(values)
                 reuse_writer.writerow([record["seed"],label(row["configuration"]),row["batch"],count,f"{total:.8f}",f"{total/int(count):.8f}"])
     lines=["# Real-data classifier and compiled-framework comparison","",
-           "**Status: this bounded application/reference experiment is complete. The fifteen-study program remains active.**","",
+           "**Status: this bounded application/reference experiment is complete. See the [completed programme ledger](PROGRAM.md).**","",
            "Two independently trained digits models compare eight native precision/backend configurations and eager/compiled "
            "PyTorch FP32, FP16, BF16 and FP8, plus a dynamic-shape reduce-overhead reference with internal CUDA Graphs. "
            "Each implementation covers six batch sizes, for 240 timing cases in total. "

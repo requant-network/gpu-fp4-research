@@ -42,7 +42,7 @@ def outputs():
     requested=[c for r in records for c in r["cases"] if c["mode"]==3]
     bf16_capable=sum(c["tuning"][0][c["selected_algorithms"][0]]["emulation_capability"]!=0 for c in requested)
     lines=["# High-precision products from INT8 components","",
-           "**Status: study 6's bounded precision/reconstruction comparison is complete. The full fifteen-study program remains active.**","",
+           "**Status: study 6's bounded precision/reconstruction comparison is complete. See the [completed programme ledger](PROGRAM.md).**","",
            f"Two independent input/model cohorts contain {total:,} configurations, {observations:,} retained device/host timing observations and {entries:,} output entries checked at three checkpoints. "
            "Eight full-product witnesses and two changing-input transition witnesses support CPU replay. Each case additionally retains 64 exact-integer product samples and exact INT8 product samples where components are used, before timing, after timing and after host requests.","",
            "## Problem and methods","",

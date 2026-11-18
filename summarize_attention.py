@@ -54,7 +54,7 @@ def outputs():
                 writer.writerow([record["model_seed"],c["batch"],c["label"],boundary,f"{statistics.median(values):.9f}",f"{ordered[2]:.9f}",f"{ordered[26]:.9f}",q["validation"]["correct"],q["validation"]["count"],q["test"]["correct"],q["test"]["count"],q["test"]["logit_relative_error_vs_original"],c["weight_bytes"],c.get("owned_native_device_buffer_bytes"),c["extra_peak_torch_allocated_bytes"],c["setup_and_tuning_wall_ms"]])
     cases=sum(len(r["cases"]) for r in core+sage);model_cases=sum(len(r["cases"]) for r in application);missing=sum(len(r["unavailable"]) for r in core+sage+application)
     lines=["# Mixed-precision attention on RTX 5060 Ti","",
-           "**Status: study 5 is complete within this declared inference protocol. The full fifteen-study program remains active.**","",
+           "**Status: study 5 is complete within this declared inference protocol. See the [completed programme ledger](PROGRAM.md).**","",
            f"Two independent input/model cohorts retain {cases:,} attention configurations, {model_cases} complete transformer configurations, {observations:,} timing observations and {missing} rejected/unsupported attempts. "
            "CPU replay separately checks native arithmetic, fused reference outputs, frozen model inference, complete quality arrays and changing-image requests. No training-speed or LLM-perplexity claim is made.","",
            "## Native implementation and strong controls","",

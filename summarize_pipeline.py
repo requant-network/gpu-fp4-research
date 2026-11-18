@@ -65,7 +65,7 @@ def outputs():
     calibration=json.loads((ROOT/"results/pipeline-timer-calibration.json").read_text(encoding="utf-8"))
     floor={key:statistics.median(values)*1000 for key,values in calibration["timings_ms"].items()}
     lines=["# Native SM120 pipelines, traversal and cache pressure","",
-           "**Status: study 4's bounded configuration investigation is complete. The complete fifteen-study program remains active.**","",
+           "**Status: study 4's bounded configuration investigation is complete. See the [completed programme ledger](PROGRAM.md).**","",
            f"Two cohorts contain {total:,} configurations, {observations:,} retained observations and {entries:,} output entries checked before and after timing. "
            "Eleven shapes and normal/outlier inputs cover twelve usable pipeline builds plus nine traversal configurations. Four additional compiled configurations fail their runtime resource request and remain in the evidence. "
            "Four small input/output witness files support CPU numerical replay. All configurations preserve identical FP4 encoded values/scales; configuration selection changes implementation rather than the quantization contract.","",
@@ -132,7 +132,7 @@ def outputs():
               "The tested protocol closes the declared loading/pipeline/warp-role/buffering/traversal/resource/cache/held-out configuration comparison, not a claim of universal kernel optimality.",""]
     fusion=json.loads((ROOT/"results/fusion-resources.json").read_text(encoding="utf-8"))
     fusion_lines=["# Quantization/activation fusion: resource checkpoint","",
-                  "**Status: study 3's declared fusion comparison is complete within the retained protocol. The full research program remains active.**","",
+                  "**Status: study 3's declared fusion comparison is complete within the retained protocol. See the [completed programme ledger](PROGRAM.md).**","",
                   "The [encoder study](ENCODER_REPORT.md) compares separate and fused bias/ReLU/FP4 preparation across shapes and profiles. "
                   "The [native hardware study](HARDWARE_REPORT.md) adds hardware packed conversion and byte-identical fused/separate controls. "
                   "The [complete-application study](APPLICATION_REPORT.md) evaluates two classifiers, final labels/task accuracy, complete host requests, native cuBLASLt FP4 and eager/compiled/CUDA-Graph PyTorch references. "

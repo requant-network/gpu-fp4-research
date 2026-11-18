@@ -125,7 +125,7 @@ def outputs():
                                                    "active_hybrid_speedup": None if reference is None or alternative is None else amortized(reference) / amortized(alternative)})
     frontier["counts"] = counts
     lines = ["# Hybrid sparse/dense SpMM on consumer Blackwell", "",
-             "**Status: study 8 is complete within the operator protocol below. Studies 9-15 remain in the active fifteen-study program.**", "",
+             "**Status: study 8 is complete within the operator protocol below. See the [completed programme ledger](PROGRAM.md).**", "",
              f"Two independent input cohorts attempted {counts['attempted']:,} configurations; {counts['available']:,} ran. "
              f"There are {counts['timing_observations']:,} retained timing observations, {counts['checks']:,} distinct input/output check records covering "
              f"{counts['runtime_unique_entries']:,} full output entries at runtime, {counts['retained_sample_entries']:,} retained numerical samples and "
