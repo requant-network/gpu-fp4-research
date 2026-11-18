@@ -73,3 +73,13 @@ checkout retain their applicable notices. Canonical GLL coefficient arrays are
 original numerical fixtures prepared with mpmath; NumPy, CuPy and mpmath retain
 their own licenses. See [physical source context](PDE_SOURCES.md) and
 [reproduction details](PDE_REPRODUCTION.md).
+
+The compressed movement study calls external [ndzip at ff4e6702](https://github.com/celerity/ndzip/tree/ff4e6702bf0abb86d4aeef8249bd30344dfeef75)
+under its MIT terms. The ordered-copy reference uses a separately identified
+change at that same pin. Only the project adapters, XBP1 and replay code are
+included here. CUDA and CuPy retain their own terms.
+
+The energy study uses the installed NVIDIA driver NVML and the external CuPy
+runtime. The original integer and warp-reduction kernels, allocator and replay
+source here use the repository MIT license. The experiment's binary libraries
+and device-identifying raw evidence are retained separately.
